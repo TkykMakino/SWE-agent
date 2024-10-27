@@ -1,0 +1,40 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..03b283494a
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,15 @@
++from django.db import models
++
++class A(models.Model):
++    class Meta:
++        abstract = True
++    myfield = models.IntegerField()
++
++class B(A):
++    pass
++
++class C(A):
++    pass
++
++print(len({B._meta.get_field('myfield'), C._meta.get_field('myfield')}))
++print(B._meta.get_field('myfield') == C._meta.get_field('myfield'))
+diff --git a/test_settings.py b/test_settings.py
+new file mode 100644
+index 0000000000..3b4fb170b2
+--- /dev/null
++++ b/test_settings.py
+@@ -0,0 +1,12 @@
++INSTALLED_APPS = [
++    'django.contrib.contenttypes',
++]
++
++DATABASES = {
++    'default': {
++        'ENGINE': 'django.db.backends.sqlite3',
++        'NAME': ':memory:',
++    }
++}
++
++DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

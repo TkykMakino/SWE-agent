@@ -471,7 +471,7 @@ class Agent:
         self.subroutine_patterns[self.config.submit_command] = submit_pat
         self.command_patterns[self.config.submit_command] = submit_pat
 
-    def forward(self, observation: str, available_actions: list[str], state: str) -> tuple[str, str, str]:
+    def forward(self, observation: str, available_actions: list[str], state: str, phase: str) -> tuple[str, str, str, str]:
         """Forwards the model
 
         Args:
@@ -486,10 +486,15 @@ class Agent:
         """
         thought, action, output = self.forward_with_error_check(observation, state)
 
+        get_phases = re.findall(r'\*\*(?!Create Plan [PLAN])(.*?)\*\*', thought)
+        if get_phases:
+            phase = get_phases[0]
+
         self._append_history(
             {
                 "role": "assistant",
                 "content": output,
+                "phase": phase,
                 "thought": thought,
                 "action": action,
                 "agent": self.name,
@@ -498,8 +503,9 @@ class Agent:
 
         self.logger.info(f"💭 THOUGHT ({self.name})\n{thought}")
         self.logger.info(f"🎬 ACTION ({self.name})\n{action}")
+        self.logger.info(f"PHASE ({self.name})\n{phase}")
 
-        return thought, action, output
+        return thought, action, output, phase
 
     def forward_model(self, observation: str, state: str) -> str:
         """Query the model with the current state and observation with the appropriate template.
@@ -755,6 +761,90 @@ class Agent:
         env.communicate(f"cd {cwd}")
         self.model.stats.replace(sub_agent.model.stats)
         return sub_agent_output
+    
+    def phasecheck(self, plan: list[str], phasenum: int, phase: str, action: str, backcount: int) -> tuple[str | None, int, bool, dict, bool, int, int]:
+        info = {}
+        observation = ""
+        check = True
+        getgenre = re.findall(r'\[(.*?)\]', phase)
+        genre = "NONE"
+        info["exit_status"] = action
+        if getgenre:
+            genre = getgenre[0]
+
+        if action.strip() == "plan":
+            backcount = 5
+            return observation, 0, False, info, check, phasenum, backcount
+        elif phasenum == -1:
+            observation ="Planning has not yet been done. Be sure to first select the plan command as your action and start planning."
+            check = False
+            return observation, 0, False, info, check, phasenum, backcount
+        elif plan[phasenum] != phase:
+            if plan[phasenum + 1] == phase:
+                phasenum += 1
+            elif plan[phasenum - 1] == phase:
+                if backcount > 0:
+                    phasenum -= 1
+                    backcount -= 1
+                else:
+                    observation = "You cannot reverse the plan any further. Please give up and force the next step."
+                    check = False
+                    return observation, 0, False, info, check, phasenum, backcount
+            else:
+                observation = "Your plan is\n"
+                for i, item in enumerate(plan, start=1):
+                    observation += f"{i}. **{item}**\n"
+
+                if phasenum <= 0 or backcount <= 0:
+                    observation += f"and current step is **{plan[phasenum]}**.\nCorrect your STEP NAME and STEP GENRE to **{plan[phasenum]}** or **{plan[phasenum + 1]}** and solve the issue according to the plan."
+                elif phasenum >= len(plan) - 1:
+                    observation += f"and current step is **{plan[phasenum]}**.\nCorrect your STEP NAME and STEP GENRE to **{plan[phasenum - 1]}** or **{plan[phasenum]}** and solve the issue according to the plan."
+                else:
+                    observation += f"and current step is **{plan[phasenum]}**.\nCorrect your STEP NAME and STEP GENRE to **{plan[phasenum-1]}**, **{plan[phasenum]}** or **{plan[phasenum + 1]}** and solve the issue according to the plan."
+                check = False
+                return observation, 0, False, info, check, phasenum, backcount
+
+        befgenre = "NONE"
+        if phasenum > 0:
+            getbefgenre = re.findall(r'\[(.*?)\]', plan[phasenum - 1])
+            if getbefgenre:
+                befgenre = getbefgenre[0]
+        
+        aftgenre = "NONE"
+        if phasenum < len(plan) - 1:
+            getaftgenre = re.findall(r'\[(.*?)\]', plan[phasenum + 1])
+            if getaftgenre:
+                aftgenre = getaftgenre[0]
+        
+        if genre == "REPRODUCE":
+            observation = f"Currently it is a REPRODUCE step. Once you are satisfied that the bug(s) in the issue have been fully reproduced, proceed to the **{plan[phasenum + 1]}**.\n"
+        elif genre == "SEARCH":
+            if action.strip().startswith("edit"):
+                observation = "The current step is to gather the necessary information. You cannot perform that edit here! If you wish to perform edits to the code, please go to the EDIT step."
+                check = False
+                return observation, 0, False, info, check, phasenum, backcount
+            observation = f"Currently it is a SEARCH step. Follow the plan and gather the information needed to solve the issue. Once you have gathered all the necessary information, proceed to the **{plan[phasenum + 1]}**.\n"
+        elif genre == "EDIT":
+            if action.strip().startswith("python"):
+                observation = "The current step is to edit the code. You cannot run that test here! Please do the work of running tests on the code in the TEST step."
+                check = False
+                return observation, 0, False, info, check, phasenum, backcount
+            if not action.strip().startswith("rm"):
+                observation = "Currently it is the EDIT step. Make the necessary edits according to your plan.\n"
+            if aftgenre == "TEST":
+                observation += f"When you feel that all necessary edits have been completed, proceed to the **{plan[phasenum + 1]}** to check.\n"
+            if befgenre == "SEARCH" and backcount > 0:
+                observation += f"If you feel that you do not have enough information to edit, go back to the **{plan[phasenum - 1]}** and re-gather the necessary information.\n"
+        elif genre == "TEST":
+            if action.strip().startswith("edit"):
+                observation = "The current step is to run the test of the code. You cannot perform that edit here! If you wish to perform edits to the code, please go back to the EDIT step."
+                check = False
+                return observation, 0, False, info, check, phasenum, backcount
+            observation = "Currently it is the TEST step. If the test results confirm that the necessary edits have been completed, proceed to the next step.\n"
+            if befgenre == "EDIT" and backcount > 0:
+                observation += f"If you do not get the results you want, return to the **{plan[phasenum - 1]}** and make another edit.\n"
+        
+        return observation, 0, False, info, check, phasenum, backcount
 
     def run(
         self,
@@ -802,13 +892,21 @@ class Agent:
         # Run action/observation loop
         trajectory = []
         info = {}
+        plan = []
+        phasenum = -1
+        backcount = 3
+        phase = "NONE"
+        before_action = "NONE"
         traj_log_path = traj_dir / (env.record["instance_id"] + ".traj")
         self.logger.info("Trajectory will be saved to %s", traj_log_path)
         while not done:
             for hook in self.hooks:
                 hook.on_step_start()
             state = env.communicate(self.state_command) if self.state_command else None
-            thought, action, output = self.forward(observation, env.get_available_actions(), state)
+            thought, action, output, phase = self.forward(observation, env.get_available_actions(), state, phase)
+            if before_action.strip() == "plan":
+                plan = re.findall(r'\*\*(?!Create Plan [PLAN])(.*?)\*\*', thought)
+                phasenum = 0
             for hook in self.hooks:
                 hook.on_actions_generated(thought=thought, action=action, output=output)
             observations = list()
@@ -817,7 +915,13 @@ class Agent:
                 if sub_action["agent"] == self.name or sub_action["cmd_name"] == self.config.submit_command:
                     for hook in self.hooks:
                         hook.on_sub_action_started(sub_action=sub_action)
-                    obs, _, done, info = env.step(sub_action["action"])
+                    if action.strip().startswith("exit"):
+                        check = True
+                    else:
+                        obs, _, done, info, check, phasenum, backcount = self.phasecheck(plan, phasenum, phase, action, backcount)
+                    if check:
+                        obs2, _, done, info = env.step(sub_action["action"])
+                        obs += obs2
                     for hook in self.hooks:
                         hook.on_sub_action_executed(obs=obs, done=done)
                     observations.append(obs)
@@ -848,6 +952,7 @@ class Agent:
                 self.save_trajectory(trajectory, traj_log_path, env_name=env.name, info=info)
             for hook in self.hooks:
                 hook.on_step_done(trajectory_step=trajectory_step, model_stats=model_stats)
+            before_action = action
 
         for hook in self.hooks:
             hook.on_run_done()

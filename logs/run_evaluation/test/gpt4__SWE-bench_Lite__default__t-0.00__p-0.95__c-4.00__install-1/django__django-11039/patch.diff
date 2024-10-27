@@ -1,0 +1,106 @@
+
+diff --git a/django/core/management/commands/sqlmigrate.py b/django/core/management/commands/sqlmigrate.py
+index f0b663222a..b51d1739a4 100644
+--- a/django/core/management/commands/sqlmigrate.py
++++ b/django/core/management/commands/sqlmigrate.py
+@@ -56,7 +56,7 @@ class Command(BaseCommand):
+         targets = [(app_label, migration.name)]
+ 
+         # Show begin/end around output only for atomic migrations
+-        self.output_transaction = migration.atomic
++        self.output_transaction = migration.atomic and connection.features.can_rollback_ddl
+ 
+         # Make a plan that represents just the requested migrations and show SQL
+         # for it
+diff --git a/run_tests.py b/run_tests.py
+new file mode 100644
+index 0000000000..9916402375
+--- /dev/null
++++ b/run_tests.py
+@@ -0,0 +1,25 @@
++import django
++from django.conf import settings
++from django.core.management import call_command
++
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.auth',
++        'django.contrib.contenttypes',
++        'django.contrib.sites',
++        'tests.migrations',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    SITE_ID=1,
++    MIGRATION_MODULES={
++        # Specify any migration modules that need to be included for the tests
++    },
++)
++
++django.setup()
++call_command('test', 'tests/migrations/test_commands.py')
+diff --git a/simulate_sqlmigrate.py b/simulate_sqlmigrate.py
+new file mode 100644
+index 0000000000..862e8d11e7
+--- /dev/null
++++ b/simulate_sqlmigrate.py
+@@ -0,0 +1,28 @@
++import django
++import io
++from unittest import mock
++from django.core.management import call_command
++from django.conf import settings
++from django.db import connection
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.auth',
++        'django.contrib.contenttypes',
++        'django.contrib.sites',
++        'tests.migrations',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    SITE_ID=1,
++)
++django.setup()
++# Mock connection.features.can_rollback_ddl to False
++with mock.patch.object(connection.features, 'can_rollback_ddl', False):
++    out = io.StringIO()
++    call_command('sqlmigrate', 'test_migrations', '0001_initial', stdout=out)
++    output = out.getvalue()
++    print(output)
+diff --git a/tests/migrations/test_commands.py b/tests/migrations/test_commands.py
+index 0e8fa9fdd1..a219fa02d4 100644
+--- a/tests/migrations/test_commands.py
++++ b/tests/migrations/test_commands.py
+@@ -615,7 +615,21 @@ class MigrateTests(MigrationTestBase):
+         if connection.ops.start_transaction_sql():
+             self.assertNotIn(connection.ops.start_transaction_sql().lower(), queries)
+         self.assertNotIn(connection.ops.end_transaction_sql().lower(), queries)
+-
++    @override_settings(MIGRATION_MODULES={"migrations": "migrations.test_migrations_non_atomic"})
++    def test_sqlmigrate_output_wrappers_with_can_rollback_ddl_mock(self):
++        """
++        BEGIN/COMMIT statements are not shown for non-atomic migrations when
++        connection.features.can_rollback_ddl is mocked to False.
++        """
++        out = io.StringIO()
++        with mock.patch.object(connection.features, 'can_rollback_ddl', new_callable=mock.PropertyMock) as can_rollback_ddl:
++            can_rollback_ddl.return_value = False
++            call_command("sqlmigrate", "migrations", "0001", stdout=out)
++            output = out.getvalue().lower()
++            queries = [q.strip() for q in output.splitlines()]
++            if connection.ops.start_transaction_sql():
++                self.assertNotIn(connection.ops.start_transaction_sql().lower(), queries)
++            self.assertNotIn(connection.ops.end_transaction_sql().lower(), queries)
+     @override_settings(
+         INSTALLED_APPS=[
+             "migrations.migrations_test_apps.migrated_app",

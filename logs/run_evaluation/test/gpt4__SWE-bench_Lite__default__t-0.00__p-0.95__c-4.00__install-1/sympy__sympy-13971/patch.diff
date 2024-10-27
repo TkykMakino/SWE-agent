@@ -1,0 +1,29 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..e03f327dae
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,6 @@
++import sympy as sp
++k, m, n = sp.symbols('k m n', integer=True)
++sp.init_printing()
++
++seq = sp.SeqFormula(n**2, (n, 0, sp.oo))
++print(seq)
+diff --git a/sympy/printing/latex.py b/sympy/printing/latex.py
+index 364b24a1e5..9edbaadc30 100644
+--- a/sympy/printing/latex.py
++++ b/sympy/printing/latex.py
+@@ -1655,9 +1655,9 @@ def _print_SeqFormula(self, s):
+         else:
+             printset = tuple(s)
+ 
+-        return (r"\left\["
++        return (r"\left["
+               + r", ".join(self._print(el) for el in printset)
+-              + r"\right\]")
++              + r"\right]")
+ 
+     _print_SeqPer = _print_SeqFormula
+     _print_SeqAdd = _print_SeqFormula

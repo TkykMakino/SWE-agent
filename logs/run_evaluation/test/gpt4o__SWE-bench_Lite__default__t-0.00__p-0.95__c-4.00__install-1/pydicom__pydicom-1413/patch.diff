@@ -1,0 +1,24 @@
+
+diff --git a/mydicom b/mydicom
+new file mode 100644
+index 000000000..e33848f6e
+Binary files /dev/null and b/mydicom differ
+diff --git a/pydicom/dataelem.py b/pydicom/dataelem.py
+index b2709f132..04a85613a 100644
+--- a/pydicom/dataelem.py
++++ b/pydicom/dataelem.py
+@@ -539,10 +539,10 @@ class DataElement:
+             return PersonName(val)
+         elif self.VR == "AT" and (val == 0 or val):
+             return val if isinstance(val, BaseTag) else Tag(val)
+-        # Later may need this for PersonName as for UI,
+-        #    but needs more thought
+-        # elif self.VR == "PN":
+-        #    return PersonName(val)
++        elif self.VR == "OL":
++            if not _is_bytes(val):
++                raise TypeError("A bytes-like object is required, not '{}'".format(type(val).__name__))
++            return val
+         else:  # is either a string or a type 2 optionally blank string
+             return val  # this means a "numeric" value could be empty string ""
+         # except TypeError:

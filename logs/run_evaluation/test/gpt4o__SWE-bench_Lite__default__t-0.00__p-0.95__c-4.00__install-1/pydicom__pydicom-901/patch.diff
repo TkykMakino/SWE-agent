@@ -1,0 +1,46 @@
+
+diff --git a/pydicom/config.py b/pydicom/config.py
+index ae9c8bdf1..e824df151 100644
+--- a/pydicom/config.py
++++ b/pydicom/config.py
+@@ -62,10 +62,10 @@ and datetime.time respectively. Default: False
+ 
+ # Logging system and debug function to change logging level
+ logger = logging.getLogger('pydicom')
+-handler = logging.StreamHandler()
+-formatter = logging.Formatter("%(message)s")
+-handler.setFormatter(formatter)
+-logger.addHandler(handler)
++# handler = logging.StreamHandler()
++# formatter = logging.Formatter("%(message)s")
++# handler.setFormatter(formatter)
++# logger.addHandler(handler)
+ 
+ 
+ import pydicom.pixel_data_handlers.numpy_handler as np_handler  # noqa
+@@ -121,10 +121,11 @@ def debug(debug_on=True):
+     """
+     global logger, debugging
+     if debug_on:
+-        logger.setLevel(logging.DEBUG)
+-        debugging = True
+-    else:
+-        logger.setLevel(logging.WARNING)
++        # logger.setLevel(logging.DEBUG)
++        # debugging = True
++        # else:
++        # logger.setLevel(logging.WARNING)
++        # debugging = False
+         debugging = False
+ 
+ 
+diff --git a/reproduce_logging_issue.py b/reproduce_logging_issue.py
+new file mode 100644
+index 000000000..4a2aef552
+--- /dev/null
++++ b/reproduce_logging_issue.py
+@@ -0,0 +1,4 @@
++import pydicom
++
++# This will trigger the logging configuration in pydicom
++print("Logging configuration test")

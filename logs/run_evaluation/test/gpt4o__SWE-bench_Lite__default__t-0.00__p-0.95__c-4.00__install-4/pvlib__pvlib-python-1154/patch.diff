@@ -1,0 +1,29 @@
+
+diff --git a/pvlib/irradiance.py b/pvlib/irradiance.py
+index 6580030..405c515 100644
+--- a/pvlib/irradiance.py
++++ b/pvlib/irradiance.py
+@@ -866,6 +866,9 @@ def reindl(surface_tilt, surface_azimuth, dhi, dni, ghi, dni_extra,
+        hourly tilted surface radiation models. Solar Energy 45(1), 9-17.
+     '''
+ 
++    if ghi == 0:
++        return 0
++
+     cos_tt = aoi_projection(surface_tilt, surface_azimuth,
+                             solar_zenith, solar_azimuth)
+     cos_tt = np.maximum(cos_tt, 0)  # GH 526
+@@ -873,6 +876,13 @@ def reindl(surface_tilt, surface_azimuth, dhi, dni, ghi, dni_extra,
+     # do not apply cos(zen) limit here (needed for HB below)
+     cos_solar_zenith = tools.cosd(solar_zenith)
+ 
++    # ratio of titled and horizontal beam irradiance
++    Rb = cos_tt / np.maximum(cos_solar_zenith, 0.01745)  # GH 432
++    cos_tt = np.maximum(cos_tt, 0)  # GH 526
++
++    # do not apply cos(zen) limit here (needed for HB below)
++    cos_solar_zenith = tools.cosd(solar_zenith)
++
+     # ratio of titled and horizontal beam irradiance
+     Rb = cos_tt / np.maximum(cos_solar_zenith, 0.01745)  # GH 432
+ 

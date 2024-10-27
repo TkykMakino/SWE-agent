@@ -1,0 +1,7 @@
+
+diff --git a/root_dir/src/__init__.py b/root_dir/src/__init__.py
+new file mode 100644
+index 00000000..e69de29b
+diff --git a/root_dir/src/project/file.py b/root_dir/src/project/file.py
+new file mode 100644
+index 00000000..e69de29b

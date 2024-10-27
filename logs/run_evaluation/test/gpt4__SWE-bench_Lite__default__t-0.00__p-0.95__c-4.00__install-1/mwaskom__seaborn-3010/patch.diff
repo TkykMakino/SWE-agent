@@ -1,0 +1,24 @@
+
+diff --git a/seaborn/_stats/regression.py b/seaborn/_stats/regression.py
+index 7b7ddc8d..5270189c 100644
+--- a/seaborn/_stats/regression.py
++++ b/seaborn/_stats/regression.py
+@@ -20,12 +20,14 @@ class PolyFit(Stat):
+     gridsize: int = 100
+ 
+     def _fit_predict(self, data):
+-
+         x = data["x"]
+         y = data["y"]
+-        if x.nunique() <= self.order:
+-            # TODO warn?
+-            xx = yy = []
++        mask = ~x.isna() & ~y.isna()
++        x = x[mask]
++        y = y[mask]
++        if len(x) <= self.order:
++            # Not enough data points to fit the polynomial
++            xx = yy = np.array([])
+         else:
+             p = np.polyfit(x, y, self.order)
+             xx = np.linspace(x.min(), x.max(), self.gridsize)

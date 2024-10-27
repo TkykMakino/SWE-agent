@@ -1,0 +1,27 @@
+
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 00000000..ed91bb41
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,20 @@
++import astroid
++from pylint.checkers.classes.special_methods_checker import _safe_infer_call_result
++
++# Mock function to simulate the issue
++def mock_function():
++    return None
++
++# Create a node to simulate the inference
++node = astroid.extract_node('''
++def func():
++    return mock_function()
++''')
++
++try:
++    inferred = _safe_infer_call_result(node, node)
++    value = next(inferred)
++    formatted_string = "{}".format(value)
++except TypeError as e:
++    print(f"Error: {e}")
++

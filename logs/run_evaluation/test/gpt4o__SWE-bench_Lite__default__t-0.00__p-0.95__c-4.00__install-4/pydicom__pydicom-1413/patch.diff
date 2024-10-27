@@ -1,0 +1,27 @@
+
+diff --git a/mydicom b/mydicom
+new file mode 100644
+index 000000000..e69de29bb
+diff --git a/pydicom/dataelem.py b/pydicom/dataelem.py
+index b2709f132..4355a9ffe 100644
+--- a/pydicom/dataelem.py
++++ b/pydicom/dataelem.py
+@@ -499,12 +499,18 @@ class DataElement:
+         Uses the element's VR in order to determine the conversion method and
+         resulting type.
+         """
++        if self.VR == 'OL' and not isinstance(val, bytes):
++            raise TypeError("A bytes-like object is required for VR 'OL'")
+         if self.VR == 'SQ':  # a sequence - leave it alone
+             from pydicom.sequence import Sequence
+             if isinstance(val, Sequence):
+                 return val
+             else:
+                 return Sequence(val)
++            if isinstance(val, Sequence):
++                return val
++            else:
++                return Sequence(val)
+ 
+         # if the value is a list, convert each element
+         try:

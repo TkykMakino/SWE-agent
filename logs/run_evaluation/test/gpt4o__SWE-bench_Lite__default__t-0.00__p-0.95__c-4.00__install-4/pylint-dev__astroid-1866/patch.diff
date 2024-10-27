@@ -1,0 +1,34 @@
+
+diff --git a/astroid/brain/brain_builtin_inference.py b/astroid/brain/brain_builtin_inference.py
+index af1ddf4d..aeaeef98 100644
+--- a/astroid/brain/brain_builtin_inference.py
++++ b/astroid/brain/brain_builtin_inference.py
+@@ -934,7 +934,7 @@ def _infer_str_format_call(
+     else:
+         value = node.func.expr
+ 
+-    format_template = value.value
++    format_template = value.value if value.value is not None else ""
+ 
+     # Get the positional arguments passed
+     inferred_positional = [
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 00000000..be818d35
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,14 @@
++import astroid
++from astroid import nodes
++
++# Simulate the behavior that causes the issue
++def reproduce_error():
++    try:
++        # Create a dummy node to trigger the error
++        node = nodes.Const(value=None)
++        format_template = "{}"
++        formatted_string = format_template.format(node.value)
++    except TypeError as e:
++        print(f"Error: {e}")
++
++reproduce_error()

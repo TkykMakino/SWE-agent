@@ -1,0 +1,815 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	reproduce_issue.py
+
+nothing added to commit but untracked files present (use "git add" to track)
++ git show
+commit 6cf238d089cf4b6753c94cfc089b4a47487711e5
+Author: Marc Mueller <30130371+cdce8p@users.noreply.github.com>
+Date:   Tue Nov 8 08:46:52 2022 +0100
+
+    Add typing for `set_local` (#1837)
+    
+    * Use SuccessfulInferenceResult for locals
+
+diff --git a/astroid/builder.py b/astroid/builder.py
+index a3b87faa..c4e4ae7b 100644
+--- a/astroid/builder.py
++++ b/astroid/builder.py
+@@ -225,10 +225,10 @@ class AstroidBuilder(raw_building.InspectBuilder):
+                     continue
+                 for name in imported.public_names():
+                     node.parent.set_local(name, node)
+-                    sort_locals(node.parent.scope().locals[name])
++                    sort_locals(node.parent.scope().locals[name])  # type: ignore[assignment]
+             else:
+                 node.parent.set_local(asname or name, node)
+-                sort_locals(node.parent.scope().locals[asname or name])
++                sort_locals(node.parent.scope().locals[asname or name])  # type: ignore[assignment]
+ 
+     def delayed_assattr(self, node: nodes.AssignAttr) -> None:
+         """Visit a AssAttr node
+diff --git a/astroid/nodes/node_classes.py b/astroid/nodes/node_classes.py
+index 2f515dbe..c9c79cc3 100644
+--- a/astroid/nodes/node_classes.py
++++ b/astroid/nodes/node_classes.py
+@@ -4896,7 +4896,7 @@ class NamedExpr(_base_nodes.AssignTypeNode):
+ 
+         return self.parent.scope()
+ 
+-    def set_local(self, name: str, stmt: AssignName) -> None:
++    def set_local(self, name: str, stmt: NodeNG) -> None:
+         """Define that the given name is declared in the given statement node.
+         NamedExpr's in Arguments, Keyword or Comprehension are evaluated in their
+         parent's parent scope. So we add to their frame's locals.
+diff --git a/astroid/nodes/node_ng.py b/astroid/nodes/node_ng.py
+index 888dc9ce..63069769 100644
+--- a/astroid/nodes/node_ng.py
++++ b/astroid/nodes/node_ng.py
+@@ -493,7 +493,7 @@ class NodeNG:
+         """
+         return lineno, self.tolineno
+ 
+-    def set_local(self, name, stmt):
++    def set_local(self, name: str, stmt: NodeNG) -> None:
+         """Define that the given name is declared in the given statement node.
+ 
+         This definition is stored on the parent scope node.
+@@ -501,11 +501,10 @@ class NodeNG:
+         .. seealso:: :meth:`scope`
+ 
+         :param name: The name that is being defined.
+-        :type name: str
+ 
+         :param stmt: The statement that defines the given name.
+-        :type stmt: NodeNG
+         """
++        assert self.parent
+         self.parent.set_local(name, stmt)
+ 
+     @overload
+diff --git a/astroid/nodes/scoped_nodes/mixin.py b/astroid/nodes/scoped_nodes/mixin.py
+index 7e0ae8e5..fa43b1aa 100644
+--- a/astroid/nodes/scoped_nodes/mixin.py
++++ b/astroid/nodes/scoped_nodes/mixin.py
+@@ -6,11 +6,12 @@
+ 
+ from __future__ import annotations
+ 
+-from typing import TYPE_CHECKING, TypeVar
++from typing import TYPE_CHECKING, TypeVar, overload
+ 
+ from astroid.filter_statements import _filter_stmts
+ from astroid.nodes import node_classes, scoped_nodes
+ from astroid.nodes.scoped_nodes.utils import builtin_lookup
++from astroid.typing import SuccessfulInferenceResult
+ 
+ if TYPE_CHECKING:
+     from astroid import nodes
+@@ -26,7 +27,7 @@ class LocalsDictNodeNG(node_classes.LookupMixIn):
+ 
+     # attributes below are set by the builder module or by raw factories
+ 
+-    locals: dict[str, list[nodes.NodeNG]] = {}
++    locals: dict[str, list[SuccessfulInferenceResult]] = {}
+     """A map of the name of a local variable to the node defining the local."""
+ 
+     def qname(self):
+@@ -88,23 +89,21 @@ class LocalsDictNodeNG(node_classes.LookupMixIn):
+         # self is at the top level of a module, or is enclosed only by ClassDefs
+         return builtin_lookup(name)
+ 
+-    def set_local(self, name, stmt):
++    def set_local(self, name: str, stmt: nodes.NodeNG) -> None:
+         """Define that the given name is declared in the given statement node.
+ 
+         .. seealso:: :meth:`scope`
+ 
+         :param name: The name that is being defined.
+-        :type name: str
+ 
+         :param stmt: The statement that defines the given name.
+-        :type stmt: NodeNG
+         """
+         # assert not stmt in self.locals.get(name, ()), (self, stmt)
+         self.locals.setdefault(name, []).append(stmt)
+ 
+     __setitem__ = set_local
+ 
+-    def _append_node(self, child):
++    def _append_node(self, child: nodes.NodeNG) -> None:
+         """append a child, linking it in the tree"""
+         # pylint: disable=no-member; depending by the class
+         # which uses the current class as a mixin or base class.
+@@ -113,22 +112,30 @@ class LocalsDictNodeNG(node_classes.LookupMixIn):
+         self.body.append(child)
+         child.parent = self
+ 
+-    def add_local_node(self, child_node, name=None):
++    @overload
++    def add_local_node(
++        self, child_node: nodes.ClassDef, name: str | None = ...
++    ) -> None:
++        ...
++
++    @overload
++    def add_local_node(self, child_node: nodes.NodeNG, name: str) -> None:
++        ...
++
++    def add_local_node(self, child_node: nodes.NodeNG, name: str | None = None) -> None:
+         """Append a child that should alter the locals of this scope node.
+ 
+         :param child_node: The child node that will alter locals.
+-        :type child_node: NodeNG
+ 
+         :param name: The name of the local that will be altered by
+             the given child node.
+-        :type name: str or None
+         """
+         if name != "__class__":
+             # add __class__ node as a child will cause infinite recursion later!
+             self._append_node(child_node)
+-        self.set_local(name or child_node.name, child_node)
++        self.set_local(name or child_node.name, child_node)  # type: ignore[attr-defined]
+ 
+-    def __getitem__(self, item: str) -> nodes.NodeNG:
++    def __getitem__(self, item: str) -> SuccessfulInferenceResult:
+         """The first node the defines the given local.
+ 
+         :param item: The name of the locally defined object.
+diff --git a/astroid/nodes/scoped_nodes/scoped_nodes.py b/astroid/nodes/scoped_nodes/scoped_nodes.py
+index 6022c6ba..a1f72854 100644
+--- a/astroid/nodes/scoped_nodes/scoped_nodes.py
++++ b/astroid/nodes/scoped_nodes/scoped_nodes.py
+@@ -46,7 +46,7 @@ from astroid.nodes import Arguments, Const, NodeNG, _base_nodes, node_classes
+ from astroid.nodes.scoped_nodes.mixin import ComprehensionScope, LocalsDictNodeNG
+ from astroid.nodes.scoped_nodes.utils import builtin_lookup
+ from astroid.nodes.utils import Position
+-from astroid.typing import InferenceResult
++from astroid.typing import InferenceResult, SuccessfulInferenceResult
+ 
+ if sys.version_info >= (3, 8):
+     from functools import cached_property
+@@ -709,10 +709,7 @@ class GeneratorExp(ComprehensionScope):
+         :type end_col_offset: Optional[int]
+         """
+         self.locals = {}
+-        """A map of the name of a local variable to the node defining the local.
+-
+-        :type: dict(str, NodeNG)
+-        """
++        """A map of the name of a local variable to the node defining the local."""
+ 
+         super().__init__(
+             lineno=lineno,
+@@ -801,10 +798,7 @@ class DictComp(ComprehensionScope):
+         :type end_col_offset: Optional[int]
+         """
+         self.locals = {}
+-        """A map of the name of a local variable to the node defining the local.
+-
+-        :type: dict(str, NodeNG)
+-        """
++        """A map of the name of a local variable to the node defining the local."""
+ 
+         super().__init__(
+             lineno=lineno,
+@@ -898,10 +892,7 @@ class SetComp(ComprehensionScope):
+         :type end_col_offset: Optional[int]
+         """
+         self.locals = {}
+-        """A map of the name of a local variable to the node defining the local.
+-
+-        :type: dict(str, NodeNG)
+-        """
++        """A map of the name of a local variable to the node defining the local."""
+ 
+         super().__init__(
+             lineno=lineno,
+@@ -968,10 +959,7 @@ class ListComp(ComprehensionScope):
+         end_col_offset=None,
+     ):
+         self.locals = {}
+-        """A map of the name of a local variable to the node defining it.
+-
+-        :type: dict(str, NodeNG)
+-        """
++        """A map of the name of a local variable to the node defining it."""
+ 
+         super().__init__(
+             lineno=lineno,
+@@ -1106,10 +1094,7 @@ class Lambda(_base_nodes.FilterStmtsBaseNode, LocalsDictNodeNG):
+         :type end_col_offset: Optional[int]
+         """
+         self.locals = {}
+-        """A map of the name of a local variable to the node defining it.
+-
+-        :type: dict(str, NodeNG)
+-        """
++        """A map of the name of a local variable to the node defining it."""
+ 
+         self.args: Arguments
+         """The arguments that the function takes."""
+@@ -2003,10 +1988,7 @@ class ClassDef(
+         """
+         self.instance_attrs = {}
+         self.locals = {}
+-        """A map of the name of a local variable to the node defining it.
+-
+-        :type: dict(str, NodeNG)
+-        """
++        """A map of the name of a local variable to the node defining it."""
+ 
+         self.keywords = []
+         """The keywords given to the class definition.
+@@ -2531,7 +2513,7 @@ class ClassDef(
+         name: str,
+         context: InferenceContext | None = None,
+         class_context: bool = True,
+-    ) -> list[NodeNG]:
++    ) -> list[SuccessfulInferenceResult]:
+         """Get an attribute from this class, using Python's attribute semantic.
+ 
+         This method doesn't look in the :attr:`instance_attrs` dictionary
+@@ -2558,7 +2540,7 @@ class ClassDef(
+             raise AttributeInferenceError(target=self, attribute=name, context=context)
+ 
+         # don't modify the list in self.locals!
+-        values = list(self.locals.get(name, []))
++        values: list[SuccessfulInferenceResult] = list(self.locals.get(name, []))
+         for classnode in self.ancestors(recurs=True, context=context):
+             values += classnode.locals.get(name, [])
+ 
+diff --git a/astroid/nodes/scoped_nodes/utils.py b/astroid/nodes/scoped_nodes/utils.py
+index 043cb01c..794c81ca 100644
+--- a/astroid/nodes/scoped_nodes/utils.py
++++ b/astroid/nodes/scoped_nodes/utils.py
+@@ -32,7 +32,7 @@ def builtin_lookup(name: str) -> tuple[nodes.Module, Sequence[nodes.NodeNG]]:
+     if name == "__dict__":
+         return _builtin_astroid, ()
+     try:
+-        stmts: Sequence[nodes.NodeNG] = _builtin_astroid.locals[name]
++        stmts: Sequence[nodes.NodeNG] = _builtin_astroid.locals[name]  # type: ignore[assignment]
+     except KeyError:
+         stmts = ()
+     return _builtin_astroid, stmts
+diff --git a/astroid/raw_building.py b/astroid/raw_building.py
+index 212939c2..fa7e8a2c 100644
+--- a/astroid/raw_building.py
++++ b/astroid/raw_building.py
+@@ -165,7 +165,7 @@ def build_from_import(fromname, names):
+     return nodes.ImportFrom(fromname, [(name, None) for name in names])
+ 
+ 
+-def register_arguments(func, args=None):
++def register_arguments(func: nodes.FunctionDef, args: list | None = None) -> None:
+     """add given arguments to local
+ 
+     args is a list that may contains nested lists
+diff --git a/astroid/rebuilder.py b/astroid/rebuilder.py
+index 2c868fd0..a8c75082 100644
+--- a/astroid/rebuilder.py
++++ b/astroid/rebuilder.py
+@@ -610,6 +610,7 @@ class TreeRebuilder:
+             node.root().set_local(node.name, node)
+         else:
+             assert node.parent
++            assert node.name
+             node.parent.set_local(node.name, node)
+ 
+     def visit_arg(self, node: ast.arg, parent: NodeNG) -> nodes.AssignName:
++ git diff 6cf238d089cf4b6753c94cfc089b4a47487711e5
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ python -m pip install -e .
+Obtaining file:///testbed
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: lazy-object-proxy>=1.4.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from astroid==2.13.0.dev0) (1.10.0)
+Requirement already satisfied: typing-extensions>=3.10 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from astroid==2.13.0.dev0) (4.12.2)
+Requirement already satisfied: wrapt<2,>=1.11 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from astroid==2.13.0.dev0) (1.16.0)
+Installing collected packages: astroid
+  Attempting uninstall: astroid
+    Found existing installation: astroid 2.13.0.dev0
+    Uninstalling astroid-2.13.0.dev0:
+      Successfully uninstalled astroid-2.13.0.dev0
+  DEPRECATION: Legacy editable install of astroid==2.13.0.dev0 from file:///testbed (setup.py develop) is deprecated. pip 25.0 will enforce this behaviour change. A possible replacement is to add a pyproject.toml or enable --use-pep517, and use setuptools >= 64. If the resulting installation is not behaving as expected, try using --config-settings editable_mode=compat. Please consult the setuptools documentation for more information. Discussion can be found at https://github.com/pypa/pip/issues/11457
+  Running setup.py develop for astroid
+Successfully installed astroid
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ git checkout 6cf238d089cf4b6753c94cfc089b4a47487711e5 tests/unittest_brain_builtin.py
+Updated 0 paths from 3c528087
++ git apply -v -
+Checking patch tests/unittest_brain_builtin.py...
+Applied patch tests/unittest_brain_builtin.py cleanly.
++ pytest -rA tests/unittest_brain_builtin.py
+============================= test session starts ==============================
+platform linux -- Python 3.9.20, pytest-8.3.3, pluggy-1.5.0
+rootdir: /testbed
+configfile: pyproject.toml
+collected 16 items
+
+tests/unittest_brain_builtin.py .............FF.                         [100%]
+
+=================================== FAILURES ===================================
+_ TestStringNodes.test_string_format_uninferable[\n            "My unicode character is {:c}".format(None)\n            ] _
+
+func = <function _infer_str_format_call at 0x7f543c7f59d0>, instance = None
+args = (<Call l.2 at 0x7f543c7e62e0>, None), kwargs = {}
+
+    @wrapt.decorator
+    def _inference_tip_cached(
+        func: InferFn, instance: None, args: typing.Any, kwargs: typing.Any
+    ) -> Iterator[InferOptions]:
+        """Cache decorator used for inference tips"""
+        node = args[0]
+        try:
+>           result = _cache[func, node]
+E           KeyError: (<function _infer_str_format_call at 0x7f543c7f59d0>, <Call l.2 at 0x7f543c7e62e0>)
+
+astroid/inference_tip.py:38: KeyError
+
+During handling of the above exception, another exception occurred:
+
+self = <tests.unittest_brain_builtin.TestStringNodes object at 0x7f543c82e6a0>
+format_string = '\n            "My unicode character is {:c}".format(None)\n            '
+
+    @pytest.mark.parametrize(
+        "format_string",
+        [
+            """
+            from missing import Unknown
+            name = Unknown
+            age = 12
+            "My name is {fname}, I'm {age}".format(fname = name, age = age)
+            """,
+            """
+            from missing import Unknown
+            age = 12
+            "My name is {fname}, I'm {age}".format(fname = Unknown, age = age)
+            """,
+            """
+            from missing import Unknown
+            "My name is {}, I'm {}".format(Unknown, 12)
+            """,
+            """"I am {}".format()""",
+            """
+            "My name is {fname}, I'm {age}".format(fsname = "Daniel", age = 12)
+            """,
+            """
+            "My unicode character is {:c}".format(None)
+            """,
+            """
+            "My hex format is {:4x}".format('1')
+            """,
+        ],
+    )
+    def test_string_format_uninferable(self, format_string: str) -> None:
+        node: nodes.Call = _extract_single_node(format_string)
+>       inferred = next(node.infer())
+
+tests/unittest_brain_builtin.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+astroid/nodes/node_ng.py:159: in infer
+    results = list(self._explicit_inference(self, context, **kwargs))
+astroid/inference_tip.py:45: in _inference_tip_cached
+    result = _cache[func, node] = list(func(*args, **kwargs))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+node = <Call l.2 at 0x7f543c7e62e0>, context = None
+
+    def _infer_str_format_call(
+        node: nodes.Call, context: InferenceContext | None = None
+    ) -> Iterator[nodes.Const | type[util.Uninferable]]:
+        """Return a Const node based on the template and passed arguments."""
+        call = arguments.CallSite.from_call(node, context=context)
+        if isinstance(node.func.expr, nodes.Name):
+            value: nodes.Const = helpers.safe_infer(node.func.expr)
+        else:
+            value = node.func.expr
+    
+        format_template = value.value
+    
+        # Get the positional arguments passed
+        inferred_positional = [
+            helpers.safe_infer(i, context) for i in call.positional_arguments
+        ]
+        if not all(isinstance(i, nodes.Const) for i in inferred_positional):
+            return iter([util.Uninferable])
+        pos_values: list[str] = [i.value for i in inferred_positional]
+    
+        # Get the keyword arguments passed
+        inferred_keyword = {
+            k: helpers.safe_infer(v, context) for k, v in call.keyword_arguments.items()
+        }
+        if not all(isinstance(i, nodes.Const) for i in inferred_keyword.values()):
+            return iter([util.Uninferable])
+        keyword_values: dict[str, str] = {k: v.value for k, v in inferred_keyword.items()}
+    
+        try:
+>           formatted_string = format_template.format(*pos_values, **keyword_values)
+E           TypeError: unsupported format string passed to NoneType.__format__
+
+astroid/brain/brain_builtin_inference.py:956: TypeError
+_ TestStringNodes.test_string_format_uninferable[\n            "My hex format is {:4x}".format('1')\n            ] _
+
+func = <function _infer_str_format_call at 0x7f543c7f59d0>, instance = None
+args = (<Call l.2 at 0x7f543c4e3910>, None), kwargs = {}
+
+    @wrapt.decorator
+    def _inference_tip_cached(
+        func: InferFn, instance: None, args: typing.Any, kwargs: typing.Any
+    ) -> Iterator[InferOptions]:
+        """Cache decorator used for inference tips"""
+        node = args[0]
+        try:
+>           result = _cache[func, node]
+E           KeyError: (<function _infer_str_format_call at 0x7f543c7f59d0>, <Call l.2 at 0x7f543c4e3910>)
+
+astroid/inference_tip.py:38: KeyError
+
+During handling of the above exception, another exception occurred:
+
+self = <tests.unittest_brain_builtin.TestStringNodes object at 0x7f543c82e400>
+format_string = '\n            "My hex format is {:4x}".format(\'1\')\n            '
+
+    @pytest.mark.parametrize(
+        "format_string",
+        [
+            """
+            from missing import Unknown
+            name = Unknown
+            age = 12
+            "My name is {fname}, I'm {age}".format(fname = name, age = age)
+            """,
+            """
+            from missing import Unknown
+            age = 12
+            "My name is {fname}, I'm {age}".format(fname = Unknown, age = age)
+            """,
+            """
+            from missing import Unknown
+            "My name is {}, I'm {}".format(Unknown, 12)
+            """,
+            """"I am {}".format()""",
+            """
+            "My name is {fname}, I'm {age}".format(fsname = "Daniel", age = 12)
+            """,
+            """
+            "My unicode character is {:c}".format(None)
+            """,
+            """
+            "My hex format is {:4x}".format('1')
+            """,
+        ],
+    )
+    def test_string_format_uninferable(self, format_string: str) -> None:
+        node: nodes.Call = _extract_single_node(format_string)
+>       inferred = next(node.infer())
+
+tests/unittest_brain_builtin.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+astroid/nodes/node_ng.py:159: in infer
+    results = list(self._explicit_inference(self, context, **kwargs))
+astroid/inference_tip.py:45: in _inference_tip_cached
+    result = _cache[func, node] = list(func(*args, **kwargs))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+node = <Call l.2 at 0x7f543c4e3910>, context = None
+
+    def _infer_str_format_call(
+        node: nodes.Call, context: InferenceContext | None = None
+    ) -> Iterator[nodes.Const | type[util.Uninferable]]:
+        """Return a Const node based on the template and passed arguments."""
+        call = arguments.CallSite.from_call(node, context=context)
+        if isinstance(node.func.expr, nodes.Name):
+            value: nodes.Const = helpers.safe_infer(node.func.expr)
+        else:
+            value = node.func.expr
+    
+        format_template = value.value
+    
+        # Get the positional arguments passed
+        inferred_positional = [
+            helpers.safe_infer(i, context) for i in call.positional_arguments
+        ]
+        if not all(isinstance(i, nodes.Const) for i in inferred_positional):
+            return iter([util.Uninferable])
+        pos_values: list[str] = [i.value for i in inferred_positional]
+    
+        # Get the keyword arguments passed
+        inferred_keyword = {
+            k: helpers.safe_infer(v, context) for k, v in call.keyword_arguments.items()
+        }
+        if not all(isinstance(i, nodes.Const) for i in inferred_keyword.values()):
+            return iter([util.Uninferable])
+        keyword_values: dict[str, str] = {k: v.value for k, v in inferred_keyword.items()}
+    
+        try:
+>           formatted_string = format_template.format(*pos_values, **keyword_values)
+E           ValueError: Unknown format code 'x' for object of type 'str'
+
+astroid/brain/brain_builtin_inference.py:956: ValueError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/unittest_brain_builtin.py::BuiltinsTest::test_infer_property
+PASSED tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[empty-indexes]
+PASSED tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[numbered-indexes]
+PASSED tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[named-indexes]
+PASSED tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[numbered-indexes-from-positional]
+PASSED tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[named-indexes-from-keyword]
+PASSED tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[mixed-indexes-from-mixed]
+PASSED tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[empty-indexes-on-variable]
+PASSED tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_uninferable[\n            from missing import Unknown\n            name = Unknown\n            age = 12\n            "My name is {fname}, I'm {age}".format(fname = name, age = age)\n            ]
+PASSED tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_uninferable[\n            from missing import Unknown\n            age = 12\n            "My name is {fname}, I'm {age}".format(fname = Unknown, age = age)\n            ]
+PASSED tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_uninferable[\n            from missing import Unknown\n            "My name is {}, I'm {}".format(Unknown, 12)\n            ]
+PASSED tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_uninferable["I am {}".format()]
+PASSED tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_uninferable[\n            "My name is {fname}, I'm {age}".format(fsname = "Daniel", age = 12)\n            ]
+PASSED tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_with_specs
+FAILED tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_uninferable[\n            "My unicode character is {:c}".format(None)\n            ]
+FAILED tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_uninferable[\n            "My hex format is {:4x}".format('1')\n            ]
+========================= 2 failed, 14 passed in 0.81s =========================
++ git checkout 6cf238d089cf4b6753c94cfc089b4a47487711e5 tests/unittest_brain_builtin.py
+Updated 1 path from 3c528087

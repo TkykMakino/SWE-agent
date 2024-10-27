@@ -1,0 +1,24 @@
+
+diff --git a/pvlib/tools.py b/pvlib/tools.py
+index 991568f..ec86ac9 100644
+--- a/pvlib/tools.py
++++ b/pvlib/tools.py
+@@ -348,6 +348,10 @@ def _golden_sect_DataFrame(params, lower, upper, func, atol=1e-8):
+     df['VH'] = upper
+     df['VL'] = lower
+ 
++    # Check if upper and lower bounds are equal
++    if (df['VH'] == df['VL']).all():
++        return func(df, 'VH'), df['VH']
++
+     converged = False
+     iterations = 0
+ 
+@@ -383,6 +387,7 @@ def _golden_sect_DataFrame(params, lower, upper, func, atol=1e-8):
+         raise Exception("Iterations exceeded maximum. Check that func",
+                         " is not NaN in (lower, upper)")  # pragma: no cover
+ 
++
+     try:
+         func_result = func(df, 'V1')
+         x = np.where(np.isnan(func_result), np.nan, df['V1'])

@@ -1,0 +1,38 @@
+
+diff --git a/reproduce_bug.py b/reproduce_bug.py
+new file mode 100644
+index 0000000..fb38f5d
+--- /dev/null
++++ b/reproduce_bug.py
+@@ -0,0 +1,31 @@
++import pvlib.irradiance as irradiance
++import numpy as np
++
++# Define inputs
++ghi = 0
++dhi = 0
++dni = 0
++dni_extra = 1367  # Typical value for extraterrestrial DNI
++solar_zenith = 30
++solar_azimuth = 180
++
++# Call the reindl function
++sky_diffuse = irradiance.reindl(ghi, dhi, dni, dni_extra, solar_zenith, solar_azimuth)
++
++# Print the output
++print("Sky Diffuse:", sky_diffuse)
++import numpy as np
++
++# Define inputs
++ghi = 0
++dhi = 0
++dni = 0
++dni_extra = 1367  # Typical value for extraterrestrial DNI
++solar_zenith = 30
++solar_azimuth = 180
++
++# Call the reindl function
++sky_diffuse = irradiance.reindl(ghi, dhi, dni, dni_extra, solar_zenith, solar_azimuth)
++
++# Print the output
++print("Sky Diffuse:", sky_diffuse)

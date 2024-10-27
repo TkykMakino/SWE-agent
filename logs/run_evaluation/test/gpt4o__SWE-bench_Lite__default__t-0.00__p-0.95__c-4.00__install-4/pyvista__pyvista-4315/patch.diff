@@ -1,0 +1,26 @@
+
+diff --git a/pyvista/core/grid.py b/pyvista/core/grid.py
+index 6ce23688..654c2acc 100644
+--- a/pyvista/core/grid.py
++++ b/pyvista/core/grid.py
+@@ -141,9 +141,10 @@ class RectilinearGrid(_vtk.vtkRectilinearGrid, Grid, RectilinearGridFilters):
+                 raise TypeError(f'Type ({type(args[0])}) not understood by `RectilinearGrid`')
+ 
+         elif len(args) == 3 or len(args) == 2:
+-            arg0_is_arr = isinstance(args[0], np.ndarray)
+-            arg1_is_arr = isinstance(args[1], np.ndarray)
++            arg0_is_arr = isinstance(args[0], (np.ndarray, Sequence))
++            arg1_is_arr = isinstance(args[1], (np.ndarray, Sequence))
+             if len(args) == 3:
++                arg2_is_arr = isinstance(args[2], (np.ndarray, Sequence))
+                 arg2_is_arr = isinstance(args[2], np.ndarray)
+             else:
+                 arg2_is_arr = False
+diff --git a/reproduce_bug.py b/reproduce_bug.py
+new file mode 100644
+index 00000000..b9e3961b
+--- /dev/null
++++ b/reproduce_bug.py
+@@ -0,0 +1,2 @@
++import pyvista as pv
++pv.RectilinearGrid([0, 1], [0, 1], [0, 1])

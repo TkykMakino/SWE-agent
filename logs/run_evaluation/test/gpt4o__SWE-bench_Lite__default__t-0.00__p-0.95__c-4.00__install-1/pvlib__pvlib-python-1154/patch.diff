@@ -1,0 +1,32 @@
+
+diff --git a/pvlib/irradiance.py b/pvlib/irradiance.py
+index 6580030..28bac8b 100644
+--- a/pvlib/irradiance.py
++++ b/pvlib/irradiance.py
+@@ -886,7 +886,7 @@ def reindl(surface_tilt, surface_azimuth, dhi, dni, ghi, dni_extra,
+     # these are the () and [] sub-terms of the second term of eqn 8
+     term1 = 1 - AI
+     term2 = 0.5 * (1 + tools.cosd(surface_tilt))
+-    term3 = 1 + np.sqrt(HB / ghi) * (tools.sind(0.5 * surface_tilt) ** 3)
++    term3 = 1 + np.sqrt(HB / ghi) * (tools.sind(0.5 * surface_tilt) ** 3) if ghi != 0 else 1
+ 
+     sky_diffuse = dhi * (AI * Rb + term1 * term2 * term3)
+     sky_diffuse = np.maximum(sky_diffuse, 0)
+diff --git a/reproduce_bug.py b/reproduce_bug.py
+new file mode 100644
+index 0000000..00ee8e8
+--- /dev/null
++++ b/reproduce_bug.py
+@@ -0,0 +1,12 @@
++import pvlib.irradiance as irradiance
++
++# Test case where GHI is zero
++ghi = 0
++dhi = 0
++dni = 0
++dni_extra = 1367  # typical value for extraterrestrial radiation
++solar_zenith = 30  # arbitrary value for zenith angle
++solar_azimuth = 180  # arbitrary value for azimuth angle
++
++result = irradiance.reindl(ghi, dni, dhi, dni_extra, solar_zenith, solar_azimuth)
++print("Result when GHI is zero:", result)

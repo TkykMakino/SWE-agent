@@ -1,0 +1,29 @@
+
+diff --git a/astroid/nodes/node_classes.py b/astroid/nodes/node_classes.py
+index 11136f8c..7906b445 100644
+--- a/astroid/nodes/node_classes.py
++++ b/astroid/nodes/node_classes.py
+@@ -2361,9 +2361,13 @@ class Dict(NodeNG, Instance):
+             # TODO(cpopa): no support for overriding yet, {1:2, **{1: 3}}.
+             if isinstance(key, DictUnpack):
+                 try:
+-                    return value.getitem(index, context)
++                    if hasattr(value, 'getitem'):
++                        return value.getitem(index, context)
++                    continue
+                 except (AstroidTypeError, AstroidIndexError):
+                     continue
++                except AttributeError:
++                    continue
+             for inferredkey in key.infer(context):
+                 if inferredkey is util.Uninferable:
+                     continue
+@@ -2371,7 +2375,7 @@ class Dict(NodeNG, Instance):
+                     if inferredkey.value == index.value:
+                         return value
+ 
+-        raise AstroidIndexError(index)
++        raise AstroidIndexError(f"Index {index} not found in the dictionary")
+ 
+     def bool_value(self, context=None):
+         """Determine the boolean value of this node.

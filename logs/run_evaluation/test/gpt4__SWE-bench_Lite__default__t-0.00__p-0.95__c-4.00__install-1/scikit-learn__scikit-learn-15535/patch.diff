@@ -1,0 +1,51 @@
+
+diff --git a/reproduce_bug.py b/reproduce_bug.py
+new file mode 100644
+index 000000000..a4ccdb22d
+--- /dev/null
++++ b/reproduce_bug.py
+@@ -0,0 +1,20 @@
++import numpy as np
++from sklearn.metrics.cluster import mutual_info_score
++
++# First code snippet that raises ValueError
++try:
++    x_object = np.random.choice(['a', 'b'], size=20).astype(object)
++    result_object = mutual_info_score(x_object, x_object)
++    print("Result with .astype(object):", result_object)
++except ValueError as e:
++    print("ValueError with .astype(object):", e)
++
++# Second code snippet that works with a warning
++try:
++    x = np.random.choice(['a', 'b'], size=20)
++    result = mutual_info_score(x, x)
++    print("Result without .astype(object):", result)
++except ValueError as e:
++    print("ValueError without .astype(object):", e)
++
++print("Script completed successfully, no errors.")
+diff --git a/sklearn/utils/validation.py b/sklearn/utils/validation.py
+index dad56850f..3a247b0f9 100644
+--- a/sklearn/utils/validation.py
++++ b/sklearn/utils/validation.py
+@@ -550,8 +550,18 @@ def check_array(array, accept_sparse=False, accept_large_sparse=True,
+                 FutureWarning, stacklevel=2)
+ 
+         # make sure we actually converted to numeric:
++        # Check if the object array contains strings, and if so, skip conversion to float
+         if dtype_numeric and array.dtype.kind == "O":
+-            array = array.astype(np.float64)
++            if array.size == 0 or np.issubdtype(array.dtype, np.number) or np.issubdtype(array.dtype, np.bool_):
++                array = array.astype(np.float64)
++            else:
++                # Check if the array contains any strings
++                if np.all(np.vectorize(lambda x: isinstance(x, str))(array)):
++                    # If all elements are strings, do not convert to float
++                    pass
++                else:
++                    # If not all elements are strings, convert to float
++                    array = array.astype(np.float64)
+         if not allow_nd and array.ndim >= 3:
+             raise ValueError("Found array with dim %d. %s expected <= 2."
+                              % (array.ndim, estimator_name))

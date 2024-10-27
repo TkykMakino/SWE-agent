@@ -1,0 +1,111 @@
+
+diff --git a/pvlib/pvsystem.py b/pvlib/pvsystem.py
+index c277a77..77753de 100644
+--- a/pvlib/pvsystem.py
++++ b/pvlib/pvsystem.py
+@@ -200,56 +200,67 @@ class PVSystem:
+                  temperature_model_parameters=None,
+                  modules_per_string=1, strings_per_inverter=1,
+                  inverter=None, inverter_parameters=None,
+-                 racking_model=None, losses_parameters=None, name=None):
+-
++                 racking_model='open_rack', losses_parameters=None,
++                 name=None, **kwargs):
++        if isinstance(arrays, Array):
++            arrays = [arrays]
+         if arrays is None:
+-            if losses_parameters is None:
+-                array_losses_parameters = {}
+-            else:
+-                array_losses_parameters = _build_kwargs(['dc_ohmic_percent'],
+-                                                        losses_parameters)
+-            self.arrays = (Array(
+-                FixedMount(surface_tilt, surface_azimuth, racking_model),
+-                albedo,
+-                surface_type,
+-                module,
+-                module_type,
+-                module_parameters,
+-                temperature_model_parameters,
+-                modules_per_string,
+-                strings_per_inverter,
+-                array_losses_parameters,
+-            ),)
++            arrays = [Array(
++                surface_tilt=surface_tilt,
++                surface_azimuth=surface_azimuth,
++                albedo=albedo,
++                surface_type=surface_type,
++                module=module,
++                module_type=module_type,
++                module_parameters=module_parameters,
++                temperature_model_parameters=temperature_model_parameters,
++                modules_per_string=modules_per_string,
++                strings_per_inverter=strings_per_inverter,
++                **kwargs
++            )]
+         elif len(arrays) == 0:
+             raise ValueError("PVSystem must have at least one Array. "
+                              "If you want to create a PVSystem instance "
+-                             "with a single Array pass `arrays=None` and pass "
+-                             "values directly to PVSystem attributes, e.g., "
+-                             "`surface_tilt=30`")
+-        else:
+-            self.arrays = tuple(arrays)
+-
++                             "without any Arrays, use the PVSystem kwargs.")
++        self.arrays = arrays
++        self.surface_tilt = surface_tilt
++        self.surface_azimuth = surface_azimuth
++        self.albedo = albedo
++        self.surface_type = surface_type
++        self.module = module
++        self.module_type = module_type
++        self.module_parameters = module_parameters
++        self.temperature_model_parameters = temperature_model_parameters
++        self.modules_per_string = modules_per_string
++        self.strings_per_inverter = strings_per_inverter
+         self.inverter = inverter
+-        if inverter_parameters is None:
+-            self.inverter_parameters = {}
++        self.inverter_parameters = inverter_parameters
++        self.racking_model = racking_model
++        if losses_parameters is None:
++            self.losses_parameters = {}
+         else:
+-            self.inverter_parameters = inverter_parameters
+-
++            self.losses_parameters = losses_parameters
++        self.name = name
++        self.arrays = arrays
++        self.surface_tilt = surface_tilt
++        self.surface_azimuth = surface_azimuth
++        self.albedo = albedo
++        self.surface_type = surface_type
++        self.module = module
++        self.module_type = module_type
++        self.module_parameters = module_parameters
++        self.temperature_model_parameters = temperature_model_parameters
++        self.modules_per_string = modules_per_string
++        self.strings_per_inverter = strings_per_inverter
++        self.inverter = inverter
++        self.inverter_parameters = inverter_parameters
++        self.racking_model = racking_model
+         if losses_parameters is None:
+             self.losses_parameters = {}
+         else:
+             self.losses_parameters = losses_parameters
+-
+         self.name = name
+ 
+-    def __repr__(self):
+-        repr = f'PVSystem:\n  name: {self.name}\n  '
+-        for array in self.arrays:
+-            repr += '\n  '.join(array.__repr__().split('\n'))
+-            repr += '\n  '
+-        repr += f'inverter: {self.inverter}'
+-        return repr
+-
+     def _validate_per_array(self, values, system_wide=False):
+         """Check that `values` is a tuple of the same length as
+         `self.arrays`.

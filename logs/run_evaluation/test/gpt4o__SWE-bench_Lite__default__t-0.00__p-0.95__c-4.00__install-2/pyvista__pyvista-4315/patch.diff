@@ -1,0 +1,50 @@
+
+diff --git a/pyvista/core/grid.py b/pyvista/core/grid.py
+index 6ce23688..bad96008 100644
+--- a/pyvista/core/grid.py
++++ b/pyvista/core/grid.py
+@@ -127,6 +127,14 @@ class RectilinearGrid(_vtk.vtkRectilinearGrid, Grid, RectilinearGridFilters):
+         """Initialize the rectilinear grid."""
+         super().__init__()
+ 
++        def to_ndarray(arr):
++            if isinstance(arr, np.ndarray):
++                return arr
++            elif isinstance(arr, Sequence):
++                return np.array(arr)
++            else:
++                raise TypeError(f'Type ({type(arr)}) not understood by `RectilinearGrid`')
++
+         if len(args) == 1:
+             if isinstance(args[0], _vtk.vtkRectilinearGrid):
+                 if deep:
+@@ -135,23 +143,16 @@ class RectilinearGrid(_vtk.vtkRectilinearGrid, Grid, RectilinearGridFilters):
+                     self.shallow_copy(args[0])
+             elif isinstance(args[0], (str, pathlib.Path)):
+                 self._from_file(args[0], **kwargs)
+-            elif isinstance(args[0], np.ndarray):
+-                self._from_arrays(args[0], None, None, check_duplicates)
+             else:
+-                raise TypeError(f'Type ({type(args[0])}) not understood by `RectilinearGrid`')
++                self._from_arrays(to_ndarray(args[0]), None, None, check_duplicates)
+ 
+         elif len(args) == 3 or len(args) == 2:
+-            arg0_is_arr = isinstance(args[0], np.ndarray)
+-            arg1_is_arr = isinstance(args[1], np.ndarray)
+-            if len(args) == 3:
+-                arg2_is_arr = isinstance(args[2], np.ndarray)
+-            else:
+-                arg2_is_arr = False
++            arg0 = to_ndarray(args[0])
++            arg1 = to_ndarray(args[1])
++            arg2 = to_ndarray(args[2]) if len(args) == 3 else None
+ 
+-            if all([arg0_is_arr, arg1_is_arr, arg2_is_arr]):
+-                self._from_arrays(args[0], args[1], args[2], check_duplicates)
+-            elif all([arg0_is_arr, arg1_is_arr]):
+-                self._from_arrays(args[0], args[1], None, check_duplicates)
++            if all(isinstance(arg, np.ndarray) for arg in [arg0, arg1, arg2] if arg is not None):
++                self._from_arrays(arg0, arg1, arg2, check_duplicates)
+             else:
+                 raise TypeError("Arguments not understood by `RectilinearGrid`.")
+ 

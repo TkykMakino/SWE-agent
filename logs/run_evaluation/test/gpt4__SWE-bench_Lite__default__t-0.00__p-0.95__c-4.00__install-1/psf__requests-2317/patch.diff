@@ -1,0 +1,15 @@
+
+diff --git a/requests/sessions.py b/requests/sessions.py
+index d701ff2e..339d8aac 100644
+--- a/requests/sessions.py
++++ b/requests/sessions.py
+@@ -425,6 +425,9 @@ class Session(SessionRedirectMixin):
+             If Tuple, ('cert', 'key') pair.
+         """
+ 
++        # Decode method if it's a binary string
++        if isinstance(method, bytes):
++            method = method.decode('ascii')
+         method = builtin_str(method)
+ 
+         # Create the Request.

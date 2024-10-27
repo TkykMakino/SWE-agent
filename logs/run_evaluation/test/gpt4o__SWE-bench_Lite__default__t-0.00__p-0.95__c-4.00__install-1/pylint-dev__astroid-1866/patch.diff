@@ -1,0 +1,22 @@
+
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 00000000..1d4505e5
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,15 @@
++from astroid import nodes, inference_tip, brain
++
++# Mock function to simulate the error
++def mock_infer_call_result():
++    format_template = "{}"
++    pos_values = [None]
++    keyword_values = {}
++    formatted_string = format_template.format(*pos_values, **keyword_values)
++    return formatted_string
++
++# Trigger the error
++try:
++    mock_infer_call_result()
++except TypeError as e:
++    print(f"Error: {e}")

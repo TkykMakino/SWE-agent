@@ -1,0 +1,19 @@
+
+diff --git a/sympy/matrices/common.py b/sympy/matrices/common.py
+index 379a2917aa..0bf75123f9 100644
+--- a/sympy/matrices/common.py
++++ b/sympy/matrices/common.py
+@@ -1973,8 +1973,12 @@ def __div__(self, other):
+ 
+     @call_highest_priority('__rmatmul__')
+     def __matmul__(self, other):
++        if not hasattr(other, 'is_Matrix') or not other.is_Matrix:
++            raise ValueError("Scalar operands are not allowed, use '*' instead")
++        return self.__mul__(other)
++        return self.__mul__(other)
++        return self.__mul__(other)
+         return self.__mul__(other)
+-
+     @call_highest_priority('__rmul__')
+     def __mul__(self, other):
+         """Return self*other where other is either a scalar or a matrix

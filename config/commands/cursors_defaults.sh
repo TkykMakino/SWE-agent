@@ -139,6 +139,16 @@ set_cursors() {
 }
 
 # @yaml
+# signature: plan
+# docstring: create a plan to solve the issue
+plan() {
+    echo "Okay. Now, please follow these tips for planning."
+    echo "Important Tips:"
+    echo "Before you begin to solve the issue, make a rough plan to SUBMIT the patch. Decide first what the overall steps will be to resolve the issue, and then follow that plan to execute the commands and resolve the issue. This plan should encompass the entire flow of issue resolution."
+    _print
+}
+
+# @yaml
 # signature: open <path> [<line_number>]
 # docstring: opens the file at the given path in the editor. If line_number is provided, the window will be centered on that line
 # arguments:

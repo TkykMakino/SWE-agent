@@ -1,0 +1,128 @@
+
+diff --git a/django/conf/global_settings.py b/django/conf/global_settings.py
+index acee9887d2..bdeec80610 100644
+--- a/django/conf/global_settings.py
++++ b/django/conf/global_settings.py
+@@ -304,7 +304,7 @@ FILE_UPLOAD_TEMP_DIR = None
+ 
+ # The numeric mode to set newly-uploaded files to. The value should be a mode
+ # you'd pass directly to os.chmod; see https://docs.python.org/library/os.html#files-and-directories.
+-FILE_UPLOAD_PERMISSIONS = None
++FILE_UPLOAD_PERMISSIONS = 0o644
+ 
+ # The numeric mode to assign to newly-created directories, when uploading files.
+ # The value should be a mode as you'd pass to os.chmod;
+diff --git a/docs/howto/deployment/checklist.txt b/docs/howto/deployment/checklist.txt
+index c31bcac62a..8d3e24a817 100644
+--- a/docs/howto/deployment/checklist.txt
++++ b/docs/howto/deployment/checklist.txt
+@@ -161,9 +161,17 @@ With the default file upload settings, files smaller than
+ :setting:`FILE_UPLOAD_MAX_MEMORY_SIZE` may be stored with a different mode
+ than larger files as described in :setting:`FILE_UPLOAD_PERMISSIONS`.
+ 
+-Setting :setting:`FILE_UPLOAD_PERMISSIONS` ensures all files are uploaded with
++Setting :setting:`FILE_UPLOAD_PERMISSIONS` to ``0o644`` ensures all files are uploaded with
+ the same permissions.
+ 
++.. note::
++
++    Be aware that the permissions for a file uploaded to FileSystemStorage
++    might not be consistent depending on whether a MemoryUploadedFile or a
++    TemporaryUploadedFile was used for temporary storage of the uploaded data.
++    The tempfile.NamedTemporaryFile + os.rename sequence causes the resulting
++    file permissions to be ``0o0600`` on some systems.
++
+ HTTPS
+ =====
+ 
+diff --git a/docs/ref/files/storage.txt b/docs/ref/files/storage.txt
+index 2a82402fac..63bb794cee 100644
+--- a/docs/ref/files/storage.txt
++++ b/docs/ref/files/storage.txt
+@@ -50,8 +50,15 @@ The ``FileSystemStorage`` class
+     .. attribute:: file_permissions_mode
+ 
+         The file system permissions that the file will receive when it is
+-        saved. Defaults to :setting:`FILE_UPLOAD_PERMISSIONS`.
++        saved. Defaults to :setting:`FILE_UPLOAD_PERMISSIONS` set to ``0o644``.
+ 
++        .. note::
++
++            Be aware that the permissions for a file uploaded to FileSystemStorage
++            might not be consistent depending on whether a MemoryUploadedFile or a
++            TemporaryUploadedFile was used for temporary storage of the uploaded data.
++            The tempfile.NamedTemporaryFile + os.rename sequence causes the resulting
++            file permissions to be ``0o0600`` on some systems.
+     .. attribute:: directory_permissions_mode
+ 
+         The file system permissions that the directory will receive when it is
+diff --git a/docs/ref/settings.txt b/docs/ref/settings.txt
+index 46e99af993..c06589c18a 100644
+--- a/docs/ref/settings.txt
++++ b/docs/ref/settings.txt
+@@ -1484,7 +1484,7 @@ This value mirrors the functionality and caveats of the
+ ``FILE_UPLOAD_PERMISSIONS``
+ ---------------------------
+ 
+-Default: ``None``
++Default: ``0o644``
+ 
+ The numeric mode (i.e. ``0o644``) to set newly uploaded files to. For
+ more information about what these modes mean, see the documentation for
+@@ -1511,6 +1511,14 @@ when using the :djadmin:`collectstatic` management command. See
+     way that modes must be specified. If you try to use ``644``, you'll
+     get totally incorrect behavior.
+ 
++.. note::
++
++    Be aware that the permissions for a file uploaded to FileSystemStorage
++    might not be consistent depending on whether a MemoryUploadedFile or a
++    TemporaryUploadedFile was used for temporary storage of the uploaded data.
++    The tempfile.NamedTemporaryFile + os.rename sequence causes the resulting
++    file permissions to be ``0o0600`` on some systems.
++
+ .. setting:: FILE_UPLOAD_TEMP_DIR
+ 
+ ``FILE_UPLOAD_TEMP_DIR``
+diff --git a/test_upload.py b/test_upload.py
+new file mode 100644
+index 0000000000..7c7171b068
+--- /dev/null
++++ b/test_upload.py
+@@ -0,0 +1,36 @@
++import os
++import django
++from django.conf import settings
++from django.core.files.storage import FileSystemStorage
++
++# Configure Django settings
++settings.configure(
++    DEFAULT_FILE_STORAGE='django.core.files.storage.FileSystemStorage',
++    MEDIA_ROOT=os.path.join(os.getcwd(), 'media'),
++    FILE_UPLOAD_PERMISSIONS=0o644,
++)
++
++# Initialize Django
++django.setup()
++
++# Create an instance of FileSystemStorage
++fs = FileSystemStorage()
++
++# Define the file name and content
++file_name = 'test_file.txt'
++file_content = b'This is a test file.'
++
++# Save the file
++with fs.open(file_name, 'wb') as f:
++    f.write(file_content)
++
++# Get the file path
++file_path = fs.path(file_name)
++
++# Check the file permissions
++file_permissions = oct(os.stat(file_path).st_mode & 0o777)
++print(f'File permissions for {file_name}: {file_permissions}')
++
++# Clean up
++os.remove(file_path)
++print("Script completed successfully, no errors.")

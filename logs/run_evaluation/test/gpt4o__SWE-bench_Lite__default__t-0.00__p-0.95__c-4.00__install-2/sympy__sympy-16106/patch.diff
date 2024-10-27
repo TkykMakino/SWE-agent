@@ -1,0 +1,34 @@
+
+diff --git a/reproduce_mathml_issue.py b/reproduce_mathml_issue.py
+new file mode 100644
+index 0000000000..034ec69c89
+--- /dev/null
++++ b/reproduce_mathml_issue.py
+@@ -0,0 +1,9 @@
++from sympy.abc import a, b
++import sympy
++
++print(sympy.__version__)
++
++try:
++    print(sympy.printing.mathml(sympy.IndexedBase(a)[b]))
++except TypeError as e:
++    print(f"Error: {e}")
+diff --git a/sympy/printing/mathml.py b/sympy/printing/mathml.py
+index 1aa0ee01a2..c90d728490 100644
+--- a/sympy/printing/mathml.py
++++ b/sympy/printing/mathml.py
+@@ -448,7 +448,12 @@ def _print_Basic(self, e):
+         for arg in e.args:
+             x.appendChild(self._print(arg))
+         return x
+-
++    def _print_Indexed(self, e):
++        x = self.dom.createElement("indexed")
++        x.appendChild(self._print(e.base))
++        for index in e.indices:
++            x.appendChild(self._print(index))
++        return x
+     def _print_AssocOp(self, e):
+         x = self.dom.createElement('apply')
+         x_1 = self.dom.createElement(self.mathml_tag(e))

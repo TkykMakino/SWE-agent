@@ -1,0 +1,86 @@
+
+diff --git a/reproduce_bug.py b/reproduce_bug.py
+new file mode 100644
+index 000000000..b91c81180
+--- /dev/null
++++ b/reproduce_bug.py
+@@ -0,0 +1,10 @@
++import numpy as np
++from sklearn import linear_model as lm
++
++# test database
++n = 100
++x = np.random.randn(n, 30)
++y = np.random.normal(size=n)
++
++rr = lm.RidgeClassifierCV(alphas=np.arange(0.1, 1000, 0.1), normalize=True, 
++                          store_cv_values=True).fit(x, y)
+diff --git a/sklearn/linear_model/ridge.py b/sklearn/linear_model/ridge.py
+index 911c74ae3..ae170b8e9 100644
+--- a/sklearn/linear_model/ridge.py
++++ b/sklearn/linear_model/ridge.py
+@@ -1293,6 +1293,12 @@ class RidgeClassifierCV(LinearClassifierMixin, _BaseRidgeCV):
+         Refer :ref:`User Guide <cross_validation>` for the various
+         cross-validation strategies that can be used here.
+ 
++    store_cv_values : boolean, default=False
++        Whether to store cross-validation values so that they can be accessed
++        after fitting via the `cv_values_` attribute. If set to True, it is
++        only compatible with `cv=None` (i.e., using Leave-One-Out
++        cross-validation).
++
+     class_weight : dict or 'balanced', optional
+         Weights associated with classes in the form ``{class_label: weight}``.
+         If not given, all classes are supposed to have weight one.
+@@ -1304,7 +1310,50 @@ class RidgeClassifierCV(LinearClassifierMixin, _BaseRidgeCV):
+     Attributes
+     ----------
+     cv_values_ : array, shape = [n_samples, n_alphas] or \
+-    shape = [n_samples, n_responses, n_alphas], optional
++        shape = [n_samples, n_targets, n_alphas], optional
++        Cross-validation values for each alpha (if `store_cv_values=True` and \
++        `cv=None`). After `fit()` has been called, this attribute will \
++        contain the mean squared errors (by default) or the values of the \
++        `{loss,score}_func` function (if provided in the constructor).
++
++    coef_ : array, shape = [n_features] or [n_targets, n_features]
++        Weight vector(s).
++
++    intercept_ : float | array, shape = (n_targets,)
++        Independent term in decision function. Set to 0.0 if
++        ``fit_intercept = False``.
++
++    alpha_ : float
++        Estimated regularization parameter.
++
++    See also
++    --------
++    Ridge : Ridge regression
++    RidgeClassifier : Ridge classifier
++    RidgeCV : Ridge regression with built-in cross validation
++
++    Notes
++    -----
++    For multi-class classification, n_class classifiers are trained in
++    a one-versus-all approach. Consequently, the `coef_` and `intercept_`
++    attributes of this estimator are now arrays of shape [n_classes, n_features]
++    and [n_classes], respectively. If a binary classification problem is
++    provided, `coef_` and `intercept_` will be of shape [1, n_features] and [1],
++    respectively.
++
++    """
++    def __init__(self, alphas=np.array([0.1, 1.0, 10.0]), fit_intercept=True,
++                 normalize=False, scoring=None, cv=None, class_weight=None,
++                 store_cv_values=False):
++        self.alphas = alphas
++        self.fit_intercept = fit_intercept
++        self.normalize = normalize
++        self.scoring = scoring
++        self.cv = cv
++        self.class_weight = class_weight
++        self.store_cv_values = store_cv_values
++
++    """
+         Cross-validation values for each alpha (if `store_cv_values=True` and
+     `cv=None`). After `fit()` has been called, this attribute will contain \
+     the mean squared errors (by default) or the values of the \

@@ -1,0 +1,23 @@
+
+diff --git a/astroid/raw_building.py b/astroid/raw_building.py
+index cc3aa015..0f4f7280 100644
+--- a/astroid/raw_building.py
++++ b/astroid/raw_building.py
+@@ -16,7 +16,7 @@ import types
+ import warnings
+ from collections.abc import Iterable
+ from typing import Any, Union
+-
++import numpy as np
+ from astroid import bases, nodes
+ from astroid.const import _EMPTY_OBJECT_MARKER, IS_PYPY
+ from astroid.manager import AstroidManager
+@@ -471,7 +471,7 @@ class InspectBuilder:
+             # check if it sounds valid and then add an import node, else use a
+             # dummy node
+             try:
+-                getattr(sys.modules[modname], name)
++                getattr(sys.modules[modname], name, np.int_)
+             except (KeyError, AttributeError):
+                 attach_dummy_node(node, name, member)
+             else:

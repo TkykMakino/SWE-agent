@@ -1,0 +1,47 @@
+
+diff --git a/output_waveform_ecg.dcm b/output_waveform_ecg.dcm
+new file mode 100644
+index 000000000..358a659d1
+Binary files /dev/null and b/output_waveform_ecg.dcm differ
+diff --git a/pydicom/jsonrep.py b/pydicom/jsonrep.py
+index c6ef519c3..e47aa2890 100644
+--- a/pydicom/jsonrep.py
++++ b/pydicom/jsonrep.py
+@@ -1,4 +1,8 @@
+-# Copyright 2008-2019 pydicom authors. See LICENSE file for details.
++def fetch_bulk_data_from_uri(uri):
++    # Placeholder function to fetch bulk data from URI
++    # This function needs to be implemented to fetch actual data
++    return b""
++
+ """Methods for converting Datasets and DataElements to/from json"""
+ 
+ import base64
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 000000000..5fe9d38ca
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,22 @@
++import pydicom
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++import json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++ds = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_data = ds.to_json_dict()
++
++# Convert JSON back to DICOM
++ds_from_json = pydicom.dataset.Dataset.from_json(json_data)
++ds_from_json.is_little_endian = ds.is_little_endian
++ds_from_json.is_implicit_VR = ds.is_implicit_VR
++
++# Save the converted DICOM file
++output_path = "output_waveform_ecg.dcm"
++ds_from_json.save_as(output_path)
++
++print("Script completed successfully, no errors.")

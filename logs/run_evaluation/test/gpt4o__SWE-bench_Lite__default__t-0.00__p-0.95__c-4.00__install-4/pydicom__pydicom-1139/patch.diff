@@ -1,0 +1,14 @@
+
+diff --git a/pydicom/valuerep.py b/pydicom/valuerep.py
+index e992f7872..a0f9da905 100644
+--- a/pydicom/valuerep.py
++++ b/pydicom/valuerep.py
+@@ -607,6 +607,8 @@ def _encode_personname(components, encodings):
+ 
+ 
+ class PersonName:
++    def __iter__(self):
++        return iter(self.components)
+     def __new__(cls, *args, **kwargs):
+         # Handle None value by returning None instead of a PersonName object
+         if len(args) and args[0] is None:

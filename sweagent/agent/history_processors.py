@@ -89,6 +89,10 @@ class Last5Observations(HistoryProcessor):
         return last_n_history(history, 5)
 
 
+class Last1000Observations(HistoryProcessor):
+    def __call__(self, history):
+        return last_n_history(history, 1000)
+
 class ClosedWindowHistoryProcessor(HistoryProcessor):
     pattern = re.compile(r"^(\d+)\:.*?(\n|$)", re.MULTILINE)
     file_pattern = re.compile(r"\[File:\s+(.*)\s+\(\d+\s+lines\ total\)\]")

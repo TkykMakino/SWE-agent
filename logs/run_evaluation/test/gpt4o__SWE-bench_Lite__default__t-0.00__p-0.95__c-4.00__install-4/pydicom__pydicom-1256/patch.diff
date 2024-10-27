@@ -1,0 +1,50 @@
+
+diff --git a/new_waveform_ecg.dcm b/new_waveform_ecg.dcm
+new file mode 100644
+index 000000000..358a659d1
+Binary files /dev/null and b/new_waveform_ecg.dcm differ
+diff --git a/pydicom/dataset.py b/pydicom/dataset.py
+index 5457dedfa..cf5056f94 100644
+--- a/pydicom/dataset.py
++++ b/pydicom/dataset.py
+@@ -1,17 +1,15 @@
+ # Copyright 2008-2018 pydicom authors. See LICENSE file for details.
+ """Define the Dataset and FileDataset classes.
+ 
+-The Dataset class represents the DICOM Dataset while the FileDataset class
++from pydicom.dataset import Dataset
+ adds extra functionality to Dataset when data is read from or written to file.
+ 
+ Overview of DICOM object model
+ ------------------------------
+ Dataset (dict subclass)
+   Contains DataElement instances, each of which has a tag, VR, VM and value.
+-    The DataElement value can be:
+-        * A single value, such as a number, string, etc. (i.e. VM = 1)
+-        * A list of numbers, strings, etc. (i.e. VM > 1)
+-        * A Sequence (list subclass), where each item is a Dataset which
++json_data = dataset.to_json()
++new_dataset = Dataset.from_json(json_data)
+             contains its own DataElements, and so on in a recursive manner.
+ """
+ import copy
+diff --git a/pydicom/jsonrep.py b/pydicom/jsonrep.py
+index c6ef519c3..b36660319 100644
+--- a/pydicom/jsonrep.py
++++ b/pydicom/jsonrep.py
+@@ -224,9 +224,13 @@ class JsonDataElementConverter:
+                         VR=vr)
+                 else:
+                     value_key = unique_value_keys[0]
++                    if value_key == "BulkDataURI":
++                        bulk_data_uri = val[value_key]
++                        value = self.bulk_data_uri_handler(bulk_data_uri)
++                    else:
++                        value = val[value_key]
+                     elem = DataElement.from_json(
+-                        self.dataset_class, key, vr,
+-                        val[value_key], value_key
++                        self.dataset_class, key, vr, value, value_key
+                     )
+                 ds.add(elem)
+         return ds

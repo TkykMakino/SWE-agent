@@ -1,0 +1,15 @@
+
+diff --git a/django/utils/feedgenerator.py b/django/utils/feedgenerator.py
+index f08e89b25c..d9ac5a62e1 100644
+--- a/django/utils/feedgenerator.py
++++ b/django/utils/feedgenerator.py
+@@ -338,7 +338,8 @@ class Atom1Feed(SyndicationFeed):
+             self.add_item_elements(handler, item)
+             handler.endElement("entry")
+ 
+-    def add_item_elements(self, handler, item):
++        if item['comments'] is not None:
++            handler.addQuickElement("comments", item['comments'])
+         handler.addQuickElement("title", item['title'])
+         handler.addQuickElement("link", "", {"href": item['link'], "rel": "alternate"})
+ 

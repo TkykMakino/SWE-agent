@@ -1,0 +1,13 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000..124acdf
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,6 @@
++from marshmallow import fields, Schema
++
++class MySchema(Schema):
++    times = fields.List(fields.DateTime())
++
++s = MySchema()

@@ -1,0 +1,14 @@
+
+diff --git a/pvlib/iam.py b/pvlib/iam.py
+index 3eaa6b4..b454c1a 100644
+--- a/pvlib/iam.py
++++ b/pvlib/iam.py
+@@ -92,6 +92,8 @@ def ashrae(aoi, b=0.05):
+ 
+ 
+ def physical(aoi, n=1.526, K=4.0, L=0.002, *, n_ar=None):
++    if n == 1 and np.any(aoi > 90):
++        return 0
+     r"""
+     Determine the incidence angle modifier using refractive index ``n``,
+     extinction coefficient ``K``, glazing thickness ``L`` and refractive

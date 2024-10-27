@@ -1,0 +1,14 @@
+
+diff --git a/astroid/brain/brain_numpy_core_numerictypes.py b/astroid/brain/brain_numpy_core_numerictypes.py
+index 245296e0..5bc59ae5 100644
+--- a/astroid/brain/brain_numpy_core_numerictypes.py
++++ b/astroid/brain/brain_numpy_core_numerictypes.py
+@@ -232,7 +232,7 @@ def numpy_core_numerictypes_transform():
+     int_ = int32
+     intc = int32
+     intp = int32
+-    long = int32
++    long = np.int32
+     longcomplex = complex192
+     longdouble = float96
+     longfloat = float96

@@ -1,0 +1,57 @@
+
+diff --git a/pydicom/config.py b/pydicom/config.py
+index ae9c8bdf1..153a3721f 100644
+--- a/pydicom/config.py
++++ b/pydicom/config.py
+@@ -62,12 +62,11 @@ and datetime.time respectively. Default: False
+ 
+ # Logging system and debug function to change logging level
+ logger = logging.getLogger('pydicom')
+-handler = logging.StreamHandler()
+-formatter = logging.Formatter("%(message)s")
+-handler.setFormatter(formatter)
+-logger.addHandler(handler)
+-
+-
++# Remove the following lines to ensure pydicom does not configure logging
++# handler = logging.StreamHandler()
++# formatter = logging.Formatter("%(message)s")
++# handler.setFormatter(formatter)
++# logger.addHandler(handler)
+ import pydicom.pixel_data_handlers.numpy_handler as np_handler  # noqa
+ import pydicom.pixel_data_handlers.rle_handler as rle_handler  # noqa
+ import pydicom.pixel_data_handlers.pillow_handler as pillow_handler  # noqa
+diff --git a/reproduce_logging_issue.py b/reproduce_logging_issue.py
+new file mode 100644
+index 000000000..af8ee4c37
+--- /dev/null
++++ b/reproduce_logging_issue.py
+@@ -0,0 +1,28 @@
++import pydicom
++import logging
++
++# Create a logger
++logger = logging.getLogger('pydicom')
++logger.setLevel(logging.DEBUG)
++
++# Create console handler and set level to debug
++ch = logging.StreamHandler()
++ch.setLevel(logging.DEBUG)
++
++# Create formatter
++formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
++
++# Add formatter to ch
++ch.setFormatter(formatter)
++
++# Add ch to logger
++logger.addHandler(ch)
++
++# Trigger some logging
++logger.debug('This is a debug message')
++logger.info('This is an info message')
++logger.warning('This is a warning message')
++logger.error('This is an error message')
++logger.critical('This is a critical message')
++
++print("Script completed successfully, no errors.")

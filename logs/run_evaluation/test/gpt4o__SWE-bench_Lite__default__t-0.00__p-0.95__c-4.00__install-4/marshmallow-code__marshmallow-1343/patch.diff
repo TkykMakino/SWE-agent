@@ -1,0 +1,18 @@
+
+diff --git a/src/marshmallow/schema.py b/src/marshmallow/schema.py
+index 085c509..7fa5538 100644
+--- a/src/marshmallow/schema.py
++++ b/src/marshmallow/schema.py
+@@ -891,7 +891,11 @@ class BaseSchema(base.SchemaABC):
+                             data[idx].pop(field_name, None)
+             else:
+                 try:
+-                    value = data[field_obj.attribute or field_name]
++                    if (field_obj.attribute is not None and field_obj.attribute in data) or (field_obj.attribute is None and field_name in data):
++                        value = data[field_obj.attribute or field_name]
++                        value = data[field_obj.attribute or field_name]
++                        value = data[field_obj.attribute or field_name]
++                        value = data[field_obj.attribute or field_name]
+                 except KeyError:
+                     pass
+                 else:
