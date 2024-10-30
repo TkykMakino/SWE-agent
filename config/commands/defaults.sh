@@ -31,20 +31,29 @@ plan() {
     echo "Okay. Now, please follow these tips for planning."
     echo "Important Tips:"
     echo "1. Before you begin to solve the issue, make a rough plan to SUBMIT the patch. Decide first what the overall steps will be to resolve the issue, and then follow that plan to execute the commands and resolve the issue. This plan should encompass the entire flow of issue resolution."
-    echo "2. Always start by trying to replicate the bug that the issues discusses.
-     If the issue includes code for reproducing the bug, we recommend that you re-implement that in your environment, and run it to make sure you can reproduce the bug.
-     Then start trying to fix it.
-     When you think you've fixed the bug, re-run the bug reproduction script to make sure that the bug has indeed been fixed.
+    
+    #echo "2. Always start by trying to replicate the bug that the issues discusses.
+    # If the issue includes code for reproducing the bug, we recommend that you re-implement that in your environment, and run it to make sure you can reproduce the bug.
+    # Then start trying to fix it.
+    # When you think you've fixed the bug, re-run the bug reproduction script to make sure that the bug has indeed been fixed.
 
-     If the bug reproduction script does not print anything when it successfully runs, we recommend adding a print("Script completed successfully, no errors.") command at the end of the file,
-     so that you can be sure that the script indeed ran fine all the way through."
-    echo "3. Please classify each step into one of the following genres: “REPRODUCE”, “EDIT”, “TEST”, or “SEARCH” and list it after the step name in the format **STEP NAME [STEP GENRE]**."
+    # If the bug reproduction script does not print anything when it successfully runs, we recommend adding a print("Script completed successfully, no errors.") command at the end of the file,
+    # so that you can be sure that the script indeed ran fine all the way through."
+    echo "2. Be sure to start by searching for code related to the bug being discussed in the issue.
+    Once you have determined that you have gathered enough information, make edits to resolve the issue.
+    
+    When you feel that the edits to resolve the issue are complete, submit the edits as a patch.
+    Do not reproduce the issue or test its operation during this time."
+    
+    #echo "3. Please classify each step into one of the following genres: “REPRODUCE”, “SEARCH”, “EDIT” or “TEST” and list it after the step name in the format **STEP NAME [STEP GENRE]**."
+    echo "3. Please classify each step into one of the following genres: “SEARCH”, “EDIT” or “SUBMIT” and list it after the step name in the format **STEP NAME [STEP GENRE]**."
+
     echo "4. In solving the issue according to this plan, please be sure to include the name of the step and the step genre at that point in the following format before of all DISCUSSION. However, the step name and step genre in this response should be **Create Plan [PLAN]**." 
     echo "**STEP NAME [STEP GENRE]**"
     echo "DISCUSSION"
     echo "    "
 #    echo "5. As you execute this plan, be sure to select the “report” command as the action at the end of each step. This will allow you to proceed to the next step."
-#    echo "6.  If you want to go back one step, select the “back” command as the action instead of the “report” command at the end of the step. However, the number of times the “back” command can be used is limited."
+#    echo "6. If you want to go back one step, select the “back” command as the action instead of the “report” command at the end of the step. However, the number of times the “back” command can be used is limited."
     echo "   "
     echo "After you have finished describing your plan according to these tips, select the appropriate command as the action to start first step and begin proceeding with your plan from step 1."
 
