@@ -822,7 +822,11 @@ class Agent:
                 observation += f"If you feel that you do not have enough information to reproduce, go back to the **{plan[phasenum - 1]}** and re-gather the necessary information.\n"
         elif genre == "SEARCH":
             if action.strip().startswith("edit"):
-                observation = "The current step is to gather the necessary information. You cannot perform that edit here! If you wish to perform edits to the code, please go to the EDIT step."
+                observation = "The current step is to gather the necessary information. You cannot perform that edit here! We cannot accept that action."
+                if aftgenre == "EDIT":
+                    observation += f"If you wish to perform edits to the code, please go to the EDIT step: **{plan[phasenum + 1]}**."
+                if aftgenre == "REPRODUCE":
+                    observation += f"If you wish to perform edits to the reproduce file, please go to the EDIT step: **{plan[phasenum + 1]}**."
                 check = False
                 return observation, 0, False, info, check, phasenum, backcount
             if action.strip().startswith("python"):
