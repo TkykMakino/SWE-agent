@@ -787,7 +787,7 @@ class Agent:
                     phasenum -= 1
                     backcount -= 1
                 else:
-                    observation = "You cannot reverse the plan any further. Please give up and force the next step."
+                    observation = f"You cannot reverse the plan any further. Please give up and force the next step: **{plan[phasenum + 1]}**."
                     check = False
                     return observation, 0, False, info, check, phasenum, backcount
             else:
@@ -818,15 +818,23 @@ class Agent:
         
         if genre == "REPRODUCE":
             observation = f"Currently it is a REPRODUCE step. Once you are satisfied that the bug(s) in the issue have been fully reproduced, proceed to the **{plan[phasenum + 1]}**.\n"
+            if befgenre == "SEARCH" and backcount > 0:
+                observation += f"If you feel that you do not have enough information to reproduce, go back to the **{plan[phasenum - 1]}** and re-gather the necessary information.\n"
         elif genre == "SEARCH":
             if action.strip().startswith("edit"):
                 observation = "The current step is to gather the necessary information. You cannot perform that edit here! If you wish to perform edits to the code, please go to the EDIT step."
                 check = False
                 return observation, 0, False, info, check, phasenum, backcount
+            if action.strip().startswith("python"):
+                observation = "The current step is to gather the necessary information. You cannot run that test here! We cannot accept that action."
+                check = False
+                return observation, 0, False, info, check, phasenum, backcount
             observation = f"Currently it is a SEARCH step. Follow the plan and gather the information needed to solve the issue. Once you have gathered all the necessary information, proceed to the **{plan[phasenum + 1]}**.\n"
         elif genre == "EDIT":
             if action.strip().startswith("python"):
-                observation = "The current step is to edit the code. You cannot run that test here! Please do the work of running tests on the code in the TEST step."
+                observation = "The current step is to edit the code. You cannot run that test here! We cannot accept that action."
+                if aftgenre == "TEST":
+                    observation += f"Please do the work of running tests on the code in the TEST step: **{plan[phasenum + 1]}**."
                 check = False
                 return observation, 0, False, info, check, phasenum, backcount
             if not action.strip().startswith("rm"):
@@ -837,7 +845,9 @@ class Agent:
                 observation += f"If you feel that you do not have enough information to edit, go back to the **{plan[phasenum - 1]}** and re-gather the necessary information.\n"
         elif genre == "TEST":
             if action.strip().startswith("edit"):
-                observation = "The current step is to run the test of the code. You cannot perform that edit here! If you wish to perform edits to the code, please go back to the EDIT step."
+                observation = "The current step is to run the test of the code. You cannot perform that edit here! We cannot accept that action."
+                if befgenre == "EDIT" and backcount > 0:
+                    observation += f"If you wish to perform edits to the code, return to the **{plan[phasenum - 1]}** and make another edit."
                 check = False
                 return observation, 0, False, info, check, phasenum, backcount
             observation = "Currently it is the TEST step. If the test results confirm that the necessary edits have been completed, proceed to the next step.\n"
