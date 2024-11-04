@@ -834,26 +834,28 @@ class Agent:
                 observation += f"If you feel that you do not have enough information to reproduce, go back to the **{plan[phasenum - 1]}** and re-gather the necessary information.\n"
         elif genre == "SEARCH":
             if action.strip().startswith("edit"):
-                observation = "The current step is to gather the necessary information. You cannot perform that edit here! We cannot accept that action."
+                observation = "The current step is to gather the necessary information. You cannot perform that edit here! We cannot accept that action.\nYOU MUST advance or retrace your steps.\n"
                 if aftgenre == "EDIT":
-                    observation += f"If you wish to perform edits to the code, please go to the EDIT step: **{plan[phasenum + 1]}**."
+                    observation += f"If you wish to perform edits to the code, please go to the EDIT step: **{plan[phasenum + 1]}**.\n"
                 if befgenre == "REPRODUCE" and backcount > 0:
                     observation += f"If you wish to perform edits to the reproduce file, return to the **{plan[phasenum - 1]}** and make another edit.\n"
                 if aftgenre == "REPRODUCE":
-                    observation += f"If you wish to perform edits to the reproduce file, please go to the REPRODUCE step: **{plan[phasenum + 1]}**."
+                    observation += f"If you wish to perform edits to the reproduce file, please go to the REPRODUCE step: **{plan[phasenum + 1]}**.\n"
                 check = False
                 return observation, 0, False, info, check, phasenum, backcount
             if action.strip().startswith("python"):
-                observation = "The current step is to gather the necessary information. You cannot run that test here! We cannot accept that action."
+                observation = "The current step is to gather the necessary information. You cannot run that test here! We cannot accept that action.\nYOU MUST advance or retrace your steps.\n"
+                if befgenre == "REPRODUCE" and backcount > 0:
+                    observation += f"If you want to run the reproduce file and see where the problem lies, return to the **{plan[phasenum - 1]}** and make another edit.\n"
                 check = False
                 return observation, 0, False, info, check, phasenum, backcount
             if phasenum < len(plan) - 1:
                 observation += f"Once you have gathered all the necessary information, proceed to the **{plan[phasenum + 1]}**.\n"
         elif genre == "EDIT":
             if action.strip().startswith("python"):
-                observation = "The current step is to edit the code. You cannot run that test here! We cannot accept that action."
+                observation = "The current step is to edit the code. You cannot run that test here! We cannot accept that action.\nYOU MUST advance or retrace your steps.\n"
                 if aftgenre == "TEST":
-                    observation += f"Please do the work of running tests on the code in the TEST step: **{plan[phasenum + 1]}**."
+                    observation += f"Please do the work of running tests on the code in the TEST step: **{plan[phasenum + 1]}**.\n"
                 check = False
                 return observation, 0, False, info, check, phasenum, backcount
             if phasenum < len(plan) - 1:
@@ -862,7 +864,7 @@ class Agent:
                 observation += f"If you feel that you do not have enough information to edit, go back to the **{plan[phasenum - 1]}** and re-gather the necessary information.\n"
         elif genre == "TEST":
             if action.strip().startswith("edit"):
-                observation = "The current step is to run the test of the code. You cannot perform that edit here! We cannot accept that action."
+                observation = "The current step is to run the test of the code. You cannot perform that edit here! We cannot accept that action.\nYOU MUST advance or retrace your steps.\n"
                 if befgenre == "EDIT" and backcount > 0:
                     observation += f"If you wish to perform edits to the code, return to the **{plan[phasenum - 1]}** and make another edit.\n"
                 if befgenre == "REPRODUCE" and backcount > 0:
