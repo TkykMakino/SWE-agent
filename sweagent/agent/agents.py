@@ -771,6 +771,8 @@ class Agent:
         info["exit_status"] = action
         if getgenre:
             genre = getgenre[0]
+        if phasenum < len(subplan):
+            tasks = subplan[phasenum].rsplit('\n', 1)[0]
 
         if action.strip() == "plan":
             backcount = 5
@@ -818,7 +820,7 @@ class Agent:
         
         observation = f"Currently it is a {genre} step.\n"
         if phasenum < len(subplan):
-            observation += f"The work to be done in this step is{subplan[phasenum].rsplit('\n', 1)[0]}\n"
+            observation += f"The work to be done in this step is{tasks}\n"
 
         if genre == "REPRODUCE":
             if phasenum < len(plan) - 1:
