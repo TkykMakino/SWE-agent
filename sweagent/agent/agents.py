@@ -953,8 +953,11 @@ class Agent:
                         check = True
                     else:
                         obs, _, done, info, check, phasenum, backcount = self.phasecheck(plan, subplan, phasenum, phase, action, backcount)
+                        obs2 = ""
                     if check:
                         obs2, _, done, info = env.step(sub_action["action"])
+                        if obs2 is None or obs2.strip() == "":
+                            obs2 = "Your command ran successfully and did not produce any output."
                         obs += obs2
                         before_action = action
                     for hook in self.hooks:
