@@ -773,7 +773,11 @@ class Agent:
             genre = getgenre[0]
 
         if action.strip() == "plan":
-            backcount = 5
+            if phasenum != -1:
+                observation = "Planning has already been done. Re-planning is not permitted."
+                check = False
+                return observation, 0, False, info, check, phasenum, backcount
+            backcount = 3
             return observation, 0, False, info, check, phasenum, backcount
         elif phasenum == -1:
             observation ="Planning has not yet been done. Be sure to first select the plan command as your action and start planning."
@@ -833,6 +837,8 @@ class Agent:
                 observation = "The current step is to gather the necessary information. You cannot perform that edit here! We cannot accept that action."
                 if aftgenre == "EDIT":
                     observation += f"If you wish to perform edits to the code, please go to the EDIT step: **{plan[phasenum + 1]}**."
+                if befgenre == "REPRODUCE" and backcount > 0:
+                    observation += f"If you wish to perform edits to the reproduce file, return to the **{plan[phasenum - 1]}** and make another edit.\n"
                 if aftgenre == "REPRODUCE":
                     observation += f"If you wish to perform edits to the reproduce file, please go to the REPRODUCE step: **{plan[phasenum + 1]}**."
                 check = False
@@ -867,7 +873,7 @@ class Agent:
                 observation += f"If the test results confirm that the necessary edits have been completed, proceed to the **{plan[phasenum + 1]}**.\n"
             if befgenre == "EDIT" and backcount > 0:
                 observation += f"If you do not get the results you want, return to the **{plan[phasenum - 1]}** and make another edit.\n"
-        observation += "Here is the result of your action:\n\n------------------------------\n\n"
+        observation += "Here is the result of your action:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
         return observation, 0, False, info, check, phasenum, backcount
 
     def run(
@@ -930,6 +936,8 @@ class Agent:
             state = env.communicate(self.state_command) if self.state_command else None
             thought, action, output, phase = self.forward(observation, env.get_available_actions(), state, phase)
             if before_action.strip() == "plan":
+                plan = []
+                subplan = []
                 plan = re.findall(r'\*\*(?!Create Plan \[PLAN\])(.*?)\*\*', thought)
                 subplan = re.split(r'\*\*.*?\*\*', thought)[2: -1]
                 phasenum = 0
@@ -948,6 +956,7 @@ class Agent:
                     if check:
                         obs2, _, done, info = env.step(sub_action["action"])
                         obs += obs2
+                        before_action = action
                     for hook in self.hooks:
                         hook.on_sub_action_executed(obs=obs, done=done)
                     observations.append(obs)
@@ -978,7 +987,6 @@ class Agent:
                 self.save_trajectory(trajectory, traj_log_path, env_name=env.name, info=info)
             for hook in self.hooks:
                 hook.on_step_done(trajectory_step=trajectory_step, model_stats=model_stats)
-            before_action = action
 
         for hook in self.hooks:
             hook.on_run_done()
