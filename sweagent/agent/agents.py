@@ -768,7 +768,15 @@ class Agent:
         check = True
         getgenre = re.findall(r'\[(.*?)\]', phase)
         genre = "NONE"
+        genres = ["REPRODUCE", "SEARCH", "EDIT", "TEST", "SUBMIT"]
+        coms = {
+            "REPRODUCE":["create", "open", "goto", "scroll_up", "scroll_down", "edit", "python", "rm"], "SEARCH":["open", "goto", "scroll_up", "scroll_down", "search_dir", "search_file", "find_file"], "EDIT":["create", "open", "goto", "scroll_up", "scroll_down", "edit", "rm"], "TEST":["python"] , "SUBMIT":["rm", "submit"], "NONE":[]
+        }
+        ngcoms = {
+            "REPRODUCE":["search_dir", "search_file", "find_file", "submit"], "SEARCH":["create", "edit", "python", "rm", "submit"], "EDIT":["search_dir", "search_file", "find_file", "python", "submit"], "TEST":["create", "open", "goto", "scroll_up", "scroll_down", "search_dir", "search_file", "find_file", "edit", "submit"] , "SUBMIT":["create", "open", "goto", "scroll_up", "scroll_down", "search_dir", "search_file", "find_file", "edit", "python"], "NONE":[]
+        }
         info["exit_status"] = action
+
         if getgenre:
             genre = getgenre[0]
 
@@ -813,69 +821,111 @@ class Agent:
             getbefgenre = re.findall(r'\[(.*?)\]', plan[phasenum - 1])
             if getbefgenre:
                 befgenre = getbefgenre[0]
+            if not befgenre in genres:
+                befgenre = "NONE"
         
         aftgenre = "NONE"
         if phasenum < len(plan) - 1:
             getaftgenre = re.findall(r'\[(.*?)\]', plan[phasenum + 1])
             if getaftgenre:
                 aftgenre = getaftgenre[0]
+            if not aftgenre in genres:
+                aftgenre = "NONE"
         
         if phasenum < len(subplan):
             tasks = subplan[phasenum].rsplit('\n', 1)[0]
         
-        observation = f"Currently it is a {genre} step.\n"
-        if phasenum < len(subplan):
-            observation += f"The work to be done in this step is{tasks}\n"
+        okgenres = []
+        for i, elements in coms.items():
+            if any(action.startswith(element) for element in elements):
+                okgenres.append(i)
+        nggenres = []
+        for item, elements in ngcoms.items():
+            if any(action.startswith(element) for element in elements):
+                nggenres.append(item)
+           
 
-        if genre == "REPRODUCE":
-            if phasenum < len(plan) - 1:
-                observation += f"Once you are satisfied that the bug(s) in the issue have been fully reproduced, proceed to the **{plan[phasenum + 1]}**.\n"
-            if befgenre == "SEARCH" and backcount > 0:
-                observation += f"If you feel that you do not have enough information to reproduce, go back to the **{plan[phasenum - 1]}** and re-gather the necessary information.\n"
-        elif genre == "SEARCH":
-            if action.strip().startswith("edit"):
-                observation = "The current step is to gather the necessary information. You cannot perform that edit here! We cannot accept that action.\nYOU MUST advance or retrace your steps.\n"
-                if aftgenre == "EDIT":
-                    observation += f"If you wish to perform edits to the code, please go to the EDIT step: **{plan[phasenum + 1]}**.\n"
-                if befgenre == "REPRODUCE" and backcount > 0:
-                    observation += f"If you wish to perform edits to the reproduce file, return to the **{plan[phasenum - 1]}** and make another edit.\n"
-                if aftgenre == "REPRODUCE":
-                    observation += f"If you wish to perform edits to the reproduce file, please go to the REPRODUCE step: **{plan[phasenum + 1]}**.\n"
-                check = False
-                return observation, 0, False, info, check, phasenum, backcount
-            if action.strip().startswith("python"):
-                observation = "The current step is to gather the necessary information. You cannot run that test here! We cannot accept that action.\nYOU MUST advance or retrace your steps.\n"
-                if befgenre == "REPRODUCE" and backcount > 0:
-                    observation += f"If you want to run the reproduce file and see where the problem lies, return to the **{plan[phasenum - 1]}** and make another edit.\n"
-                check = False
-                return observation, 0, False, info, check, phasenum, backcount
-            if phasenum < len(plan) - 1:
-                observation += f"Once you have gathered all the necessary information, proceed to the **{plan[phasenum + 1]}**.\n"
-        elif genre == "EDIT":
-            if action.strip().startswith("python"):
-                observation = "The current step is to edit the code. You cannot run that test here! We cannot accept that action.\nYOU MUST advance or retrace your steps.\n"
-                if aftgenre == "TEST":
-                    observation += f"Please do the work of running tests on the code in the TEST step: **{plan[phasenum + 1]}**.\n"
-                check = False
-                return observation, 0, False, info, check, phasenum, backcount
-            if phasenum < len(plan) - 1:
-                observation += f"When you feel that all necessary edits have been completed, proceed to the **{plan[phasenum + 1]}**.\n"
-            if befgenre == "SEARCH" and backcount > 0:
-                observation += f"If you feel that you do not have enough information to edit, go back to the **{plan[phasenum - 1]}** and re-gather the necessary information.\n"
-        elif genre == "TEST":
-            if action.strip().startswith("edit"):
-                observation = "The current step is to run the test of the code. You cannot perform that edit here! We cannot accept that action.\nYOU MUST advance or retrace your steps.\n"
-                if befgenre == "EDIT" and backcount > 0:
-                    observation += f"If you wish to perform edits to the code, return to the **{plan[phasenum - 1]}** and make another edit.\n"
-                if befgenre == "REPRODUCE" and backcount > 0:
-                    observation += f"If you wish to perform edits to the reproduce file, return to the **{plan[phasenum - 1]}** and make another edit.\n"
-                check = False
-                return observation, 0, False, info, check, phasenum, backcount
-            if phasenum < len(plan) - 1:
-                observation += f"If the test results confirm that the necessary edits have been completed, proceed to the **{plan[phasenum + 1]}**.\n"
-            if befgenre == "EDIT" and backcount > 0:
-                observation += f"If you do not get the results you want, return to the **{plan[phasenum - 1]}** and make another edit.\n"
-        observation += "Here is the result of your action:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
+        if genre in nggenres:
+            observation = "The action is not appropriate for the work to be done in the current step. We cannot accept that command. YOU MUST"
+            if aftgenre in okgenres or (befgenre in okgenres and backcount > 0): 
+                observation += "do one of the following two ways:\n1) "
+            observation += f"change the action and use the command allowed for the current step\nThe current step genre is [{genre}] and the group of commands you can use are: "
+            for i, item in enumerate(coms[genre], start=1):
+                observation += f"{item}, "
+            observation += "\n"
+
+            if aftgenre in okgenres or (befgenre in okgenres and backcount > 0): 
+                observation += "2) Proceed or retreat a step and do the same action\nThe genres of steps for which current action is allowed are:"
+                for i, item in enumerate(okgenres, start=1):
+                    observation += f"[{item}] "
+                observation += "\n"
+                if befgenre in okgenres and backcount > 0:
+                    observation += f"If you want to perform an action that corresponds to the **{plan[phasenum - 1]}** step, reverse the step and perform the same action."
+                if aftgenre in okgenres:
+                    observation += f"If you want to perform an action that corresponds to the **{plan[phasenum + 1]}** step, proceed the step and perform the same action."
+            
+            check = False
+            return observation, 0, False, info, check, phasenum, backcount
+
+        if genre in genres:
+            observation = f"Currently it is a [{genre}] step.\n"
+            if phasenum < len(subplan):
+                observation += f"The work to be done in this step is{tasks}\nWhen you feel you have completed these tasks, please progress your plan to {plan[phasenum + 1]}."
+                if phasenum > 0 and backcount > 0:
+                    observation += f"If there are problems in executing the plan and you decide that you need to work through the {plan[phasenum - 1]} step again, go backwards through the steps."
+            observation += "The group of commands you can use in this step are: "
+            for i, item in enumerate(coms[genre], start=1):
+                observation += f"{item}, "
+            observation += "\n"     
+
+#                if phasenum < len(plan) - 1:
+#                    observation += f"Once you are satisfied that the bug(s) in the issue have been fully reproduced, proceed to the **{plan[phasenum + 1]}**.\n"
+#                if befgenre == "SEARCH" and backcount > 0:
+#                    observation += f"If you feel that you do not have enough information to reproduce, go back to the **{plan[phasenum - 1]}** and re-gather the necessary information.\n"
+#            elif genre == "SEARCH":
+#                if action.strip().startswith("edit"):
+#                    observation = "The current step is to gather the necessary information. You cannot perform that edit here! We cannot accept that action.\nYOU MUST advance or retrace your steps.\n"
+#                    if aftgenre == "EDIT":
+#                        observation += f"If you wish to perform edits to the code, please go to the EDIT step: **{plan[phasenum + 1]}**.\n"
+#                    if befgenre == "REPRODUCE" and backcount > 0:
+#                        observation += f"If you wish to perform edits to the reproduce file, return to the **{plan[phasenum - 1]}** and make another edit.\n"
+#                    if aftgenre == "REPRODUCE":
+#                        observation += f"If you wish to perform edits to the reproduce file, please go to the REPRODUCE step: **{plan[phasenum + 1]}**.\n"
+#                    check = False
+#                    return observation, 0, False, info, check, phasenum, backcount
+#                if action.strip().startswith("python"):
+#                    observation = "The current step is to gather the necessary information. You cannot run that test here! We cannot accept that action.\nYOU MUST advance or retrace your steps.\n"
+#                    if befgenre == "REPRODUCE" and backcount > 0:
+#                        observation += f"If you want to run the reproduce file and see where the problem lies, return to the **{plan[phasenum - 1]}** and make another edit.\n"
+#                    check = False
+#                    return observation, 0, False, info, check, phasenum, backcount
+#                if phasenum < len(plan) - 1:
+#                    observation += f"Once you have gathered all the necessary information, proceed to the **{plan[phasenum + 1]}**.\n"
+#            elif genre == "EDIT":
+#                if action.strip().startswith("python"):
+#                    observation = "The current step is to edit the code. You cannot run that test here! We cannot accept that action.\nYOU MUST advance or retrace your steps.\n"
+#                    if aftgenre == "TEST":
+#                        observation += f"Please do the work of running tests on the code in the TEST step: **{plan[phasenum + 1]}**.\n"
+#                    check = False
+#                    return observation, 0, False, info, check, phasenum, backcount
+#                if phasenum < len(plan) - 1:
+#                    observation += f"When you feel that all necessary edits have been completed, proceed to the **{plan[phasenum + 1]}**.\n"
+#                if befgenre == "SEARCH" and backcount > 0:
+#                    observation += f"If you feel that you do not have enough information to edit, go back to the **{plan[phasenum - 1]}** and re-gather the necessary information.\n"
+#            elif genre == "TEST":
+#                if action.strip().startswith("edit"):
+#                    observation = "The current step is to run the test of the code. You cannot perform that edit here! We cannot accept that action.\nYOU MUST advance or retrace your steps.\n"
+#                    if befgenre == "EDIT" and backcount > 0:
+#                        observation += f"If you wish to perform edits to the code, return to the **{plan[phasenum - 1]}** and make another edit.\n"
+#                    if befgenre == "REPRODUCE" and backcount > 0:
+#                        observation += f"If you wish to perform edits to the reproduce file, return to the **{plan[phasenum - 1]}** and make another edit.\n"
+#                    check = False
+#                    return observation, 0, False, info, check, phasenum, backcount
+#                if phasenum < len(plan) - 1:
+#                    observation += f"If the test results confirm that the necessary edits have been completed, proceed to the **{plan[phasenum + 1]}**.\n"
+#                if befgenre == "EDIT" and backcount > 0:
+#                    observation += f"If you do not get the results you want, return to the **{plan[phasenum - 1]}** and make another edit.\n"
+            observation += "Here is the result of your action:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
         return observation, 0, False, info, check, phasenum, backcount
 
     def run(

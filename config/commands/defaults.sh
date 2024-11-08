@@ -44,10 +44,10 @@ plan() {
 #    
 #     When you feel that the edits to resolve the issue are complete, submit the edits as a patch.
 #     During this time, you *MUST NOT* attempt to reproduce the issue or test. It is difficult to do so. It is forbidden to include in the plan any steps that involve creating or running tests."
-    echo "2. Be sure to start by searching for code related to the issue.
+    echo "2. Be sure to start by searching for code related to the issue. At this time, all information necessary to solve the issue should be fully investigated. Do not search again during the process.
      When you feel you have gathered enough information, please reproduce the bug discussed in the issue first before you begin resolving the issue.
      If the issue contains code to reproduce the bug, we recommend that you reimplement it in your environment, run it, and verify that you can reproduce the bug. If it was not included, use the information you have researched to reproduce the issue.
-     Once those are done, start trying to fix the issue.
+     Once those are done, Attempt to fix the issue immediately.
      When you think you've fixed the bug, re-run the bug reproduction script to make sure that the bug has indeed been fixed.
 
      If the bug reproduction script does not print anything when it successfully runs, we recommend adding a print("Script completed successfully, no errors.") command at the end of the file,
