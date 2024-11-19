@@ -766,9 +766,13 @@ class Agent:
         info = {}
         observation = ""
         check = True
+        genres = ["REPRODUCE", "SEARCH", "EDIT", "TEST", "SUBMIT"]
         getgenre = re.findall(r'\[(.*?)\]', phase)
         genre = "NONE"
-        genres = ["REPRODUCE", "SEARCH", "EDIT", "TEST", "SUBMIT"]
+        if getgenre:
+            genre = getgenre[0]
+        nowgenre = "NONE"
+        
         coms = {
             "REPRODUCE":["create", "open", "goto", "scroll_up", "scroll_down", "edit", "python", "rm"], "SEARCH":["open", "goto", "scroll_up", "scroll_down", "search_dir", "search_file", "find_file"], "EDIT":["create", "open", "goto", "scroll_up", "scroll_down", "edit", "rm"], "TEST":["python"] , "SUBMIT":["rm", "submit"], "NONE":[]
         }
@@ -777,31 +781,53 @@ class Agent:
         }
         info["exit_status"] = action
 
-        if getgenre:
-            genre = getgenre[0]
-
         if action.strip() == "plan":
             if phasenum != -1:
                 observation = "Planning has already been done. Re-planning is not permitted."
                 check = False
                 return observation, 0, False, info, check, phasenum, backcount
-            backcount = 3
+            backcount = 1000
             return observation, 0, False, info, check, phasenum, backcount
         elif phasenum == -1:
             observation ="Planning has not yet been done. Be sure to first select the plan command as your action and start planning."
             check = False
             return observation, 0, False, info, check, phasenum, backcount
-        elif plan[phasenum] != phase:
+        
+        getnowgenre = re.findall(r'\[(.*?)\]', plan[phasenum])
+        if getnowgenre:
+            nowgenre = getnowgenre[0]
+        if not nowgenre in genres:
+            nowgenre = "NONE"
+
+        if plan[phasenum] != phase:
             if plan[phasenum + 1] == phase:
                 phasenum += 1
+                getnowgenre = re.findall(r'\[(.*?)\]', plan[phasenum])
+                if getnowgenre:
+                    nowgenre = getnowgenre[0]
+                if not nowgenre in genres:
+                    nowgenre = "NONE"
             elif plan[phasenum - 1] == phase:
-                if backcount > 0:
-                    phasenum -= 1
-                    backcount -= 1
-                else:
+                if nowgenre != "TEST":
+                    observation = f"Since this is not currently a TEST step, the step cannot be reversed. Please proceed with the current step: **{plan[phasenum]}**"
+                    if phasenum < len(plan) - 1:
+                        observation += f"or give up and force the next step: **{plan[phasenum + 1]}**"
+                    observation += "."
+                    check = False
+                    return observation, 0, False, info, check, phasenum, backcount
+                if backcount <= 0:
                     observation = f"You cannot reverse the plan any further. Please give up and force the next step: **{plan[phasenum + 1]}**."
                     check = False
                     return observation, 0, False, info, check, phasenum, backcount
+                else:
+                    phasenum -= 1
+                    backcount -= 1
+                    getnowgenre = re.findall(r'\[(.*?)\]', plan[phasenum])
+                    if getnowgenre:
+                        nowgenre = getnowgenre[0]
+                    if not nowgenre in genres:
+                       nowgenre = "NONE"
+                    
             else:
                 observation = "Your plan is\n"
                 for i, item in enumerate(plan, start=1):
@@ -832,7 +858,7 @@ class Agent:
             if not aftgenre in genres:
                 aftgenre = "NONE"
         
-        if phasenum < len(subplan):
+        if phasenum <= len(subplan):
             tasks = subplan[phasenum].rsplit('\n', 1)[0]
         
         okgenres = []
@@ -847,31 +873,33 @@ class Agent:
 
         if genre in nggenres:
             observation = "The action is not appropriate for the work to be done in the current step. We cannot accept that command. YOU MUST"
-            if aftgenre in okgenres or (befgenre in okgenres and backcount > 0): 
+            if aftgenre in okgenres or (befgenre in okgenres and backcount > 0 and nowgenre == "TEST"): 
                 observation += "do one of the following two ways:\n1) "
             observation += f"change the action and use the command allowed for the current step\nThe current step genre is [{genre}] and the group of commands you can use are: "
             for i, item in enumerate(coms[genre], start=1):
                 observation += f"{item}, "
             observation += "\n"
 
-            if aftgenre in okgenres or (befgenre in okgenres and backcount > 0): 
+            if aftgenre in okgenres or (befgenre in okgenres and backcount > 0 and nowgenre == "TEST"): 
                 observation += "2) Proceed or retreat a step and do the same action\nThe genres of steps for which current action is allowed are:"
                 for i, item in enumerate(okgenres, start=1):
                     observation += f"[{item}] "
                 observation += "\n"
-                if befgenre in okgenres and backcount > 0:
-                    observation += f"If you want to perform an action that corresponds to the **{plan[phasenum - 1]}** step, reverse the step and perform the same action."
+                if befgenre in okgenres and backcount > 0 and nowgenre == "TEST":
+                    observation += f"If you want to perform an action that corresponds to the **{plan[phasenum - 1]}** step, indicate “**{plan[phasenum - 1]}**” at the beginning of the DISCUSSION and reverse the step, and perform the same action.\n"
                 if aftgenre in okgenres:
-                    observation += f"If you want to perform an action that corresponds to the **{plan[phasenum + 1]}** step, proceed the step and perform the same action."
+                    observation += f"If you want to perform an action that corresponds to the **{plan[phasenum + 1]}** step, indicate “**{plan[phasenum + 1]}**” at the beginning of the DISCUSSION and proceed the step, and perform the same action.\n"
             
             check = False
             return observation, 0, False, info, check, phasenum, backcount
 
         if genre in genres:
             observation = f"Currently it is a [{genre}] step.\n"
-            if phasenum < len(subplan):
-                observation += f"The work to be done in this step is{tasks}\nWhen you feel you have completed these tasks, please progress your plan to {plan[phasenum + 1]}."
-                if phasenum > 0 and backcount > 0:
+            if phasenum <= len(subplan):
+                observation += f"The work to be done in this step is{tasks}\n"
+                if phasenum < len(plan) - 1:
+                    observation += f"When you feel you have completed these tasks, please progress your plan to {plan[phasenum + 1]}.\n"
+                if phasenum > 0 and backcount > 0 and nowgenre == "TEST":
                     observation += f"If there are problems in executing the plan and you decide that you need to work through the {plan[phasenum - 1]} step again, go backwards through the steps."
             observation += "The group of commands you can use in this step are: "
             for i, item in enumerate(coms[genre], start=1):
@@ -988,11 +1016,15 @@ class Agent:
             state = env.communicate(self.state_command) if self.state_command else None
             thought, action, output, phase = self.forward(observation, env.get_available_actions(), state, phase)
             if before_action.strip() == "plan":
-                plan = []
-                subplan = []
-                plan = re.findall(r'\*\*(?!Create Plan \[PLAN\])(.*?)\*\*', thought)
-                subplan = re.split(r'\*\*.*?\*\*', thought)[2: -1]
+                plan = ["Search for Relevant Code [SEARCH]", "Create Reproduction Script [REPRODUCE]", "Edit Code to Fix Bug [EDIT]", "Test the Fix [TEST]", "Clean Up and Submit the Patch [SUBMIT]"]
+                subplan = ["   ", "\n        - Create a new file called “reproduce.py” and reproduce the bug discussed in the issue.\n        - Run the script and verify that the bug has been properly reproduced.\n  ","   " ,"\n        - Re-run the “reproduce.py” script to ensure the bug is fixed.\n        - Ensure that the script runs without errors and produces the expected output.\n  ", "\n        - Remove the “reproduce.py” file as it is no longer needed.\n        - Submit the changes to the code base.\n "]
+                getsubplan = []
+                getsubplan = re.split(r'\*\*.*?\*\*', thought)[2: -1]
+                if getsubplan:
+                    subplan[0] = getsubplan[0]
+                    subplan[2] = getsubplan[1]
                 phasenum = 0
+                before_action = "NONE"
             for hook in self.hooks:
                 hook.on_actions_generated(thought=thought, action=action, output=output)
             observations = list()
