@@ -872,7 +872,7 @@ class Agent:
            
 
         if genre in nggenres:
-            observation = "The action is not appropriate for the work to be done in the current step. We cannot accept that command. YOU MUST"
+            observation = "The action is not appropriate for the work to be done in the current step. We cannot accept that command. YOU MUST "
             if aftgenre in okgenres or (befgenre in okgenres and backcount > 0 and nowgenre == "TEST"): 
                 observation += "do one of the following two ways:\n1) "
             observation += f"change the action and use the command allowed for the current step\nThe current step genre is [{genre}] and the group of commands you can use are: "
@@ -898,7 +898,7 @@ class Agent:
             if phasenum <= len(subplan):
                 observation += f"The work to be done in this step is{tasks}\n"
                 if phasenum < len(plan) - 1:
-                    observation += f"When you feel you have completed these tasks, please progress your plan to {plan[phasenum + 1]}.\n"
+                    observation += f"If you think you have fully completed all of these tasks, please indicate “**{plan[phasenum + 1]}**” at the beginning of the DISCUSSION and progress your plan to {plan[phasenum + 1]}.\n"
                 if phasenum > 0 and backcount > 0 and nowgenre == "TEST":
                     observation += f"If there are problems in executing the plan and you decide that you need to work through the {plan[phasenum - 1]} step again, go backwards through the steps."
             observation += "The group of commands you can use in this step are: "
@@ -1017,7 +1017,7 @@ class Agent:
             thought, action, output, phase = self.forward(observation, env.get_available_actions(), state, phase)
             if before_action.strip() == "plan":
 #                plan = ["Search for Relevant Code [SEARCH]", "Create Reproduction Script [REPRODUCE]", "Edit Code to Fix Bug [EDIT]", "Test the Fix [TEST]", "Clean Up and Submit the Patch [SUBMIT]"]
-                plan = ["Search for Relevant Code [SEARCH]", "Edit Code to Fix Bug [EDIT]", "Clean Up and Submit the Patch [SUBMIT]"]
+                plan = ["Search for Relevant Code [SEARCH]", "Edit Code to Fix Bug [EDIT]", "Submit the Patch [SUBMIT]"]
 #                subplan = ["   ", "\n        - Create a new file called “reproduce.py” and reproduce the bug discussed in the issue.\n        - Run the script and verify that the bug has been properly reproduced.\n  ","   " ,"\n        - Re-run the “reproduce.py” script to ensure the bug is fixed.\n        - Ensure that the script runs without errors and produces the expected output.\n  ", "\n        - Remove the “reproduce.py” file as it is no longer needed.\n        - Submit the changes to the code base.\n "]
                 subplan = ["   ", "   ", "\n        - Remove the “reproduce.py” file as it is no longer needed.\n        - Submit the changes to the code base.\n "]
                 getsubplan = []
