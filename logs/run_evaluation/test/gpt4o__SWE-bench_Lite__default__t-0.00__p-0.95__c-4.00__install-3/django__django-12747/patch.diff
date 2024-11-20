@@ -1,0 +1,77 @@
+
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..fd63c52ac1
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,70 @@
++import django
++from django.conf import settings
++from django.db import models, connection
++
++# Minimal Django settings configuration
++settings.configure(
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    INSTALLED_APPS=[
++        '__main__',
++    ],
++)
++
++django.setup()
++
++# Define models
++class BlockLibrary(models.Model):
++    name = models.CharField(max_length=100)
++
++class File(models.Model):
++    name = models.CharField(max_length=100)
++    block_library = models.ForeignKey(BlockLibrary, on_delete=models.CASCADE)
++
++# Create tables
++with connection.schema_editor() as schema_editor:
++    schema_editor.create_model(BlockLibrary)
++    schema_editor.create_model(File)
++
++# Test delete on simple model
++BlockLibrary.objects.all().delete()
++print("Simple model delete result:", BlockLibrary.objects.all().delete())
++
++# Test delete on model with foreign key
++File.objects.all().delete()
++print("Foreign key model delete result:", File.objects.all().delete())
++
++# Drop tables
++with connection.schema_editor() as schema_editor:
++    schema_editor.delete_model(File)
++    schema_editor.delete_model(BlockLibrary)
++
++# Define models
++class BlockLibrary(models.Model):
++    name = models.CharField(max_length=100)
++
++class File(models.Model):
++    name = models.CharField(max_length=100)
++    block_library = models.ForeignKey(BlockLibrary, on_delete=models.CASCADE)
++
++# Create tables
++with connection.schema_editor() as schema_editor:
++    schema_editor.create_model(BlockLibrary)
++    schema_editor.create_model(File)
++
++# Test delete on simple model
++BlockLibrary.objects.all().delete()
++print("Simple model delete result:", BlockLibrary.objects.all().delete())
++
++# Test delete on model with foreign key
++File.objects.all().delete()
++print("Foreign key model delete result:", File.objects.all().delete())
++
++# Drop tables
++with connection.schema_editor() as schema_editor:
++    schema_editor.delete_model(File)
++    schema_editor.delete_model(BlockLibrary)

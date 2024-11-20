@@ -1,0 +1,22 @@
+
+diff --git a/sympy/polys/sqfreetools.py b/sympy/polys/sqfreetools.py
+index 1783a7744a..46e90b79a1 100644
+--- a/sympy/polys/sqfreetools.py
++++ b/sympy/polys/sqfreetools.py
+@@ -420,7 +420,15 @@ def dmp_sqf_list(f, u, K, all=False):
+ 
+         i += 1
+ 
+-    return coeff, result
++    # Combine factors with the same base
++    combined_result = []
++    for base, exp in result:
++        if combined_result and combined_result[-1][0] == base:
++            combined_result[-1] = (base, combined_result[-1][1] + exp)
++        else:
++            combined_result.append((base, exp))
++
++    return coeff, combined_result
+ 
+ 
+ def dmp_sqf_list_include(f, u, K, all=False):

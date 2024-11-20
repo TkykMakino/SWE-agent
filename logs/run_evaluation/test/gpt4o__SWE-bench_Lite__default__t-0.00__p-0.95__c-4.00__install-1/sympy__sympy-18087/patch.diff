@@ -1,0 +1,35 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..5924a25507
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,9 @@
++from sympy import symbols, cos, sin, sqrt
++from sympy.simplify import trigsimp
++
++x = symbols('x')
++expr = cos(x) + sqrt(sin(x)**2)
++simplified_expr = trigsimp(expr)
++
++print(f"Original expression: {expr}")
++print(f"Simplified expression: {simplified_expr}")
+diff --git a/sympy/simplify/trigsimp.py b/sympy/simplify/trigsimp.py
+index 7ca05f0304..78bb70d8c6 100644
+--- a/sympy/simplify/trigsimp.py
++++ b/sympy/simplify/trigsimp.py
+@@ -469,8 +469,12 @@ def trigsimp(expr, **opts):
+     """
+     from sympy.simplify.fu import fu
+ 
+-    expr = sympify(expr)
+-
++    from sympy import sqrt, Abs
++    expr = expr.replace(lambda expr: expr.is_Pow and expr.exp == 2 and expr.base.is_Function, lambda expr: Abs(expr.base))
++    from sympy.simplify.fu import fu
++    expr = expr.replace(sqrt(cos(expr)**2), Abs(cos(expr)))
++    from sympy.simplify.fu import fu
++    from sympy.simplify.fu import fu
+     _eval_trigsimp = getattr(expr, '_eval_trigsimp', None)
+     if _eval_trigsimp is not None:
+         return _eval_trigsimp(**opts)

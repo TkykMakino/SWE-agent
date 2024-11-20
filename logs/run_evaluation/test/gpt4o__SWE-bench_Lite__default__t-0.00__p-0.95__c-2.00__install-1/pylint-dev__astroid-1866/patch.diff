@@ -1,0 +1,28 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..47352c5a
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,21 @@
++import astroid
++
++def reproduce_issue():
++    # Simulate the code that causes the issue
++    code = """
++def example():
++    return "{} {}".format(None, "test")
++"""
++    module = astroid.parse(code)
++    for node in module.body:
++        if isinstance(node, astroid.FunctionDef):
++            try:
++                inferred = next(node.infer_call_result(node))
++                formatted_string = "{}".format(inferred)
++            except TypeError as e:
++                print(f"TypeError: {e}")
++            else:
++                print("No TypeError encountered")
++
++if __name__ == "__main__":
++    reproduce_issue()

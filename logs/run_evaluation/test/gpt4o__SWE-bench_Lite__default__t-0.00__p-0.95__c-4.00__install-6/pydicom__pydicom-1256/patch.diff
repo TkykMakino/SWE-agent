@@ -1,0 +1,621 @@
+
+diff --git a/pydicom/tests/test_json.py b/pydicom/tests/test_json.py
+index e18505771..80a6c6d01 100644
+--- a/pydicom/tests/test_json.py
++++ b/pydicom/tests/test_json.py
+@@ -1,7 +1,587 @@
+-# -*- coding: utf-8 -*-
++import pydicom
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.dataset import Dataset
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")
+ # Copyright 2008-2019 pydicom authors. See LICENSE file for details.
+ import json
+-
++from pydicom.dataset import Dataset
+ import pytest
+ 
+ from pydicom import dcmread
+diff --git a/reproduce_bug.py b/reproduce_bug.py
+new file mode 100644
+index 000000000..d0a9c2042
+--- /dev/null
++++ b/reproduce_bug.py
+@@ -0,0 +1,20 @@
++import pydicom
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.json import convert_data_element, from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++reconstructed_dataset = from_json(json_representation)
++
++# Save the reconstructed DICOM file
++reconstructed_dcm_path = "reconstructed_waveform_ecg.dcm"
++reconstructed_dataset.save_as(reconstructed_dcm_path)
++
++print("Script completed successfully, no errors.")

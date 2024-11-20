@@ -1,0 +1,22 @@
+
+diff --git a/src/sqlfluff/rules/L060.py b/src/sqlfluff/rules/L060.py
+index 836941ed..1201cb7f 100644
+--- a/src/sqlfluff/rules/L060.py
++++ b/src/sqlfluff/rules/L060.py
+@@ -59,4 +59,15 @@ class Rule_L060(BaseRule):
+             ],
+         )
+ 
+-        return LintResult(context.segment, [fix])
++        if context.segment.raw_upper == "IFNULL":
++            return LintResult(
++                anchor=context.segment,
++                fixes=[fix],
++                description="Use 'COALESCE' instead of 'IFNULL'."
++            )
++        elif context.segment.raw_upper == "NVL":
++            return LintResult(
++                anchor=context.segment,
++                fixes=[fix],
++                description="Use 'COALESCE' instead of 'NVL'."
++            )

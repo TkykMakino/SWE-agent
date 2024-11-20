@@ -1,0 +1,47 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..50247a7218
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,10 @@
++import sympy as sy
++curlyx = sy.symbols("{x}")
++v = sy.MatrixSymbol("v", 2, 1)
++curlyv = sy.MatrixSymbol("{v}", 2, 1)
++
++curlyScalarId = sy.lambdify(curlyx, curlyx)
++vectorId = sy.lambdify(v,v)
++
++curlyVectorId = sy.lambdify(curlyv, curlyv)
++curlyVectorIdDummified = sy.lambdify(curlyv, curlyv, dummify=True)
+diff --git a/sympy/utilities/lambdify.py b/sympy/utilities/lambdify.py
+index f71bea25f5..d778e7c89b 100644
+--- a/sympy/utilities/lambdify.py
++++ b/sympy/utilities/lambdify.py
+@@ -3,7 +3,7 @@
+ lambda functions which can be used to calculate numerical values very fast.
+ """
+ 
+-from __future__ import print_function, division
++from sympy.matrices import MatrixSymbol
+ 
+ from functools import wraps
+ import inspect
+@@ -709,6 +709,7 @@ def _preprocess(self, args, expr):
+         """
+         from sympy import Dummy, Symbol, Function, flatten
+         from sympy.matrices import DeferredVector
++        from sympy.matrices.matrices import MatrixSymbol
+ 
+         dummify = self._dummify
+ 
+@@ -728,7 +729,7 @@ def _preprocess(self, args, expr):
+             elif isinstance(arg, Symbol):
+                 argrep = self._argrepr(arg)
+ 
+-                if dummify or not self._is_safe_ident(argrep):
++                if dummify or not self._is_safe_ident(argrep) or isinstance(arg, MatrixSymbol):
+                     dummy = Dummy()
+                     argstrs.append(self._argrepr(dummy))
+                     expr = self._subexpr(expr, {arg: dummy})

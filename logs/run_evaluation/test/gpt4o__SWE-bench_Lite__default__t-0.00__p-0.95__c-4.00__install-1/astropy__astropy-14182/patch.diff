@@ -1,0 +1,46 @@
+
+diff --git a/astropy/io/ascii/rst.py b/astropy/io/ascii/rst.py
+index abdeba8ef..c5d68af86 100644
+--- a/astropy/io/ascii/rst.py
++++ b/astropy/io/ascii/rst.py
+@@ -57,10 +57,14 @@ class RST(FixedWidth):
+     data_class = SimpleRSTData
+     header_class = SimpleRSTHeader
+ 
+-    def __init__(self):
++    def __init__(self, header_rows=None):
+         super().__init__(delimiter_pad=None, bookend=False)
++        self.header_rows = header_rows
+ 
+     def write(self, lines):
+         lines = super().write(lines)
++        if self.header_rows:
++            header_lines = [str(header) for header in self.header_rows]
++            lines = header_lines + lines
+         lines = [lines[1]] + lines + [lines[1]]
+         return lines
+diff --git a/pyproject.toml b/pyproject.toml
+index 0d1ee66ab..ec234472e 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools",
++requires = ["setuptools==68.0.0",
+             "setuptools_scm>=6.2",
+             "wheel",
+             "cython==0.29.30",
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 000000000..d08c0552f
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,8 @@
++from astropy.table import QTable
++import astropy.units as u
++import sys
++
++tbl = QTable({'wave': [350, 950] * u.nm, 'response': [0.7, 1.2] * u.count})
++tbl.write(sys.stdout, format="ascii.rst")
++tbl.write(sys.stdout, format="ascii.fixed_width", header_rows=["name", "unit"])
++tbl.write(sys.stdout, format="ascii.rst", header_rows=["name", "unit"])

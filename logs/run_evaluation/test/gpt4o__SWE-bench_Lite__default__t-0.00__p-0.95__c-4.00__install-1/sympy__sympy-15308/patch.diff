@@ -1,0 +1,12 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..9a5c991458
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,5 @@
++from sympy import MatrixSymbol, trace, latex
++from sympy.abc import n
++
++A = MatrixSymbol("A", n, n)
++print(latex(trace(A**2)))

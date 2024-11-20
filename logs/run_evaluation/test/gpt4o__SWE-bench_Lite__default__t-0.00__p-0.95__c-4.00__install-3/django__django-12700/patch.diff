@@ -1,0 +1,94 @@
+
+diff --git a/django/views/debug.py b/django/views/debug.py
+index e6b7d4d821..2c41559ceb 100644
+--- a/django/views/debug.py
++++ b/django/views/debug.py
+@@ -83,13 +83,15 @@ class SafeExceptionReporterFilter:
+     def cleanse_setting(self, key, value):
+         """
+         Cleanse an individual setting key/value of sensitive content. If the
+-        value is a dictionary, recursively cleanse the keys in that dictionary.
++        value is a dictionary or other iterable, recursively cleanse the keys in that dictionary or iterable.
+         """
+         try:
+             if self.hidden_settings.search(key):
+                 cleansed = self.cleansed_substitute
+             elif isinstance(value, dict):
+                 cleansed = {k: self.cleanse_setting(k, v) for k, v in value.items()}
++            elif isinstance(value, (list, tuple)):
++                cleansed = type(value)(self.cleanse_setting(key, v) for v in value)
+             else:
+                 cleansed = value
+         except TypeError:
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..a9f1af535a
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,66 @@
++import pprint
++from django.conf import settings
++from django.views.debug import SafeExceptionReporterFilter
++
++MY_SETTING = {
++    "foo": "value",
++    "secret": "value",
++    "token": "value",
++    "something": [
++        {"foo": "value"},
++        {"secret": "value"},
++        {"token": "value"},
++    ],
++    "else": [
++        [
++            {"foo": "value"},
++            {"secret": "value"},
++            {"token": "value"},
++        ],
++        [
++            {"foo": "value"},
++            {"secret": "value"},
++            {"token": "value"},
++        ],
++    ]
++}
++
++settings.configure(MY_SETTING=MY_SETTING)
++
++filter = SafeExceptionReporterFilter()
++pprint.pprint(filter.get_safe_settings()["MY_SETTING"])
++from django.views.debug import SafeExceptionReporterFilter
++
++MY_SETTING = {
++    "foo": "value",
++    "secret": "value",
++    "token": "value",
++    "something": [
++        {"foo": "value"},
++        {"secret": "value"},
++        {"token": "value"},
++    ],
++    "else": [
++        [
++            {"foo": "value"},
++            {"secret": "value"},
++            {"token": "value"},
++        ],
++        [
++            {"foo": "value"},
++            {"secret": "value"},
++            {"token": "value"},
++        ],
++    ]
++}
++
++settings = {"MY_SETTING": MY_SETTING}
++
++class MockSettings:
++    def __getattr__(self, name):
++        return settings.get(name, None)
++
++mock_settings = MockSettings()
++
++filter = SafeExceptionReporterFilter()
++pprint.pprint(filter.get_safe_settings()["MY_SETTING"])

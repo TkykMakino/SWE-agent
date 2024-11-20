@@ -1,0 +1,99 @@
+
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..025c758ca2
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,40 @@
++from django.db import models
++from django.utils.translation import gettext_lazy as _
++from django.utils import timezone
++
++class ProductMetaDataType(models.Model):
++    label = models.CharField(max_length=255, unique=True, blank=False, null=False)
++    filterable = models.BooleanField(default=False, verbose_name=_("filterable"))
++
++    class Meta:
++        app_label = "adminpricing"
++        verbose_name = _("product meta data type")
++        verbose_name_plural = _("product meta data types")
++
++    def __str__(self):
++        return self.label
++
++class ProductMetaData(models.Model):
++    id = models.BigAutoField(primary_key=True)
++    product = models.ForeignKey(
++        'Produit', null=False, blank=False, on_delete=models.CASCADE
++    )
++    value = models.TextField(null=False, blank=False)
++    marketplace = models.ForeignKey(
++        'Plateforme', null=False, blank=False, on_delete=models.CASCADE
++    )
++    date_created = models.DateTimeField(null=True, default=timezone.now)
++    metadata_type = models.ForeignKey(
++        ProductMetaDataType, null=False, blank=False, on_delete=models.CASCADE
++    )
++
++    class Meta:
++        app_label = "adminpricing"
++        verbose_name = _("product meta data")
++        verbose_name_plural = _("product meta datas")
++
++# Reproduce the issue
++try:
++    ProductMetaData.objects.filter(value="Dark Vador", metadata_type=ProductMetaDataType(label="test"))
++except Exception as e:
++    print(e)
+diff --git a/settings.py b/settings.py
+new file mode 100644
+index 0000000000..a61ecc80e2
+--- /dev/null
++++ b/settings.py
+@@ -0,0 +1,46 @@
++import os
++import django
++from django.db import models
++from django.utils.translation import gettext_lazy as _
++from django.utils import timezone
++
++os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
++django.setup()
++
++class ProductMetaDataType(models.Model):
++    label = models.CharField(max_length=255, unique=True, blank=False, null=False)
++    filterable = models.BooleanField(default=False, verbose_name=_("filterable"))
++
++    class Meta:
++        app_label = "adminpricing"
++        verbose_name = _("product meta data type")
++        verbose_name_plural = _("product meta data types")
++
++    def __str__(self):
++        return self.label
++
++class ProductMetaData(models.Model):
++    id = models.BigAutoField(primary_key=True)
++    product = models.ForeignKey(
++        'Produit', null=False, blank=False, on_delete=models.CASCADE
++    )
++    value = models.TextField(null=False, blank=False)
++    marketplace = models.ForeignKey(
++        'Plateforme', null=False, blank=False, on_delete=models.CASCADE
++    )
++    date_created = models.DateTimeField(null=True, default=timezone.now)
++    metadata_type = models.ForeignKey(
++        ProductMetaDataType, null=False, blank=False, on_delete=models.CASCADE
++    )
++
++    class Meta:
++        app_label = "adminpricing"
++        verbose_name = _("product meta data")
++        verbose_name_plural = _("product meta datas")
++
++# Reproduce the issue
++try:
++    ProductMetaData.objects.filter(value="Dark Vador", metadata_type=ProductMetaDataType(label="test"))
++except Exception as e:
++    print(e)
++

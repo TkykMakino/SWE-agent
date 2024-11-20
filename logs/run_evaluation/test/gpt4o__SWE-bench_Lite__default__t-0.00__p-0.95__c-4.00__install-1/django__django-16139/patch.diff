@@ -1,0 +1,65 @@
+
+diff --git a/django/contrib/auth/forms.py b/django/contrib/auth/forms.py
+index b3cfc6723c..f6c4b7fc2f 100644
+--- a/django/contrib/auth/forms.py
++++ b/django/contrib/auth/forms.py
+@@ -163,7 +163,7 @@ class UserChangeForm(forms.ModelForm):
+         super().__init__(*args, **kwargs)
+         password = self.fields.get("password")
+         if password:
+-            password.help_text = password.help_text.format("../password/")
++            password.help_text = password.help_text.format(f"../../{self.instance.pk}/password/")
+         user_permissions = self.fields.get("user_permissions")
+         if user_permissions:
+             user_permissions.queryset = user_permissions.queryset.select_related(
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..3fb2f22239
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,17 @@
++from django.contrib.auth.models import User
++from django.test import Client, TestCase
++from django.urls import reverse
++
++class UserAdminTest(TestCase):
++    def setUp(self):
++        self.client = Client()
++        self.user = User.objects.create_user(username='testuser', password='12345', uuid='22222222-3333-4444-5555-666677778888')
++        self.client.login(username='testuser', password='12345')
++
++    def test_password_reset_link(self):
++        response = self.client.get(reverse('admin:auth_user_change', args=[self.user.uuid]) + '?_to_field=uuid')
++        self.assertContains(response, f'href="../../{self.user.pk}/password/"')
++
++if __name__ == "__main__":
++    import unittest
++    unittest.main()
+diff --git a/test_settings.py b/test_settings.py
+new file mode 100644
+index 0000000000..4117b2749f
+--- /dev/null
++++ b/test_settings.py
+@@ -0,0 +1,22 @@
++DATABASES = {
++    'default': {
++        'ENGINE': 'django.db.backends.sqlite3',
++        'NAME': ':memory:',
++    }
++}
++
++INSTALLED_APPS = [
++    'django.contrib.auth',
++    'django.contrib.contenttypes',
++    'django.contrib.sessions',
++    'django.contrib.admin',
++]
++
++MIDDLEWARE = [
++    'django.middleware.common.CommonMiddleware',
++    'django.middleware.csrf.CsrfViewMiddleware',
++    'django.contrib.sessions.middleware.SessionMiddleware',
++    'django.contrib.auth.middleware.AuthenticationMiddleware',
++]
++
++SECRET_KEY = 'test_secret_key'

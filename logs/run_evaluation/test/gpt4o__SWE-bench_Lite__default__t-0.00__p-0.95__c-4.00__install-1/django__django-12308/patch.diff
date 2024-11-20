@@ -1,0 +1,83 @@
+
+diff --git a/django/contrib/admin/utils.py b/django/contrib/admin/utils.py
+index e4ddc8f017..57a3d9786a 100644
+--- a/django/contrib/admin/utils.py
++++ b/django/contrib/admin/utils.py
+@@ -1,4 +1,8 @@
+-import datetime
++import json
++from datetime import datetime
++from decimal import Decimal
++import django
++django.setup()
+ import decimal
+ from collections import defaultdict
+ 
+@@ -393,13 +397,12 @@ def display_for_field(value, field, empty_value_display):
+     elif isinstance(field, (models.DateField, models.TimeField)):
+         return formats.localize(value)
+     elif isinstance(field, models.DecimalField):
+-        return formats.number_format(value, field.decimal_places)
++        return json.dumps(value)
+     elif isinstance(field, (models.IntegerField, models.FloatField)):
+         return formats.number_format(value)
++        return json.dumps(value)
+     elif isinstance(field, models.FileField) and value:
+         return format_html('<a href="{}">{}</a>', value.url, value)
+-    else:
+-        return display_for_value(value, empty_value_display)
+ 
+ 
+ def display_for_value(value, empty_value_display, boolean=False):
+diff --git a/test_settings.py b/test_settings.py
+new file mode 100644
+index 0000000000..da88c106de
+--- /dev/null
++++ b/test_settings.py
+@@ -0,0 +1,17 @@
++SECRET_KEY = 'test_secret_key'
++INSTALLED_APPS = [
++    'django.contrib.contenttypes',
++    'django.contrib.auth',
++    'django.contrib.admin',
++    'django.contrib.sessions',
++    'django.contrib.messages',
++    'django.contrib.staticfiles',
++    'tests.admin_utils',
++]
++DATABASES = {
++    'default': {
++        'ENGINE': 'django.db.backends.sqlite3',
++        'NAME': ':memory:',
++    }
++}
++DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+diff --git a/tests/admin_utils/tests.py b/tests/admin_utils/tests.py
+index 463ba9556d..0f82e55629 100644
+--- a/tests/admin_utils/tests.py
++++ b/tests/admin_utils/tests.py
+@@ -1,5 +1,8 @@
+ from datetime import datetime
+ from decimal import Decimal
++import django
++django.setup()
++from decimal import Decimal
+ 
+ from django import forms
+ from django.conf import settings
+@@ -176,7 +179,14 @@ class UtilsTests(SimpleTestCase):
+         display_value = display_for_field(None, models.FloatField(), self.empty_value)
+         self.assertEqual(display_value, self.empty_value)
+ 
+-    def test_number_formats_display_for_field(self):
++    def test_jsonfield_display_for_field(self):
++        class JSONModel(models.Model):
++            json_field = models.JSONField()
++
++        json_value = {"foo": "bar"}
++        json_field = JSONModel._meta.get_field('json_field')
++        display_value = display_for_field(json_value, json_field, self.empty_value)
++        self.assertEqual(display_value, '{"foo": "bar"}')
+         display_value = display_for_field(12345.6789, models.FloatField(), self.empty_value)
+         self.assertEqual(display_value, '12345.6789')
+ 

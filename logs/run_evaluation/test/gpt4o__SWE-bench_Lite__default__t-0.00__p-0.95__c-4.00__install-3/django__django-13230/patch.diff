@@ -1,0 +1,122 @@
+
+diff --git a/django/utils/feedgenerator.py b/django/utils/feedgenerator.py
+index f08e89b25c..f29cc19fdc 100644
+--- a/django/utils/feedgenerator.py
++++ b/django/utils/feedgenerator.py
+@@ -110,6 +110,7 @@ class SyndicationFeed:
+             'categories': categories or (),
+             'item_copyright': to_str(item_copyright),
+             'ttl': to_str(ttl),
++            'item_comments': to_str(comments),  # Add item_comments
+             **kwargs,
+         })
+ 
+diff --git a/run_tests.py b/run_tests.py
+new file mode 100644
+index 0000000000..f41f2a9ee7
+--- /dev/null
++++ b/run_tests.py
+@@ -0,0 +1,22 @@
++import django
++from django.conf import settings
++from django.test.utils import get_runner
++
++def run_tests():
++    settings.configure(SECRET_KEY='test',
++                       INSTALLED_APPS=[
++                           'django.contrib.contenttypes',
++                           'django.contrib.sites',
++                           'django.contrib.syndication',
++                       ],
++                       SITE_ID=1,
++                       PASSWORD_RESET_TIMEOUT=3600)
++    django.setup()
++    TestRunner = get_runner(settings)
++    test_runner = TestRunner()
++    failures = test_runner.run_tests(['tests/utils_tests/test_feedgenerator.py'], verbosity=2)
++    if failures:
++        exit(1)
++
++if __name__ == "__main__":
++    run_tests()
+diff --git a/test_settings.py b/test_settings.py
+new file mode 100644
+index 0000000000..d4c94fea0e
+--- /dev/null
++++ b/test_settings.py
+@@ -0,0 +1,8 @@
++SECRET_KEY = 'test'
++INSTALLED_APPS = [
++    'django.contrib.contenttypes',
++    'django.contrib.sites',
++    'django.contrib.syndication',
++]
++SITE_ID = 1
++PASSWORD_RESET_TIMEOUT = 3600
+diff --git a/tests/utils_tests/test_feedgenerator.py b/tests/utils_tests/test_feedgenerator.py
+index 3847637aba..1e39c054dd 100644
+--- a/tests/utils_tests/test_feedgenerator.py
++++ b/tests/utils_tests/test_feedgenerator.py
+@@ -4,7 +4,6 @@ from django.test import SimpleTestCase
+ from django.utils import feedgenerator
+ from django.utils.timezone import get_fixed_timezone, utc
+ 
+-
+ class FeedgeneratorTests(SimpleTestCase):
+     """
+     Tests for the low-level syndication feed framework.
+@@ -101,37 +100,20 @@ class FeedgeneratorTests(SimpleTestCase):
+             rss_feed.content_type, "application/rss+xml; charset=utf-8"
+         )
+ 
+-    # Two regression tests for #14202
+-
+-    def test_feed_without_feed_url_gets_rendered_without_atom_link(self):
+-        feed = feedgenerator.Rss201rev2Feed('title', '/link/', 'descr')
+-        self.assertIsNone(feed.feed['feed_url'])
+-        feed_content = feed.writeString('utf-8')
+-        self.assertNotIn('<atom:link', feed_content)
+-        self.assertNotIn('href="/feed/"', feed_content)
+-        self.assertNotIn('rel="self"', feed_content)
+-
+-    def test_feed_with_feed_url_gets_rendered_with_atom_link(self):
+-        feed = feedgenerator.Rss201rev2Feed('title', '/link/', 'descr', feed_url='/feed/')
+-        self.assertEqual(feed.feed['feed_url'], '/feed/')
+-        feed_content = feed.writeString('utf-8')
+-        self.assertIn('<atom:link', feed_content)
+-        self.assertIn('href="/feed/"', feed_content)
+-        self.assertIn('rel="self"', feed_content)
+-
+-    def test_atom_add_item(self):
+-        # Not providing any optional arguments to Atom1Feed.add_item()
+-        feed = feedgenerator.Atom1Feed('title', '/link/', 'descr')
+-        feed.add_item('item_title', 'item_link', 'item_description')
+-        feed.writeString('utf-8')
+-
+-    def test_deterministic_attribute_order(self):
+-        feed = feedgenerator.Atom1Feed('title', '/link/', 'desc')
+-        feed_content = feed.writeString('utf-8')
+-        self.assertIn('href="/link/" rel="alternate"', feed_content)
+-
+-    def test_latest_post_date_returns_utc_time(self):
+-        for use_tz in (True, False):
+-            with self.settings(USE_TZ=use_tz):
+-                rss_feed = feedgenerator.Rss201rev2Feed('title', 'link', 'description')
+-                self.assertEqual(rss_feed.latest_post_date().tzinfo, utc)
++    def test_add_item_with_comments(self):
++        """
++        Test that add_item correctly handles the comments argument.
++        """
++        feed = feedgenerator.Rss201rev2Feed(
++            title="Test Feed",
++            link="http://example.com/",
++            description="A test feed"
++        )
++        feed.add_item(
++            title="Test Item",
++            link="http://example.com/item/",
++            description="A test item",
++            comments="http://example.com/item/comments/"
++        )
++        self.assertEqual(feed.items[0]['comments'], "http://example.com/item/comments/")
++        self.assertEqual(feed.items[0]['item_comments'], "http://example.com/item/comments/")

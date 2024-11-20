@@ -1,0 +1,30 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..e8611abe
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,23 @@
++from astroid.nodes import Call, Const, Name, Attribute
++from astroid.context import InferenceContext
++from astroid.brain.brain_builtin_inference import _infer_str_format_call
++
++# Create a mock Call node with a NoneType format template
++call_node = Call(
++    func=Attribute(
++        expr=Name(name="None"),
++        attrname="format"
++    ),
++    args=[],
++    keywords=[]
++)
++
++# Create an inference context
++context = InferenceContext()
++
++# Try to infer the call result
++try:
++    result = next(_infer_str_format_call(call_node, context))
++    print(result)
++except TypeError as e:
++    print(f"Error: {e}")

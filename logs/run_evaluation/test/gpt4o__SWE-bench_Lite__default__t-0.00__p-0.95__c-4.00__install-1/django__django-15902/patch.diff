@@ -1,0 +1,109 @@
+
+diff --git a/django/forms/formsets.py b/django/forms/formsets.py
+index 3adbc6979a..c2ed001059 100644
+--- a/django/forms/formsets.py
++++ b/django/forms/formsets.py
+@@ -47,8 +47,8 @@ class ManagementForm(Form):
+         cleaned_data.setdefault(TOTAL_FORM_COUNT, 0)
+         cleaned_data.setdefault(INITIAL_FORM_COUNT, 0)
+         return cleaned_data
+-
+-
++    def is_management_form(self):
++        return True
+ class BaseFormSet(RenderableFormMixin):
+     """
+     A collection of instances of the same Form class.
+diff --git a/django/forms/renderers.py b/django/forms/renderers.py
+index 43340c6c88..babda461c0 100644
+--- a/django/forms/renderers.py
++++ b/django/forms/renderers.py
+@@ -18,12 +18,22 @@ class BaseRenderer:
+     # RemovedInDjango50Warning: When the deprecation ends, replace with
+     # form_template_name = "django/forms/div.html"
+     # formset_template_name = "django/forms/formsets/div.html"
+-    form_template_name = "django/forms/default.html"
+-    formset_template_name = "django/forms/formsets/default.html"
++    
++    def __init__(self, form=None):
++        if form and self.is_management_form(form):
++            self.form_template_name = None
++            self.formset_template_name = None
++        else:
++            self.form_template_name = "django/forms/default.html"
++            self.formset_template_name = "django/forms/formsets/default.html"
++
++    def is_management_form(self, form):
++        return form.prefix == 'formset' and form.is_management_form()
+ 
+     def get_template(self, template_name):
++        if self.is_management_form:
++            return None
+         raise NotImplementedError("subclasses must implement get_template()")
+-
+     def render(self, template_name, context, request=None):
+         template = self.get_template(template_name)
+         return template.render(context, request=request).strip()
+diff --git a/django/forms/utils.py b/django/forms/utils.py
+index 905babce4d..06ffa701cf 100644
+--- a/django/forms/utils.py
++++ b/django/forms/utils.py
+@@ -68,7 +68,7 @@ class RenderableMixin:
+         if (
+             template == "django/forms/default.html"
+             or template == "django/forms/formsets/default.html"
+-        ):
++        ) and not self.is_management_form():
+             warnings.warn(
+                 DEFAULT_TEMPLATE_DEPRECATION_MSG, RemovedInDjango50Warning, stacklevel=2
+             )
+diff --git a/run_tests.py b/run_tests.py
+new file mode 100644
+index 0000000000..11eaa03066
+--- /dev/null
++++ b/run_tests.py
+@@ -0,0 +1,30 @@
++import django
++from django.conf import settings
++from django.test.utils import get_runner
++
++SETTINGS_DICT = {
++    'INSTALLED_APPS': [
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'tests',
++    ],
++    'DATABASES': {
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++}
++
++if not settings.configured:
++    settings.configure(**SETTINGS_DICT)
++    django.setup()
++
++TestRunner = get_runner(settings)
++test_runner = TestRunner()
++failures = test_runner.run_tests(['tests.forms_tests.tests.test_formsets'])
++if failures:
++    exit(1)
+diff --git a/tests/forms_tests/tests/test_formsets.py b/tests/forms_tests/tests/test_formsets.py
+index 96a2189d70..dd551a10ab 100644
+--- a/tests/forms_tests/tests/test_formsets.py
++++ b/tests/forms_tests/tests/test_formsets.py
+@@ -1909,4 +1909,8 @@ class DeprecationTests(SimpleTestCase):
+         ):
+             ChoiceFormSet = formset_factory(Choice)
+             formset = ChoiceFormSet()
+-            str(formset)
++class ManagementFormDeprecationWarningTest(SimpleTestCase):
++    def test_management_form_deprecation_warning(self):
++        with self.assertWarns(RemovedInDjango50Warning):
++            formset = formset_factory(Form, extra=1)()
++            formset.management_form

@@ -1,0 +1,14 @@
+
+diff --git a/src/sqlfluff/core/default_config.cfg b/src/sqlfluff/core/default_config.cfg
+index e464f898..ef855455 100644
+--- a/src/sqlfluff/core/default_config.cfg
++++ b/src/sqlfluff/core/default_config.cfg
+@@ -9,7 +9,7 @@ recurse = 0
+ output_line_length = 80
+ runaway_limit = 10
+ ignore_templated_areas = True
+-encoding = autodetect
++encoding = utf-8
+ # Comma separated list of file extensions to lint.
+ 
+ # NB: This config will only apply in the root folder.

@@ -1,0 +1,41 @@
+
+diff --git a/astropy/modeling/separable.py b/astropy/modeling/separable.py
+index a308e2729..cd8dd3a4c 100644
+--- a/astropy/modeling/separable.py
++++ b/astropy/modeling/separable.py
+@@ -309,7 +309,7 @@ def _separable(transform):
+         return _operators[transform.op](sepleft, sepright)
+     elif isinstance(transform, Model):
+         return _coord_matrix(transform, 'left', transform.n_outputs)
+-
++        return _coord_matrix(transform, 'left', transform.n_outputs)
+ 
+ # Maps modeling operators to a function computing and represents the
+ # relationship of axes as an array of 0-es and 1-s
+diff --git a/pyproject.toml b/pyproject.toml
+index 3364d3074..02dddbe71 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools",
++requires = ["setuptools==68.0.0",
+             "setuptools_scm>=6.2",
+             "wheel",
+             "cython==0.29.22",
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 000000000..dc38bdfed
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,10 @@
++from astropy.modeling import models as m
++from astropy.modeling.separable import separability_matrix
++
++cm = m.Linear1D(10) & m.Linear1D(5)
++
++print(separability_matrix(cm))
++
++print(separability_matrix(m.Pix2Sky_TAN() & m.Linear1D(10) & m.Linear1D(5)))
++
++print(separability_matrix(m.Pix2Sky_TAN() & cm))

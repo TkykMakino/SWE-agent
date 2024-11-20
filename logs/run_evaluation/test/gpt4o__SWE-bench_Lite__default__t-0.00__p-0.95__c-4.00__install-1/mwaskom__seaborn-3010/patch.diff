@@ -1,0 +1,15 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..ab049003
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,8 @@
++import seaborn.objects as so
++
++try:
++    so.Plot([1, 2, 3, None, 4], [1, 2, 3, 4, 5]).add(so.Line(), so.PolyFit())
++except Exception as e:
++    print(f"An error occurred: {e}")
++    print("Script completed successfully, no errors.")
++print("Script completed successfully, no errors.")

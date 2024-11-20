@@ -1,0 +1,83 @@
+
+diff --git a/django/db/models/query.py b/django/db/models/query.py
+index 5ac2407ea3..23c9b77b39 100644
+--- a/django/db/models/query.py
++++ b/django/db/models/query.py
+@@ -812,7 +812,7 @@ class QuerySet(AltersData):
+                 connection = connections[self.db]
+                 if (
+                     connection.features.can_return_rows_from_bulk_insert
+-                    and on_conflict is None
++                    and (on_conflict is None or update_conflicts)
+                 ):
+                     assert len(returned_columns) == len(objs_without_pk)
+                 for obj_without_pk, results in zip(objs_without_pk, returned_columns):
+@@ -1796,6 +1796,7 @@ class QuerySet(AltersData):
+         raw=False,
+         using=None,
+         on_conflict=None,
++        update_conflicts=False,
+         update_fields=None,
+         unique_fields=None,
+     ):
+@@ -1825,6 +1826,7 @@ class QuerySet(AltersData):
+         batch_size,
+         on_conflict=None,
+         update_fields=None,
++        update_conflicts=False,
+         unique_fields=None,
+     ):
+         """
+@@ -1837,7 +1839,7 @@ class QuerySet(AltersData):
+         inserted_rows = []
+         bulk_return = connection.features.can_return_rows_from_bulk_insert
+         for item in [objs[i : i + batch_size] for i in range(0, len(objs), batch_size)]:
+-            if bulk_return and on_conflict is None:
++            if bulk_return and (on_conflict is None or update_conflicts):
+                 inserted_rows.extend(
+                     self._insert(
+                         item,
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..5cbdb6153f
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,38 @@
++import os
++import django
++from django.conf import settings
++from django.db import models, connection
++
++# Minimal settings configuration
++settings.configure(
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    INSTALLED_APPS=[
++        '__main__',
++    ],
++)
++
++# Setup Django
++django.setup()
++
++# Define a simple model for testing
++class MyModel(models.Model):
++    name = models.CharField(max_length=100, unique=True)
++
++# Create the table for MyModel
++with connection.schema_editor() as schema_editor:
++    schema_editor.create_model(MyModel)
++
++# Create instances of MyModel
++objs = [MyModel(name="test1"), MyModel(name="test2")]
++
++# Use bulk_create with update_conflicts=True
++MyModel.objects.bulk_create(objs, update_conflicts=True, update_fields=["name"], unique_fields=["name"])
++
++# Print the IDs of the created objects
++for obj in objs:
++    print(obj.id)

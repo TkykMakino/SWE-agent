@@ -1,0 +1,26 @@
+
+diff --git a/astroid/nodes/as_string.py b/astroid/nodes/as_string.py
+index 427ccc15..dca50c06 100644
+--- a/astroid/nodes/as_string.py
++++ b/astroid/nodes/as_string.py
+@@ -96,8 +96,9 @@ class AsStringVisitor:
+ 
+         return False
+ 
+-    # visit_<node> methods ###########################################
+-
++    def visit_unknown(self, node):
++        """Handle the Unknown node type"""
++        return "<unknown>"
+     def visit_await(self, node):
+         return f"await {node.value.accept(self)}"
+ 
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..d1fb36d6
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,3 @@
++import astroid
++
++print(astroid.nodes.Unknown().as_string())

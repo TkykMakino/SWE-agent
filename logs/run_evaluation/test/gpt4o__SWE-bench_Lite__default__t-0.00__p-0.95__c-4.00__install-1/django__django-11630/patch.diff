@@ -1,0 +1,89 @@
+
+diff --git a/app1/__init__.py b/app1/__init__.py
+new file mode 100644
+index 0000000000..8b13789179
+--- /dev/null
++++ b/app1/__init__.py
+@@ -0,0 +1 @@
++
+diff --git a/app2/__init__.py b/app2/__init__.py
+new file mode 100644
+index 0000000000..8b13789179
+--- /dev/null
++++ b/app2/__init__.py
+@@ -0,0 +1 @@
++
+diff --git a/django/core/checks/model_checks.py b/django/core/checks/model_checks.py
+index 5c2266ca1d..8a820317b4 100644
+--- a/django/core/checks/model_checks.py
++++ b/django/core/checks/model_checks.py
+@@ -37,14 +37,19 @@ def check_all_models(app_configs=None, **kwargs):
+             constraints[model_constraint.name].append(model._meta.label)
+     for db_table, model_labels in db_table_models.items():
+         if len(model_labels) != 1:
+-            errors.append(
+-                Error(
+-                    "db_table '%s' is used by multiple models: %s."
+-                    % (db_table, ', '.join(db_table_models[db_table])),
+-                    obj=db_table,
+-                    id='models.E028',
++            # Check if models are in different databases
++            databases = set()
++            for model_label in model_labels:
++                databases.add(model._meta.app_label)
++            if len(databases) == 1:
++                errors.append(
++                    Error(
++                        "db_table '%s' is used by multiple models: %s."
++                        % (db_table, ', '.join(db_table_models[db_table])),
++                        obj=db_table,
++                        id='models.E028',
++                    )
+                 )
+-            )
+     for index_name, model_labels in indexes.items():
+         if len(model_labels) > 1:
+             model_labels = set(model_labels)
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..1e72ad145f
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,37 @@
++import os
++import django
++from django.conf import settings
++from django.db import models
++
++# Define settings for the Django project
++settings.configure(
++    INSTALLED_APPS=[
++        'app1',
++        'app2',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++# Setup Django
++django.setup()
++
++# Define models in app1
++class Model1(models.Model):
++    class Meta:
++        app_label = 'app1'
++        db_table = 'table_name'
++
++# Define models in app2
++class Model2(models.Model):
++    class Meta:
++        app_label = 'app2'
++        db_table = 'table_name'
++
++# Run checks
++from django.core.management import call_command
++call_command('check')

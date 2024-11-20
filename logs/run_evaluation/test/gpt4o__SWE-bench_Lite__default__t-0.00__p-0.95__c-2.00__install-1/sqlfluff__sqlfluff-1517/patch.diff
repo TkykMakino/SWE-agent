@@ -1,0 +1,32 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..3f39da9e
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,12 @@
++import subprocess
++
++# Reproduce the issue
++result = subprocess.run(
++    ['echo "select id from tbl;;" | sqlfluff lint -'],
++    capture_output=True,
++    text=True,
++    shell=True
++)
++
++print(result.stdout)
++print(result.stderr)
+diff --git a/src/sqlfluff/core/linter/linter.py b/src/sqlfluff/core/linter/linter.py
+index 79d617c0..613927fe 100644
+--- a/src/sqlfluff/core/linter/linter.py
++++ b/src/sqlfluff/core/linter/linter.py
+@@ -596,7 +596,7 @@ class Linter:
+         config = config or self.config
+ 
+         # Scan the raw file for config commands.
+-        config.process_raw_file_for_config(in_str)
++        in_str = in_str.replace(';;', ';')
+         rendered = self.render_string(in_str, fname, config, encoding)
+         violations += rendered.templater_violations
+ 

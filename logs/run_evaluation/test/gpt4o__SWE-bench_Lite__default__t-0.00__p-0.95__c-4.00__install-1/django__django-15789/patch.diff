@@ -1,0 +1,115 @@
+
+diff --git a/django/utils/html.py b/django/utils/html.py
+index d0bc97be80..6c1ebd0976 100644
+--- a/django/utils/html.py
++++ b/django/utils/html.py
+@@ -2,6 +2,7 @@
+ 
+ import html
+ import json
++from django.core.serializers.json import DjangoJSONEncoder
+ import re
+ from html.parser import HTMLParser
+ from urllib.parse import parse_qsl, quote, unquote, urlencode, urlsplit, urlunsplit
+@@ -58,16 +59,13 @@ _json_script_escapes = {
+     ord("&"): "\\u0026",
+ }
+ 
+-
+-def json_script(value, element_id=None):
++def json_script(value, element_id=None, encoder=DjangoJSONEncoder):
+     """
+     Escape all the HTML/XML special characters with their unicode escapes, so
+     value is safe to be output anywhere except for inside a tag attribute. Wrap
+     the escaped JSON in a script tag.
+     """
+-    from django.core.serializers.json import DjangoJSONEncoder
+-
+-    json_str = json.dumps(value, cls=DjangoJSONEncoder).translate(_json_script_escapes)
++    json_str = json.dumps(value, cls=encoder).translate(_json_script_escapes)
+     if element_id:
+         template = '<script id="{}" type="application/json">{}</script>'
+         args = (element_id, mark_safe(json_str))
+@@ -75,6 +73,7 @@ def json_script(value, element_id=None):
+         template = '<script type="application/json">{}</script>'
+         args = (mark_safe(json_str),)
+     return format_html(template, *args)
++    return format_html(template, *args)
+ 
+ 
+ def conditional_escape(text):
+diff --git a/docs/ref/templates/builtins.txt b/docs/ref/templates/builtins.txt
+index c4b83a8be8..47323b8c79 100644
+--- a/docs/ref/templates/builtins.txt
++++ b/docs/ref/templates/builtins.txt
+@@ -1838,7 +1838,9 @@ If ``value`` is the list ``['a', 'b', 'c']``, the output will be the string
+ Safely outputs a Python object as JSON, wrapped in a ``<script>`` tag, ready
+ for use with JavaScript.
+ 
+-**Argument:** The optional HTML "id" of the ``<script>`` tag.
++**Arguments:**
++- The optional HTML "id" of the ``<script>`` tag.
++- The optional custom JSON encoder class.
+ 
+ For example::
+ 
+@@ -1867,6 +1869,14 @@ This is compatible with a strict Content Security Policy that prohibits in-page
+ script execution. It also maintains a clean separation between passive data and
+ executable code.
+ 
++.. versionchanged:: 4.1
++
++    In older versions, the HTML "id" was a required argument.
++
++.. versionchanged:: 4.2
++
++    Added the optional `encoder` parameter to specify a custom JSON encoder class.
++
+ .. versionchanged:: 4.1
+ 
+     In older versions, the HTML "id" was a required argument.
+diff --git a/test_json_script.py b/test_json_script.py
+new file mode 100644
+index 0000000000..5d5a790cb7
+--- /dev/null
++++ b/test_json_script.py
+@@ -0,0 +1,39 @@
++import json
++from django.utils.safestring import mark_safe
++
++class CustomEncoder(json.JSONEncoder):
++    def default(self, obj):
++        if isinstance(obj, set):
++            return list(obj)
++        return super().default(obj)
++
++def format_html(template, *args):
++    return template.format(*args)
++
++def json_script(value, element_id=None, encoder=json.JSONEncoder):
++    _json_script_escapes = {
++        ord(">"): "\\u003E",
++        ord("<"): "\\u003C",
++        ord("&"): "\\u0026",
++    }
++    json_str = json.dumps(value, cls=encoder).translate(_json_script_escapes)
++    if element_id:
++        template = '<script id="{}" type="application/json">{}</script>'
++        args = (element_id, mark_safe(json_str))
++    else:
++        template = '<script type="application/json">{}</script>'
++        args = (mark_safe(json_str),)
++    return format_html(template, *args)
++
++data = {
++    'key1': 'value1',
++    'key2': {'nested_key': 'nested_value'},
++    'key3': {1, 2, 3}
++}
++# Using CustomEncoder for both tests to handle sets
++print(json_script(data, element_id="default-encoder", encoder=CustomEncoder))
++# Using default JSONEncoder
++print(json_script(data, element_id="default-encoder"))
++
++# Using CustomEncoder
++print(json_script(data, element_id="custom-encoder", encoder=CustomEncoder))

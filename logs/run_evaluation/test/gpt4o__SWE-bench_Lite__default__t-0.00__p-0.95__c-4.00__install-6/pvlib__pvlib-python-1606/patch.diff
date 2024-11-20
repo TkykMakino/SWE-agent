@@ -1,0 +1,76 @@
+
+diff --git a/pvlib/tools.py b/pvlib/tools.py
+index 991568f..ecaa120 100644
+--- a/pvlib/tools.py
++++ b/pvlib/tools.py
+@@ -348,6 +348,10 @@ def _golden_sect_DataFrame(params, lower, upper, func, atol=1e-8):
+     df['VH'] = upper
+     df['VL'] = lower
+ 
++    # Check for equal bounds or NaN values
++    if (np.array(df['VH']) == np.array(df['VL'])).all() or np.isnan(df['VH']).any() or np.isnan(df['VL']).any():
++        return np.nan, np.nan
++
+     converged = False
+     iterations = 0
+ 
+@@ -356,22 +360,22 @@ def _golden_sect_DataFrame(params, lower, upper, func, atol=1e-8):
+         warnings.filterwarnings(action='ignore',
+                                 message='All-NaN slice encountered')
+         iterlimit = 1 + np.nanmax(
+-            np.trunc(np.log(atol / (df['VH'] - df['VL'])) / np.log(phim1)))
++            np.trunc(np.log(atol / (np.array(df['VH']) - np.array(df['VL']))) / np.log(phim1)))
+ 
+     while not converged and (iterations <= iterlimit):
+ 
+-        phi = phim1 * (df['VH'] - df['VL'])
+-        df['V1'] = df['VL'] + phi
+-        df['V2'] = df['VH'] - phi
++        phi = phim1 * (np.array(df['VH']) - np.array(df['VL']))
++        df['V1'] = np.array(df['VL']) + phi
++        df['V2'] = np.array(df['VH']) - phi
+ 
+         df['f1'] = func(df, 'V1')
+         df['f2'] = func(df, 'V2')
+-        df['SW_Flag'] = df['f1'] > df['f2']
++        df['SW_Flag'] = np.array(df['f1']) > np.array(df['f2'])
+ 
+-        df['VL'] = df['V2']*df['SW_Flag'] + df['VL']*(~df['SW_Flag'])
+-        df['VH'] = df['V1']*~df['SW_Flag'] + df['VH']*(df['SW_Flag'])
++        df['VL'] = np.array(df['V2'])*df['SW_Flag'] + np.array(df['VL'])*(~df['SW_Flag'])
++        df['VH'] = np.array(df['V1'])*~df['SW_Flag'] + np.array(df['VH'])*(df['SW_Flag'])
+ 
+-        err = abs(df['V2'] - df['V1'])
++        err = abs(np.array(df['V2']) - np.array(df['V1']))
+ 
+         # works with single value because err is np.float64
+         converged = (err[~np.isnan(err)] < atol).all()
+@@ -383,6 +387,28 @@ def _golden_sect_DataFrame(params, lower, upper, func, atol=1e-8):
+         raise Exception("Iterations exceeded maximum. Check that func",
+                         " is not NaN in (lower, upper)")  # pragma: no cover
+ 
++    try:
++        f_opt = np.where(np.array(df['f1']) > np.array(df['f2']), df['f1'], df['f2'])
++        v_opt = np.where(np.array(df['f1']) > np.array(df['f2']), df['V1'], df['V2'])
++    except KeyError:
++        f_opt = np.nan
++        v_opt = np.nan
++
++    return f_opt, v_opt
++    if iterations > iterlimit:
++        raise Exception("Iterations exceeded maximum. Check that func",
++                        " is not NaN in (lower, upper)")  # pragma: no cover
++
++    try:
++        f_opt = df.loc[df['f1'] > df['f2'], 'f1']
++        f_opt = f_opt.append(df.loc[df['f1'] <= df['f2'], 'f2'])
++        v_opt = df.loc[df['f1'] > df['f2'], 'V1']
++        v_opt = v_opt.append(df.loc[df['f1'] <= df['f2'], 'V2'])
++    except KeyError:
++        f_opt = np.nan
++        v_opt = np.nan
++
++    return f_opt, v_opt
+     try:
+         func_result = func(df, 'V1')
+         x = np.where(np.isnan(func_result), np.nan, df['V1'])

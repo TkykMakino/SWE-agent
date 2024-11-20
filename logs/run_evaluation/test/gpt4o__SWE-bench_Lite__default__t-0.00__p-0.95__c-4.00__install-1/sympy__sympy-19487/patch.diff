@@ -1,0 +1,17 @@
+
+diff --git a/sympy/functions/elementary/complexes.py b/sympy/functions/elementary/complexes.py
+index 7fda45982b..fa34848247 100644
+--- a/sympy/functions/elementary/complexes.py
++++ b/sympy/functions/elementary/complexes.py
+@@ -291,7 +291,10 @@ def doit(self, **hints):
+         if self.args[0].is_zero is False:
+             return self.args[0] / Abs(self.args[0])
+         return self
+-
++    def _eval_rewrite_as_Abs(self, arg):
++        if arg.is_zero:
++            return S.NaN
++        return arg / Abs(arg)
+     @classmethod
+     def eval(cls, arg):
+         # handle what we can

@@ -1,0 +1,81 @@
+
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..00e916fdca
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,30 @@
++from django.db import models
++from django.db.models import Value, IntegerField
++from django.test import TestCase
++
++class Sample(models.Model):
++    name = models.CharField(max_length=100)
++    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
++
++class UnionDistinctTestCase(TestCase):
++    def setUp(self):
++        user = self.get_or_create_admin_user()
++        Sample.objects.create(user=user, name="Sam1")
++        Sample.objects.create(user=user, name="Sam2 acid")
++        Sample.objects.create(user=user, name="Sam3")
++        Sample.objects.create(user=user, name="Sam4 acid")
++        Sample.objects.create(user=user, name="Dub")
++        Sample.objects.create(user=user, name="Dub")
++        Sample.objects.create(user=user, name="Dub")
++        self.user = user
++
++    def test_union_annotated_diff_distinct(self):
++        qs = Sample.objects.filter(user=self.user)
++        qs1 = qs.filter(name='Dub').annotate(rank=Value(0, IntegerField()))
++        qs2 = qs.filter(name='Sam1').annotate(rank=Value(1, IntegerField()))
++        qs = qs1.union(qs2)
++        qs = qs.order_by('name').distinct('name')  # THIS DISTINCT DOESN'T WORK
++        self.assertEqual(qs.count(), 2)
++
++if __name__ == "__main__":
++    TestCase.main()
+diff --git a/settings.py b/settings.py
+new file mode 100644
+index 0000000000..d44233fb68
+--- /dev/null
++++ b/settings.py
+@@ -0,0 +1,38 @@
++import os
++import django
++from django.conf import settings
++from django.db import models
++from django.db.models import Value, IntegerField
++from django.test import TestCase
++
++# Configure settings
++os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
++settings.configure()
++django.setup()
++
++class Sample(models.Model):
++    name = models.CharField(max_length=100)
++    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
++
++class UnionDistinctTestCase(TestCase):
++    def setUp(self):
++        user = self.get_or_create_admin_user()
++        Sample.objects.create(user=user, name="Sam1")
++        Sample.objects.create(user=user, name="Sam2 acid")
++        Sample.objects.create(user=user, name="Sam3")
++        Sample.objects.create(user=user, name="Sam4 acid")
++        Sample.objects.create(user=user, name="Dub")
++        Sample.objects.create(user=user, name="Dub")
++        Sample.objects.create(user=user, name="Dub")
++        self.user = user
++
++    def test_union_annotated_diff_distinct(self):
++        qs = Sample.objects.filter(user=self.user)
++        qs1 = qs.filter(name='Dub').annotate(rank=Value(0, IntegerField()))
++        qs2 = qs.filter(name='Sam1').annotate(rank=Value(1, IntegerField()))
++        qs = qs1.union(qs2)
++        qs = qs.order_by('name').distinct('name')  # THIS DISTINCT DOESN'T WORK
++        self.assertEqual(qs.count(), 2)
++
++if __name__ == "__main__":
++    'django__django',  # Add the app containing the Sample model

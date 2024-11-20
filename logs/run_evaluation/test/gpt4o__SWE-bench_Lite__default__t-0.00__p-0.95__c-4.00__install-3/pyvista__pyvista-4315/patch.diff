@@ -1,0 +1,88 @@
+
+diff --git a/pyvista/core/grid.py b/pyvista/core/grid.py
+index 6ce23688..1ee1b5ee 100644
+--- a/pyvista/core/grid.py
++++ b/pyvista/core/grid.py
+@@ -123,37 +123,40 @@ class RectilinearGrid(_vtk.vtkRectilinearGrid, Grid, RectilinearGridFilters):
+ 
+     _WRITERS = {'.vtk': _vtk.vtkRectilinearGridWriter, '.vtr': _vtk.vtkXMLRectilinearGridWriter}
+ 
+-    def __init__(self, *args, check_duplicates=False, deep=False, **kwargs):
+-        """Initialize the rectilinear grid."""
+-        super().__init__()
+-
+-        if len(args) == 1:
+-            if isinstance(args[0], _vtk.vtkRectilinearGrid):
+-                if deep:
+-                    self.deep_copy(args[0])
+-                else:
+-                    self.shallow_copy(args[0])
+-            elif isinstance(args[0], (str, pathlib.Path)):
+-                self._from_file(args[0], **kwargs)
+-            elif isinstance(args[0], np.ndarray):
+-                self._from_arrays(args[0], None, None, check_duplicates)
+-            else:
+-                raise TypeError(f'Type ({type(args[0])}) not understood by `RectilinearGrid`')
++def __init__(self, *args, check_duplicates=False, deep=False, **kwargs):
++    """Initialize the rectilinear grid."""
++    super().__init__()
+ 
+-        elif len(args) == 3 or len(args) == 2:
+-            arg0_is_arr = isinstance(args[0], np.ndarray)
+-            arg1_is_arr = isinstance(args[1], np.ndarray)
+-            if len(args) == 3:
+-                arg2_is_arr = isinstance(args[2], np.ndarray)
+-            else:
+-                arg2_is_arr = False
++    def to_ndarray(seq):
++        return np.array(seq) if isinstance(seq, Sequence) else seq
+ 
+-            if all([arg0_is_arr, arg1_is_arr, arg2_is_arr]):
+-                self._from_arrays(args[0], args[1], args[2], check_duplicates)
+-            elif all([arg0_is_arr, arg1_is_arr]):
+-                self._from_arrays(args[0], args[1], None, check_duplicates)
++    if len(args) == 1:
++        if isinstance(args[0], _vtk.vtkRectilinearGrid):
++            if deep:
++                self.deep_copy(args[0])
+             else:
+-                raise TypeError("Arguments not understood by `RectilinearGrid`.")
++                self.shallow_copy(args[0])
++        elif isinstance(args[0], (str, pathlib.Path)):
++            self._from_file(args[0], **kwargs)
++        elif isinstance(args[0], (np.ndarray, Sequence)):
++            self._from_arrays(to_ndarray(args[0]), None, None, check_duplicates)
++        else:
++            raise TypeError(f'Type ({type(args[0])}) not understood by `RectilinearGrid`')
++
++    elif len(args) == 3 or len(args) == 2:
++        arg0_is_arr = isinstance(args[0], (np.ndarray, Sequence))
++        arg1_is_arr = isinstance(args[1], (np.ndarray, Sequence))
++        if len(args) == 3:
++            arg2_is_arr = isinstance(args[2], (np.ndarray, Sequence))
++        else:
++            arg2_is_arr = False
++
++        if all([arg0_is_arr, arg1_is_arr, arg2_is_arr]):
++            self._from_arrays(to_ndarray(args[0]), to_ndarray(args[1]), to_ndarray(args[2]), check_duplicates)
++        elif all([arg0_is_arr, arg1_is_arr]):
++            self._from_arrays(to_ndarray(args[0]), to_ndarray(args[1]), None, check_duplicates)
++        else:
++            raise TypeError("Arguments not understood by `RectilinearGrid`.")
+ 
+     def __repr__(self):
+         """Return the default representation."""
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..4cd69675
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,8 @@
++import pyvista as pv
++
++# This should raise an error
++try:
++    pv.RectilinearGrid([0, 1], [0, 1], [0, 1])
++    print("Script completed successfully, no errors.")
++except Exception as e:
++    print(f"Error: {e}")

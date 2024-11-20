@@ -1,0 +1,41 @@
+
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..04e3393bd0
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,16 @@
++from django.db import models
++
++class A(models.Model):
++    foo_choice = [("A", "output1"), ("B", "output2")]
++    field_foo = models.CharField(max_length=254, choices=foo_choice)
++
++    class Meta:
++        abstract = True
++
++class B(A):
++    foo_choice = [("A", "output1"), ("B", "output2"), ("C", "output3")]
++    field_foo = models.CharField(max_length=254, choices=foo_choice)
++
++# Create an instance of B and test get_field_foo_display
++b_instance = B(field_foo="C")
++print(b_instance.get_field_foo_display())
+diff --git a/settings.py b/settings.py
+new file mode 100644
+index 0000000000..1df89d52f4
+--- /dev/null
++++ b/settings.py
+@@ -0,0 +1,12 @@
++INSTALLED_APPS = [
++    'django.contrib.contenttypes',
++]
++
++DATABASES = {
++    'default': {
++        'ENGINE': 'django.db.backends.sqlite3',
++        'NAME': ':memory:',
++    }
++}
++
++SECRET_KEY = 'dummy_secret_key'

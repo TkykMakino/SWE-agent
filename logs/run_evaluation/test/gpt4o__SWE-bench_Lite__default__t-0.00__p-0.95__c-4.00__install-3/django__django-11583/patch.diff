@@ -1,0 +1,42 @@
+
+diff --git a/django/utils/autoreload.py b/django/utils/autoreload.py
+index 25c3b44250..9cdde1c6b0 100644
+--- a/django/utils/autoreload.py
++++ b/django/utils/autoreload.py
+@@ -358,10 +358,15 @@ class StatReloader(BaseReloader):
+             if file in seen_files:
+                 continue
+             try:
++                if '\x00' in str(file):
++                    logger.error('Embedded null byte found in file path: %s', file)
++                    continue
+                 mtime = file.stat().st_mtime
+-            except OSError:
++            except OSError as e:
++                logger.error('Error accessing file %s: %s', file, e)
+                 # This is thrown when the file does not exist.
+                 continue
++                continue
+             seen_files.add(file)
+             yield file, mtime
+ 
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..ca9ce991f0
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,14 @@
++import os
++import sys
++from django.utils.autoreload import StatReloader
++
++def main():
++    reloader = StatReloader()
++    try:
++        for filepath, mtime in reloader.snapshot_files():
++            print(filepath)
++    except ValueError as e:
++        print(f"Error: {e}")
++
++if __name__ == "__main__":
++    main()

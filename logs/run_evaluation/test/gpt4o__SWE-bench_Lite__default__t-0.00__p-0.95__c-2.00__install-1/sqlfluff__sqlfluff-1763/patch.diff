@@ -1,0 +1,28 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..2c8ea283
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,21 @@
++import os
++
++# Create the SQL file with the example code
++sql_code = """
++SELECT
++    reacted_table_name_right.descendant_id AS category_id,
++    string_agg(redacted_table_name_left.name, ' → ' ORDER BY reacted_table_name_right.generations DESC) AS breadcrumbs -- noqa
++FROM redacted_table_name_left
++INNER JOIN reacted_table_name_right
++    ON redacted_table_name_left.id = reacted_table_name_right.ancestor_id
++GROUP BY reacted_table_name_right.descendant_id
++"""
++
++with open("example.sql", "w", encoding="utf-8") as f:
++    f.write(sql_code)
++
++# Run sqlfluff fix command
++os.system("sqlfluff fix example.sql --ignore templating,parsing,lexing -vvvv")
++
++# Clean up
++os.remove("example.sql")

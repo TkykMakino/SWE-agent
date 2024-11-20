@@ -1,0 +1,78 @@
+
+diff --git a/django/core/management/base.py b/django/core/management/base.py
+index d37d43d5c5..8e67b02d0c 100644
+--- a/django/core/management/base.py
++++ b/django/core/management/base.py
+@@ -130,7 +130,13 @@ class DjangoHelpFormatter(HelpFormatter):
+     def add_arguments(self, actions):
+         super().add_arguments(self._reordered_actions(actions))
+ 
+-
++    def format_help(self):
++        help_text = super().format_help()
++        if self._prog:
++            help_text = help_text.replace(self._prog, f"\n{self._prog}\n")
++        if self._description:
++            help_text = help_text.replace(self._description, f"{self._description}\n")
++        return help_text
+ class OutputWrapper(TextIOBase):
+     """
+     Wrapper around stdout/stderr
+diff --git a/myapp/apps.py b/myapp/apps.py
+new file mode 100644
+index 0000000000..59fe69bc28
+--- /dev/null
++++ b/myapp/apps.py
+@@ -0,0 +1,4 @@
++from django.apps import AppConfig
++
++class MyAppConfig(AppConfig):
++    name = 'myapp'
+diff --git a/myapp/management/commands/tzkt_import.py b/myapp/management/commands/tzkt_import.py
+new file mode 100644
+index 0000000000..8c8804c274
+--- /dev/null
++++ b/myapp/management/commands/tzkt_import.py
+@@ -0,0 +1,8 @@
++from django.core.management.base import BaseCommand
++
++class Command(BaseCommand):
++    help = '''
++    Import a contract from tzkt.
++    Example usage:
++        ./manage.py tzkt_import 'Tezos Mainnet' KT1HTDtMBRCKoNHjfWEEvXneGQpCfPAt6BRe
++    '''
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..c75d12000a
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,16 @@
++from django.core.management.base import BaseCommand
++import os
++
++os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'reproduce_settings')
++
++class Command(BaseCommand):
++    help = '''
++    Import a contract from tzkt.
++    Example usage:
++        ./manage.py tzkt_import 'Tezos Mainnet' KT1HTDtMBRCKoNHjfWEEvXneGQpCfPAt6BRe
++    '''
++
++if __name__ == "__main__":
++    import sys
++    from django.core.management import execute_from_command_line
++    execute_from_command_line(sys.argv)
+diff --git a/reproduce_settings.py b/reproduce_settings.py
+new file mode 100644
+index 0000000000..a9eeb5e12b
+--- /dev/null
++++ b/reproduce_settings.py
+@@ -0,0 +1,6 @@
++SECRET_KEY = 'dummy'
++INSTALLED_APPS = [
++    'django.contrib.contenttypes',
++    'django.contrib.auth',
++    'myapp',
++]

@@ -1,0 +1,2077 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen
++ locale-gen
+Generating locales (this might take a while)...
+  en_US.UTF-8... done
+Generation complete.
++ export LANG=en_US.UTF-8
++ LANG=en_US.UTF-8
++ export LANGUAGE=en_US:en
++ LANGUAGE=en_US:en
++ export LC_ALL=en_US.UTF-8
++ LC_ALL=en_US.UTF-8
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   django/db/models/fields/__init__.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	reproduce.py
+	settings.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git show
+commit 453967477e3ddae704cd739eac2449c0e13d464c
+Author: Mariusz Felisiak <felisiak.mariusz@gmail.com>
+Date:   Wed Sep 9 08:28:08 2020 +0200
+
+    Mentioned ASGI handler in SuspiciousOperation docs.
+
+diff --git a/docs/ref/exceptions.txt b/docs/ref/exceptions.txt
+index d4af1de79d..2f5aa64b9d 100644
+--- a/docs/ref/exceptions.txt
++++ b/docs/ref/exceptions.txt
+@@ -85,8 +85,8 @@ Django core exception classes are defined in ``django.core.exceptions``.
+     * ``SuspiciousSession``
+     * ``TooManyFieldsSent``
+ 
+-    If a ``SuspiciousOperation`` exception reaches the WSGI handler level it is
+-    logged at the ``Error`` level and results in
++    If a ``SuspiciousOperation`` exception reaches the ASGI/WSGI handler level
++    it is logged at the ``Error`` level and results in
+     a :class:`~django.http.HttpResponseBadRequest`. See the :doc:`logging
+     documentation </topics/logging/>` for more information.
+ 
++ git diff 453967477e3ddae704cd739eac2449c0e13d464c
+diff --git a/django/db/models/fields/__init__.py b/django/db/models/fields/__init__.py
+index 28374272f4..95594ded83 100644
+--- a/django/db/models/fields/__init__.py
++++ b/django/db/models/fields/__init__.py
+@@ -514,20 +514,21 @@ class Field(RegisterLookupMixin):
+         return self.__class__(*args, **kwargs)
+ 
+     def __eq__(self, other):
+-        # Needed for @total_ordering
+         if isinstance(other, Field):
+-            return self.creation_counter == other.creation_counter
++            print(f"Comparing {self} with {other}")
++            print(f"self.model: {self.model}, other.model: {other.model}")
++            return (self.creation_counter == other.creation_counter and
++                    self.model == other.model)
++        return NotImplemented
+         return NotImplemented
+ 
+     def __lt__(self, other):
+         # This is needed because bisect does not take a comparison function.
+         if isinstance(other, Field):
+-            return self.creation_counter < other.creation_counter
++            return (self.creation_counter, self.model) < (other.creation_counter, other.model)
+         return NotImplemented
+-
+     def __hash__(self):
+-        return hash(self.creation_counter)
+-
++        return hash((self.creation_counter, self.model))
+     def __deepcopy__(self, memodict):
+         # We don't have to deepcopy very much here, since most things are not
+         # intended to be altered after initial creation.
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ python -m pip install -e .
+Obtaining file:///testbed
+Requirement already satisfied: asgiref>=3.2.10 in /opt/miniconda3/envs/testbed/lib/python3.6/site-packages (from Django==3.2) (3.4.1)
+Requirement already satisfied: pytz in /opt/miniconda3/envs/testbed/lib/python3.6/site-packages (from Django==3.2) (2024.1)
+Requirement already satisfied: sqlparse>=0.2.2 in /opt/miniconda3/envs/testbed/lib/python3.6/site-packages (from Django==3.2) (0.4.4)
+Requirement already satisfied: typing-extensions in /opt/miniconda3/envs/testbed/lib/python3.6/site-packages (from asgiref>=3.2.10->Django==3.2) (4.1.1)
+Installing collected packages: Django
+  Attempting uninstall: Django
+    Found existing installation: Django 3.2
+    Uninstalling Django-3.2:
+      Successfully uninstalled Django-3.2
+  Running setup.py develop for Django
+Successfully installed Django-3.2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
++ git checkout 453967477e3ddae704cd739eac2449c0e13d464c tests/model_fields/tests.py
+Updated 0 paths from 7bb7bb97d9
++ git apply -v -
+Checking patch tests/model_fields/tests.py...
+Applied patch tests/model_fields/tests.py cleanly.
++ ./tests/runtests.py --verbosity 2 --settings=test_sqlite --parallel 1 model_fields.tests
+Testing against Django installed in '/testbed/django'
+Comparing auth.AbstractUser.email with auth.AbstractUser.password
+self.model: <class 'django.contrib.auth.models.AbstractUser'>, other.model: <class 'django.contrib.auth.models.AbstractUser'>
+Importing application model_fields
+Skipping setup of unused database(s): other.
+Operations to perform:
+  Synchronize unmigrated apps: auth, contenttypes, messages, model_fields, sessions, staticfiles
+  Apply all migrations: admin, sites
+Synchronizing apps without migrations:
+  Creating tables...
+    Creating table django_content_type
+    Creating table auth_permission
+    Creating table auth_group
+    Creating table auth_user
+    Creating table django_session
+    Creating table model_fields_foo
+    Creating table model_fields_bar
+    Creating table model_fields_whiz
+    Creating table model_fields_whizdelayed
+    Creating table model_fields_whiziter
+    Creating table model_fields_whiziterempty
+    Creating table model_fields_choiceful
+    Creating table model_fields_bigd
+    Creating table model_fields_floatmodel
+    Creating table model_fields_bigs
+    Creating table model_fields_unicodeslugfield
+    Creating table model_fields_automodel
+    Creating table model_fields_bigautomodel
+    Creating table model_fields_smallautomodel
+    Creating table model_fields_smallintegermodel
+    Creating table model_fields_integermodel
+    Creating table model_fields_bigintegermodel
+    Creating table model_fields_positivebigintegermodel
+    Creating table model_fields_positivesmallintegermodel
+    Creating table model_fields_positiveintegermodel
+    Creating table model_fields_post
+    Creating table model_fields_nullbooleanmodel
+    Creating table model_fields_booleanmodel
+    Creating table model_fields_datetimemodel
+    Creating table model_fields_durationmodel
+    Creating table model_fields_nulldurationmodel
+    Creating table model_fields_primarykeycharmodel
+    Creating table model_fields_fkstobooleans
+    Creating table model_fields_fktochar
+    Creating table model_fields_renamedfield
+    Creating table model_fields_verbosenamefield
+    Creating table model_fields_genericipaddress
+    Creating table model_fields_decimallessthanone
+    Creating table model_fields_fieldclassattributemodel
+    Creating table model_fields_datamodel
+    Creating table model_fields_document
+    Creating table model_fields_person
+    Creating table model_fields_personwithheight
+    Creating table model_fields_personwithheightandwidth
+    Creating table model_fields_persondimensionsfirst
+    Creating table model_fields_persontwoimages
+    Creating table model_fields_jsonmodel
+    Creating table model_fields_nullablejsonmodel
+    Creating table model_fields_allfieldsmodel
+    Creating table model_fields_manytomany
+    Creating table model_fields_uuidmodel
+    Creating table model_fields_nullableuuidmodel
+    Creating table model_fields_primarykeyuuidmodel
+    Creating table model_fields_relatedtouuidmodel
+    Creating table model_fields_uuidchild
+    Creating table model_fields_uuidgrandchild
+    Running deferred SQL...
+Running migrations:
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying sites.0001_initial... OK
+  Applying sites.0002_alter_domain_unique... OK
+Comparing migrations.Migration.id with migrations.Migration.id
+self.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>, other.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>
+Comparing migrations.Migration.app with migrations.Migration.app
+self.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>, other.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>
+Comparing migrations.Migration.name with migrations.Migration.name
+self.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>, other.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>
+Comparing migrations.Migration.applied with migrations.Migration.applied
+self.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>, other.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>
+Comparing migrations.Migration.id with migrations.Migration.id
+self.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>, other.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>
+Comparing migrations.Migration.app with migrations.Migration.app
+self.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>, other.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>
+Comparing migrations.Migration.name with migrations.Migration.name
+self.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>, other.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>
+Comparing migrations.Migration.applied with migrations.Migration.applied
+self.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>, other.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.id with auth.Permission.content_type
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with contenttypes.ContentType.id
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.id with auth.Permission.content_type
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with contenttypes.ContentType.id
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.id with auth.Permission.content_type
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with contenttypes.ContentType.id
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing sites.Site.id with sites.Site.id
+self.model: <class '__fake__.Site'>, other.model: <class '__fake__.Site'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.id with auth.Permission.content_type
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with contenttypes.ContentType.id
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.id with auth.Permission.content_type
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with contenttypes.ContentType.id
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.id with auth.Permission.content_type
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.app_label
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.content_type with auth.Permission.content_type
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.model
+self.model: <class '__fake__.ContentType'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing auth.Permission.content_type with contenttypes.ContentType.id
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.ContentType'>
+Comparing auth.Permission.codename with auth.Permission.codename
+self.model: <class '__fake__.Permission'>, other.model: <class '__fake__.Permission'>
+Comparing migrations.Migration.id with migrations.Migration.id
+self.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>, other.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>
+Comparing migrations.Migration.app with migrations.Migration.app
+self.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>, other.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>
+Comparing migrations.Migration.name with migrations.Migration.name
+self.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>, other.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>
+Comparing migrations.Migration.applied with migrations.Migration.applied
+self.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>, other.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>
+Comparing migrations.Migration.id with migrations.Migration.id
+self.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>, other.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>
+Comparing migrations.Migration.app with migrations.Migration.app
+self.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>, other.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>
+Comparing migrations.Migration.name with migrations.Migration.name
+self.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>, other.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>
+Comparing migrations.Migration.applied with migrations.Migration.applied
+self.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>, other.model: <class 'django.db.migrations.recorder.MigrationRecorder.Migration.<locals>.Migration'>
+Comparing sites.Site.id with sites.Site.id
+self.model: <class 'django.contrib.sites.models.Site'>, other.model: <class 'django.contrib.sites.models.Site'>
+Comparing sites.Site.domain with sites.Site.domain
+self.model: <class 'django.contrib.sites.models.Site'>, other.model: <class 'django.contrib.sites.models.Site'>
+Comparing sites.Site.name with sites.Site.name
+self.model: <class 'django.contrib.sites.models.Site'>, other.model: <class 'django.contrib.sites.models.Site'>
+Comparing sites.Site.id with sites.Site.id
+self.model: <class 'django.contrib.sites.models.Site'>, other.model: <class 'django.contrib.sites.models.Site'>
+Comparing sites.Site.id with sites.Site.id
+self.model: <class 'django.contrib.sites.models.Site'>, other.model: <class 'django.contrib.sites.models.Site'>
+Comparing sites.Site.domain with sites.Site.domain
+self.model: <class 'django.contrib.sites.models.Site'>, other.model: <class 'django.contrib.sites.models.Site'>
+Comparing sites.Site.name with sites.Site.name
+self.model: <class 'django.contrib.sites.models.Site'>, other.model: <class 'django.contrib.sites.models.Site'>
+Comparing admin.LogEntry.id with admin.LogEntry.id
+self.model: <class 'django.contrib.admin.models.LogEntry'>, other.model: <class 'django.contrib.admin.models.LogEntry'>
+Comparing admin.LogEntry.action_time with admin.LogEntry.action_time
+self.model: <class 'django.contrib.admin.models.LogEntry'>, other.model: <class 'django.contrib.admin.models.LogEntry'>
+Comparing auth.User.id with admin.LogEntry.user
+self.model: <class 'django.contrib.auth.models.User'>, other.model: <class 'django.contrib.admin.models.LogEntry'>
+Comparing contenttypes.ContentType.id with admin.LogEntry.content_type
+self.model: <class 'django.contrib.contenttypes.models.ContentType'>, other.model: <class 'django.contrib.admin.models.LogEntry'>
+Comparing admin.LogEntry.object_id with admin.LogEntry.object_id
+self.model: <class 'django.contrib.admin.models.LogEntry'>, other.model: <class 'django.contrib.admin.models.LogEntry'>
+Comparing admin.LogEntry.object_repr with admin.LogEntry.object_repr
+self.model: <class 'django.contrib.admin.models.LogEntry'>, other.model: <class 'django.contrib.admin.models.LogEntry'>
+Comparing admin.LogEntry.action_flag with admin.LogEntry.action_flag
+self.model: <class 'django.contrib.admin.models.LogEntry'>, other.model: <class 'django.contrib.admin.models.LogEntry'>
+Comparing admin.LogEntry.change_message with admin.LogEntry.change_message
+self.model: <class 'django.contrib.admin.models.LogEntry'>, other.model: <class 'django.contrib.admin.models.LogEntry'>
+Comparing admin.LogEntry.id with admin.LogEntry.id
+self.model: <class 'django.contrib.admin.models.LogEntry'>, other.model: <class 'django.contrib.admin.models.LogEntry'>
+Comparing admin.LogEntry.id with admin.LogEntry.id
+self.model: <class 'django.contrib.admin.models.LogEntry'>, other.model: <class 'django.contrib.admin.models.LogEntry'>
+Comparing admin.LogEntry.action_time with admin.LogEntry.action_time
+self.model: <class 'django.contrib.admin.models.LogEntry'>, other.model: <class 'django.contrib.admin.models.LogEntry'>
+Comparing admin.LogEntry.user with auth.User.id
+self.model: <class 'django.contrib.admin.models.LogEntry'>, other.model: <class 'django.contrib.auth.models.User'>
+Comparing admin.LogEntry.content_type with contenttypes.ContentType.id
+self.model: <class 'django.contrib.admin.models.LogEntry'>, other.model: <class 'django.contrib.contenttypes.models.ContentType'>
+Comparing admin.LogEntry.object_id with admin.LogEntry.object_id
+self.model: <class 'django.contrib.admin.models.LogEntry'>, other.model: <class 'django.contrib.admin.models.LogEntry'>
+Comparing admin.LogEntry.object_repr with admin.LogEntry.object_repr
+self.model: <class 'django.contrib.admin.models.LogEntry'>, other.model: <class 'django.contrib.admin.models.LogEntry'>
+Comparing admin.LogEntry.action_flag with admin.LogEntry.action_flag
+self.model: <class 'django.contrib.admin.models.LogEntry'>, other.model: <class 'django.contrib.admin.models.LogEntry'>
+Comparing admin.LogEntry.change_message with admin.LogEntry.change_message
+self.model: <class 'django.contrib.admin.models.LogEntry'>, other.model: <class 'django.contrib.admin.models.LogEntry'>
+Comparing contenttypes.ContentType.id with contenttypes.ContentType.id
+self.model: <class 'django.contrib.contenttypes.models.ContentType'>, other.model: <class 'django.contrib.contenttypes.models.ContentType'>
+Comparing contenttypes.ContentType.app_label with contenttypes.ContentType.id
+self.model: <class 'django.contrib.contenttypes.models.ContentType'>, other.model: <class 'django.contrib.contenttypes.models.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.id
+self.model: <class 'django.contrib.contenttypes.models.ContentType'>, other.model: <class 'django.contrib.contenttypes.models.ContentType'>
+Comparing contenttypes.ContentType.model with contenttypes.ContentType.app_label
+self.model: <class 'django.contrib.contenttypes.models.ContentType'>, other.model: <class 'django.contrib.contenttypes.models.ContentType'>
+Comparing auth.Permission.id with auth.Permission.id
+self.model: <class 'django.contrib.auth.models.Permission'>, other.model: <class 'django.contrib.auth.models.Permission'>
+Comparing auth.Permission.content_type with auth.Permission.id
+self.model: <class 'django.contrib.auth.models.Permission'>, other.model: <class 'django.contrib.auth.models.Permission'>
+Comparing auth.Permission.content_type with auth.Permission.name
+self.model: <class 'django.contrib.auth.models.Permission'>, other.model: <class 'django.contrib.auth.models.Permission'>
+Comparing auth.Permission.codename with auth.Permission.id
+self.model: <class 'django.contrib.auth.models.Permission'>, other.model: <class 'django.contrib.auth.models.Permission'>
+Comparing auth.Permission.codename with auth.Permission.name
+self.model: <class 'django.contrib.auth.models.Permission'>, other.model: <class 'django.contrib.auth.models.Permission'>
+Comparing auth.Permission.codename with auth.Permission.content_type
+self.model: <class 'django.contrib.auth.models.Permission'>, other.model: <class 'django.contrib.auth.models.Permission'>
+Comparing auth.Group.id with auth.Group.id
+self.model: <class 'django.contrib.auth.models.Group'>, other.model: <class 'django.contrib.auth.models.Group'>
+Comparing auth.User.id with auth.User.id
+self.model: <class 'django.contrib.auth.models.User'>, other.model: <class 'django.contrib.auth.models.User'>
+Comparing sites.Site.id with sites.Site.id
+self.model: <class 'django.contrib.sites.models.Site'>, other.model: <class 'django.contrib.sites.models.Site'>
+Comparing admin.LogEntry.id with admin.LogEntry.id
+self.model: <class 'django.contrib.admin.models.LogEntry'>, other.model: <class 'django.contrib.admin.models.LogEntry'>
+Comparing model_fields.Foo.id with model_fields.Foo.id
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Bar.id with model_fields.Bar.id
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Whiz.id with model_fields.Whiz.id
+self.model: <class 'model_fields.models.Whiz'>, other.model: <class 'model_fields.models.Whiz'>
+Comparing model_fields.WhizDelayed.id with model_fields.WhizDelayed.id
+self.model: <class 'model_fields.models.WhizDelayed'>, other.model: <class 'model_fields.models.WhizDelayed'>
+Comparing model_fields.WhizIter.id with model_fields.WhizIter.id
+self.model: <class 'model_fields.models.WhizIter'>, other.model: <class 'model_fields.models.WhizIter'>
+Comparing model_fields.WhizIterEmpty.id with model_fields.WhizIterEmpty.id
+self.model: <class 'model_fields.models.WhizIterEmpty'>, other.model: <class 'model_fields.models.WhizIterEmpty'>
+Comparing model_fields.Choiceful.id with model_fields.Choiceful.id
+self.model: <class 'model_fields.models.Choiceful'>, other.model: <class 'model_fields.models.Choiceful'>
+Comparing model_fields.BigD.id with model_fields.BigD.id
+self.model: <class 'model_fields.models.BigD'>, other.model: <class 'model_fields.models.BigD'>
+Comparing model_fields.FloatModel.id with model_fields.FloatModel.id
+self.model: <class 'model_fields.models.FloatModel'>, other.model: <class 'model_fields.models.FloatModel'>
+Comparing model_fields.BigS.id with model_fields.BigS.id
+self.model: <class 'model_fields.models.BigS'>, other.model: <class 'model_fields.models.BigS'>
+Comparing model_fields.UnicodeSlugField.id with model_fields.UnicodeSlugField.id
+self.model: <class 'model_fields.models.UnicodeSlugField'>, other.model: <class 'model_fields.models.UnicodeSlugField'>
+Comparing model_fields.SmallIntegerModel.id with model_fields.SmallIntegerModel.id
+self.model: <class 'model_fields.models.SmallIntegerModel'>, other.model: <class 'model_fields.models.SmallIntegerModel'>
+Comparing model_fields.IntegerModel.id with model_fields.IntegerModel.id
+self.model: <class 'model_fields.models.IntegerModel'>, other.model: <class 'model_fields.models.IntegerModel'>
+Comparing model_fields.BigIntegerModel.id with model_fields.BigIntegerModel.id
+self.model: <class 'model_fields.models.BigIntegerModel'>, other.model: <class 'model_fields.models.BigIntegerModel'>
+Comparing model_fields.PositiveBigIntegerModel.id with model_fields.PositiveBigIntegerModel.id
+self.model: <class 'model_fields.models.PositiveBigIntegerModel'>, other.model: <class 'model_fields.models.PositiveBigIntegerModel'>
+Comparing model_fields.PositiveSmallIntegerModel.id with model_fields.PositiveSmallIntegerModel.id
+self.model: <class 'model_fields.models.PositiveSmallIntegerModel'>, other.model: <class 'model_fields.models.PositiveSmallIntegerModel'>
+Comparing model_fields.PositiveIntegerModel.id with model_fields.PositiveIntegerModel.id
+self.model: <class 'model_fields.models.PositiveIntegerModel'>, other.model: <class 'model_fields.models.PositiveIntegerModel'>
+Comparing model_fields.Post.id with model_fields.Post.id
+self.model: <class 'model_fields.models.Post'>, other.model: <class 'model_fields.models.Post'>
+Comparing model_fields.NullBooleanModel.id with model_fields.NullBooleanModel.id
+self.model: <class 'model_fields.models.NullBooleanModel'>, other.model: <class 'model_fields.models.NullBooleanModel'>
+Comparing model_fields.BooleanModel.id with model_fields.BooleanModel.id
+self.model: <class 'model_fields.models.BooleanModel'>, other.model: <class 'model_fields.models.BooleanModel'>
+Comparing model_fields.DateTimeModel.id with model_fields.DateTimeModel.id
+self.model: <class 'model_fields.models.DateTimeModel'>, other.model: <class 'model_fields.models.DateTimeModel'>
+Comparing model_fields.DurationModel.id with model_fields.DurationModel.id
+self.model: <class 'model_fields.models.DurationModel'>, other.model: <class 'model_fields.models.DurationModel'>
+Comparing model_fields.NullDurationModel.id with model_fields.NullDurationModel.id
+self.model: <class 'model_fields.models.NullDurationModel'>, other.model: <class 'model_fields.models.NullDurationModel'>
+Comparing model_fields.FksToBooleans.id with model_fields.FksToBooleans.id
+self.model: <class 'model_fields.models.FksToBooleans'>, other.model: <class 'model_fields.models.FksToBooleans'>
+Comparing model_fields.FkToChar.id with model_fields.FkToChar.id
+self.model: <class 'model_fields.models.FkToChar'>, other.model: <class 'model_fields.models.FkToChar'>
+Comparing model_fields.RenamedField.id with model_fields.RenamedField.id
+self.model: <class 'model_fields.models.RenamedField'>, other.model: <class 'model_fields.models.RenamedField'>
+Comparing model_fields.VerboseNameField.id with model_fields.VerboseNameField.id
+self.model: <class 'model_fields.models.VerboseNameField'>, other.model: <class 'model_fields.models.VerboseNameField'>
+Comparing model_fields.GenericIPAddress.id with model_fields.GenericIPAddress.id
+self.model: <class 'model_fields.models.GenericIPAddress'>, other.model: <class 'model_fields.models.GenericIPAddress'>
+Comparing model_fields.DecimalLessThanOne.id with model_fields.DecimalLessThanOne.id
+self.model: <class 'model_fields.models.DecimalLessThanOne'>, other.model: <class 'model_fields.models.DecimalLessThanOne'>
+Comparing model_fields.FieldClassAttributeModel.id with model_fields.FieldClassAttributeModel.id
+self.model: <class 'model_fields.models.FieldClassAttributeModel'>, other.model: <class 'model_fields.models.FieldClassAttributeModel'>
+Comparing model_fields.DataModel.id with model_fields.DataModel.id
+self.model: <class 'model_fields.models.DataModel'>, other.model: <class 'model_fields.models.DataModel'>
+Comparing model_fields.Document.id with model_fields.Document.id
+self.model: <class 'model_fields.models.Document'>, other.model: <class 'model_fields.models.Document'>
+Comparing model_fields.Person.id with model_fields.Person.id
+self.model: <class 'model_fields.models.Person'>, other.model: <class 'model_fields.models.Person'>
+Comparing model_fields.PersonWithHeight.id with model_fields.PersonWithHeight.id
+self.model: <class 'model_fields.models.PersonWithHeight'>, other.model: <class 'model_fields.models.PersonWithHeight'>
+Comparing model_fields.PersonWithHeightAndWidth.id with model_fields.PersonWithHeightAndWidth.id
+self.model: <class 'model_fields.models.PersonWithHeightAndWidth'>, other.model: <class 'model_fields.models.PersonWithHeightAndWidth'>
+Comparing model_fields.PersonDimensionsFirst.id with model_fields.PersonDimensionsFirst.id
+self.model: <class 'model_fields.models.PersonDimensionsFirst'>, other.model: <class 'model_fields.models.PersonDimensionsFirst'>
+Comparing model_fields.PersonTwoImages.id with model_fields.PersonTwoImages.id
+self.model: <class 'model_fields.models.PersonTwoImages'>, other.model: <class 'model_fields.models.PersonTwoImages'>
+Comparing model_fields.JSONModel.id with model_fields.JSONModel.id
+self.model: <class 'model_fields.models.JSONModel'>, other.model: <class 'model_fields.models.JSONModel'>
+Comparing model_fields.NullableJSONModel.id with model_fields.NullableJSONModel.idCreating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+test_get_choices (model_fields.tests.GetChoicesLimitChoicesToTests) ... ok
+test_get_choices_reverse_related_field (model_fields.tests.GetChoicesLimitChoicesToTests) ... ok
+test_get_choices (model_fields.tests.GetChoicesOrderingTests) ... ok
+test_get_choices_default_ordering (model_fields.tests.GetChoicesOrderingTests) ... 
+self.model: <class 'model_fields.models.NullableJSONModel'>, other.model: <class 'model_fields.models.NullableJSONModel'>
+Comparing model_fields.AllFieldsModel.id with model_fields.AllFieldsModel.id
+self.model: <class 'model_fields.models.AllFieldsModel'>, other.model: <class 'model_fields.models.AllFieldsModel'>
+Comparing model_fields.ManyToMany.id with model_fields.ManyToMany.id
+self.model: <class 'model_fields.models.ManyToMany'>, other.model: <class 'model_fields.models.ManyToMany'>
+Comparing model_fields.UUIDModel.id with model_fields.UUIDModel.id
+self.model: <class 'model_fields.models.UUIDModel'>, other.model: <class 'model_fields.models.UUIDModel'>
+Comparing model_fields.NullableUUIDModel.id with model_fields.NullableUUIDModel.id
+self.model: <class 'model_fields.models.NullableUUIDModel'>, other.model: <class 'model_fields.models.NullableUUIDModel'>
+Comparing model_fields.PrimaryKeyUUIDModel.id with model_fields.PrimaryKeyUUIDModel.id
+self.model: <class 'model_fields.models.PrimaryKeyUUIDModel'>, other.model: <class 'model_fields.models.PrimaryKeyUUIDModel'>
+Comparing model_fields.RelatedToUUIDModel.id with model_fields.RelatedToUUIDModel.id
+self.model: <class 'model_fields.models.RelatedToUUIDModel'>, other.model: <class 'model_fields.models.RelatedToUUIDModel'>
+System check identified no issues (3 silenced).
+Comparing model_fields.Foo.a with model_fields.Foo.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.id with model_fields.Foo.id
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.a with model_fields.Foo.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.d with model_fields.Foo.d
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.id with model_fields.Foo.id
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.a with model_fields.Foo.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.d with model_fields.Foo.d
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.id with model_fields.Foo.id
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.a with model_fields.Foo.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.d with model_fields.Foo.d
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.id with model_fields.Foo.id
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.a with model_fields.Foo.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.d with model_fields.Foo.d
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Bar.b with model_fields.Bar.b
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.id with model_fields.Bar.id
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.b with model_fields.Bar.b
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Foo.id with model_fields.Bar.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.id with model_fields.Bar.id
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.b with model_fields.Bar.b
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.a with model_fields.Foo.id
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Bar.id with model_fields.Bar.id
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.b with model_fields.Bar.b
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Foo.id with model_fields.Bar.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.id with model_fields.Bar.id
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.b with model_fields.Bar.b
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.a with model_fields.Foo.id
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.id with model_fields.Foo.id
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.a with model_fields.Foo.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.d with model_fields.Foo.d
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.a with model_fields.Foo.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.id with model_fields.Foo.id
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.a with model_fields.Foo.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.d with model_fields.Foo.d
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.id with model_fields.Foo.id
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.a with model_fields.Foo.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.d with model_fields.Foo.d
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.a with model_fields.Foo.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.id with model_fields.Foo.id
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.a with model_fields.Foo.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.d with model_fields.Foo.d
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.id with model_fields.Foo.id
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.a with model_fields.Foo.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.d with model_fields.Foo.d
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.d with model_fields.Foo.d
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.id with model_fields.Foo.id
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.a with model_fields.Foo.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Foo.d with model_fields.Foo.d
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Foo'>ok
+test_get_choices_reverse_related_field (model_fields.tests.GetChoicesOrderingTests) ... ok
+test_get_choices_reverse_related_field_default_ordering (model_fields.tests.GetChoicesOrderingTests) ... ok
+test_abstract_inherited_fields (model_fields.tests.BasicFieldTests)
+Field instances from abstract models are not equal. ... ERROR
+test_choices_form_class (model_fields.tests.BasicFieldTests)
+Can supply a custom choices form class to Field.formfield() ... ok
+test_deconstruct_nested_field (model_fields.tests.BasicFieldTests)
+deconstruct() uses __qualname__ for nested class support. ... ok
+test_field_instance_is_picklable (model_fields.tests.BasicFieldTests)
+Field instances can be pickled. ... ok
+test_field_name (model_fields.tests.BasicFieldTests) ... ok
+test_field_ordering (model_fields.tests.BasicFieldTests)
+Fields are ordered based on their creation. ... ERROR
+test_field_repr (model_fields.tests.BasicFieldTests) ... ok
+test_field_repr_nested (model_fields.tests.BasicFieldTests)
+__repr__() uses __qualname__ for nested class support. ... ok
+test_field_str (model_fields.tests.BasicFieldTests) ... ok
+test_field_verbose_name (model_fields.tests.BasicFieldTests) ... ok
+test_formfield_disabled (model_fields.tests.BasicFieldTests)
+Field.formfield() sets disabled for fields with choices. ... ok
+test_show_hidden_initial (model_fields.tests.BasicFieldTests) ... ok
+test_check (model_fields.tests.ChoicesTests) ... ok
+test_choices (model_fields.tests.ChoicesTests) ... ok
+test_flatchoices (model_fields.tests.ChoicesTests) ... ok
+test_formfield (model_fields.tests.ChoicesTests) ... ok
+test_invalid_choice (model_fields.tests.ChoicesTests) ... ok
+test_blank_in_choices (model_fields.tests.GetChoicesTests) ... ok
+test_blank_in_grouped_choices (model_fields.tests.GetChoicesTests) ... ok
+test_empty_choices (model_fields.tests.GetChoicesTests) ... ok
+test_lazy_strings_not_evaluated (model_fields.tests.GetChoicesTests) ... ok
+test_choices_and_field_display (model_fields.tests.GetFieldDisplayTests) ... ok
+test_empty_iterator_choices (model_fields.tests.GetFieldDisplayTests) ... ok
+test_get_FIELD_display_translated (model_fields.tests.GetFieldDisplayTests)
+A translated display value is coerced to str. ... ok
+test_iterator_choices (model_fields.tests.GetFieldDisplayTests) ... ok
+test_overriding_FIELD_display (model_fields.tests.GetFieldDisplayTests) ... ok
+test_overriding_inherited_FIELD_display (model_fields.tests.GetFieldDisplayTests) ... 
+Comparing model_fields.Bar.id with model_fields.Bar.id
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.b with model_fields.Bar.b
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Foo.id with model_fields.Bar.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Foo.id with model_fields.Bar.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.id with model_fields.Bar.id
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.b with model_fields.Bar.b
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.a with model_fields.Foo.id
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Bar.id with model_fields.Bar.id
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.b with model_fields.Bar.b
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Foo.id with model_fields.Bar.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Foo.id with model_fields.Bar.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.id with model_fields.Bar.id
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.b with model_fields.Bar.b
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.a with model_fields.Foo.id
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.Bar.id with model_fields.Bar.id
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.b with model_fields.Bar.b
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Foo.id with model_fields.Bar.a
+self.model: <class 'model_fields.models.Foo'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.b with model_fields.Bar.b
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.id with model_fields.Bar.id
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.b with model_fields.Bar.b
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Bar'>
+Comparing model_fields.Bar.a with model_fields.Foo.id
+self.model: <class 'model_fields.models.Bar'>, other.model: <class 'model_fields.models.Foo'>
+Comparing model_fields.AbstractModel.field with model_fields.InheritAbstractModel1.field
+self.model: <class 'model_fields.tests.BasicFieldTests.test_abstract_inherited_fields.<locals>.AbstractModel'>, other.model: <class 'model_fields.tests.BasicFieldTests.test_abstract_inherited_fields.<locals>.InheritAbstractModel1'>
+Comparing model_fields.AbstractModel.field with model_fields.InheritAbstractModel2.field
+self.model: <class 'model_fields.tests.BasicFieldTests.test_abstract_inherited_fields.<locals>.AbstractModel'>, other.model: <class 'model_fields.tests.BasicFieldTests.test_abstract_inherited_fields.<locals>.InheritAbstractModel2'>
+Comparing model_fields.InheritAbstractModel1.field with model_fields.InheritAbstractModel2.field
+self.model: <class 'model_fields.tests.BasicFieldTests.test_abstract_inherited_fields.<locals>.InheritAbstractModel1'>, other.model: <class 'model_fields.tests.BasicFieldTests.test_abstract_inherited_fields.<locals>.InheritAbstractModel2'>
+Comparing model_fields.Choiceful.id with model_fields.Choiceful.id
+self.model: <class 'model_fields.models.Choiceful'>, other.model: <class 'model_fields.models.Choiceful'>
+ok
+
+======================================================================
+ERROR: test_abstract_inherited_fields (model_fields.tests.BasicFieldTests)
+Field instances from abstract models are not equal.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/testbed/tests/model_fields/tests.py", line 127, in test_abstract_inherited_fields
+    self.assertLess(abstract_model_field, inherit1_model_field)
+  File "/opt/miniconda3/envs/testbed/lib/python3.6/unittest/case.py", line 1207, in assertLess
+    if not a < b:
+  File "/testbed/django/db/models/fields/__init__.py", line 528, in __lt__
+    return (self.creation_counter, self.model) < (other.creation_counter, other.model)
+TypeError: '<' not supported between instances of 'ModelBase' and 'ModelBase'
+
+======================================================================
+ERROR: test_field_ordering (model_fields.tests.BasicFieldTests)
+Fields are ordered based on their creation.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/testbed/tests/model_fields/tests.py", line 88, in test_field_ordering
+    self.assertLess(f2, f1)
+  File "/opt/miniconda3/envs/testbed/lib/python3.6/unittest/case.py", line 1207, in assertLess
+    if not a < b:
+  File "/testbed/django/db/models/fields/__init__.py", line 528, in __lt__
+    return (self.creation_counter, self.model) < (other.creation_counter, other.model)
+AttributeError: 'Field' object has no attribute 'model'
+
+----------------------------------------------------------------------
+Ran 33 tests in 0.015s
+
+FAILED (errors=2)
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
++ git checkout 453967477e3ddae704cd739eac2449c0e13d464c tests/model_fields/tests.py
+Updated 1 path from 7bb7bb97d9

@@ -1,0 +1,130 @@
+
+diff --git a/django/db/models/sql/query.py b/django/db/models/sql/query.py
+index 8e55bd092d..c68860aee4 100644
+--- a/django/db/models/sql/query.py
++++ b/django/db/models/sql/query.py
+@@ -1304,6 +1304,7 @@ class Query(BaseExpression):
+         condition = self.build_lookup(lookups, col, value)
+         lookup_type = condition.lookup_name
+         clause.add(condition, AND)
++        clause.add(condition, AND)
+ 
+         require_outer = lookup_type == 'isnull' and condition.rhs is True and not current_negated
+         if current_negated and (lookup_type != 'isnull' or condition.rhs is False) and condition.rhs is not None:
+@@ -1343,6 +1344,8 @@ class Query(BaseExpression):
+         clause, _ = self._add_q(q_object, self.used_aliases)
+         if clause:
+             self.where.add(clause, AND)
++            if self.group_by:
++                self.group_by = list(set(self.group_by + clause.get_group_by_cols()))
+         self.demote_joins(existing_inner)
+ 
+     def build_where(self, q_object):
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..6cea9fd1dd
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,30 @@
++import django
++from django.conf import settings
++
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.auth',
++        'django.contrib.contenttypes',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    SECRET_KEY='test_secret_key'
++)
++
++django.setup()
++
++from django.contrib.auth import models
++from django.db.models import Max
++
++a = models.User.objects.filter(email__isnull=True).values('email').annotate(m=Max('id')).values('m')
++print(a.query) # good
++# SELECT MAX("auth_user"."id") AS "m" FROM "auth_user" WHERE "auth_user"."email" IS NULL GROUP BY "auth_user"."email"
++print(a[:1].query) # good
++# SELECT MAX("auth_user"."id") AS "m" FROM "auth_user" WHERE "auth_user"."email" IS NULL GROUP BY "auth_user"."email" LIMIT 1
++b = models.User.objects.filter(id=a[:1])
++print(b.query) # GROUP BY U0."id" should be GROUP BY U0."email"
++# SELECT ... FROM "auth_user" WHERE "auth_user"."id" = (SELECT U0."id" FROM "auth_user" U0 WHERE U0."email" IS NULL GROUP BY U0."id" LIMIT 1)
+diff --git a/setup_django.py b/setup_django.py
+new file mode 100644
+index 0000000000..129cb9e504
+--- /dev/null
++++ b/setup_django.py
+@@ -0,0 +1,47 @@
++import django
++from django.conf import settings
++
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.auth',
++        'django.contrib.contenttypes',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    SECRET_KEY='test_secret_key'
++)
++
++django.setup()
++
++from django.contrib.auth import models
++from django.db.models import Max
++
++a = models.User.objects.filter(email__isnull=True).values('email').annotate(m=Max('id')).values('m')
++print(a.query) # good
++# SELECT MAX("auth_user"."id") AS "m" FROM "auth_user" WHERE "auth_user"."email" IS NULL GROUP BY "auth_user"."email"
++print(a[:1].query) # good
++# SELECT MAX("auth_user"."id") AS "m" FROM "auth_user" WHERE "auth_user"."email" IS NULL GROUP BY "auth_user"."email" LIMIT 1
++b = models.User.objects.filter(id=a[:1])
++print(b.query) # GROUP BY U0."id" should be GROUP BY U0."email"
++# SELECT ... FROM "auth_user" WHERE "auth_user"."id" = (SELECT U0."id" FROM "auth_user" U0 WHERE U0."email" IS NULL GROUP BY U0."id" LIMIT 1)
++from django.conf import settings
++
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.auth',
++        'django.contrib.contenttypes',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    SECRET_KEY='test_secret_key'
++)
++
++django.setup()
+diff --git a/test_settings.py b/test_settings.py
+new file mode 100644
+index 0000000000..218baa4a88
+--- /dev/null
++++ b/test_settings.py
+@@ -0,0 +1,13 @@
++INSTALLED_APPS = [
++    'django.contrib.auth',
++    'django.contrib.contenttypes',
++]
++
++DATABASES = {
++    'default': {
++        'ENGINE': 'django.db.backends.sqlite3',
++        'NAME': ':memory:',
++    }
++}
++
++SECRET_KEY = 'test_secret_key'

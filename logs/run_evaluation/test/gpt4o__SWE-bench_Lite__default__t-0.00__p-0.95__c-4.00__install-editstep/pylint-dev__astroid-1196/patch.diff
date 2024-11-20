@@ -1,0 +1,21 @@
+
+diff --git a/astroid/nodes/node_classes.py b/astroid/nodes/node_classes.py
+index 11136f8c..4985663c 100644
+--- a/astroid/nodes/node_classes.py
++++ b/astroid/nodes/node_classes.py
+@@ -1961,6 +1961,15 @@ class Const(mixins.NoChildrenMixin, NodeNG, Instance):
+         try:
+             if isinstance(self.value, (str, bytes)):
+                 return Const(self.value[index_value])
++            else:
++                return self.value.getitem(index, context)
++        except AttributeError:
++            raise AstroidIndexError(
++                message="Object does not support item access",
++                node=self,
++                index=index,
++                context=context,
++            )
+         except IndexError as exc:
+             raise AstroidIndexError(
+                 message="Index {index!r} out of range",

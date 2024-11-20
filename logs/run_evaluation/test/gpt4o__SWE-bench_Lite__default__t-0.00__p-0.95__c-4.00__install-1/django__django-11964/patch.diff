@@ -1,0 +1,63 @@
+
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..4ecbdb00f6
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,37 @@
++import os
++import django
++os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
++django.setup()
++
++from django.db import models
++from django.utils.translation import gettext_lazy as _
++from django.test import TestCase
++
++class MyChoice(models.TextChoices):
++    FIRST_CHOICE = "first", _("The first choice, it is")
++    SECOND_CHOICE = "second", _("The second choice, it is")
++
++class MyObject(models.Model):
++    my_str_value = models.CharField(max_length=10, choices=MyChoice.choices)
++
++    class Meta:
++        app_label = 'myapp'
++class EnumTest(TestCase):
++    def setUp(self) -> None:
++        self.my_object = MyObject.objects.create(my_str_value=MyChoice.FIRST_CHOICE)
++
++        assert False, "Test is running"
++        my_object = self.my_object
++        print(f"Created object value: {my_object.my_str_value}")
++        self.assertIsInstance(my_object.my_str_value, str)
++        self.assertEqual(str(my_object.my_str_value), "first")
++        assert False, f"Debug: {my_object.my_str_value}"
++
++    def test_retrieved_object_is_str(self):
++        my_object = MyObject.objects.last()
++        print(f"Retrieved object value: {my_object.my_str_value}")
++        self.assertIsInstance(my_object.my_str_value, str)
++        self.assertEqual(str(my_object.my_str_value), "first")
++        assert False, f"Debug: {my_object.my_str_value}"
++
++print("Tests completed.")
+diff --git a/settings.py b/settings.py
+new file mode 100644
+index 0000000000..7af6ee654c
+--- /dev/null
++++ b/settings.py
+@@ -0,0 +1,13 @@
++INSTALLED_APPS = [
++    'django.contrib.contenttypes',
++    'django.contrib.auth',
++]
++
++DATABASES = {
++    'default': {
++        'ENGINE': 'django.db.backends.sqlite3',
++        'NAME': ':memory:',
++    }
++}
++
++SECRET_KEY = 'dummy-secret-key'

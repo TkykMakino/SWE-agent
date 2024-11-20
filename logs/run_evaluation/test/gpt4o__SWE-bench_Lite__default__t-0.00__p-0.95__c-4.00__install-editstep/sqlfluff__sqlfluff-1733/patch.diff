@@ -1,0 +1,16 @@
+
+diff --git a/src/sqlfluff/dialects/dialect_ansi.py b/src/sqlfluff/dialects/dialect_ansi.py
+index 0694f858..4eb54600 100644
+--- a/src/sqlfluff/dialects/dialect_ansi.py
++++ b/src/sqlfluff/dialects/dialect_ansi.py
+@@ -420,9 +420,7 @@ ansi_dialect.add(
+             Ref("SelectClauseElementSegment"),
+             allow_trailing=True,
+         ),
+-        # NB: The Dedent for the indent above lives in the
+-        # SelectStatementSegment so that it sits in the right
+-        # place corresponding to the whitespace.
++        Dedent,  # Ensure proper dedent after the select clause elements
+     ),
+     SelectClauseElementTerminatorGrammar=OneOf(
+         "FROM",

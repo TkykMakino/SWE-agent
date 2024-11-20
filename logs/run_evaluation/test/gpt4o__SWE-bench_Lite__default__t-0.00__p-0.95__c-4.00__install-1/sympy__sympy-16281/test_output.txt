@@ -1,0 +1,1182 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   sympy/printing/pretty/pretty.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git show
+commit 41490b75f3621408e0468b0e7b6dc409601fc6ff
+Merge: 1399d01273 ba47896656
+Author: Chris Smith <smichr@gmail.com>
+Date:   Sat Mar 16 11:31:29 2019 -0500
+
+    Merge pull request #16274 from oscargus/mathmlfunctions2
+    
+    MathML printing of matrix functions, constants and SingularityFunction
+
++ git diff 41490b75f3621408e0468b0e7b6dc409601fc6ff
+diff --git a/sympy/printing/pretty/pretty.py b/sympy/printing/pretty/pretty.py
+index 6d3cc05bd3..c7c544d5a7 100644
+--- a/sympy/printing/pretty/pretty.py
++++ b/sympy/printing/pretty/pretty.py
+@@ -470,60 +470,65 @@ def _print_Integral(self, integral):
+         pform.binding = prettyForm.MUL
+         return pform
+ 
+-    def _print_Product(self, expr):
+-        func = expr.term
+-        pretty_func = self._print(func)
++def _print_Product(self, expr):
++    from sympy.printing.pretty.stringpict import stringPict
++    from sympy.printing.pretty.pretty_symbology import xobj
++    from sympy.printing.pretty.pretty_form import prettyForm
++    from sympy.core.relational import Equality
+ 
+-        horizontal_chr = xobj('_', 1)
+-        corner_chr = xobj('_', 1)
+-        vertical_chr = xobj('|', 1)
++    func = expr.term
++    pretty_func = self._print(func)
+ 
+-        if self._use_unicode:
+-            # use unicode corners
+-            horizontal_chr = xobj('-', 1)
+-            corner_chr = u'\N{BOX DRAWINGS LIGHT DOWN AND HORIZONTAL}'
++    horizontal_chr = xobj('_', 1)
++    corner_chr = xobj('_', 1)
++    vertical_chr = xobj('|', 1)
+ 
+-        func_height = pretty_func.height()
++    if self._use_unicode:
++        # use unicode corners
++        horizontal_chr = xobj('-', 1)
++        corner_chr = u'\N{BOX DRAWINGS LIGHT DOWN AND HORIZONTAL}'
+ 
+-        first = True
+-        max_upper = 0
+-        sign_height = 0
++    func_height = pretty_func.height()
+ 
+-        for lim in expr.limits:
+-            width = (func_height + 2) * 5 // 3 - 2
+-            sign_lines = []
+-            sign_lines.append(corner_chr + (horizontal_chr*width) + corner_chr)
+-            for i in range(func_height + 1):
+-                sign_lines.append(vertical_chr + (' '*width) + vertical_chr)
++    first = True
++    max_upper = 0
++    sign_height = 0
+ 
+-            pretty_sign = stringPict('')
+-            pretty_sign = prettyForm(*pretty_sign.stack(*sign_lines))
++    for lim in expr.limits:
++        width = (func_height + 2) * 3 // 3 - 2  # Adjust width
++        sign_lines = []
++        sign_lines.append(corner_chr + (horizontal_chr*width) + corner_chr)
++        for i in range(func_height):
++            sign_lines.append(vertical_chr + (' '*width) + vertical_chr)  # Remove empty line
+ 
+-            pretty_upper = self._print(lim[2])
+-            pretty_lower = self._print(Equality(lim[0], lim[1]))
++        pretty_sign = stringPict('')
++        pretty_sign = prettyForm(*pretty_sign.stack(*sign_lines))
+ 
+-            max_upper = max(max_upper, pretty_upper.height())
++        pretty_upper = self._print(lim[2])
++        pretty_lower = self._print(Equality(lim[0], lim[1]))
+ 
+-            if first:
+-                sign_height = pretty_sign.height()
++        max_upper = max(max_upper, pretty_upper.height())
+ 
+-            pretty_sign = prettyForm(*pretty_sign.above(pretty_upper))
+-            pretty_sign = prettyForm(*pretty_sign.below(pretty_lower))
++        if first:
++            sign_height = pretty_sign.height()
+ 
+-            if first:
+-                pretty_func.baseline = 0
+-                first = False
++        pretty_sign = prettyForm(*pretty_sign.above(pretty_upper))
++        pretty_sign = prettyForm(*pretty_sign.below(pretty_lower))
++
++        if first:
++            pretty_func.baseline = 0
++            first = False
+ 
+-            height = pretty_sign.height()
+-            padding = stringPict('')
+-            padding = prettyForm(*padding.stack(*[' ']*(height - 1)))
+-            pretty_sign = prettyForm(*pretty_sign.right(padding))
++        height = pretty_sign.height()
++        padding = stringPict('')
++        padding = prettyForm(*padding.stack(*[' ']*(height - 1)))
++        pretty_sign = prettyForm(*pretty_sign.right(padding))
+ 
+-            pretty_func = prettyForm(*pretty_sign.right(pretty_func))
++        pretty_func = prettyForm(*pretty_sign.right(pretty_func))
+ 
+-        pretty_func.baseline = max_upper + sign_height//2
+-        pretty_func.binding = prettyForm.MUL
+-        return pretty_func
++    pretty_func.baseline = max_upper + sign_height//2
++    pretty_func.binding = prettyForm.MUL
++    return pretty_func
+ 
+     def _print_Sum(self, expr):
+         ascii_mode = not self._use_unicode
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ python -m pip install -e .
+Obtaining file:///testbed
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: mpmath>=0.19 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sympy==1.4.dev0) (1.3.0)
+Installing collected packages: sympy
+  Attempting uninstall: sympy
+    Found existing installation: sympy 1.4.dev0
+    Uninstalling sympy-1.4.dev0:
+      Successfully uninstalled sympy-1.4.dev0
+  Running setup.py develop for sympy
+Successfully installed sympy-1.4.dev0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
++ git checkout 41490b75f3621408e0468b0e7b6dc409601fc6ff sympy/printing/pretty/tests/test_pretty.py
+Updated 0 paths from b17e105c44
++ git apply -v -
+Checking patch sympy/printing/pretty/tests/test_pretty.py...
+Applied patch sympy/printing/pretty/tests/test_pretty.py cleanly.
++ PYTHONWARNINGS=ignore::UserWarning,ignore::SyntaxWarning
++ bin/test -C --verbose sympy/printing/pretty/tests/test_pretty.py
+============================= test process starts ==============================
+executable:         /opt/miniconda3/envs/testbed/bin/python  (3.9.19-final-0) [CPython]
+architecture:       64-bit
+cache:              no
+ground types:       python 
+numpy:              None
+random seed:        27002245
+hash randomization: on (PYTHONHASHSEED=2102261949)
+
+sympy/printing/pretty/tests/test_pretty.py[125] 
+test_pretty_ascii_str ok
+test_pretty_unicode_str ok
+test_upretty_greek ok
+test_upretty_multiindex ok
+test_upretty_sub_super ok
+test_upretty_subs_missing_in_24 ok
+test_missing_in_2X_issue_9047 ok
+test_upretty_modifiers ok
+test_pretty_Cycle ok
+test_pretty_basic F
+test_negative_fractions F
+test_issue_5524 F
+test_pretty_ordering F
+test_EulerGamma F
+test_GoldenRatio F
+test_pretty_relational F
+test_Assignment F
+test_AugmentedAssignment F
+test_issue_7117 F
+test_pretty_rational F
+test_pretty_functions F
+test_pretty_sqrt F
+test_pretty_sqrt_char_knob F
+test_pretty_sqrt_longsymbol_no_sqrt_char F
+test_pretty_KroneckerDelta F
+test_pretty_product F
+test_pretty_lambda F
+test_pretty_order F
+test_pretty_derivatives F
+test_pretty_integrals F
+test_pretty_matrix F
+test_pretty_ndim_arrays F
+test_tensor_TensorProduct F
+test_diffgeom_print_WedgeProduct F
+test_Adjoint F
+test_pretty_Trace_issue_9044 F
+test_MatrixExpressions ok
+test_pretty_dotproduct F
+test_pretty_piecewise F
+test_pretty_ITE F
+test_pretty_seq F
+test_any_object_in_sequence F
+test_print_builtin_set F
+test_pretty_sets F
+test_pretty_SetExpr F
+test_pretty_ImageSet F
+test_pretty_ConditionSet F
+test_pretty_ComplexRegion F
+test_pretty_Union_issue_10414 F
+test_pretty_Intersection_issue_10414 F
+test_ProductSet_paranthesis F
+test_ProductSet_prod_char_issue_10413 F
+test_pretty_sequences F
+test_pretty_FourierSeries F
+test_pretty_FormalPowerSeries F
+test_pretty_limits F
+test_pretty_ComplexRootOf F
+test_pretty_RootSum F
+test_GroebnerBasis F
+test_pretty_Boolean E
+test_pretty_Domain F
+test_pretty_prec F
+test_pprint ok
+test_pretty_class ok
+test_pretty_no_wrap_line ok
+test_settings ok
+test_pretty_sum F
+test_units F
+test_pretty_Subs F
+test_gammas F
+test_beta F
+test_function_subclass_different_name ok
+test_SingularityFunction F
+test_deltas F
+test_hyper F
+test_meijerg F
+test_noncommutative F
+test_pretty_special_functions E
+test_pretty_geometry ok
+test_expint F
+test_elliptic_functions F
+test_RandomDomain F
+test_PrettyPoly ok
+test_issue_6285 F
+test_issue_6359 F
+test_issue_6739 F
+test_complicated_symbol_unchanged ok
+test_categories F
+test_PrettyModules F
+test_QuotientRing F
+test_Homomorphism F
+test_Tr F
+test_pretty_Add ok
+test_issue_7179 ok
+test_issue_7180 ok
+test_pretty_Complement F
+test_pretty_SymmetricDifference F
+test_pretty_Contains F
+test_issue_8292 E
+test_issue_4335 F
+test_issue_8344 E
+test_issue_6324 F
+test_issue_7927 F
+test_issue_6134 F
+test_issue_9877 F
+test_issue_13651 ok
+test_pretty_primenu F
+test_pretty_primeomega F
+test_pretty_Mod F
+test_issue_11801 ok
+test_pretty_UnevaluatedExpr F
+test_issue_10472 F
+test_MatrixElement_printing F
+test_issue_12675 F
+test_MatrixSymbol_printing F
+test_degree_printing F
+test_vector_expr_pretty_printing F
+test_pretty_print_tensor_expr F
+test_pretty_print_tensor_partial_deriv F
+test_issue_15560 F
+test_print_lerchphi F
+test_issue_15583 F
+test_matrixSymbolBold F
+test_center_accent ok
+test_imaginary_unit F                                                     [FAIL]
+
+
+________________________________________________________________________________
+________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_Boolean ________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 4095, in test_pretty_Boolean
+    assert pretty(expr) == "Not(x)"
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 228, in pretty
+    return xpretty(expr, order=order, use_unicode=False, wrap_line=False)
+  File "/testbed/sympy/printing/pretty/pretty.py", line 2483, in pretty
+    return pp.doprint(expr)
+  File "/testbed/sympy/printing/pretty/pretty.py", line 65, in doprint
+    return self._print(expr).render(**self._settings)
+  File "/testbed/sympy/printing/printer.py", line 287, in _print
+    return getattr(self, printmethod)(expr, **kwargs)
+  File "/testbed/sympy/printing/pretty/pretty.py", line 233, in _print_Not
+    return self._print_Function(e)
+AttributeError: 'PrettyPrinter' object has no attribute '_print_Function'
+________________________________________________________________________________
+___ sympy/printing/pretty/tests/test_pretty.py:test_pretty_special_functions ___
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5302, in test_pretty_special_functions
+    assert pretty(expr) == ascii_str
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 228, in pretty
+    return xpretty(expr, order=order, use_unicode=False, wrap_line=False)
+  File "/testbed/sympy/printing/pretty/pretty.py", line 2483, in pretty
+    return pp.doprint(expr)
+  File "/testbed/sympy/printing/pretty/pretty.py", line 65, in doprint
+    return self._print(expr).render(**self._settings)
+  File "/testbed/sympy/printing/printer.py", line 287, in _print
+    return getattr(self, printmethod)(expr, **kwargs)
+  File "/testbed/sympy/printing/pretty/pretty.py", line 75, in _print_atan2
+    pform = prettyForm(*self._print_seq(e.args).parens())
+AttributeError: 'PrettyPrinter' object has no attribute '_print_seq'
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_issue_8292 __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5859, in test_issue_8292
+    e = sympify('((x+x**4)/(x-1))-(2*(x-1)**4/(x-1)**4)', evaluate=False)
+  File "/testbed/sympy/core/sympify.py", line 384, in sympify
+    expr = parse_expr(a, local_dict=locals, transformations=transformations, evaluate=evaluate)
+  File "/testbed/sympy/parsing/sympy_parser.py", line 964, in parse_expr
+    code = compile(evaluateFalse(code), '<string>', 'eval')
+ValueError: Name node can't be used with 'False' constant
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_issue_8344 __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5901, in test_issue_8344
+    e = sympify('2*x*y**2/1**2 + 1', evaluate=False)
+  File "/testbed/sympy/core/sympify.py", line 384, in sympify
+    expr = parse_expr(a, local_dict=locals, transformations=transformations, evaluate=evaluate)
+  File "/testbed/sympy/parsing/sympy_parser.py", line 964, in parse_expr
+    code = compile(evaluateFalse(code), '<string>', 'eval')
+ValueError: Name node can't be used with 'False' constant
+
+________________________________________________________________________________
+_________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_basic _________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 365, in test_pretty_basic
+    assert pretty( -Rational(13)/22 ) == \
+AssertionError
+________________________________________________________________________________
+______ sympy/printing/pretty/tests/test_pretty.py:test_negative_fractions ______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 787, in test_negative_fractions
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_issue_5524 __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 938, in test_issue_5524
+    assert pretty(-(-x + 5)*(-x - 2*sqrt(2) + 5) - (-y + 5)*(-y + 5)) == \
+AssertionError
+________________________________________________________________________________
+_______ sympy/printing/pretty/tests/test_pretty.py:test_pretty_ordering ________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 951, in test_pretty_ordering
+    assert pretty(x**2 + x + 1, order='lex') == \
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_EulerGamma __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 1010, in test_EulerGamma
+    assert upretty(EulerGamma) == u"γ"
+AssertionError
+________________________________________________________________________________
+_________ sympy/printing/pretty/tests/test_pretty.py:test_GoldenRatio __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 1014, in test_GoldenRatio
+    assert upretty(GoldenRatio) == u"φ"
+AssertionError
+________________________________________________________________________________
+______ sympy/printing/pretty/tests/test_pretty.py:test_pretty_relational _______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 1102, in test_pretty_relational
+    assert pretty(expr) in [ascii_str_1, ascii_str_2]
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_Assignment __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 1115, in test_Assignment
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+_____ sympy/printing/pretty/tests/test_pretty.py:test_AugmentedAssignment ______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 1128, in test_AugmentedAssignment
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_issue_7117 __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 1183, in test_issue_7117
+    assert upretty(q) == u("""\
+AssertionError
+________________________________________________________________________________
+_______ sympy/printing/pretty/tests/test_pretty.py:test_pretty_rational ________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 1226, in test_pretty_rational
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+_______ sympy/printing/pretty/tests/test_pretty.py:test_pretty_functions _______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 1293, in test_pretty_functions
+    assert pretty(expr) in [ascii_str_1, ascii_str_2]
+AssertionError
+________________________________________________________________________________
+_________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_sqrt __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 1889, in test_pretty_sqrt
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+____ sympy/printing/pretty/tests/test_pretty.py:test_pretty_sqrt_char_knob _____
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 2015, in test_pretty_sqrt_char_knob
+    assert xpretty(expr, use_unicode=True,
+AssertionError
+________________________________________________________________________________
+ sympy/printing/pretty/tests/test_pretty.py:test_pretty_sqrt_longsymbol_no_sqrt_char 
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 2029, in test_pretty_sqrt_longsymbol_no_sqrt_char
+    assert upretty(expr) == ucode_str
+AssertionError
+________________________________________________________________________________
+____ sympy/printing/pretty/tests/test_pretty.py:test_pretty_KroneckerDelta _____
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 2045, in test_pretty_KroneckerDelta
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_product ________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 2102, in test_pretty_product
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_lambda _________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 2109, in test_pretty_lambda
+    assert pretty(expr) == "x -> x"
+AssertionError
+________________________________________________________________________________
+_________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_order _________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 2193, in test_pretty_order
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+______ sympy/printing/pretty/tests/test_pretty.py:test_pretty_derivatives ______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 2296, in test_pretty_derivatives
+    assert pretty(expr) in [ascii_str_1, ascii_str_2]
+AssertionError
+________________________________________________________________________________
+_______ sympy/printing/pretty/tests/test_pretty.py:test_pretty_integrals _______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 2530, in test_pretty_integrals
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_matrix _________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 2681, in test_pretty_matrix
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+______ sympy/printing/pretty/tests/test_pretty.py:test_pretty_ndim_arrays ______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 2780, in test_pretty_ndim_arrays
+    assert pretty(M) == ascii_str
+AssertionError
+________________________________________________________________________________
+_____ sympy/printing/pretty/tests/test_pretty.py:test_tensor_TensorProduct _____
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 2931, in test_tensor_TensorProduct
+    assert upretty(TensorProduct(A, B)) == "A\u2297B"
+AssertionError
+________________________________________________________________________________
+_ sympy/printing/pretty/tests/test_pretty.py:test_diffgeom_print_WedgeProduct __
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 2939, in test_diffgeom_print_WedgeProduct
+    assert upretty(wp) == u("ⅆ x∧ⅆ y")
+AssertionError
+________________________________________________________________________________
+___________ sympy/printing/pretty/tests/test_pretty.py:test_Adjoint ____________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 2945, in test_Adjoint
+    assert pretty(Adjoint(X)) == " +\nX "
+AssertionError
+________________________________________________________________________________
+___ sympy/printing/pretty/tests/test_pretty.py:test_pretty_Trace_issue_9044 ____
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3001, in test_pretty_Trace_issue_9044
+    assert pretty(Trace(X)) == ascii_str_1
+AssertionError
+________________________________________________________________________________
+______ sympy/printing/pretty/tests/test_pretty.py:test_pretty_dotproduct _______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3037, in test_pretty_dotproduct
+    assert pretty(DotProduct(A, B)) == u"A*B"
+AssertionError
+________________________________________________________________________________
+_______ sympy/printing/pretty/tests/test_pretty.py:test_pretty_piecewise _______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3061, in test_pretty_piecewise
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_ITE __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3268, in test_pretty_ITE
+    assert pretty(expr) == (
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_seq __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3333, in test_pretty_seq
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+____ sympy/printing/pretty/tests/test_pretty.py:test_any_object_in_sequence ____
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3507, in test_any_object_in_sequence
+    assert pretty(expr) == "{Basic(): Basic(Basic()), Basic(Basic()): Basic()}"
+AssertionError
+________________________________________________________________________________
+______ sympy/printing/pretty/tests/test_pretty.py:test_print_builtin_set _______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3525, in test_print_builtin_set
+    assert pretty(s1) == \
+AssertionError
+________________________________________________________________________________
+_________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_sets __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3553, in test_pretty_sets
+    assert pretty(s(*[x*y, x**2])) == \
+AssertionError
+________________________________________________________________________________
+________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_SetExpr ________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3612, in test_pretty_SetExpr
+    assert pretty(se) == ascii_str
+AssertionError
+________________________________________________________________________________
+_______ sympy/printing/pretty/tests/test_pretty.py:test_pretty_ImageSet ________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3620, in test_pretty_ImageSet
+    assert pretty(imgset) == ascii_str
+AssertionError
+________________________________________________________________________________
+_____ sympy/printing/pretty/tests/test_pretty.py:test_pretty_ConditionSet ______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3639, in test_pretty_ConditionSet
+    assert pretty(ConditionSet(x, Eq(sin(x), 0), S.Reals)) == ascii_str
+AssertionError
+________________________________________________________________________________
+_____ sympy/printing/pretty/tests/test_pretty.py:test_pretty_ComplexRegion _____
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3655, in test_pretty_ComplexRegion
+    assert upretty(ComplexRegion(Interval(3, 5)*Interval(4, 6))) == ucode_str
+AssertionError
+________________________________________________________________________________
+___ sympy/printing/pretty/tests/test_pretty.py:test_pretty_Union_issue_10414 ___
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3664, in test_pretty_Union_issue_10414
+    assert upretty(Union(a, b)) == ucode_str
+AssertionError
+________________________________________________________________________________
+ sympy/printing/pretty/tests/test_pretty.py:test_pretty_Intersection_issue_10414 
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3672, in test_pretty_Intersection_issue_10414
+    assert upretty(Intersection(a, b)) == ucode_str
+AssertionError
+________________________________________________________________________________
+____ sympy/printing/pretty/tests/test_pretty.py:test_ProductSet_paranthesis ____
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3679, in test_ProductSet_paranthesis
+    assert upretty(Union(a*b, b*FiniteSet(1, 2))) == ucode_str
+AssertionError
+________________________________________________________________________________
+ sympy/printing/pretty/tests/test_pretty.py:test_ProductSet_prod_char_issue_10413 
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3686, in test_ProductSet_prod_char_issue_10413
+    assert pretty(a*b) == ascii_str
+AssertionError
+________________________________________________________________________________
+_______ sympy/printing/pretty/tests/test_pretty.py:test_pretty_sequences _______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3696, in test_pretty_sequences
+    assert pretty(s1) == ascii_str
+AssertionError
+________________________________________________________________________________
+_____ sympy/printing/pretty/tests/test_pretty.py:test_pretty_FourierSeries _____
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3798, in test_pretty_FourierSeries
+    assert pretty(f) == ascii_str
+AssertionError
+________________________________________________________________________________
+___ sympy/printing/pretty/tests/test_pretty.py:test_pretty_FormalPowerSeries ___
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3833, in test_pretty_FormalPowerSeries
+    assert pretty(f) == ascii_str
+AssertionError
+________________________________________________________________________________
+________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_limits _________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 3849, in test_pretty_limits
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+_____ sympy/printing/pretty/tests/test_pretty.py:test_pretty_ComplexRootOf _____
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 4007, in test_pretty_ComplexRootOf
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_RootSum ________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 4024, in test_pretty_RootSum
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+________ sympy/printing/pretty/tests/test_pretty.py:test_GroebnerBasis _________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 4055, in test_GroebnerBasis
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_Domain _________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 4160, in test_pretty_Domain
+    assert upretty(expr) == u"ℤ₂₃"
+AssertionError
+________________________________________________________________________________
+_________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_prec __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 4212, in test_pretty_prec
+    assert xpretty(S("0.3")*x, full_prec=True, use_unicode=False, wrap_line=False) in [
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_sum __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 4288, in test_pretty_sum
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+____________ sympy/printing/pretty/tests/test_pretty.py:test_units _____________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 4820, in test_units
+    assert upretty(expr.convert_to(kg*m**2/s**2)) == unicode_str1
+AssertionError
+________________________________________________________________________________
+_________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_Subs __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 4839, in test_pretty_Subs
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+____________ sympy/printing/pretty/tests/test_pretty.py:test_gammas ____________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 4882, in test_gammas
+    assert upretty(lowergamma(x, y)) == u"γ(x, y)"
+AssertionError
+________________________________________________________________________________
+_____________ sympy/printing/pretty/tests/test_pretty.py:test_beta _____________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 4891, in test_beta
+    assert xpretty(beta(x,y), use_unicode=True) == u'Β(x, y)'
+AssertionError
+________________________________________________________________________________
+_____ sympy/printing/pretty/tests/test_pretty.py:test_SingularityFunction ______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 4910, in test_SingularityFunction
+    assert xpretty(SingularityFunction(x, 0, n), use_unicode=True) == (
+AssertionError
+________________________________________________________________________________
+____________ sympy/printing/pretty/tests/test_pretty.py:test_deltas ____________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 4963, in test_deltas
+    assert xpretty(DiracDelta(x), use_unicode=True) == u'δ(x)'
+AssertionError
+________________________________________________________________________________
+____________ sympy/printing/pretty/tests/test_pretty.py:test_hyper _____________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 4991, in test_hyper
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+___________ sympy/printing/pretty/tests/test_pretty.py:test_meijerg ____________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5111, in test_meijerg
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+________ sympy/printing/pretty/tests/test_pretty.py:test_noncommutative ________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5234, in test_noncommutative
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+____________ sympy/printing/pretty/tests/test_pretty.py:test_expint ____________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5323, in test_expint
+    assert upretty(expr) == ucode_str
+AssertionError
+________________________________________________________________________________
+______ sympy/printing/pretty/tests/test_pretty.py:test_elliptic_functions ______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5349, in test_elliptic_functions
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+_________ sympy/printing/pretty/tests/test_pretty.py:test_RandomDomain _________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5436, in test_RandomDomain
+    assert upretty(where(X > 0)) == u"Domain: 0 < x₁ ∧ x₁ < ∞"
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_issue_6285 __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5461, in test_issue_6285
+    assert pretty(Pow(2, -5, evaluate=False)) == '1 \n--\n 5\n2 '
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_issue_6359 __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5466, in test_issue_6359
+    assert pretty(Integral(x**2, x)**2) == \
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_issue_6739 __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5560, in test_issue_6739
+    assert pretty(1/sqrt(x)) == ascii_str
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_categories __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5586, in test_categories
+    assert pretty(f1) == "f1:A1-->A2"
+AssertionError
+________________________________________________________________________________
+________ sympy/printing/pretty/tests/test_pretty.py:test_PrettyModules _________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5640, in test_PrettyModules
+    assert upretty(F) == ucode_str
+AssertionError
+________________________________________________________________________________
+_________ sympy/printing/pretty/tests/test_pretty.py:test_QuotientRing _________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5733, in test_QuotientRing
+    assert upretty(R) == ucode_str
+AssertionError
+________________________________________________________________________________
+_________ sympy/printing/pretty/tests/test_pretty.py:test_Homomorphism _________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5771, in test_Homomorphism
+    assert upretty(expr) == ucode_str
+AssertionError
+________________________________________________________________________________
+______________ sympy/printing/pretty/tests/test_pretty.py:test_Tr ______________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5819, in test_Tr
+    assert upretty(t) == u'Tr(A⋅B)'
+AssertionError
+________________________________________________________________________________
+______ sympy/printing/pretty/tests/test_pretty.py:test_pretty_Complement _______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5837, in test_pretty_Complement
+    assert pretty(S.Reals - S.Naturals) == '(-oo, oo) \\ Naturals'
+AssertionError
+________________________________________________________________________________
+__ sympy/printing/pretty/tests/test_pretty.py:test_pretty_SymmetricDifference __
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5846, in test_pretty_SymmetricDifference
+    assert upretty(SymmetricDifference(Interval(2,3), Interval(3,5), \
+AssertionError
+________________________________________________________________________________
+_______ sympy/printing/pretty/tests/test_pretty.py:test_pretty_Contains ________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5854, in test_pretty_Contains
+    assert upretty(Contains(x, S.Integers)) == u'x ∈ ℤ'
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_issue_4335 __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5895, in test_issue_4335
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_issue_6324 __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5925, in test_issue_6324
+    assert upretty(e) == ucode_str
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_issue_7927 __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5939, in test_issue_7927
+    assert upretty(e) == ucode_str
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_issue_6134 __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5964, in test_issue_6134
+    assert upretty(e) == ucode_str
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_issue_9877 __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5970, in test_issue_9877
+    assert upretty(Union(a, Complement(b, c))) == ucode_str1
+AssertionError
+________________________________________________________________________________
+________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_primenu ________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 5991, in test_pretty_primenu
+    assert pretty(primenu(n)) == ascii_str1
+AssertionError
+________________________________________________________________________________
+______ sympy/printing/pretty/tests/test_pretty.py:test_pretty_primeomega _______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 6002, in test_pretty_primeomega
+    assert pretty(primeomega(n)) == ascii_str1
+AssertionError
+________________________________________________________________________________
+__________ sympy/printing/pretty/tests/test_pretty.py:test_pretty_Mod __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 6025, in test_pretty_Mod
+    assert pretty(Mod(x, 7)) == ascii_str1
+AssertionError
+________________________________________________________________________________
+____ sympy/printing/pretty/tests/test_pretty.py:test_pretty_UnevaluatedExpr ____
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 6053, in test_pretty_UnevaluatedExpr
+    assert upretty(he) == ucode_str
+AssertionError
+________________________________________________________________________________
+_________ sympy/printing/pretty/tests/test_pretty.py:test_issue_10472 __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 6092, in test_issue_10472
+    assert upretty(M) == ucode_str
+AssertionError
+________________________________________________________________________________
+____ sympy/printing/pretty/tests/test_pretty.py:test_MatrixElement_printing ____
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 6103, in test_MatrixElement_printing
+    assert pretty(A[0, 0])  == ascii_str1
+AssertionError
+________________________________________________________________________________
+_________ sympy/printing/pretty/tests/test_pretty.py:test_issue_12675 __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 6130, in test_issue_12675
+    assert upretty((x/y)**t*e.j) == ucode_str
+AssertionError
+________________________________________________________________________________
+____ sympy/printing/pretty/tests/test_pretty.py:test_MatrixSymbol_printing _____
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 6146, in test_MatrixSymbol_printing
+    assert pretty(A - B) == "-B + A"
+AssertionError
+________________________________________________________________________________
+_______ sympy/printing/pretty/tests/test_pretty.py:test_degree_printing ________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 6163, in test_degree_printing
+    assert pretty(expr1) == u'90°'
+AssertionError
+________________________________________________________________________________
+_ sympy/printing/pretty/tests/test_pretty.py:test_vector_expr_pretty_printing __
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 6173, in test_vector_expr_pretty_printing
+    assert upretty(Cross(A.i, A.x*A.i+3*A.y*A.j)) == u("(A_i)×((A_x) A_i + (3⋅A_y) A_j)")
+AssertionError
+________________________________________________________________________________
+___ sympy/printing/pretty/tests/test_pretty.py:test_pretty_print_tensor_expr ___
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 6218, in test_pretty_print_tensor_expr
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+ sympy/printing/pretty/tests/test_pretty.py:test_pretty_print_tensor_partial_deriv 
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 6379, in test_pretty_print_tensor_partial_deriv
+    assert pretty(expr) == ascii_str
+AssertionError
+________________________________________________________________________________
+_________ sympy/printing/pretty/tests/test_pretty.py:test_issue_15560 __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 6509, in test_issue_15560
+    assert e == result
+AssertionError
+________________________________________________________________________________
+________ sympy/printing/pretty/tests/test_pretty.py:test_print_lerchphi ________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 6519, in test_print_lerchphi
+    assert upretty(lerchphi(a, 1, 2)) == uresult
+AssertionError
+________________________________________________________________________________
+_________ sympy/printing/pretty/tests/test_pretty.py:test_issue_15583 __________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 6526, in test_issue_15583
+    assert e == result
+AssertionError
+________________________________________________________________________________
+_______ sympy/printing/pretty/tests/test_pretty.py:test_matrixSymbolBold _______
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 6536, in test_matrixSymbolBold
+    assert boldpretty(trace(A)) == u'tr(𝐀)'
+AssertionError
+________________________________________________________________________________
+________ sympy/printing/pretty/tests/test_pretty.py:test_imaginary_unit ________
+Traceback (most recent call last):
+  File "/testbed/sympy/printing/pretty/tests/test_pretty.py", line 6581, in test_imaginary_unit
+    assert pretty(1 + I, use_unicode=True) == u'1 + ⅈ'
+AssertionError
+
+===== tests finished: 24 passed, 97 failed, 4 exceptions, in 2.93 seconds ======
+DO *NOT* COMMIT!
++ git checkout 41490b75f3621408e0468b0e7b6dc409601fc6ff sympy/printing/pretty/tests/test_pretty.py
+Updated 1 path from b17e105c44

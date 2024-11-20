@@ -1,0 +1,59 @@
+
+diff --git a/django/conf/global_settings.py b/django/conf/global_settings.py
+index 8108f8f762..7e557790d1 100644
+--- a/django/conf/global_settings.py
++++ b/django/conf/global_settings.py
+@@ -2,7 +2,7 @@
+ Default Django settings. Override these with settings in the module pointed to
+ by the DJANGO_SETTINGS_MODULE environment variable.
+ """
+-
++DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+ 
+ # This is defined here as a do-nothing function because we can't import
+ # django.utils.translation -- that module depends on the settings.
+diff --git a/tests/apps/namespace_package_base/nsapp/apps.py b/tests/apps/namespace_package_base/nsapp/apps.py
+index a81362e5b2..31bf8606da 100644
+--- a/tests/apps/namespace_package_base/nsapp/apps.py
++++ b/tests/apps/namespace_package_base/nsapp/apps.py
+@@ -4,6 +4,6 @@ from django.apps import AppConfig
+ 
+ 
+ class NSAppConfig(AppConfig):
+-    default = False
++    default_auto_field = 'django.db.models.BigAutoField'
+     name = 'nsapp'
+     path = os.path.dirname(__file__)
+diff --git a/tests/i18n/loading_app/apps.py b/tests/i18n/loading_app/apps.py
+index 14cfdf776f..204d85f20c 100644
+--- a/tests/i18n/loading_app/apps.py
++++ b/tests/i18n/loading_app/apps.py
+@@ -2,4 +2,4 @@ from django.apps import AppConfig
+ 
+ 
+ class LoadingAppConfig(AppConfig):
+-    name = 'i18n.loading_app'
++    default_auto_field = 'django.db.models.BigAutoField'
+diff --git a/tests/model_options/apps.py b/tests/model_options/apps.py
+index be2250fe7a..47ffc0d9c9 100644
+--- a/tests/model_options/apps.py
++++ b/tests/model_options/apps.py
+@@ -3,7 +3,7 @@ from django.apps import AppConfig
+ 
+ class ModelDefaultPKConfig(AppConfig):
+     name = 'model_options'
+-
++    default_auto_field = 'django.db.models.BigAutoField'
+ 
+ class ModelPKConfig(AppConfig):
+     name = 'model_options'
+diff --git a/tests/staticfiles_tests/apps/staticfiles_config.py b/tests/staticfiles_tests/apps/staticfiles_config.py
+index b8b3960c9d..0b2b0531e1 100644
+--- a/tests/staticfiles_tests/apps/staticfiles_config.py
++++ b/tests/staticfiles_tests/apps/staticfiles_config.py
+@@ -2,4 +2,4 @@ from django.contrib.staticfiles.apps import StaticFilesConfig
+ 
+ 
+ class IgnorePatternsAppConfig(StaticFilesConfig):
+-    ignore_patterns = ['*.css', '*/vendor/*.js']
++    default_auto_field = 'django.db.models.BigAutoField'

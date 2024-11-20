@@ -1,0 +1,20 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..b5208877c0
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,13 @@
++from sympy import *
++x = Symbol('x')
++e = (-x/4 - S(1)/12)**x - 1
++print("Original expression:", e)
++
++f = simplify(e)
++print("Simplified expression:", f)
++
++a = S(9)/5
++print("Simplified with substitution:", simplify(e.subs(x,a)))
++print("Simplified f with substitution:", simplify(f.subs(x,a)))
++print("Numerical evaluation of e:", N(e.subs(x,a)))
++print("Numerical evaluation of f:", N(f.subs(x,a)))

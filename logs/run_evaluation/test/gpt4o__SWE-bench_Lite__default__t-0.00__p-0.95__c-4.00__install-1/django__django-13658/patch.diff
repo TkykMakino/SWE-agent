@@ -1,0 +1,50 @@
+
+diff --git a/django/core/management/__init__.py b/django/core/management/__init__.py
+index 1ba093e51f..0d7e0f69a3 100644
+--- a/django/core/management/__init__.py
++++ b/django/core/management/__init__.py
+@@ -186,6 +186,17 @@ class ManagementUtility:
+     Encapsulate the logic of the django-admin and manage.py utilities.
+     """
+     def __init__(self, argv=None):
++        self.argv = argv or sys.argv[:]
++        self.prog_name = os.path.basename(self.argv[0])
++        print(f"prog_name: {self.prog_name}")
++        if self.prog_name == '__main__.py':
++            self.prog_name = 'python -m django'
++        self.settings_exception = None
++        self.argv = argv or sys.argv[:]
++        self.prog_name = os.path.basename(self.argv[0])
++        if self.prog_name == '__main__.py':
++            self.prog_name = 'python -m django'
++        self.settings_exception = None
+         self.argv = argv or sys.argv[:]
+         self.prog_name = os.path.basename(self.argv[0])
+         if self.prog_name == '__main__.py':
+@@ -344,8 +355,8 @@ class ManagementUtility:
+         # Preprocess options to extract --settings and --pythonpath.
+         # These options could affect the commands that are available, so they
+         # must be processed early.
+-        parser = CommandParser(usage='%(prog)s subcommand [options] [args]', add_help=False, allow_abbrev=False)
+-        parser.add_argument('--settings')
++        parser = CommandParser(prog=self.prog_name, usage='%(prog)s subcommand [options] [args]', add_help=False, allow_abbrev=False)
++        print(f"CommandParser prog: {self.prog_name}")
+         parser.add_argument('--pythonpath')
+         parser.add_argument('args', nargs='*')  # catch-all
+         try:
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..6fb053b2bf
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,10 @@
++from django.core.management import ManagementUtility
++
++# Create a ManagementUtility instance with a custom argv
++utility = ManagementUtility(argv=['custom_prog_name', 'runserver'])
++
++# This should use the custom prog_name instead of sys.argv[0]
++parser = utility.fetch_command('runserver').create_parser('manage.py', 'runserver')
++
++# Print the parser's prog to see if it used the custom prog_name
++print(parser.prog)

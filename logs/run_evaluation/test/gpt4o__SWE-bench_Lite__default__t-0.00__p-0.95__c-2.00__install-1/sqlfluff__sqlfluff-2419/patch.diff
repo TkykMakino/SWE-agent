@@ -1,0 +1,62 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..431aa019
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,11 @@
++from sqlfluff.core import Linter
++
++sql_code_ifnull = "SELECT ifnull(foo, 0) AS bar, FROM baz;"
++sql_code_nvl = "SELECT nvl(foo, 0) AS bar, FROM baz;"
++
++linter = Linter()
++result_ifnull = linter.lint_string(sql_code_ifnull)
++result_nvl = linter.lint_string(sql_code_nvl)
++
++print(result_ifnull)
++print(result_nvl)
+diff --git a/src/sqlfluff/rules/L060.py b/src/sqlfluff/rules/L060.py
+index 836941ed..619f4eb6 100644
+--- a/src/sqlfluff/rules/L060.py
++++ b/src/sqlfluff/rules/L060.py
+@@ -59,4 +59,15 @@ class Rule_L060(BaseRule):
+             ],
+         )
+ 
+-        return LintResult(context.segment, [fix])
++        if context.segment.raw_upper == "IFNULL":
++            message = "Use 'COALESCE' instead of 'IFNULL'."
++        elif context.segment.raw_upper == "NVL":
++            message = "Use 'COALESCE' instead of 'NVL'."
++        else:
++            return None
++
++        return LintResult(
++            anchor=context.segment,
++            fixes=[fix],
++            description=message
++        )
+diff --git a/test/fixtures/rules/std_rule_cases/L060.yml b/test/fixtures/rules/std_rule_cases/L060.yml
+index 1fdcb531..73deb8f6 100644
+--- a/test/fixtures/rules/std_rule_cases/L060.yml
++++ b/test/fixtures/rules/std_rule_cases/L060.yml
+@@ -8,15 +8,10 @@ test_pass_coalesce:
+ test_fail_ifnull:
+   fail_str: |
+     SELECT ifnull(foo, 0) AS bar,
+-    FROM baz;
+-  pass_str: |
+-    SELECT coalesce(foo, 0) AS bar,
+-    FROM baz;
+-
+-test_fail_nvl:
+-  fail_str: |
++  fail_message: "Use 'COALESCE' instead of 'IFNULL'."
+     SELECT nvl(foo, 0) AS bar,
+-    FROM baz;
++  fail_message: "Use 'COALESCE' instead of 'NVL'."
+   pass_str: |
+     SELECT coalesce(foo, 0) AS bar,
+     FROM baz;
++delete

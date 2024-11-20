@@ -1,0 +1,28 @@
+
+diff --git a/django/forms/fields.py b/django/forms/fields.py
+index 65d6a9ec82..089bf03b19 100644
+--- a/django/forms/fields.py
++++ b/django/forms/fields.py
+@@ -679,6 +679,10 @@ class URLField(CharField):
+         super().__init__(strip=True, **kwargs)
+ 
+     def to_python(self, value):
++        try:
++            return super().to_python(value)
++        except ValueError:
++            raise ValidationError(self.error_messages['invalid'], code='invalid', params={'value': value})
+ 
+         def split_url(url):
+             """
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..0c5c0cf175
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,6 @@
++from django import forms
++
++try:
++    forms.URLField().clean('////]@N.AN')
++except ValueError as e:
++    print(f"ValueError: {e}")

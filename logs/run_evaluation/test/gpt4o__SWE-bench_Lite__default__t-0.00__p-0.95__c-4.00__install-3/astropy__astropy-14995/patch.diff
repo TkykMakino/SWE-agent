@@ -1,0 +1,229 @@
+
+diff --git a/astropy/nddata/ccddata.py b/astropy/nddata/ccddata.py
+index 37daa58fa..52e5e046d 100644
+--- a/astropy/nddata/ccddata.py
++++ b/astropy/nddata/ccddata.py
+@@ -449,10 +449,10 @@ class CCDData(NDDataArray):
+         """
+         return self.__class__(self, copy=True)
+ 
+-    add = _arithmetic(np.add)(NDDataArray.add)
+-    subtract = _arithmetic(np.subtract)(NDDataArray.subtract)
+-    multiply = _arithmetic(np.multiply)(NDDataArray.multiply)
+-    divide = _arithmetic(np.true_divide)(NDDataArray.divide)
++# add = _arithmetic(np.add)(NDDataArray.add)
++# subtract = _arithmetic(np.subtract)(NDDataArray.subtract)
++# multiply = _arithmetic(np.multiply)(NDDataArray.multiply)
++# divide = _arithmetic(np.true_divide)(NDDataArray.divide)
+ 
+     def _insert_in_metadata_fits_safe(self, key, value):
+         """
+diff --git a/astropy/nddata/mixins/ndarithmetic.py b/astropy/nddata/mixins/ndarithmetic.py
+index 4153dfccb..cc35d5b41 100644
+--- a/astropy/nddata/mixins/ndarithmetic.py
++++ b/astropy/nddata/mixins/ndarithmetic.py
+@@ -482,50 +482,49 @@ class NDArithmeticMixin:
+                 operation, operand, result, correlation, **axis_kwarg
+             )
+ 
+-    def _arithmetic_mask(self, operation, operand, handle_mask, axis=None, **kwds):
+-        """
+-        Calculate the resulting mask.
+-
+-        This is implemented as the piecewise ``or`` operation if both have a
+-        mask.
++def _arithmetic_mask(self, operation, operand, handle_mask, axis=None, **kwds):
++    """
++    Calculate the resulting mask.
+ 
+-        Parameters
+-        ----------
+-        operation : callable
+-            see :meth:`NDArithmeticMixin._arithmetic` parameter description.
+-            By default, the ``operation`` will be ignored.
++    This is implemented as the piecewise ``or`` operation if both have a
++    mask.
+ 
+-        operand : `NDData`-like instance
+-            The second operand wrapped in an instance of the same class as
+-            self.
++    Parameters
++    ----------
++    operation : callable
++        see :meth:`NDArithmeticMixin._arithmetic` parameter description.
++        By default, the ``operation`` will be ignored.
+ 
+-        handle_mask : callable
+-            see :meth:`NDArithmeticMixin.add`
++    operand : `NDData`-like instance
++        The second operand wrapped in an instance of the same class as
++        self.
+ 
+-        kwds :
+-            Additional parameters given to ``handle_mask``.
++    handle_mask : callable
++        see :meth:`NDArithmeticMixin.add`
+ 
+-        Returns
+-        -------
+-        result_mask : any type
+-            If only one mask was present this mask is returned.
+-            If neither had a mask ``None`` is returned. Otherwise
+-            ``handle_mask`` must create (and copy) the returned mask.
+-        """
+-        # If only one mask is present we need not bother about any type checks
+-        if (
+-            self.mask is None and operand is not None and operand.mask is None
+-        ) or handle_mask is None:
+-            return None
+-        elif self.mask is None and operand is not None:
+-            # Make a copy so there is no reference in the result.
+-            return deepcopy(operand.mask)
+-        elif operand is None:
+-            return deepcopy(self.mask)
+-        else:
+-            # Now lets calculate the resulting mask (operation enforces copy)
+-            return handle_mask(self.mask, operand.mask, **kwds)
++    kwds :
++        Additional parameters given to ``handle_mask``.
+ 
++    Returns
++    -------
++    result_mask : any type
++        If only one mask was present this mask is returned.
++        If neither had a mask ``None`` is returned. Otherwise
++        ``handle_mask`` must create (and copy) the returned mask.
++    """
++    # If only one mask is present we need not bother about any type checks
++    if (
++        self.mask is None and operand is not None and operand.mask is None
++    ) or handle_mask is None:
++        return None
++    elif self.mask is None and operand is not None:
++        # Make a copy so there is no reference in the result.
++        return deepcopy(operand.mask)
++    elif operand is None or operand.mask is None:
++        return deepcopy(self.mask)
++    else:
++        # Now lets calculate the resulting mask (operation enforces copy)
++        return handle_mask(self.mask, operand.mask, **kwds)
+     def _arithmetic_wcs(self, operation, operand, compare_wcs, **kwds):
+         """
+         Calculate the resulting wcs.
+diff --git a/astropy/nddata/nddata_withmixins.py b/astropy/nddata/nddata_withmixins.py
+index 2bbb52d3b..5fa6909a6 100644
+--- a/astropy/nddata/nddata_withmixins.py
++++ b/astropy/nddata/nddata_withmixins.py
+@@ -69,4 +69,4 @@ class NDDataRef(NDArithmeticMixin, NDIOMixin, NDSlicingMixin, NDData):
+     are sliced.
+     """
+ 
+-    pass
++# pass
+diff --git a/pyproject.toml b/pyproject.toml
+index 15bb49f22..dc9c3c5f3 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools",
++requires = ["setuptools==68.0.0",
+             "setuptools_scm>=6.2",
+             "cython==0.29.34",
+             "oldest-supported-numpy",
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 000000000..a3a817d5e
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,90 @@
++import numpy as np
++from astropy.nddata import NDDataRef
++from copy import deepcopy
++
++array = np.array([[0, 1, 0], [1, 0, 1], [0, 1, 0]])
++mask = np.array([[0, 1, 64], [8, 0, 1], [2, 1, 0]])
++
++nref_nomask = NDDataRef(array)
++nref_mask = NDDataRef(array, mask=mask)
++
++# multiply no mask by constant (no mask * no mask)
++print(nref_nomask.multiply(1., handle_mask=np.bitwise_or).mask)   # returns nothing, no mask,  OK
++
++# multiply no mask by itself (no mask * no mask)
++print(nref_nomask.multiply(nref_nomask, handle_mask=np.bitwise_or).mask) # return nothing, no mask, OK
++
++# multiply mask by constant (mask * no mask)
++print(nref_mask.multiply(1., handle_mask=np.bitwise_or).mask)
++
++# multiply mask by itself (mask * mask)
++print(nref_mask.multiply(nref_mask, handle_mask=np.bitwise_or).mask)
++
++# multiply mask by no mask (mask * no mask)
++print(nref_mask.multiply(nref_nomask, handle_mask=np.bitwise_or).mask)
++
++def _arithmetic_mask(self, operation, operand, handle_mask, axis=None, **kwds):
++    """
++    Calculate the resulting mask.
++
++    This is implemented as the piecewise ``or`` operation if both have a
++    mask.
++
++    Parameters
++    ----------
++    operation : callable
++        see :meth:`NDArithmeticMixin._arithmetic` parameter description.
++        By default, the ``operation`` will be ignored.
++
++    operand : `NDData`-like instance
++        The second operand wrapped in an instance of the same class as
++        self.
++
++    handle_mask : callable
++        see :meth:`NDArithmeticMixin.add`
++
++    kwds :
++        Additional parameters given to ``handle_mask``.
++
++    Returns
++    -------
++    result_mask : any type
++        If only one mask was present this mask is returned.
++        If neither had a mask ``None`` is returned. Otherwise
++        ``handle_mask`` must create (and copy) the returned mask.
++    """
++    # If only one mask is present we need not bother about any type checks
++    if (
++        self.mask is None and operand is not None and operand.mask is None
++    ) or handle_mask is None:
++        return None
++    elif self.mask is None and operand is not None:
++        # Make a copy so there is no reference in the result.
++        return deepcopy(operand.mask)
++    elif operand is None or operand.mask is None:
++        return deepcopy(self.mask)
++    else:
++        # Now lets calculate the resulting mask (operation enforces copy)
++        return handle_mask(self.mask, operand.mask, **kwds)
++from astropy.nddata import NDDataRef
++
++array = np.array([[0, 1, 0], [1, 0, 1], [0, 1, 0]])
++mask = np.array([[0, 1, 64], [8, 0, 1], [2, 1, 0]])
++
++nref_nomask = NDDataRef(array)
++nref_mask = NDDataRef(array, mask=mask)
++
++# multiply no mask by constant (no mask * no mask)
++print(nref_nomask.multiply(1., handle_mask=np.bitwise_or).mask)   # returns nothing, no mask,  OK
++
++# multiply no mask by itself (no mask * no mask)
++print(nref_nomask.multiply(nref_nomask, handle_mask=np.bitwise_or).mask) # return nothing, no mask, OK
++
++# multiply mask by constant (mask * no mask)
++print(nref_mask.multiply(1., handle_mask=np.bitwise_or).mask)
++
++# multiply mask by itself (mask * mask)
++print(nref_mask.multiply(nref_mask, handle_mask=np.bitwise_or).mask)
++
++# multiply mask by no mask (mask * no mask)
++print(nref_mask.multiply(nref_nomask, handle_mask=np.bitwise_or).mask)

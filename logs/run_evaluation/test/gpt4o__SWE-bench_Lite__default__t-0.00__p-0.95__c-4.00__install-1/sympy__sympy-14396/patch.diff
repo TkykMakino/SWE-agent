@@ -1,0 +1,32 @@
+
+diff --git a/sympy/polys/polyoptions.py b/sympy/polys/polyoptions.py
+index 6e504a3057..c2ef848e97 100644
+--- a/sympy/polys/polyoptions.py
++++ b/sympy/polys/polyoptions.py
+@@ -451,9 +451,16 @@ def preprocess(cls, domain):
+                 return sympy.polys.domains.FF(int(r.groups()[1]))
+ 
+             r = cls._re_polynomial.match(domain)
+-
+             if r is not None:
+                 ground, gens = r.groups()
++                gens = list(map(sympify, gens.split(',')))
++                if ground in ['Z', 'ZZ']:
++                    return sympy.polys.domains.ZZ.poly_ring(*gens)
++                elif ground in ['Q', 'QQ']:
++                    return sympy.polys.domains.QQ.poly_ring(*gens)
++                elif ground in ['R', 'RR']:
++                    return sympy.polys.domains.RR.poly_ring(*gens)
++                ground, gens = r.groups()
+ 
+                 gens = list(map(sympify, gens.split(',')))
+ 
+@@ -473,7 +480,7 @@ def preprocess(cls, domain):
+                     return sympy.polys.domains.ZZ.frac_field(*gens)
+                 else:
+                     return sympy.polys.domains.QQ.frac_field(*gens)
+-
++            raise OptionError('expected a valid domain specification (e.g., ZZ, QQ, RR, or RR[y,z]), got %s' % domain)
+             r = cls._re_algebraic.match(domain)
+ 
+             if r is not None:

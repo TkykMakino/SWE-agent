@@ -1,0 +1,38 @@
+
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..3787028230
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,31 @@
++import django
++from django.conf import settings
++from django.db import models
++
++# Minimal settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++    ],
++)
++
++django.setup()
++
++class A(models.Model):
++    foo_choice = [("A","output1"),("B","output2")]
++    field_foo = models.CharField(max_length=254, choices=foo_choice)
++    
++    class Meta:
++        abstract = True
++        app_label = 'myapp'
++
++class B(A):
++    foo_choice = [("A","output1"),("B","output2"),("C","output3")]
++    field_foo = models.CharField(max_length=254, choices=foo_choice)
++    
++    class Meta:
++        app_label = 'myapp'
++
++# Create an instance of B and test get_field_foo_display
++b_instance = B(field_foo="C")
++print(b_instance.get_field_foo_display())

@@ -1,0 +1,1262 @@
+
+diff --git a/myapp/__init__.py b/myapp/__init__.py
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..2b81e71ce1
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,1252 @@
++import os
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('makemigrations')  # Create initial migration for myapp
++call_command('migrate')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        # Create instances to ensure the tables are populated
++        custom_instance = ProxyCustomModel.objects.create(name="Test")
++        AnotherModel.objects.create(custom=custom_instance)
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('migrate', 'myapp')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        # Create instances to ensure the tables are populated
++        custom_instance = ProxyCustomModel.objects.create(name="Test")
++        AnotherModel.objects.create(custom=custom_instance)
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('makemigrations')  # Create initial migration for myapp
++call_command('migrate')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        # Create instances to ensure the tables are populated
++        custom_instance = ProxyCustomModel.objects.create(name="Test")
++        AnotherModel.objects.create(custom=custom_instance)
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('migrate', 'myapp')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        # Create instances to ensure the tables are populated
++        custom_instance = ProxyCustomModel.objects.create(name="Test")
++        AnotherModel.objects.create(custom=custom_instance)
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('makemigrations')  # Create initial migration for myapp
++call_command('migrate')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        # Create instances to ensure the tables are populated
++        custom_instance = ProxyCustomModel.objects.create(name="Test")
++        AnotherModel.objects.create(custom=custom_instance)
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('migrate', 'myapp')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        # Create instances to ensure the tables are populated
++        custom_instance = ProxyCustomModel.objects.create(name="Test")
++        AnotherModel.objects.create(custom=custom_instance)
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('makemigrations')  # Create initial migration for myapp
++call_command('migrate')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        # Create instances to ensure the tables are populated
++        custom_instance = ProxyCustomModel.objects.create(name="Test")
++        AnotherModel.objects.create(custom=custom_instance)
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('migrate', 'myapp')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        # Create instances to ensure the tables are populated
++        custom_instance = ProxyCustomModel.objects.create(name="Test")
++        AnotherModel.objects.create(custom=custom_instance)
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('makemigrations')  # Create initial migration for myapp
++call_command('migrate')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        # Create instances to ensure the tables are populated
++        custom_instance = ProxyCustomModel.objects.create(name="Test")
++        AnotherModel.objects.create(custom=custom_instance)
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('migrate', 'myapp')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        # Create instances to ensure the tables are populated
++        custom_instance = ProxyCustomModel.objects.create(name="Test")
++        AnotherModel.objects.create(custom=custom_instance)
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('makemigrations')  # Create initial migration for myapp
++call_command('migrate')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        # Create instances to ensure the tables are populated
++        custom_instance = ProxyCustomModel.objects.create(name="Test")
++        AnotherModel.objects.create(custom=custom_instance)
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('migrate', 'myapp')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        # Create instances to ensure the tables are populated
++        custom_instance = ProxyCustomModel.objects.create(name="Test")
++        AnotherModel.objects.create(custom=custom_instance)
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('makemigrations')  # Create initial migration for myapp
++call_command('migrate')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        # Create instances to ensure the tables are populated
++        custom_instance = ProxyCustomModel.objects.create(name="Test")
++        AnotherModel.objects.create(custom=custom_instance)
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('migrate', 'myapp')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        # Create instances to ensure the tables are populated
++        custom_instance = ProxyCustomModel.objects.create(name="Test")
++        AnotherModel.objects.create(custom=custom_instance)
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('migrate')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        # Create instances to ensure the tables are populated
++        custom_instance = ProxyCustomModel.objects.create(name="Test")
++        AnotherModel.objects.create(custom=custom_instance)
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('makemigrations')  # Create initial migration for myapp
++call_command('migrate')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Create a minimal myapp application
++os.makedirs('myapp', exist_ok=True)
++with open('myapp/__init__.py', 'w') as f:
++    f.write('')
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('migrate', 'myapp')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management import call_command
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Create the necessary tables
++call_command('makemigrations', 'myapp')
++call_command('migrate', 'myapp')
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++import django
++from django.conf import settings
++from django.core.management.base import BaseCommand
++from django.db import models
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++    class Meta:
++        app_label = 'myapp'
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++        app_label = 'myapp'
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++    class Meta:
++        app_label = 'myapp'
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())
++
++if __name__ == "__main__":
++    Command().handle()
++from django.db import models
++
++class CustomModel(models.Model):
++    name = models.CharField(max_length=16)
++
++class ProxyCustomModel(CustomModel):
++    class Meta:
++        proxy = True
++
++class AnotherModel(models.Model):
++    custom = models.ForeignKey(
++        ProxyCustomModel,
++        on_delete=models.SET_NULL,
++        null=True,
++        blank=True,
++    )
++
++class Command(BaseCommand):
++    def handle(self, *args, **options):
++        list(AnotherModel.objects.select_related("custom").only("custom__name").all())

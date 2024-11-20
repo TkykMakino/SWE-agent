@@ -1,0 +1,70 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..0aef311f16
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,8 @@
++import numpy as np
++from sympy import symbols, MatrixSymbol, Identity, lambdify
++
++n = symbols('n', integer=True)
++A = MatrixSymbol("A", n, n)
++a = np.array([[1, 2], [3, 4]])
++f = lambdify(A, A + Identity(n))
++print(f(a))
+diff --git a/sympy/printing/str.py b/sympy/printing/str.py
+index 0ce283b18b..46b41a2b1b 100644
+--- a/sympy/printing/str.py
++++ b/sympy/printing/str.py
+@@ -721,7 +721,7 @@ def _print_Symbol(self, expr):
+     _print_RandomSymbol = _print_Symbol
+ 
+     def _print_Identity(self, expr):
+-        return "I"
++        return f"Identity({expr.shape[0]})"
+ 
+     def _print_ZeroMatrix(self, expr):
+         return "0"
+diff --git a/sympy/utilities/lambdify.py b/sympy/utilities/lambdify.py
+index a940509b47..dc9b57e1c8 100644
+--- a/sympy/utilities/lambdify.py
++++ b/sympy/utilities/lambdify.py
+@@ -174,8 +174,35 @@ def _import(module, reload=False):
+ _lambdify_generated_counter = 1
+ 
+ @doctest_depends_on(modules=('numpy', 'tensorflow', ), python_version=(3,))
+-def lambdify(args, expr, modules=None, printer=None, use_imps=True,
+-             dummify=False):
++def lambdify(args, expr, modules=None, printer=None, use_imps=True, dummify=False):
++    from sympy import Identity
++    if isinstance(modules, str):
++        modules = [modules]
++    if modules is None:
++        modules = ["numpy", "math", "mpmath", "sympy"]
++    if "sympy" not in modules:
++        modules.append("sympy")
++    namespace = {}
++    for module in modules:
++        if module == "sympy":
++            namespace.update({"Identity": Identity})
++        else:
++            try:
++                namespace.update(MODULES[module][0])
++            except ImportError:
++                pass
++    if isinstance(modules, str):
++        modules = [modules]
++    if modules is None:
++        modules = ["scipy", "numpy", "math", "mpmath", "sympy"]
++    if "sympy" not in modules:
++        modules.append("sympy")
++    namespace = {}
++    for module in modules:
++        if module == "sympy":
++            namespace.update({"Identity": Identity})
++        else:
++            namespace.update(MODULES[module][0])
+     """
+     Translates a SymPy expression into an equivalent numeric function
+ 

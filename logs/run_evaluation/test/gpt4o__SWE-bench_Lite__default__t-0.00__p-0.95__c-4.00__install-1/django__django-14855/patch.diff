@@ -1,0 +1,114 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..8a7e8ee22a
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,107 @@
++from django.conf import settings
++from django.contrib import admin
++from django.urls import path, include
++from django.db import models
++from django.contrib.admin import AdminSite
++from django.utils.translation import gettext_lazy as _
++
++# Configure settings
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.admin',
++        '__main__',  # This script as the main app
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    ROOT_URLCONF=__name__,
++)
++
++import django
++django.setup()
++
++# Run migrations
++from django.core.management import call_command
++call_command('makemigrations', '__main__')
++call_command('migrate', run_syncdb=True)
++call_command('makemigrations', '__main__')
++call_command('migrate', run_syncdb=True)
++
++# Define a custom Admin Site
++
++# Define a custom Admin Site
++
++# Define a custom Admin Site
++class CustomAdminSite(AdminSite):
++    site_header = _("Custom Admin")
++
++custom_admin_site = CustomAdminSite(name='custom_admin')
++
++# Define a model with a ForeignKey field
++class RelatedModel(models.Model):
++    name = models.CharField(max_length=100)
++
++class MainModel(models.Model):
++    related = models.ForeignKey(RelatedModel, on_delete=models.CASCADE)
++
++# Register the model with the custom Admin Site
++class MainModelAdmin(admin.ModelAdmin):
++    readonly_fields = ('related',)
++
++custom_admin_site.register(MainModel, MainModelAdmin)
++
++# Define URL patterns
++urlpatterns = [
++    path('custom-admin/', custom_admin_site.urls),
++]
++
++# Create a test instance of the model
++import django
++django.setup()
++related_instance = RelatedModel.objects.create(name="Related Instance")
++main_instance = MainModel.objects.create(related=related_instance)
++
++# Print the admin URL for the readonly field
++admin_url = MainModelAdmin(MainModel, custom_admin_site).get_admin_url(MainModel._meta.get_field('related'), main_instance.related)
++print(admin_url)
++from django.urls import path, include
++from django.db import models
++from django.contrib.admin import AdminSite
++from django.utils.translation import gettext_lazy as _
++
++# Define a custom Admin Site
++class CustomAdminSite(AdminSite):
++    site_header = _("Custom Admin")
++
++custom_admin_site = CustomAdminSite(name='custom_admin')
++
++# Define a model with a ForeignKey field
++class RelatedModel(models.Model):
++    name = models.CharField(max_length=100)
++
++class MainModel(models.Model):
++    related = models.ForeignKey(RelatedModel, on_delete=models.CASCADE)
++
++# Register the model with the custom Admin Site
++class MainModelAdmin(admin.ModelAdmin):
++    readonly_fields = ('related',)
++
++custom_admin_site.register(MainModel, MainModelAdmin)
++
++# Define URL patterns
++urlpatterns = [
++    path('custom-admin/', custom_admin_site.urls),
++]
++
++# Create a test instance of the model
++related_instance = RelatedModel.objects.create(name="Related Instance")
++main_instance = MainModel.objects.create(related=related_instance)
++
++# Print the admin URL for the readonly field
++admin_url = MainModelAdmin(MainModel, custom_admin_site).get_admin_url(MainModel._meta.get_field('related'), main_instance.related)
++print(admin_url)

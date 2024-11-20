@@ -1,0 +1,292 @@
+
+diff --git a/myapp/__init__.py b/myapp/__init__.py
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/myapp/models.py b/myapp/models.py
+new file mode 100644
+index 0000000000..8eeba5cb23
+--- /dev/null
++++ b/myapp/models.py
+@@ -0,0 +1,7 @@
++from django.db import models
++
++class Publication(models.Model):
++    pass
++
++class Article(models.Model):
++    publications = models.ManyToManyField(to=Publication, blank=True, null=True)
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..712b912acf
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,33 @@
++from django import forms
++from django.db import models
++from django.contrib import admin
++
++class Publication(models.Model):
++    pass
++
++class Article(models.Model):
++    publications = models.ManyToManyField(to=Publication, blank=True, null=True)
++
++class ArticleForm(forms.ModelForm):
++    publications = forms.ModelMultipleChoiceField(
++        Publication.objects.filter(id__lt=2).union(
++            Publication.objects.filter(id__gt=5)
++        ),
++        required=False,
++    )
++    class Meta:
++        model = Article
++        fields = ["publications"]
++
++class ArticleAdmin(admin.ModelAdmin):
++    form = ArticleForm
++
++# Simulate form submission with no publications selected
++form = ArticleForm(data={})
++if form.is_valid():
++    article = form.save(commit=False)
++    article.save()
++    form.save_m2m()
++    print("Publications added:", article.publications.all())
++else:
++    print("Form is not valid")
+diff --git a/settings.py b/settings.py
+new file mode 100644
+index 0000000000..e5622447a8
+--- /dev/null
++++ b/settings.py
+@@ -0,0 +1,230 @@
++import django
++from django import forms
++from django.db import models
++from django.contrib import admin
++from django.conf import settings
++from django.core.management import call_command
++
++# Initialize Django
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    SECRET_KEY='dummy-secret-key'
++)
++django.setup()
++
++# Create database tables
++call_command('migrate', run_syncdb=True)
++
++class Publication(models.Model):
++    class Meta:
++        app_label = 'myapp'
++
++class Article(models.Model):
++    publications = models.ManyToManyField(to=Publication, blank=True, null=True)
++    class Meta:
++        app_label = 'myapp'
++
++class ArticleForm(forms.ModelForm):
++    publications = forms.ModelMultipleChoiceField(
++        Publication.objects.filter(id__lt=2).union(
++            Publication.objects.filter(id__gt=5)
++        ),
++        required=False,
++    )
++    class Meta:
++        model = Article
++        fields = ["publications"]
++
++class ArticleAdmin(admin.ModelAdmin):
++    form = ArticleForm
++
++# Simulate form submission with no publications selected
++form = ArticleForm(data={})
++if form.is_valid():
++    article = form.save(commit=False)
++    article.save()
++    form.save_m2m()
++    print("Publications added:", article.publications.all())
++else:
++    print("Form is not valid")
++from django import forms
++from django.db import models
++from django.contrib import admin
++from django.conf import settings
++from django.core.management import call_command
++
++# Initialize Django
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'myapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    SECRET_KEY='dummy-secret-key'
++)
++django.setup()
++
++# Create database tables
++call_command('makemigrations', 'myapp')
++call_command('migrate', run_syncdb=True)
++
++class Publication(models.Model):
++    class Meta:
++        app_label = 'myapp'
++
++class Article(models.Model):
++    publications = models.ManyToManyField(to=Publication, blank=True, null=True)
++    class Meta:
++        app_label = 'myapp'
++
++class ArticleForm(forms.ModelForm):
++    publications = forms.ModelMultipleChoiceField(
++        Publication.objects.filter(id__lt=2).union(
++            Publication.objects.filter(id__gt=5)
++        ),
++        required=False,
++    )
++    class Meta:
++        model = Article
++        fields = ["publications"]
++
++class ArticleAdmin(admin.ModelAdmin):
++    form = ArticleForm
++
++# Simulate form submission with no publications selected
++form = ArticleForm(data={})
++if form.is_valid():
++    article = form.save(commit=False)
++    article.save()
++    form.save_m2m()
++    print("Publications added:", article.publications.all())
++else:
++    print("Form is not valid")
++from django import forms
++from django.db import models
++from django.contrib import admin
++from django.conf import settings
++from django.core.management import call_command
++
++# Initialize Django
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    SECRET_KEY='dummy-secret-key'
++)
++django.setup()
++
++# Create database tables
++call_command('migrate', run_syncdb=True)
++
++class Publication(models.Model):
++    class Meta:
++        app_label = 'myapp'
++
++class Article(models.Model):
++    publications = models.ManyToManyField(to=Publication, blank=True, null=True)
++    class Meta:
++        app_label = 'myapp'
++
++class ArticleForm(forms.ModelForm):
++    publications = forms.ModelMultipleChoiceField(
++        Publication.objects.filter(id__lt=2).union(
++            Publication.objects.filter(id__gt=5)
++        ),
++        required=False,
++    )
++    class Meta:
++        model = Article
++        fields = ["publications"]
++
++class ArticleAdmin(admin.ModelAdmin):
++    form = ArticleForm
++
++# Simulate form submission with no publications selected
++form = ArticleForm(data={})
++if form.is_valid():
++    article = form.save(commit=False)
++    article.save()
++    form.save_m2m()
++    print("Publications added:", article.publications.all())
++else:
++    print("Form is not valid")
++from django import forms
++from django.db import models
++from django.contrib import admin
++from django.conf import settings
++
++# Initialize Django
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    SECRET_KEY='dummy-secret-key'
++)
++django.setup()
++
++class Publication(models.Model):
++    class Meta:
++        app_label = 'myapp'
++
++class Article(models.Model):
++    publications = models.ManyToManyField(to=Publication, blank=True, null=True)
++    class Meta:
++        app_label = 'myapp'
++
++class ArticleForm(forms.ModelForm):
++    publications = forms.ModelMultipleChoiceField(
++        Publication.objects.filter(id__lt=2).union(
++            Publication.objects.filter(id__gt=5)
++        ),
++        required=False,
++    )
++    class Meta:
++        model = Article
++        fields = ["publications"]
++
++class ArticleAdmin(admin.ModelAdmin):
++    form = ArticleForm
++
++# Simulate form submission with no publications selected
++form = ArticleForm(data={})
++if form.is_valid():
++    article = form.save(commit=False)
++    article.save()
++    form.save_m2m()
++    print("Publications added:", article.publications.all())
++else:
++    print("Form is not valid")

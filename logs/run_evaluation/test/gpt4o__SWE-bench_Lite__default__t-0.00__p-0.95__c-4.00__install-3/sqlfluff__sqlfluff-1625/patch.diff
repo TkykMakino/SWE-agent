@@ -1,0 +1,26 @@
+
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 00000000..2d1c6211
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,19 @@
++from sqlfluff.core import Linter
++
++# SQL queries to test
++queries = [
++    "SELECT [hello] FROM mytable",
++    "SELECT a.[hello] FROM mytable AS a"
++]
++
++# Initialize the linter
++linter = Linter(dialect='tsql')
++
++# Lint the queries
++for query in queries:
++    lint_result = linter.lint_string(query)
++    print(f"Query: {query}")
++    print(f"Linting Result: {lint_result}")
++    print("-" * 40)
++
++print("Script completed successfully, no errors.")

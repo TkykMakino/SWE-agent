@@ -1,0 +1,186 @@
+
+diff --git a/astroid/brain/brain_builtin_inference.py b/astroid/brain/brain_builtin_inference.py
+index af1ddf4d..508ebef8 100644
+--- a/astroid/brain/brain_builtin_inference.py
++++ b/astroid/brain/brain_builtin_inference.py
+@@ -1,10 +1,141 @@
++from astroid import nodes, InferenceContext
++
++# Minimal version of the _infer_str_format_call function
++def _infer_str_format_call(node, context=None):
++    format_template = node.func.expr.value
++    pos_values = [arg.value for arg in node.args]
++    keyword_values = {kw.arg: kw.value for kw in node.keywords}
++    formatted_string = format_template.format(*pos_values, **keyword_values)
++    return [nodes.Const(value=formatted_string)]
++
++# Create a Const node with None value
++const_node = nodes.Const(value=None)
++
++# Create a Call node that simulates the str.format() call
++call_node = nodes.Call(
++    func=nodes.Attribute(
++        expr=nodes.Const(value="{}"),
++        attrname="format",
++    ),
++    args=[const_node],
++    keywords=[],
++)
++
++# Create an inference context
++context = InferenceContext()
++
++try:
++    # Pass the Call node to the _infer_str_format_call function
++    formatted_string = next(_infer_str_format_call(call_node, context))
++    print(f"Formatted string: {formatted_string.value}")
++except TypeError as e:
++    print(f"Caught an exception: {e}")
+ # Licensed under the LGPL: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html
+ # For details: https://github.com/PyCQA/astroid/blob/main/LICENSE
+ # Copyright (c) https://github.com/PyCQA/astroid/blob/main/CONTRIBUTORS.txt
+ 
+ """Astroid hooks for various builtins."""
+ 
+-from __future__ import annotations
++# Remove the redundant import
++
++import itertools
++from collections.abc import Iterator
++from functools import partial
++
++from astroid import arguments, helpers, inference_tip, nodes, objects, util
++from astroid.builder import AstroidBuilder
++from astroid.context import InferenceContext
++from astroid.exceptions import (
++    AstroidTypeError,
++    AttributeInferenceError,
++    InferenceError,
++    MroError,
++    UseInferenceDefault,
++)
++from astroid.manager import AstroidManager
++from astroid.nodes import scoped_nodes
++
++OBJECT_DUNDER_NEW = "object.__new__"
++
++STR_CLASS = """
++class whatever(object):
++    def join(self, iterable):
++        return {rvalue}
++    def replace(self, old, new, count=None):
++        return {rvalue}
++    def format(self, *args, **kwargs):
++        return {rvalue}
++    def encode(self, encoding='ascii', errors=None):
++        return b''
++    def decode(self, encoding='ascii', errors=None):
++        return u''
++    def capitalize(self):
++        return {rvalue}
++    def title(self):
++        return {rvalue}
++    def lower(self):
++        return {rvalue}
++    def upper(self):
++        return {rvalue}
++    def swapcase(self):
++        return {rvalue}
++    def index(self, sub, start=None, end=None):
++        return 0
++    def find(self, sub, start=None, end=None):
++        return 0
++    def count(self, sub, start=None, end=None):
++        return 0
++    def strip(self, chars=None):
++        return {rvalue}
++    def lstrip(self, chars=None):
++        return {rvalue}
++    def rstrip(self, chars=None):
++        return {rvalue}
++    def rjust(self, width, fillchar=None):
++        return {rvalue}
++    def center(self, width, fillchar=None):
++        return {rvalue}
++    def ljust(self, width, fillchar=None):
++        return {rvalue}
++"""
++
++BYTES_CLASS = """
++class whatever(object):
++    def join(self, iterable):
++        return {rvalue}
++    def replace(self, old, new, count=None):
++        return {rvalue}
++"""
++from astroid.brain.brain_builtin_inference import _infer_str_format_call
++
++# Create a Const node with None value
++const_node = nodes.Const(value=None)
++
++# Create a Call node that simulates the str.format() call
++call_node = nodes.Call(
++    func=nodes.Attribute(
++        expr=nodes.Const(value="{}"),
++        attrname="format",
++    ),
++    args=[const_node],
++    keywords=[],
++)
++
++# Create an inference context
++context = InferenceContext()
++
++try:
++    # Pass the Call node to the _infer_str_format_call function
++    formatted_string = next(_infer_str_format_call(call_node, context))
++    print(f"Formatted string: {formatted_string.value}")
++except TypeError as e:
++    print(f"Caught an exception: {e}")
++# For details: https://github.com/PyCQA/astroid/blob/main/LICENSE
++# Copyright (c) https://github.com/PyCQA/astroid/blob/main/CONTRIBUTORS.txt
++
++"""Astroid hooks for various builtins."""
++
++# Remove the redundant import
+ 
+ import itertools
+ from collections.abc import Iterator
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..8cf195de
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,32 @@
++from astroid import nodes
++
++# Create a Const node with None value
++const_node = nodes.Const(value=None)
++
++# Create a Call node that simulates the str.format() call
++call_node = nodes.Call(
++    func=nodes.Attribute(
++        expr=nodes.Const(value="{}"),
++        attrname="format",
++    ),
++    args=[const_node],
++    keywords=[],
++)
++
++# Minimal version of the _infer_str_format_call function
++def _infer_str_format_call(node, context=None):
++    format_template = node.func.expr.value
++    pos_values = [arg.value for arg in node.args]
++    keyword_values = {kw.arg: kw.value for kw in node.keywords}
++    formatted_string = format_template.format(*pos_values, **keyword_values)
++    return [nodes.Const(value=formatted_string)]
++
++# Minimal context object
++context = {}
++
++try:
++    # Pass the Call node to the _infer_str_format_call function
++    formatted_string = next(iter(_infer_str_format_call(call_node, context)))
++    print(f"Formatted string: {formatted_string.value}")
++except TypeError as e:
++    print(f"Caught an exception: {e}")

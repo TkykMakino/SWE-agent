@@ -1,0 +1,61 @@
+
+diff --git a/django/utils/http.py b/django/utils/http.py
+index 572cfb4347..5099e7dadb 100644
+--- a/django/utils/http.py
++++ b/django/utils/http.py
+@@ -36,6 +36,7 @@ __Y2 = r'(?P<year>\d{2})'
+ __T = r'(?P<hour>\d{2}):(?P<min>\d{2}):(?P<sec>\d{2})'
+ RFC1123_DATE = re.compile(r'^\w{3}, %s %s %s %s GMT$' % (__D, __M, __Y, __T))
+ RFC850_DATE = re.compile(r'^\w{6,9}, %s-%s-%s %s GMT$' % (__D, __M, __Y2, __T))
++print(f"RFC850_DATE pattern: {RFC850_DATE.pattern}")
+ ASCTIME_DATE = re.compile(r'^\w{3} %s %s %s %s$' % (__M, __D2, __T, __Y))
+ 
+ RFC3986_GENDELIMS = ":/?#[]@"
+@@ -170,16 +171,20 @@ def parse_http_date(date):
+     for regex in RFC1123_DATE, RFC850_DATE, ASCTIME_DATE:
+         m = regex.match(date)
+         if m is not None:
++            print(f"Matched regex: {regex.pattern}")
++            print(f"Captured groups: {m.groupdict()}")
+             break
+     else:
+         raise ValueError("%r is not in a valid HTTP date format" % date)
+     try:
+         year = int(m.group('year'))
+         if year < 100:
+-            if year < 70:
+-                year += 2000
++            current_year = datetime.datetime.utcnow().year
++            current_century = current_year - (current_year % 100)
++            if year > (current_year % 100) + 50:
++                year += current_century - 100
+             else:
+-                year += 1900
++                year += current_century
+         month = MONTHS.index(m.group('mon').lower()) + 1
+         day = int(m.group('day'))
+         hour = int(m.group('hour'))
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..0012f333ad
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,18 @@
++from django.utils.http import parse_http_date
++
++# Test dates with two-digit years
++dates = [
++    "Sunday, 06-Nov-94 08:49:37 GMT",  # Should be interpreted as 1994
++    "Sunday, 06-Nov-70 08:49:37 GMT",  # Should be interpreted as 1970
++    "Sunday, 06-Nov-69 08:49:37 GMT",  # Should be interpreted as 2069
++    "Sunday, 06-Nov-00 08:49:37 GMT",  # Should be interpreted as 2000
++]
++
++for date in dates:
++    try:
++        timestamp = parse_http_date(date)
++        print(f"{date} -> {timestamp}")
++    except ValueError as e:
++        print(f"Error parsing date {date}: {e}")
++
++print("Script completed successfully, no errors.")

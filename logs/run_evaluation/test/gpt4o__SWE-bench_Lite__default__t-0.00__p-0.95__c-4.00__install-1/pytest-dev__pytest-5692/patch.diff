@@ -1,0 +1,58 @@
+
+diff --git a/report.xml b/report.xml
+new file mode 100644
+index 000000000..76c9980ee
+--- /dev/null
++++ b/report.xml
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="1" hostname="1c012c2ceea7" name="pytest" skipped="0" tests="2" time="0.086" timestamp="2024-11-04T16:12:23.189901"><testcase classname="test_simple" file="test_simple.py" line="0" name="test_example_pass" time="0.000"></testcase><testcase classname="test_simple" file="test_simple.py" line="3" name="test_example_fail" time="0.000"><failure message="assert 1 == 2">def test_example_fail():
++&gt;       assert 1 == 2
++E       assert 1 == 2
++
++test_simple.py:5: AssertionError</failure></testcase></testsuite></testsuites>
+\ No newline at end of file
+diff --git a/src/_pytest/junitxml.py b/src/_pytest/junitxml.py
+index 15c630b1d..9afa21b75 100644
+--- a/src/_pytest/junitxml.py
++++ b/src/_pytest/junitxml.py
+@@ -657,6 +657,9 @@ class LogXML:
+         )
+         logfile.write('<?xml version="1.0" encoding="utf-8"?>')
+ 
++        import socket
++        from datetime import datetime
++
+         suite_node = Junit.testsuite(
+             self._get_global_properties_node(),
+             [x.to_xml() for x in self.node_reporters_ordered],
+@@ -666,6 +669,8 @@ class LogXML:
+             skipped=self.stats["skipped"],
+             tests=numtests,
+             time="%.3f" % suite_time_delta,
++            timestamp=datetime.utcnow().isoformat(),
++            hostname=socket.gethostname(),
+         )
+         logfile.write(Junit.testsuites([suite_node]).unicode(indent=0))
+         logfile.close()
+diff --git a/test_reproduce.py b/test_reproduce.py
+new file mode 100644
+index 000000000..7e584ad0f
+--- /dev/null
++++ b/test_reproduce.py
+@@ -0,0 +1,5 @@
++def test_example_pass():
++    assert 1 == 1
++
++def test_example_fail():
++    assert 1 == 2
+diff --git a/test_simple.py b/test_simple.py
+new file mode 100644
+index 000000000..7e584ad0f
+--- /dev/null
++++ b/test_simple.py
+@@ -0,0 +1,5 @@
++def test_example_pass():
++    assert 1 == 1
++
++def test_example_fail():
++    assert 1 == 2

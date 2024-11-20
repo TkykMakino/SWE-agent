@@ -1,0 +1,18 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..e165293d
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,11 @@
++import xarray as xr
++import numpy as np
++
++# Create two datasets with different variables
++ds1 = xr.Dataset({'var1': (('x', 'y'), np.random.rand(2, 3))})
++ds2 = xr.Dataset({'var2': (('x', 'y'), np.random.rand(2, 3))})
++
++# Attempt to concatenate the datasets
++result = xr.concat([ds1, ds2], dim='x')
++
++print(result)

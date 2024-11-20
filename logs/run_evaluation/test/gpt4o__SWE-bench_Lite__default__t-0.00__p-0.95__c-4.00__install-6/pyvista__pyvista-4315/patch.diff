@@ -1,0 +1,11 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..73299803
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,4 @@
++import pyvista as pv
++
++# This should raise an error
++pv.RectilinearGrid([0, 1], [0, 1], [0, 1])

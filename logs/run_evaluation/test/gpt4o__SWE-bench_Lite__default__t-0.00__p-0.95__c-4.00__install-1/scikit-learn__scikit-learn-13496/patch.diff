@@ -1,0 +1,223 @@
+
+diff --git a/sklearn/ensemble/forest.py b/sklearn/ensemble/forest.py
+index aae9dd8c7..707452f79 100644
+--- a/sklearn/ensemble/forest.py
++++ b/sklearn/ensemble/forest.py
+@@ -26,78 +26,48 @@ The module structure is the following:
+   classes provide the user with concrete implementations of the
+   forest ensemble method using the extremely randomized trees
+   ``ExtraTreeClassifier`` and ``ExtraTreeRegressor`` as
+-  sub-estimator implementations.
+-
+-Single and multi-output problems are both handled.
+-
+ """
++"""
++        -0.5 * threshold, where threshold is defined as in the original paper.
+ 
+-# Authors: Gilles Louppe <g.louppe@gmail.com>
+-#          Brian Holt <bdholt1@gmail.com>
+-#          Joly Arnaud <arnaud.v.joly@gmail.com>
+-#          Fares Hedayati <fares.hedayati@gmail.com>
+-#
+-# License: BSD 3 clause
+-
+-
+-from warnings import catch_warnings, simplefilter, warn
+-import threading
+-
+-from abc import ABCMeta, abstractmethod
+-import numpy as np
+-from scipy.sparse import issparse
+-from scipy.sparse import hstack as sparse_hstack
+-
+-from ..base import ClassifierMixin, RegressorMixin, MultiOutputMixin
+-from ..utils._joblib import Parallel, delayed
+-from ..metrics import r2_score
+-from ..preprocessing import OneHotEncoder
+-from ..tree import (DecisionTreeClassifier, DecisionTreeRegressor,
+-                    ExtraTreeClassifier, ExtraTreeRegressor)
+-from ..tree._tree import DTYPE, DOUBLE
+-from ..utils import check_random_state, check_array, compute_sample_weight
+-from ..exceptions import DataConversionWarning, NotFittedError
+-from .base import BaseEnsemble, _partition_estimators
+-from ..utils.fixes import parallel_helper, _joblib_parallel_args
+-from ..utils.multiclass import check_classification_targets
+-from ..utils.validation import check_is_fitted
+-
+-
+-__all__ = ["RandomForestClassifier",
+-           "RandomForestRegressor",
+-           "ExtraTreesClassifier",
+-           "ExtraTreesRegressor",
+-           "RandomTreesEmbedding"]
+-
+-MAX_INT = np.iinfo(np.int32).max
+-
+-
+-def _generate_sample_indices(random_state, n_samples):
+-    """Private function used to _parallel_build_trees function."""
+-    random_instance = check_random_state(random_state)
+-    sample_indices = random_instance.randint(0, n_samples, n_samples)
+-
+-    return sample_indices
+-
+-
+-def _generate_unsampled_indices(random_state, n_samples):
+-    """Private function used to forest._set_oob_score function."""
+-    sample_indices = _generate_sample_indices(random_state, n_samples)
+-    sample_counts = np.bincount(sample_indices, minlength=n_samples)
+-    unsampled_mask = sample_counts == 0
+-    indices_range = np.arange(n_samples)
+-    unsampled_indices = indices_range[unsampled_mask]
+-
+-    return unsampled_indices
++    decision_scores_ : ndarray of shape (n_samples,)
++        The anomaly score of the training samples. The lower, the more abnormal.
++        This is also known as the decision function.
+ 
++    Examples
++    --------
++    >>> from sklearn.ensemble import IsolationForest
++    >>> X = [[-1.1], [0.3], [0.5], [100]]
++    >>> clf = IsolationForest(random_state=0).fit(X)
++    >>> clf.predict([[0.1], [0.2], [90]])
++    array([ 1,  1, -1])
++    """
+ 
+-def _parallel_build_trees(tree, forest, X, y, sample_weight, tree_idx, n_trees,
+-                          verbose=0, class_weight=None):
+-    """Private function used to fit a single tree in parallel."""
+-    if verbose > 1:
+-        print("building tree %d of %d" % (tree_idx + 1, n_trees))
++    def __init__(self,
++                 n_estimators=100,
++                 max_samples="auto",
++                 contamination="legacy",
++                 max_features=1.,
++                 bootstrap=False,
++                 n_jobs=None,
++                 behaviour="old",
++                 warm_start=False,
++                 random_state=None,
++                 verbose=0):
++        super(IsolationForest, self).__init__(
++            base_estimator=ExtraTreeRegressor(),
++            n_estimators=n_estimators,
++            max_samples=max_samples,
++            max_features=max_features,
++            bootstrap=bootstrap,
++            n_jobs=n_jobs,
++            random_state=random_state,
++            warm_start=warm_start,
++            verbose=verbose)
+ 
+-    if forest.bootstrap:
++        self.contamination = contamination
++        self.behaviour = behaviour
++        self.warm_start = warm_start
+         n_samples = X.shape[0]
+         if sample_weight is None:
+             curr_sample_weight = np.ones((n_samples,), dtype=np.float64)
+diff --git a/sklearn/ensemble/iforest.py b/sklearn/ensemble/iforest.py
+index 8a1bd3625..d73e49c6b 100644
+--- a/sklearn/ensemble/iforest.py
++++ b/sklearn/ensemble/iforest.py
+@@ -98,6 +98,71 @@ class IsolationForest(BaseBagging, OutlierMixin):
+         the default behaviour in the future. As explained in details in the
+         ``offset_`` attribute documentation, the ``decision_function`` becomes
+         dependent on the contamination parameter, in such a way that 0 becomes
++
++    warm_start : bool, optional (default=False)
++        When set to ``True``, reuse the solution of the previous call to fit
++        and add more estimators to the ensemble, otherwise, just fit a whole
++        new forest. See :term:`the Glossary <warm_start>`.
++
++    Attributes
++    ----------
++    base_estimator_ : ExtraTreeRegressor instance
++        The child estimator template used to create the collection of fitted
++        sub-estimators.
++
++    estimators_ : list of ExtraTreeRegressor instances
++        The collection of fitted sub-estimators.
++
++    max_samples_ : int
++        The actual number of samples
++
++    offset_ : float
++        Offset used to define the decision function from the raw scores. We
++        have the relation: ``decision_function = score_samples - offset_``.
++        ``offset_`` is defined as follows. When the behaviour parameter is
++        set to 'new', the offset is equal to -0.5 as the scores of inliers are
++        close to 0 and the scores of outliers are close to -1. When the
++        behaviour parameter is set to 'old', the offset is equal to
++        -0.5 * threshold, where threshold is defined as in the original paper.
++
++    decision_scores_ : ndarray of shape (n_samples,)
++        The anomaly score of the training samples. The lower, the more abnormal.
++        This is also known as the decision function.
++
++    Examples
++    --------
++    >>> from sklearn.ensemble import IsolationForest
++    >>> X = [[-1.1], [0.3], [0.5], [100]]
++    >>> clf = IsolationForest(random_state=0).fit(X)
++    >>> clf.predict([[0.1], [0.2], [90]])
++    array([ 1,  1, -1])
++    """
++
++    def __init__(self,
++                 n_estimators=100,
++                 max_samples="auto",
++                 contamination="legacy",
++                 max_features=1.,
++                 bootstrap=False,
++                 n_jobs=None,
++                 behaviour="old",
++                 warm_start=False,
++                 random_state=None,
++                 verbose=0):
++        super(IsolationForest, self).__init__(
++            base_estimator=ExtraTreeRegressor(),
++            n_estimators=n_estimators,
++            max_samples=max_samples,
++            max_features=max_features,
++            bootstrap=bootstrap,
++            n_jobs=n_jobs,
++            random_state=random_state,
++            warm_start=warm_start,
++            verbose=verbose)
++
++        self.contamination = contamination
++        self.behaviour = behaviour
++        self.warm_start = warm_start
+         its natural threshold to detect outliers.
+ 
+         .. versionadded:: 0.20
+diff --git a/sklearn/tests/test_iforest.py b/sklearn/tests/test_iforest.py
+new file mode 100644
+index 000000000..bd3c18f3d
+--- /dev/null
++++ b/sklearn/tests/test_iforest.py
+@@ -0,0 +1,20 @@
++import numpy as np
++from sklearn.ensemble import IsolationForest
++
++def test_isolation_forest_warm_start():
++    X = np.array([[1], [2], [3], [4], [5], [6], [7], [8], [9], [10]])
++    
++    # Initial fit
++    clf = IsolationForest(n_estimators=5, warm_start=True, random_state=0)
++    clf.fit(X)
++    initial_estimators = len(clf.estimators_)
++    
++    # Add more estimators
++    clf.set_params(n_estimators=10)
++    clf.fit(X)
++    new_estimators = len(clf.estimators_)
++    
++    assert new_estimators > initial_estimators, "Warm start did not add new estimators"
++    assert new_estimators == 10, "Number of estimators is not as expected"
++
++test_isolation_forest_warm_start()

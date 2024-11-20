@@ -1,0 +1,21 @@
+
+diff --git a/reproduce_L060.py b/reproduce_L060.py
+new file mode 100644
+index 00000000..ce5fb3d9
+--- /dev/null
++++ b/reproduce_L060.py
+@@ -0,0 +1,14 @@
++from sqlfluff.core import Linter
++
++sql_code = '''
++SELECT IFNULL(foo, 0) AS bar,
++FROM baz;
++
++SELECT NVL(foo, 0) AS bar,
++FROM baz;
++'''
++
++linter = Linter()
++lint_result = linter.lint_string(sql_code)
++for result in lint_result:
++    print(result)

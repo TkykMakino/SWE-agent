@@ -1,0 +1,202 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 000000000..328c8d402
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,23 @@
++from sklearn.mixture import GaussianMixture
++from sklearn.cluster import KMeans
++import numpy as np
++
++# Generate some sample data
++X = np.random.rand(100, 2)
++
++# Mixture Model
++gmm = GaussianMixture(n_components=3)
++gmm.fit(X)
++gmm_labels = gmm.predict(X)
++
++# Clusterer
++kmeans = KMeans(n_clusters=3)
++kmeans_labels = kmeans.fit_predict(X)
++
++# Output the results
++print("GMM labels:", gmm_labels)
++print("KMeans labels:", kmeans_labels)
++print("GMM has fit_predict method:", hasattr(gmm, 'fit_predict'))
++print("KMeans has fit_predict method:", hasattr(kmeans, 'fit_predict'))
++print("GMM has labels_ attribute:", hasattr(gmm, 'labels_'))
++print("KMeans has labels_ attribute:", hasattr(kmeans, 'labels_'))
+diff --git a/sklearn/mixture/gaussian_mixture.py b/sklearn/mixture/gaussian_mixture.py
+index d58a9e326..ecd60ab80 100644
+--- a/sklearn/mixture/gaussian_mixture.py
++++ b/sklearn/mixture/gaussian_mixture.py
+@@ -445,7 +445,7 @@ class GaussianMixture(BaseMixture):
+ 
+     Parameters
+     ----------
+-    n_components : int, defaults to 1.
++    n_clusters : int, defaults to 1.
+         The number of mixture components.
+ 
+     covariance_type : {'full', 'tied', 'diag', 'spherical'},
+@@ -472,9 +472,155 @@ class GaussianMixture(BaseMixture):
+     n_init : int, defaults to 1.
+         The number of initializations to perform. The best results are kept.
+ 
+-    init_params : {'kmeans', 'random'}, defaults to 'kmeans'.
+-        The method used to initialize the weights, the means and the
+-        precisions.
++    def fit(self, X, y=None):
++        """
++        Estimate model parameters with the EM algorithm.
++
++        The method fits the model `n_init` times and sets the parameters with
++        which the model has the largest likelihood or lower bound. Within each
++        trial, the method iterates between E-step and M-step for `max_iter`
++        times until the change of likelihood or lower bound is less than
++        `tol`, otherwise, a `ConvergenceWarning` is raised. If `warm_start` is
++        True, then `n_init` is ignored and a single initialization is
++        performed upon the first call. Upon consecutive calls, training starts
++        where it left off.
++
++        Parameters
++        ----------
++        X : array-like, shape (n_samples, n_features)
++            List of n_features-dimensional data points. Each row
++            corresponds to a single data point.
++
++        y : Ignored
++            Not used, present here for API consistency by convention.
++
++        Returns
++        -------
++        self
++        """
++        self._check_params(X)
++        self._initialize_parameters(X, self.random_state)
++        self.converged_ = False
++
++        lower_bound = -np.infty
++
++        for init in range(self.n_init):
++            self._initialize(X, self.random_state)
++            for n_iter in range(self.max_iter):
++                prev_lower_bound = lower_bound
++
++                log_prob_norm, log_resp = self._e_step(X)
++                self._m_step(X, log_resp)
++                lower_bound = self._compute_lower_bound(log_resp, log_prob_norm)
++
++                change = lower_bound - prev_lower_bound
++                if abs(change) < self.tol:
++                    self.converged_ = True
++                    break
++
++            if lower_bound > self.lower_bound_:
++                self.lower_bound_ = lower_bound
++                self.n_iter_ = n_iter
++                self.weights_ = self.weights_
++                self.means_ = self.means_
++                self.covariances_ = self.covariances_
++                self.precisions_cholesky_ = self.precisions_cholesky_
++
++        self.labels_ = self.predict(X)
++        return self
++
++    def fit_predict(self, X, y=None):
++        """
++        Fit the model and predict the labels for the data.
++
++        Parameters
++        ----------
++        X : array-like, shape (n_samples, n_features)
++            List of n_features-dimensional data points. Each row
++            corresponds to a single data point.
++
++        y : Ignored
++            Not used, present here for API consistency by convention.
++
++        Returns
++        -------
++        labels : array, shape (n_samples,)
++            Component labels.
++        """
++        self.fit(X, y)
++        return self.labels_
++        The method fits the model `n_init` times and sets the parameters with
++        which the model has the largest likelihood or lower bound. Within each
++        trial, the method iterates between E-step and M-step for `max_iter`
++        times until the change of likelihood or lower bound is less than
++        `tol`, otherwise, a `ConvergenceWarning` is raised. If `warm_start` is
++        True, then `n_init` is ignored and a single initialization is
++        performed upon the first call. Upon consecutive calls, training starts
++        where it left off.
++
++        Parameters
++        ----------
++        X : array-like, shape (n_samples, n_features)
++            List of n_features-dimensional data points. Each row
++            corresponds to a single data point.
++
++        y : Ignored
++            Not used, present here for API consistency by convention.
++
++        Returns
++        -------
++        self
++        """
++        self._check_params(X)
++        self._initialize_parameters(X, self.random_state)
++        self.converged_ = False
++
++        lower_bound = -np.infty
++
++        for init in range(self.n_init):
++            self._initialize(X, self.random_state)
++            for n_iter in range(self.max_iter):
++                prev_lower_bound = lower_bound
++
++                log_prob_norm, log_resp = self._e_step(X)
++                self._m_step(X, log_resp)
++                lower_bound = self._compute_lower_bound(log_resp, log_prob_norm)
++
++                change = lower_bound - prev_lower_bound
++                if abs(change) < self.tol:
++                    self.converged_ = True
++                    break
++
++            if lower_bound > self.lower_bound_:
++                self.lower_bound_ = lower_bound
++                self.n_iter_ = n_iter
++                self.weights_ = self.weights_
++                self.means_ = self.means_
++                self.covariances_ = self.covariances_
++                self.precisions_cholesky_ = self.precisions_cholesky_
++
++        self.labels_ = self.predict(X)
++        return self
++
++    def fit_predict(self, X, y=None):
++        """Fit the model and predict the labels for the data.
++
++        Parameters
++        ----------
++        X : array-like, shape (n_samples, n_features)
++            List of n_features-dimensional data points. Each row
++            corresponds to a single data point.
++
++        y : Ignored
++            Not used, present here for API consistency by convention.
++
++        Returns
++        -------
++        labels : array, shape (n_samples,)
++            Component labels.
++        """
++        self.fit(X, y)
++        return self.labels_
+         Must be one of::
+ 
+             'kmeans' : responsibilities are initialized using kmeans.

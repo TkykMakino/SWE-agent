@@ -1,0 +1,46 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..9f7a4815c4
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,27 @@
++from django.db import connection
++from django.db.models import Subquery
++from tests.apps.models import App
++
++q = Subquery(App.objects.all())
++print(str(q.query))
++# Output SQL is valid:
++# 'SELECT "apps_app"."id", "apps_app"."name" FROM "apps_app"'
++print(q.as_sql(q.query.get_compiler('default'), connection))
++# Output SQL is invalid (no S letter at the beginning and " symbol at the end):
++# ('(ELECT "apps_app"."id", "apps_app"."name" FROM "apps_app)', ())
++q.query.subquery = True
++print(q.as_sql(q.query.get_compiler('default'), connection))
++# Outputs correct result
++# ('(SELECT "apps_app"."id", "apps_app"."name" FROM "apps_app")', ())
++
++q = Subquery(App.objects.all())
++print(str(q.query))
++# Output SQL is valid:
++# 'SELECT "apps_app"."id", "apps_app"."name" FROM "apps_app"'
++print(q.as_sql(q.query.get_compiler('default'), connection))
++# Output SQL is invalid (no S letter at the beginning and " symbol at the end):
++# ('(ELECT "apps_app"."id", "apps_app"."name" FROM "apps_app)', ())
++q.query.subquery = True
++print(q.as_sql(q.query.get_compiler('default'), connection))
++# Outputs correct result
++# ('(SELECT "apps_app"."id", "apps_app"."name" FROM "apps_app")', ())
+diff --git a/tests/basic/models.py b/tests/basic/models.py
+index 6dcdfa90c0..0aaed013b0 100644
+--- a/tests/basic/models.py
++++ b/tests/basic/models.py
+@@ -1,6 +1,6 @@
+ """
+ Bare-bones model
+-
++from tests.basic.models import Article
+ This is a basic model with only two non-primary-key fields.
+ """
+ import uuid

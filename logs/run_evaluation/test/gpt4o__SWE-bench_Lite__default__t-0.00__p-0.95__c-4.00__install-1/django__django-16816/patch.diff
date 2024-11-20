@@ -1,0 +1,46 @@
+
+diff --git a/django/contrib/admin/checks.py b/django/contrib/admin/checks.py
+index 0fefe65e48..a239c9dfac 100644
+--- a/django/contrib/admin/checks.py
++++ b/django/contrib/admin/checks.py
+@@ -901,21 +901,25 @@ class ModelAdminChecks(BaseModelAdminChecks):
+             try:
+                 field = getattr(obj.model, item)
+             except AttributeError:
+-                return [
+-                    checks.Error(
+-                        "The value of '%s' refers to '%s', which is not a "
+-                        "callable, an attribute of '%s', or an attribute or "
+-                        "method on '%s'."
+-                        % (
+-                            label,
+-                            item,
+-                            obj.__class__.__name__,
+-                            obj.model._meta.label,
+-                        ),
+-                        obj=obj.__class__,
+-                        id="admin.E108",
+-                    )
+-                ]
++                try:
++                    from django.contrib.admin.utils import label_for_field
++                    label_for_field(item, obj.model, model_admin=obj)
++                except FieldDoesNotExist:
++                    return [
++                        checks.Error(
++                            "The value of '%s' refers to '%s', which is not a "
++                            "callable, an attribute of '%s', or an attribute or "
++                            "method on '%s'."
++                            % (
++                                label,
++                                item,
++                                obj.__class__.__name__,
++                                obj.model._meta.label,
++                            ),
++                            obj=obj.__class__,
++                            id="admin.E108",
++                        )
++                    ]
+         if isinstance(field, models.ManyToManyField) or (
+             getattr(field, "rel", None) and field.rel.field.many_to_one
+         ):

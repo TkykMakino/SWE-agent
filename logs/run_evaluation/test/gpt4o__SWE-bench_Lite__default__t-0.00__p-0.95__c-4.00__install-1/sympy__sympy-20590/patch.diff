@@ -1,0 +1,22 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..dad9d03d4d
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,8 @@
++import sympy
++
++try:
++    print(sympy.Symbol('s').__dict__)
++except AttributeError as e:
++    print(e)
++
++print(sympy.Symbol('s').__slots__)
+diff --git a/test_symbol.py b/test_symbol.py
+new file mode 100644
+index 0000000000..8b13789179
+--- /dev/null
++++ b/test_symbol.py
+@@ -0,0 +1 @@
++

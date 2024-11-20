@@ -1,0 +1,71 @@
+
+diff --git a/django/db/models/fields/related.py b/django/db/models/fields/related.py
+index 8ddbb5ba68..536b3dd601 100644
+--- a/django/db/models/fields/related.py
++++ b/django/db/models/fields/related.py
+@@ -1309,7 +1309,7 @@ class ManyToManyField(RelatedField):
+                              "through_fields keyword argument.") % (self, from_model_name),
+                             hint=(
+                                 'If you want to create a recursive relationship, '
+-                                'use ForeignKey("%s", symmetrical=False, through="%s").'
++                                'use ManyToManyField("%s", through="%s").'
+                             ) % (
+                                 RECURSIVE_RELATIONSHIP_CONSTANT,
+                                 relationship_model_name,
+@@ -1329,7 +1329,7 @@ class ManyToManyField(RelatedField):
+                             "through_fields keyword argument." % (self, to_model_name),
+                             hint=(
+                                 'If you want to create a recursive relationship, '
+-                                'use ForeignKey("%s", symmetrical=False, through="%s").'
++                                'use ManyToManyField("%s", through="%s").'
+                             ) % (
+                                 RECURSIVE_RELATIONSHIP_CONSTANT,
+                                 relationship_model_name,
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..de915ccefb
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,42 @@
++from django.db import models
++from django.core.management import call_command
++from django.conf import settings
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'testapp',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++class ModelA(models.Model):
++    class Meta:
++        app_label = 'testapp'
++
++class ModelB(models.Model):
++    class Meta:
++        app_label = 'testapp'
++
++class IntermediaryModel(models.Model):
++    model_a1 = models.ForeignKey(ModelA, on_delete=models.CASCADE)
++    model_a2 = models.ForeignKey(ModelA, on_delete=models.CASCADE)
++    model_b = models.ForeignKey(ModelB, on_delete=models.CASCADE)
++
++    class Meta:
++        app_label = 'testapp'
++
++class ManyToManyModel(models.Model):
++    models = models.ManyToManyField(ModelA, through=IntermediaryModel)
++
++    class Meta:
++        app_label = 'testapp'
++
++try:
++    call_command('makemigrations', 'testapp')
++except Exception as e:
++    print(e)

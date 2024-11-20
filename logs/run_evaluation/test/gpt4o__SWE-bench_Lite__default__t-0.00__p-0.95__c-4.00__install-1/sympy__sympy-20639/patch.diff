@@ -1,0 +1,29 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..121e65a6c2
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,5 @@
++from sympy import pi, E
++from sympy.printing.pretty import pretty
++
++expr = pi**(1/E)
++print(pretty(expr, use_unicode=True))
+diff --git a/sympy/printing/pretty/pretty.py b/sympy/printing/pretty/pretty.py
+index df7452ee87..e1b0df1c9e 100644
+--- a/sympy/printing/pretty/pretty.py
++++ b/sympy/printing/pretty/pretty.py
+@@ -1958,10 +1958,10 @@ def _print_Pow(self, power):
+                 return self._print_nth_root(b, e)
+             if e.is_Rational and e < 0:
+                 return prettyForm("1")/self._print(Pow(b, -e, evaluate=False))
+-
++            if e == 1/S.Exp1:
++                return prettyForm(self._print(b))**prettyForm("e**-1")
+         if b.is_Relational:
+             return prettyForm(*self._print(b).parens()).__pow__(self._print(e))
+-
+         return self._print(b)**self._print(e)
+ 
+     def _print_UnevaluatedExpr(self, expr):

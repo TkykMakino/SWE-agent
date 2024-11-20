@@ -1,0 +1,17 @@
+
+diff --git a/astroid/raw_building.py b/astroid/raw_building.py
+index cc3aa015..7556b748 100644
+--- a/astroid/raw_building.py
++++ b/astroid/raw_building.py
+@@ -471,7 +471,10 @@ class InspectBuilder:
+             # check if it sounds valid and then add an import node, else use a
+             # dummy node
+             try:
+-                getattr(sys.modules[modname], name)
++                if name == "long" and modname == "numpy":
++                    attach_dummy_node(node, name, member)
++                else:
++                    getattr(sys.modules[modname], name)
+             except (KeyError, AttributeError):
+                 attach_dummy_node(node, name, member)
+             else:

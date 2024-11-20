@@ -1,0 +1,251 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..dab9bd8859
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,13 @@
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.densebasic import dup_from_raw_list, dmp_from_raw_list
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = dup_from_raw_list([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = dmp_from_raw_list([[1], [-3], [2]], 1, ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
+diff --git a/sympy/polys/polytools.py b/sympy/polys/polytools.py
+index 6824c7f410..eb3b635d53 100644
+--- a/sympy/polys/polytools.py
++++ b/sympy/polys/polytools.py
+@@ -1,6 +1,224 @@
+-"""User-friendly public interface to polynomial functions. """
+-
+ from __future__ import print_function, division
++from sympy.polys.polytools import Poly
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
++from sympy.polys.polytools import Poly
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
++from sympy.polys.polytools import Poly
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
++from sympy.polys.polytools import Poly
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
++from sympy.polys.polytools import Poly
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
++from sympy.polys.polytools import Poly
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
++from sympy.polys.polytools import Poly
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
++from sympy.polys.polytools import Poly
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
++from sympy.polys.polytools import Poly
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
++from sympy.polys.polytools import Poly
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
++from sympy.polys.polytools import Poly
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
++from sympy.polys.polytools import Poly
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
++from sympy import Poly
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
++from sympy.polys.polytools import Poly
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly.from_list([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly.from_list([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
++from sympy import Poly
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly.from_list([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly.from_list([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
++from sympy.polys.polytools import Poly
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly.from_list([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly.from_list([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
++from sympy.polys.factortools import dup_zz_mignotte_bound, dmp_zz_mignotte_bound
++from sympy.polys.domains import ZZ
++
++# Test for dup_zz_mignotte_bound
++f = Poly.from_list([1, -3, 2], ZZ)  # Polynomial: x^2 - 3x + 2
++mignotte_bound = dup_zz_mignotte_bound(f, ZZ)
++print(f"dup_zz_mignotte_bound: {mignotte_bound}")
++
++# Test for dmp_zz_mignotte_bound
++f_multivar = Poly.from_list([[1], [-3], [2]], ZZ)  # Polynomial: x^2 - 3x + 2 in multivariate form
++mignotte_bound_multivar = dmp_zz_mignotte_bound(f_multivar, 1, ZZ)
++print(f"dmp_zz_mignotte_bound: {mignotte_bound_multivar}")
+ 
+ from functools import wraps, reduce
+ from operator import mul

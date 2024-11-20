@@ -1,0 +1,28 @@
+
+diff --git a/lib/mpl_toolkits/mplot3d/axes3d.py b/lib/mpl_toolkits/mplot3d/axes3d.py
+index 9db44b7994..590d05c295 100644
+--- a/lib/mpl_toolkits/mplot3d/axes3d.py
++++ b/lib/mpl_toolkits/mplot3d/axes3d.py
+@@ -185,7 +185,21 @@ class Axes3D(Axes):
+                 "other Axes classes.")
+             fig.add_axes(self)
+ 
+-    def set_axis_off(self):
++    def set_visible(self, b):
++        super().set_visible(b)
++        for spine in self.spines.values():
++            spine.set_visible(b)
++        for axis in [self.xaxis, self.yaxis, self.zaxis]:
++            axis.set_visible(b)
++        for collection in self.collections:
++            collection.set_visible(b)
++        for patch in self.patches:
++            patch.set_visible(b)
++        for line in self.lines:
++            line.set_visible(b)
++        for text in self.texts:
++            text.set_visible(b)
++        self.stale = True
+         self._axis3don = False
+         self.stale = True
+ 

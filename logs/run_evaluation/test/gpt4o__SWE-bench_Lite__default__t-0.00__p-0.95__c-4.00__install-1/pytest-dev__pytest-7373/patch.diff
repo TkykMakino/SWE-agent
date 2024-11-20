@@ -1,0 +1,27 @@
+
+diff --git a/test_module_1.py b/test_module_1.py
+new file mode 100644
+index 000000000..563d4e09f
+--- /dev/null
++++ b/test_module_1.py
+@@ -0,0 +1,7 @@
++import pytest
++
++skip = True
++
++@pytest.mark.skipif("skip")
++def test_should_skip():
++    assert False
+diff --git a/test_module_2.py b/test_module_2.py
+new file mode 100644
+index 000000000..137ab0df8
+--- /dev/null
++++ b/test_module_2.py
+@@ -0,0 +1,7 @@
++import pytest
++
++skip = False
++
++@pytest.mark.skipif("skip")
++def test_should_not_skip():
++    assert False

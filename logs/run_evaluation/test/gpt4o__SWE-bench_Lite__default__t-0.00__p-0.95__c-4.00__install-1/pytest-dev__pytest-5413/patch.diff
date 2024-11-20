@@ -1,0 +1,17 @@
+
+diff --git a/src/_pytest/python_api.py b/src/_pytest/python_api.py
+index 011181a40..62aa55651 100644
+--- a/src/_pytest/python_api.py
++++ b/src/_pytest/python_api.py
+@@ -714,7 +714,10 @@ class RaisesContext:
+         self.excinfo = None
+ 
+     def __enter__(self):
+-        self.excinfo = _pytest._code.ExceptionInfo.for_later()
++        class CustomExceptionInfo(_pytest._code.ExceptionInfo):
++            def __str__(self):
++                return str(self.value)
++        self.excinfo = CustomExceptionInfo.for_later()
+         return self.excinfo
+ 
+     def __exit__(self, *tp):

@@ -1,0 +1,40 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..2986df5640
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,10 @@
++from sympy import Integral, Derivative
++from sympy import MatrixSymbol
++from sympy.abc import x
++
++A = MatrixSymbol('A', 2, 2)
++i = Integral(A, x)
++print(i.kind)  # Expected: MatrixKind(NumberKind)
++
++d = Derivative(A, x)
++print(d.kind)  # Expected: MatrixKind(NumberKind), but currently: UndefinedKind
+diff --git a/sympy/core/function.py b/sympy/core/function.py
+index 69df976b8b..2f38c495da 100644
+--- a/sympy/core/function.py
++++ b/sympy/core/function.py
+@@ -1161,13 +1161,11 @@ class Derivative(Expr):
+         >>> assert direct == indirect
+ 
+     The implication of this non-symbol replacement is that all
+-    functions are treated as independent of other functions and the
+-    symbols are independent of the functions that contain them::
+-
+-        >>> x.diff(f(x))
+-        0
+-        >>> g(x).diff(f(x))
+-        0
++    def _eval_kind(self):
++        from sympy.matrices.expressions.matexpr import MatrixKind, MatrixExpr
++        if isinstance(self.expr, MatrixExpr):
++            return MatrixKind()
++        return Expr._eval_kind(self)
+ 
+     It also means that derivatives are assumed to depend only
+     on the variables of differentiation, not on anything contained

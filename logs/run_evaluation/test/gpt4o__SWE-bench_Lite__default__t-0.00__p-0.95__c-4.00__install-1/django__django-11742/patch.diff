@@ -1,0 +1,39 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..b1564e9739
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,32 @@
++import django
++from django.conf import settings
++from django.db import models
++
++# Minimal settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++class TestModel(models.Model):
++    test_field = models.CharField(max_length=5, choices=['short', 'longer'])
++    class Meta:
++        app_label = 'test_app'
++# Attempt to save a record with a value that exceeds max_length
++try:
++    test_instance = TestModel(test_field='longer')
++    test_instance.full_clean()  # This should raise a validation error
++    print("Test failed: No validation error raised.")
++except models.ValidationError as e:
++    print("Test passed: Validation error raised.")
++    print(e)
++

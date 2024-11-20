@@ -1,0 +1,25 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..db2a396e6f
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,5 @@
++from sympy import symbols, sinc
++from sympy.printing.ccode import ccode
++
++x = symbols('x')
++print(ccode(sinc(x)))
+diff --git a/sympy/printing/ccode.py b/sympy/printing/ccode.py
+index 30a07a7b59..7a1bb846c0 100644
+--- a/sympy/printing/ccode.py
++++ b/sympy/printing/ccode.py
+@@ -42,7 +42,7 @@
+     "acosh": "acosh",
+     "atanh": "atanh",
+     "floor": "floor",
+-    "ceiling": "ceil",
++    "sinc": [(lambda x: True, lambda x: "((Ne({0}, 0)) ? (sin({0})/{0}) : (1))".format(x))],
+ }
+ 
+ # These are the core reserved words in the C language. Taken from:

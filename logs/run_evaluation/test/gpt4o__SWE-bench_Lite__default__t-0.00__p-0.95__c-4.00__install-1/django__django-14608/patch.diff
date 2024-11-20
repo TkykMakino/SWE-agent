@@ -1,0 +1,68 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..1ff961fc71
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,24 @@
++from django import forms
++from django.forms import formset_factory
++
++class TestForm(forms.Form):
++    name = forms.CharField()
++
++class TestFormSet(forms.BaseFormSet):
++    def clean(self):
++        if any(self.errors):
++            return
++        raise forms.ValidationError("Non-form error")
++
++TestFormSetFactory = formset_factory(TestForm, formset=TestFormSet, extra=1)
++
++data = {
++    'form-TOTAL_FORMS': '1',
++    'form-INITIAL_FORMS': '0',
++    'form-MIN_NUM_FORMS': '0',
++    'form-MAX_NUM_FORMS': '1000',
++}
++
++formset = TestFormSetFactory(data)
++formset.is_valid()
++print(formset.non_form_errors())
+diff --git a/test_settings.py b/test_settings.py
+new file mode 100644
+index 0000000000..85f2b58f76
+--- /dev/null
++++ b/test_settings.py
+@@ -0,0 +1,31 @@
++import os
++os.environ['DJANGO_SETTINGS_MODULE'] = 'test_settings'
++
++from django import forms
++from django.forms import formset_factory
++
++class TestForm(forms.Form):
++    name = forms.CharField()
++
++class TestFormSet(forms.BaseFormSet):
++    def clean(self):
++        if any(self.errors):
++            return
++        raise forms.ValidationError("Non-form error")
++
++TestFormSetFactory = formset_factory(TestForm, formset=TestFormSet, extra=1)
++
++data = {
++    'form-TOTAL_FORMS': '1',
++    'form-INITIAL_FORMS': '0',
++    'form-MIN_NUM_FORMS': '0',
++    'form-MAX_NUM_FORMS': '1000',
++}
++
++formset = TestFormSetFactory(data)
++formset.is_valid()
++print(formset.non_form_errors())
++INSTALLED_APPS = [
++    'django.contrib.contenttypes',
++    'django.contrib.auth',
++]

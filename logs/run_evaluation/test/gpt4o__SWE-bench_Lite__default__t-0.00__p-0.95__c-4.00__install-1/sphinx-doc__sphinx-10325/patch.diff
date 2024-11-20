@@ -1,0 +1,50 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 000000000..6200a8701
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,30 @@
++from sphinx.ext.autodoc import ModuleDocumenter, ClassDocumenter
++
++class Base1:
++    def method1(self):
++        pass
++
++class Base2:
++    def method2(self):
++        pass
++
++class Derived(Base1, Base2):
++    def method3(self):
++        pass
++
++# Simulate the :inherited-members: option with multiple classes
++options = {
++    'inherited-members': 'Base1,Base2'
++}
++
++# Create instances of the documenters
++module_doc = ModuleDocumenter(None, 'Derived')
++class_doc = ClassDocumenter(None, 'Derived')
++
++# Apply the options
++module_doc.options = options
++class_doc.options = options
++
++# Print the members to see if the inherited members are correctly documented
++print("ModuleDocumenter members:", module_doc.get_object_members(1, Derived))
++print("ClassDocumenter members:", class_doc.get_object_members(1, Derived))
+diff --git a/tox.ini b/tox.ini
+index f0afd779b..30ca90275 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -28,7 +28,7 @@ setenv =
+     PYTHONWARNINGS = all
+     PYTEST_ADDOPTS = {env:PYTEST_ADDOPTS:} --color yes
+ commands=
+-    python -X dev -m pytest --durations 25 {posargs}
++    python -X dev -m pytest -rA --durations 25 {posargs}
+ 
+ [testenv:du-latest]
+ commands =

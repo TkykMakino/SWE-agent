@@ -1,0 +1,14 @@
+
+diff --git a/src/sqlfluff/core/linter/linter.py b/src/sqlfluff/core/linter/linter.py
+index 452abf34..e177aee4 100644
+--- a/src/sqlfluff/core/linter/linter.py
++++ b/src/sqlfluff/core/linter/linter.py
+@@ -102,7 +102,7 @@ class Linter:
+         """Load a raw file and the associated config."""
+         file_config = root_config.make_child_from_path(fname)
+         encoding = get_encoding(fname=fname, config=file_config)
+-        with open(fname, encoding=encoding, errors="backslashreplace") as target_file:
++        with open(fname, encoding=encoding, errors="replace") as target_file:
+             raw_file = target_file.read()
+         # Scan the raw file for config commands.
+         file_config.process_raw_file_for_config(raw_file)

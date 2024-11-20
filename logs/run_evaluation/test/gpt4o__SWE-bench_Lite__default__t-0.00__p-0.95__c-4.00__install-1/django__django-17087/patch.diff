@@ -1,0 +1,171 @@
+
+diff --git a/manage.py b/manage.py
+new file mode 100644
+index 0000000000..2fb39583a0
+--- /dev/null
++++ b/manage.py
+@@ -0,0 +1,15 @@
++#!/usr/bin/env python
++import os
++import sys
++
++if __name__ == "__main__":
++    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
++    try:
++        from django.core.management import execute_from_command_line
++    except ImportError as exc:
++        raise ImportError(
++            "Couldn't import Django. Are you sure it's installed and "
++            "available on your PYTHONPATH environment variable? Did you "
++            "forget to activate a virtual environment?"
++        ) from exc
++    execute_from_command_line(sys.argv)
+diff --git a/myapp/models.py b/myapp/models.py
+new file mode 100644
+index 0000000000..0c5dbbc374
+--- /dev/null
++++ b/myapp/models.py
+@@ -0,0 +1,17 @@
++from django.db import models
++# from django.contrib.postgres.fields import ArrayField
++
++class Profile(models.Model):
++    class Capability(models.TextChoices):
++        BASIC = ("BASIC", "Basic")
++        PROFESSIONAL = ("PROFESSIONAL", "Professional")
++
++        @classmethod
++        def default(cls) -> list[str]:
++            return [cls.BASIC]
++
++    capabilities = models.CharField(
++        max_length=30,
++        null=True,
++        default=Capability.default
++    )
+diff --git a/mydatabase b/mydatabase
+new file mode 100644
+index 0000000000..3c10c86707
+Binary files /dev/null and b/mydatabase differ
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..6442052216
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,41 @@
++from django.db import models
++from django.contrib.postgres.fields import ArrayField
++
++class Profile(models.Model):
++    class Capability(models.TextChoices):
++        BASIC = ("BASIC", "Basic")
++        PROFESSIONAL = ("PROFESSIONAL", "Professional")
++
++        @classmethod
++        def default(cls) -> list[str]:
++            return [cls.BASIC]
++
++    capabilities = ArrayField(
++        models.CharField(choices=Capability.choices, max_length=30, blank=True),
++        null=True,
++        default=Capability.default
++    )
++
++# Migration code snippet
++from django.db import migrations
++
++class Migration(migrations.Migration):
++
++    dependencies = []
++
++    operations = [
++        migrations.AddField(
++            model_name='profile',
++            name='capabilities',
++            field=ArrayField(
++                base_field=models.CharField(
++                    blank=True,
++                    choices=[('BASIC', 'Basic'), ('PROFESSIONAL', 'Professional')],
++                    max_length=30
++                ),
++                default=Profile.Capability.default,
++                null=True,
++                size=None
++            ),
++        ),
++    ]
+diff --git a/run_migration.py b/run_migration.py
+new file mode 100644
+index 0000000000..4835df9974
+--- /dev/null
++++ b/run_migration.py
+@@ -0,0 +1,13 @@
++import os
++import django
++from django.core.management import call_command
++
++os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
++django.setup()
++
++try:
++    call_command('makemigrations')
++    call_command('migrate')
++    print("Migration completed successfully.")
++except Exception as e:
++    print(f"Error during migration: {e}")
+diff --git a/settings.py b/settings.py
+new file mode 100644
+index 0000000000..133b298372
+--- /dev/null
++++ b/settings.py
+@@ -0,0 +1,50 @@
++INSTALLED_APPS = [
++    'django.contrib.contenttypes',
++    'django.contrib.auth',
++    # 'django.contrib.postgres',
++    'django.contrib.sessions',
++    'django.contrib.messages',
++    'django.contrib.staticfiles',
++    'django.contrib.admin',
++    'django.contrib.admindocs',
++]
++INSTALLED_APPS.append('myapp')
++
++MIDDLEWARE = [
++    'django.middleware.security.SecurityMiddleware',
++    'django.contrib.sessions.middleware.SessionMiddleware',
++    'django.middleware.common.CommonMiddleware',
++    'django.middleware.csrf.CsrfViewMiddleware',
++    'django.contrib.auth.middleware.AuthenticationMiddleware',
++    'django.contrib.messages.middleware.MessageMiddleware',
++    'django.middleware.clickjacking.XFrameOptionsMiddleware',
++]
++
++TEMPLATES = [
++    {
++        'BACKEND': 'django.template.backends.django.DjangoTemplates',
++        'DIRS': [],
++        'APP_DIRS': True,
++        'OPTIONS': {
++            'context_processors': [
++                'django.template.context_processors.debug',
++                'django.template.context_processors.request',
++                'django.contrib.auth.context_processors.auth',
++                'django.contrib.messages.context_processors.messages',
++            ],
++        },
++    },
++]
++
++DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
++# INSTALLED_APPS.append('myapp')
++
++DATABASES = {
++    'default': {
++        'ENGINE': 'django.db.backends.sqlite3',
++        'NAME': 'mydatabase',
++    }
++}
++
++SECRET_KEY = 'fake-key'
++DEBUG = True

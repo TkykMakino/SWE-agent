@@ -1,0 +1,48 @@
+
+diff --git a/sympy/simplify/powsimp.py b/sympy/simplify/powsimp.py
+index a7fd30e118..b72a7da178 100644
+--- a/sympy/simplify/powsimp.py
++++ b/sympy/simplify/powsimp.py
+@@ -180,6 +180,8 @@ def recurse(arg, **kwargs):
+         # convert to plain dictionary
+         c_powers = dict(c_powers)
+ 
++        # check for base and inverted base pairs
++        be = list(c_powers.items())
+         # check for base and inverted base pairs
+         be = list(c_powers.items())
+         skip = set()  # skip if we already saw them
+@@ -187,7 +189,7 @@ def recurse(arg, **kwargs):
+             if b in skip:
+                 continue
+             bpos = b.is_positive or b.is_polar
+-            if bpos:
++            if bpos or b.is_negative:
+                 binv = 1/b
+                 if b != binv and binv in c_powers:
+                     if b.as_numer_denom()[0] is S.One:
+@@ -197,8 +199,22 @@ def recurse(arg, **kwargs):
+                         skip.add(binv)
+                         e = c_powers.pop(binv)
+                         c_powers[b] -= e
+-
+-        # check for base and negated base pairs
++                # Handle the case where b is numeric
++                elif b.is_number and binv.is_number:
++                    if binv in c_powers:
++                        c_powers.pop(b)
++                        c_powers[binv] -= e
++                    else:
++                        c_powers[binv] = -e
++                # Handle the case where b is numeric
++                elif b.is_number and binv.is_number:
++                    if binv in c_powers:
++                        c_powers.pop(b)
++                        c_powers[binv] -= e
++                # Handle the case where b is numeric
++                elif b.is_number and binv.is_number:
++                    c_powers.pop(b)
++                    c_powers[binv] -= e
+         be = list(c_powers.items())
+         _n = S.NegativeOne
+         for i, (b, e) in enumerate(be):

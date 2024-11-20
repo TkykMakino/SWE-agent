@@ -1,0 +1,20 @@
+
+diff --git a/sklearn/pipeline.py b/sklearn/pipeline.py
+index 7eaf9a46f..d7363d442 100644
+--- a/sklearn/pipeline.py
++++ b/sklearn/pipeline.py
+@@ -28,7 +28,13 @@ __all__ = ['Pipeline', 'FeatureUnion', 'make_pipeline', 'make_union']
+ 
+ class Pipeline(_BaseComposition):
+     """Pipeline of transforms with a final estimator.
+-
++    
++    def __len__(self):
++        return len(self.steps)
++    
++    Sequentially apply a list of transforms and a final estimator.
++    Sequentially apply a list of transforms and a final estimator.
++    Sequentially apply a list of transforms and a final estimator.
+     Sequentially apply a list of transforms and a final estimator.
+     Intermediate steps of the pipeline must be 'transforms', that is, they
+     must implement fit and transform methods.

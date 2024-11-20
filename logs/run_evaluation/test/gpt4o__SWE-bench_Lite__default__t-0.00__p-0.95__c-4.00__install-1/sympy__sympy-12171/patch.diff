@@ -1,0 +1,35 @@
+
+diff --git a/sympy/printing/mathematica.py b/sympy/printing/mathematica.py
+index 4c2ffd81e1..3d614a5e47 100644
+--- a/sympy/printing/mathematica.py
++++ b/sympy/printing/mathematica.py
+@@ -98,8 +98,14 @@ def _print_Function(self, expr):
+                 if cond(*expr.args):
+                     return "%s[%s]" % (mfunc, self.stringify(expr.args, ", "))
+         return expr.func.__name__ + "[%s]" % self.stringify(expr.args, ", ")
+-
+-    def _print_Integral(self, expr):
++    def _print_Derivative(self, expr):
++        return "D[%s]" % (self.stringify(expr.args, ", "))
++
++    def _print_Float(self, expr):
++        print("Calling _print_Float")
++    def _print_float(self, expr):
++        res = str(expr)
++        return res.replace('e', '*^')
+         if len(expr.variables) == 1 and not expr.limits[0][1:]:
+             args = [expr.args[0], expr.variables[0]]
+         else:
+diff --git a/sympy/printing/printer.py b/sympy/printing/printer.py
+index a88b34ee02..3befe87f31 100644
+--- a/sympy/printing/printer.py
++++ b/sympy/printing/printer.py
+@@ -242,7 +242,7 @@ def _print(self, expr, *args, **kwargs):
+         """
+         self._print_level += 1
+         try:
+-            # If the printer defines a name for a printing method
++            print(f"Printing type: {type(expr)}")
+             # (Printer.printmethod) and the object knows for itself how it
+             # should be printed, use that method.
+             if (self.printmethod and hasattr(expr, self.printmethod)

@@ -1,0 +1,19 @@
+
+diff --git a/src/sqlfluff/core/parser/grammar/sequence.py b/src/sqlfluff/core/parser/grammar/sequence.py
+index 580156fe..f1320b27 100644
+--- a/src/sqlfluff/core/parser/grammar/sequence.py
++++ b/src/sqlfluff/core/parser/grammar/sequence.py
+@@ -66,8 +66,11 @@ class Sequence(BaseGrammar):
+             if early_break:
+                 break
+ 
+-            while True:
+-                # Consume non-code if appropriate
++            # Handle doubled semicolons
++            if len(unmatched_segments) > 1 and unmatched_segments[0].raw == ";" and unmatched_segments[1].raw == ";":
++                matched_segments += (unmatched_segments[0],)
++                unmatched_segments = unmatched_segments[2:]
++                continue
+                 if self.allow_gaps:
+                     pre_nc, mid_seg, post_nc = trim_non_code_segments(
+                         unmatched_segments

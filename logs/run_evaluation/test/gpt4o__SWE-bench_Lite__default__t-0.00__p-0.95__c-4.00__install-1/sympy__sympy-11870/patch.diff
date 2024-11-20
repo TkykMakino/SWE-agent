@@ -1,0 +1,35 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..764f25dcb2
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,8 @@
++from sympy import I, exp, symbols, trigsimp
++
++k = symbols('k')
++f1 = 1 / 2 * (-I * exp(I * k) + I * exp(-I * k))
++f2 = 1 / 2 / k * (-I * exp(I * k) + I * exp(-I * k))
++
++print(trigsimp(f1))  # Expected: sin(k)
++print(trigsimp(f2))  # Expected: sinc(k)
+diff --git a/sympy/simplify/trigsimp.py b/sympy/simplify/trigsimp.py
+index 34a3bab3fc..3784d88fb5 100644
+--- a/sympy/simplify/trigsimp.py
++++ b/sympy/simplify/trigsimp.py
+@@ -473,7 +473,14 @@ def trigsimp(expr, **opts):
+     """
+     from sympy.simplify.fu import fu
+ 
+-    expr = sympify(expr)
++    from sympy import exp, sin, cos, I, Wild
++    from sympy.simplify.fu import fu
++
++    def exp_to_trig(expr):
++        k = Wild('k')
++        return expr.replace(exp(I * k), cos(k) + I * sin(k)).replace(exp(-I * k), cos(k) - I * sin(k))
++
++    expr = exp_to_trig(expr)
+ 
+     try:
+         return expr._eval_trigsimp(**opts)

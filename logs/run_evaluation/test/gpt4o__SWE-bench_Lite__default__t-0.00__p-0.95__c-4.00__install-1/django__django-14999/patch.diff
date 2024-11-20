@@ -1,0 +1,98 @@
+
+diff --git a/run_tests.py b/run_tests.py
+new file mode 100644
+index 0000000000..00663f5e58
+--- /dev/null
++++ b/run_tests.py
+@@ -0,0 +1,45 @@
++import django
++from django.conf import settings
++from django.test.utils import get_runner
++
++settings.configure(
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++        'django.contrib.admin',
++        'django.contrib.sites',
++        'tests.migrations',
++    ],
++    SECRET_KEY='test_secret_key',
++    MIDDLEWARE_CLASSES=(),
++    TEMPLATES=[
++        {
++            'BACKEND': 'django.template.backends.django.DjangoTemplates',
++            'APP_DIRS': True,
++            'OPTIONS': {
++                'context_processors': [
++                    'django.template.context_processors.debug',
++                    'django.template.context_processors.request',
++                    'django.contrib.auth.context_processors.auth',
++                    'django.contrib.messages.context_processors.messages',
++                ],
++            },
++        },
++    ],
++)
++
++django.setup()
++TestRunner = get_runner(settings)
++test_runner = TestRunner(verbosity=2)
++failures = test_runner.run_tests(['tests.migrations.test_operations'])
++if failures:
++    exit(1)
+diff --git a/test_settings.py b/test_settings.py
+new file mode 100644
+index 0000000000..683e342dcf
+--- /dev/null
++++ b/test_settings.py
+@@ -0,0 +1,19 @@
++DATABASES = {
++    'default': {
++        'ENGINE': 'django.db.backends.sqlite3',
++        'NAME': ':memory:',
++    }
++}
++
++INSTALLED_APPS = [
++    'django.contrib.contenttypes',
++    'django.contrib.auth',
++    'django.contrib.sessions',
++    'django.contrib.messages',
++    'django.contrib.staticfiles',
++    'django.contrib.admin',
++    'django.contrib.sites',
++    'tests.migrations',
++]
++
++SECRET_KEY = 'test_secret_key'
+diff --git a/tests/migrations/test_operations.py b/tests/migrations/test_operations.py
+index 11961a1f40..6d1a4bfa02 100644
+--- a/tests/migrations/test_operations.py
++++ b/tests/migrations/test_operations.py
+@@ -651,6 +651,16 @@ class OperationTests(OperationTestBase):
+         self.assertEqual(definition[1], [])
+         self.assertEqual(definition[2], {'old_name': "Pony", 'new_name': "Horse"})
+ 
++        # New test case for RenameModel with db_table defined
++        project_state = self.set_up_test_model("test_rnmo_db_table", related_model=True)
++        operation = migrations.RenameModel("Pony", "Horse", db_table="custom_table")
++        new_state = project_state.clone()
++        new_state = self.apply_operations("test_rnmo_db_table", new_state, [operation], atomic=atomic_rename)
++        # Ensure the operation is a noop
++        self.assertIn(("test_rnmo_db_table", "pony"), new_state.models)
++        self.assertNotIn(("test_rnmo_db_table", "horse"), new_state.models)
++        self.assertTableExists("custom_table")
++        self.assertTableNotExists("test_rnmo_db_table_horse")
+     def test_rename_model_state_forwards(self):
+         """
+         RenameModel operations shouldn't trigger the caching of rendered apps

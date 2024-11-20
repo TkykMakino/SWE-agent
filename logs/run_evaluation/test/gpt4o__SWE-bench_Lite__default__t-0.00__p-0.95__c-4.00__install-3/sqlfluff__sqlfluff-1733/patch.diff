@@ -1,0 +1,13 @@
+
+diff --git a/src/sqlfluff/rules/L036.py b/src/sqlfluff/rules/L036.py
+index ed5533b8..067ed1f7 100644
+--- a/src/sqlfluff/rules/L036.py
++++ b/src/sqlfluff/rules/L036.py
+@@ -119,6 +119,7 @@ class Rule_L036(BaseRule):
+                 )
+                 fixes += [LintFix("delete", ws) for ws in ws_to_delete]
+                 fixes.append(LintFix("create", select_target, NewlineSegment()))
++                fixes.append(LintFix("create", select_target, WhitespaceSegment()))
+         if fixes:
+             return LintResult(anchor=segment, fixes=fixes)
+ 

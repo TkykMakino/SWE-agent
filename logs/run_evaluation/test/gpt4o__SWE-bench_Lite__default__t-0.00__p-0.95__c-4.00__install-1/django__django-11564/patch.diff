@@ -1,0 +1,162 @@
+
+diff --git a/django/contrib/staticfiles/storage.py b/django/contrib/staticfiles/storage.py
+index ba3b62620d..ca93f3cf2b 100644
+--- a/django/contrib/staticfiles/storage.py
++++ b/django/contrib/staticfiles/storage.py
+@@ -27,6 +27,9 @@ class StaticFilesStorage(FileSystemStorage):
+             base_url = settings.STATIC_URL
+         check_settings(base_url)
+         super().__init__(location, base_url, *args, **kwargs)
++        script_name = getattr(settings, 'SCRIPT_NAME', '')
++        if script_name and self.base_url and not self.base_url.startswith(script_name):
++            self.base_url = script_name + self.base_url
+         # FileSystemStorage fallbacks to MEDIA_ROOT when location
+         # is empty, so we restore the empty value.
+         if not location:
+diff --git a/django/core/files/storage.py b/django/core/files/storage.py
+index 4c27fce605..3aedec5f08 100644
+--- a/django/core/files/storage.py
++++ b/django/core/files/storage.py
+@@ -188,6 +188,10 @@ class FileSystemStorage(Storage):
+         self._base_url = base_url
+         self._file_permissions_mode = file_permissions_mode
+         self._directory_permissions_mode = directory_permissions_mode
++        script_name = getattr(settings, 'SCRIPT_NAME', '')
++        if script_name and self._base_url:
++            self._base_url = script_name + self._base_url
++        setting_changed.connect(self._clear_cached_properties)
+         setting_changed.connect(self._clear_cached_properties)
+ 
+     def _clear_cached_properties(self, setting, **kwargs):
+@@ -215,9 +219,13 @@ class FileSystemStorage(Storage):
+ 
+     @cached_property
+     def base_url(self):
+-        if self._base_url is not None and not self._base_url.endswith('/'):
+-            self._base_url += '/'
+-        return self._value_or_setting(self._base_url, settings.MEDIA_URL)
++        base_url = self._value_or_setting(self._base_url, settings.MEDIA_URL)
++        if base_url and not base_url.endswith('/'):
++            base_url += '/'
++        script_name = getattr(settings, 'SCRIPT_NAME', '')
++        if script_name:
++            base_url = script_name + base_url
++        return base_url
+ 
+     @cached_property
+     def file_permissions_mode(self):
+diff --git a/django/templatetags/static.py b/django/templatetags/static.py
+index 39712aaba0..8053d70f87 100644
+--- a/django/templatetags/static.py
++++ b/django/templatetags/static.py
+@@ -98,6 +98,13 @@ class StaticNode(template.Node):
+         self.path = path
+         self.varname = varname
+ 
++    def url(self, context):
++        from django.conf import settings
++        url = settings.STATIC_URL + self.path
++        script_name = getattr(settings, 'SCRIPT_NAME', '')
++        if script_name:
++            url = script_name + url
++        return url
+     def url(self, context):
+         path = self.path.resolve(context)
+         return self.handle_simple(path)
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..cb7c1f47da
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,91 @@
++import django
++from django.conf import settings
++from django.templatetags.static import static
++from django.core.files.storage import FileSystemStorage
++from django.contrib.staticfiles.storage import StaticFilesStorage
++
++# Configure Django settings
++settings.configure(
++    SCRIPT_NAME='/subpath',
++    STATIC_URL='/static/',
++    MEDIA_URL='/media/',
++    INSTALLED_APPS=[
++        'django.contrib.staticfiles',
++    ],
++)
++
++# Setup Django
++django.setup()
++
++# Simulate SCRIPT_NAME WSGI parameter
++script_name = '/subpath'
++
++# Test static file URL generation
++static_url = static('example.css')
++print(f'Static URL: {static_url}')
++
++# Test FileSystemStorage URL generation
++fs_storage = FileSystemStorage()
++fs_url = fs_storage.url('example.css')
++print(f'FileSystemStorage URL: {fs_url}')
++
++# Test StaticFilesStorage URL generation
++static_storage = StaticFilesStorage()
++static_storage_url = static_storage.url('example.css')
++print(f'StaticFilesStorage URL: {static_storage_url}')
++from django.conf import settings
++from django.templatetags.static import static
++from django.core.files.storage import FileSystemStorage
++from django.contrib.staticfiles.storage import StaticFilesStorage
++
++# Configure Django settings
++settings.configure(
++    SCRIPT_NAME='/subpath',
++    STATIC_URL='/static/',
++    MEDIA_URL='/media/',
++    INSTALLED_APPS=[
++        'django.contrib.staticfiles',
++    ],
++)
++
++# Simulate SCRIPT_NAME WSGI parameter
++script_name = '/subpath'
++
++# Test static file URL generation
++static_url = static('example.css')
++print(f'Static URL: {static_url}')
++
++# Test FileSystemStorage URL generation
++fs_storage = FileSystemStorage()
++fs_url = fs_storage.url('example.css')
++print(f'FileSystemStorage URL: {fs_url}')
++
++# Test StaticFilesStorage URL generation
++static_storage = StaticFilesStorage()
++static_storage_url = static_storage.url('example.css')
++print(f'StaticFilesStorage URL: {static_storage_url}')
++from django.templatetags.static import static
++from django.core.files.storage import FileSystemStorage
++from django.contrib.staticfiles.storage import StaticFilesStorage
++
++# Simulate SCRIPT_NAME WSGI parameter
++script_name = '/subpath'
++
++# Update settings to include SCRIPT_NAME
++settings.SCRIPT_NAME = script_name
++settings.STATIC_URL = '/static/'
++settings.MEDIA_URL = '/media/'
++
++# Test static file URL generation
++static_url = static('example.css')
++print(f'Static URL: {static_url}')
++
++# Test FileSystemStorage URL generation
++fs_storage = FileSystemStorage()
++fs_url = fs_storage.url('example.css')
++print(f'FileSystemStorage URL: {fs_url}')
++
++# Test StaticFilesStorage URL generation
++static_storage = StaticFilesStorage()
++static_storage_url = static_storage.url('example.css')
++print(f'StaticFilesStorage URL: {static_storage_url}')

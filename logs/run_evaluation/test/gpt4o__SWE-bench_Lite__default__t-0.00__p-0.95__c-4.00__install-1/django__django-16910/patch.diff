@@ -1,0 +1,43 @@
+
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..51269ec0d2
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,16 @@
++from django.db import models
++
++class Main(models.Model):
++    main_field_1 = models.CharField(blank=True, max_length=45)
++    main_field_2 = models.CharField(blank=True, max_length=45)
++    main_field_3 = models.CharField(blank=True, max_length=45)
++
++class Secondary(models.Model):
++    main = models.OneToOneField(Main, primary_key=True, related_name='secondary', on_delete=models.CASCADE)
++    secondary_field_1 = models.CharField(blank=True, max_length=45)
++    secondary_field_2 = models.CharField(blank=True, max_length=45)
++    secondary_field_3 = models.CharField(blank=True, max_length=45)
++
++# Sample code to reproduce the issue
++queryset = Main.objects.select_related('secondary').only('main_field_1', 'secondary__secondary_field_1')
++print(queryset.query)
+diff --git a/settings.py b/settings.py
+new file mode 100644
+index 0000000000..92c91c8ef4
+--- /dev/null
++++ b/settings.py
+@@ -0,0 +1,14 @@
++INSTALLED_APPS = [
++    'django.contrib.contenttypes',
++    'django.contrib.auth',
++    '__main__',  # This will include the current module where our models are defined
++]
++
++DATABASES = {
++    'default': {
++        'ENGINE': 'django.db.backends.sqlite3',
++        'NAME': ':memory:',
++    }
++}
++
++SECRET_KEY = 'dummy_secret_key'

@@ -1,0 +1,18 @@
+
+diff --git a/reproduce_decompose.py b/reproduce_decompose.py
+new file mode 100644
+index 0000000000..f18b6400f7
+--- /dev/null
++++ b/reproduce_decompose.py
+@@ -0,0 +1,11 @@
++from sympy.abc import x, y
++from sympy.integrals.intpoly import decompose
++
++# Test polynomial
++poly = x**2 + x*y + x + y + x**3*y**2 + y**5
++
++# Call decompose with separate=True
++result = decompose(poly, separate=True)
++
++# Print the result
++print(result)

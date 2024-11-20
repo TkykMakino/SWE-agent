@@ -1,0 +1,20 @@
+
+diff --git a/sklearn/utils/validation.py b/sklearn/utils/validation.py
+index fe1f7236e..9e1d7885c 100644
+--- a/sklearn/utils/validation.py
++++ b/sklearn/utils/validation.py
+@@ -574,6 +574,14 @@ def check_array(array, accept_sparse=False, accept_large_sparse=True,
+                                 context))
+ 
+     if warn_on_dtype and dtype_orig is not None and array.dtype != dtype_orig:
++        if isinstance(array, pd.DataFrame):  # Check if input is a DataFrame
++            array = array.values
++            array = np.asarray(array)  # Ensure array is a numpy array
++        msg = ("Data with input dtype %s was converted to %s%s."
++               % (dtype_orig, array.dtype, context))
++        warnings.warn(msg, DataConversionWarning)
++               % (dtype_orig, array.dtype, context))
++        warnings.warn(msg, DataConversionWarning)
+         msg = ("Data with input dtype %s was converted to %s%s."
+                % (dtype_orig, array.dtype, context))
+         warnings.warn(msg, DataConversionWarning)

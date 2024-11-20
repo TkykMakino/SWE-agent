@@ -1,0 +1,36 @@
+
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..8794c6aef5
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,29 @@
++import os
++from pathlib import Path
++
++def reproduce_issue():
++    paths = [
++        "/Users/kez",
++        "/Users/kez/.pyenv",
++        "/Users/kez/.pyenv/versions",
++        "/Users/kez/.pyenv/versions/3.6.2",
++        "/Users/kez/.pyenv/versions/3.6.2/lib",
++        "/Users/kez/.pyenv/versions/3.6.2/lib/python3.6",
++        "/Users/kez/.pyenv/versions/3.6.2/lib/python3.6/asyncio",
++        "/Users/kez/.pyenv/versions/3.6.2/lib/python3.6/asyncio/selector_events.py",
++        "/Users"
++    ]
++    
++    for path_str in paths:
++        path = Path(path_str)
++        try:
++            if path.exists():
++                resolved_path = path.resolve(strict=True).absolute()
++                print(f"Resolved: {resolved_path}")
++            else:
++                print(f"Path does not exist: {path}")
++        except ValueError as e:
++            print(f"Error resolving {path}: {e}")
++
++if __name__ == "__main__":
++    reproduce_issue()

@@ -1,0 +1,488 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   pydicom/jsonrep.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git show
+commit 49a3da4a3d9c24d7e8427a25048a1c7d5c4f7724
+Author: Darcy Mason <darcymason@gmail.com>
+Date:   Mon Nov 2 17:16:05 2020 -0500
+
+    Start v2.2 dev (#1245)
+
+diff --git a/README.md b/README.md
+index 3eca7b824..e690b9da1 100644
+--- a/README.md
++++ b/README.md
+@@ -2,7 +2,7 @@
+ [![codecov](https://codecov.io/gh/pydicom/pydicom/branch/master/graph/badge.svg)](https://codecov.io/gh/pydicom/pydicom)
+ [![Python version](https://img.shields.io/pypi/pyversions/pydicom.svg)](https://img.shields.io/pypi/pyversions/pydicom.svg)
+ [![PyPI version](https://badge.fury.io/py/pydicom.svg)](https://badge.fury.io/py/pydicom)
+-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3891702.svg)](https://doi.org/10.5281/zenodo.3891702)
++[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4197955.svg)](https://doi.org/10.5281/zenodo.4197955)
+ [![Gitter](https://badges.gitter.im/pydicom/Lobby.svg)](https://gitter.im/pydicom/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+ 
+ # *pydicom*
+diff --git a/pydicom/_version.py b/pydicom/_version.py
+index 559e5fb00..e152fde89 100644
+--- a/pydicom/_version.py
++++ b/pydicom/_version.py
+@@ -3,7 +3,7 @@ import re
+ from typing import Tuple
+ 
+ 
+-__version__: str = '2.1.0'
++__version__: str = '2.2.0.dev0'
+ __version_info__: Tuple[str, str, str] = tuple(
+     re.match(r'(\d+\.\d+\.\d+).*', __version__).group(1).split('.')
+ )
+diff --git a/setup.py b/setup.py
+index 27ccbcc48..f132e7bbf 100755
+--- a/setup.py
++++ b/setup.py
+@@ -38,6 +38,7 @@ CLASSIFIERS = [
+     "Programming Language :: Python :: 3.6",
+     "Programming Language :: Python :: 3.7",
+     "Programming Language :: Python :: 3.8",
++    "Programming Language :: Python :: 3.9",
+     "Operating System :: OS Independent",
+     "Topic :: Scientific/Engineering :: Medical Science Apps.",
+     "Topic :: Scientific/Engineering :: Physics",
++ git diff 49a3da4a3d9c24d7e8427a25048a1c7d5c4f7724
+diff --git a/pydicom/jsonrep.py b/pydicom/jsonrep.py
+index c6ef519c3..fe683b9dd 100644
+--- a/pydicom/jsonrep.py
++++ b/pydicom/jsonrep.py
+@@ -224,10 +224,17 @@ class JsonDataElementConverter:
+                         VR=vr)
+                 else:
+                     value_key = unique_value_keys[0]
+-                    elem = DataElement.from_json(
+-                        self.dataset_class, key, vr,
+-                        val[value_key], value_key
+-                    )
++                    if value_key == "BulkDataURI":
++                        # Handle BulkDataURI conversion
++                        elem = DataElement.from_json(
++                            self.dataset_class, key, vr,
++                            self.handle_bulk_data_uri(val[value_key]), value_key
++                        )
++                    else:
++                        elem = DataElement.from_json(
++                            self.dataset_class, key, vr,
++                            val[value_key], value_key
++                        )
+                 ds.add(elem)
+         return ds
+ 
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ python -m pip install -e .
+Obtaining file:///testbed
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Installing collected packages: pydicom
+  Attempting uninstall: pydicom
+    Found existing installation: pydicom 2.2.0.dev0
+    Uninstalling pydicom-2.2.0.dev0:
+      Successfully uninstalled pydicom-2.2.0.dev0
+  DEPRECATION: Legacy editable install of pydicom==2.2.0.dev0 from file:///testbed (setup.py develop) is deprecated. pip 25.0 will enforce this behaviour change. A possible replacement is to add a pyproject.toml or enable --use-pep517, and use setuptools >= 64. If the resulting installation is not behaving as expected, try using --config-settings editable_mode=compat. Please consult the setuptools documentation for more information. Discussion can be found at https://github.com/pypa/pip/issues/11457
+  Running setup.py develop for pydicom
+Successfully installed pydicom
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ git checkout 49a3da4a3d9c24d7e8427a25048a1c7d5c4f7724 pydicom/tests/test_json.py
+Updated 0 paths from cf3db18aa
++ git apply -v -
+<stdin>:15: trailing whitespace.
+                "vr": "SQ", 
+Checking patch pydicom/tests/test_json.py...
+Applied patch pydicom/tests/test_json.py cleanly.
+warning: 1 line adds whitespace errors.
++ pytest -rA pydicom/tests/test_json.py
+============================= test session starts ==============================
+platform linux -- Python 3.9.20, pytest-8.3.3, pluggy-1.5.0
+rootdir: /testbed
+collected 23 items
+
+pydicom/tests/test_json.py ......................F                       [100%]
+
+=================================== FAILURES ===================================
+_____________ TestBinary.test_bulk_data_reader_is_called_within_SQ _____________
+
+self = <pydicom.tests.test_json.TestBinary object at 0x7038dac767c0>
+
+    def test_bulk_data_reader_is_called_within_SQ(self):
+        def bulk_data_reader(_):
+            return b'xyzzy'
+    
+        json_data = {
+            "003a0200": {
+                "vr": "SQ",
+                "Value": [
+                    {
+                        "54001010": {
+                            "vr": "OW",
+                            "BulkDataURI": "https://a.dummy.url"
+                        }
+                    }
+                ]
+            }
+        }
+    
+>       ds = Dataset().from_json(json.dumps(json_data), bulk_data_reader)
+
+pydicom/tests/test_json.py:376: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pydicom/dataset.py:2270: in from_json
+    data_element = DataElement.from_json(
+pydicom/dataelem.py:275: in from_json
+    elem_value = converter.get_element_values()
+pydicom/jsonrep.py:126: in get_element_values
+    element_value = [self.get_regular_element_value(v)
+pydicom/jsonrep.py:126: in <listcomp>
+    element_value = [self.get_regular_element_value(v)
+pydicom/jsonrep.py:175: in get_regular_element_value
+    return self.get_sequence_item(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pydicom.jsonrep.JsonDataElementConverter object at 0x70391e9b9430>
+value = {'54001010': {'BulkDataURI': 'https://a.dummy.url', 'vr': 'OW'}}
+
+    def get_sequence_item(self, value):
+        """Return a sequence item for the JSON dict `value`.
+    
+        Parameters
+        ----------
+        value : dict or None
+            The sequence item from the JSON entry.
+    
+        Returns
+        -------
+        dataset_class
+            The decoded dataset item.
+    
+        Raises
+        ------
+        KeyError
+            If the "vr" key is missing for a contained element
+        """
+        ds = self.dataset_class()
+        if value:
+            for key, val in value.items():
+                if 'vr' not in val:
+                    fmt = 'Data element "{}" must have key "vr".'
+                    raise KeyError(fmt.format(self.tag))
+                vr = val['vr']
+                unique_value_keys = tuple(
+                    set(val.keys()) & set(JSON_VALUE_KEYS)
+                )
+                from pydicom import DataElement
+                from pydicom.dataelem import empty_value_for_VR
+                if not unique_value_keys:
+                    # data element with no value
+                    elem = DataElement(
+                        tag=int(key, 16),
+                        value=empty_value_for_VR(vr),
+                        VR=vr)
+                else:
+                    value_key = unique_value_keys[0]
+                    if value_key == "BulkDataURI":
+                        # Handle BulkDataURI conversion
+                        elem = DataElement.from_json(
+                            self.dataset_class, key, vr,
+>                           self.handle_bulk_data_uri(val[value_key]), value_key
+                        )
+E                       AttributeError: 'JsonDataElementConverter' object has no attribute 'handle_bulk_data_uri'
+
+pydicom/jsonrep.py:231: AttributeError
+=============================== warnings summary ===============================
+pydicom/data/data_manager.py:52
+  /testbed/pydicom/data/data_manager.py:52: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+    from pkg_resources import iter_entry_points
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED pydicom/tests/test_json.py::TestPersonName::test_json_pn_from_file
+PASSED pydicom/tests/test_json.py::TestPersonName::test_pn_components_to_json
+PASSED pydicom/tests/test_json.py::TestPersonName::test_pn_components_from_json
+PASSED pydicom/tests/test_json.py::TestPersonName::test_empty_value
+PASSED pydicom/tests/test_json.py::TestPersonName::test_multi_value_to_json
+PASSED pydicom/tests/test_json.py::TestPersonName::test_dataelem_from_json
+PASSED pydicom/tests/test_json.py::TestAT::test_to_json
+PASSED pydicom/tests/test_json.py::TestAT::test_from_json
+PASSED pydicom/tests/test_json.py::TestAT::test_invalid_value_in_json
+PASSED pydicom/tests/test_json.py::TestAT::test_invalid_tag_in_json
+PASSED pydicom/tests/test_json.py::TestDataSetToJson::test_json_from_dicom_file
+PASSED pydicom/tests/test_json.py::TestDataSetToJson::test_roundtrip
+PASSED pydicom/tests/test_json.py::TestDataSetToJson::test_dataset_dumphandler
+PASSED pydicom/tests/test_json.py::TestDataSetToJson::test_dataelement_dumphandler
+PASSED pydicom/tests/test_json.py::TestDataSetToJson::test_sort_order
+PASSED pydicom/tests/test_json.py::TestSequence::test_nested_sequences
+PASSED pydicom/tests/test_json.py::TestBinary::test_inline_binary
+PASSED pydicom/tests/test_json.py::TestBinary::test_invalid_inline_binary
+PASSED pydicom/tests/test_json.py::TestBinary::test_valid_bulkdata_uri
+PASSED pydicom/tests/test_json.py::TestBinary::test_invalid_bulkdata_uri
+PASSED pydicom/tests/test_json.py::TestBinary::test_bulk_data_reader_is_called
+PASSED pydicom/tests/test_json.py::TestBinary::test_bulk_data_reader_is_called_2
+FAILED pydicom/tests/test_json.py::TestBinary::test_bulk_data_reader_is_called_within_SQ
+=================== 1 failed, 22 passed, 1 warning in 0.13s ====================
++ git checkout 49a3da4a3d9c24d7e8427a25048a1c7d5c4f7724 pydicom/tests/test_json.py
+Updated 1 path from cf3db18aa

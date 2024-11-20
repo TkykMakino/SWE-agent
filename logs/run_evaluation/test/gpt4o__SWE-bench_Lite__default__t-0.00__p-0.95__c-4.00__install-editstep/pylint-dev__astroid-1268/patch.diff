@@ -1,0 +1,16 @@
+
+diff --git a/astroid/nodes/as_string.py b/astroid/nodes/as_string.py
+index 427ccc15..73493615 100644
+--- a/astroid/nodes/as_string.py
++++ b/astroid/nodes/as_string.py
+@@ -97,7 +97,9 @@ class AsStringVisitor:
+         return False
+ 
+     # visit_<node> methods ###########################################
+-
++    def visit_unknown(self, node):
++        """Visit an Unknown node."""
++        return "<unknown>"
+     def visit_await(self, node):
+         return f"await {node.value.accept(self)}"
+ 

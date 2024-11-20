@@ -1,0 +1,18 @@
+
+diff --git a/pylint/checkers/imports.py b/pylint/checkers/imports.py
+index 7cab78586..6c8cec9a9 100644
+--- a/pylint/checkers/imports.py
++++ b/pylint/checkers/imports.py
+@@ -844,10 +844,8 @@ class ImportsChecker(DeprecatedMixin, BaseChecker):
+             self.add_message("import-self", node=node)
+ 
+         elif not astroid.modutils.is_standard_module(importedmodname):
+-            # if this is not a package __init__ module
+-            if base != "__init__" and context_name not in self._module_pkg:
+-                # record the module's parent, or the module itself if this is
+-                # a top level module, as the package it belongs to
++            # if this is not a package __init__ module and not a module with the same name as a directory
++            if base != "__init__" and context_name not in self._module_pkg and not os.path.isfile(os.path.join(os.path.dirname(module_file), "__init__.py")) and not os.path.isfile(os.path.join(os.path.dirname(module_file), context_name, "__init__.py")):
+                 self._module_pkg[context_name] = context_name.rsplit(".", 1)[0]
+ 
+             # handle dependencies

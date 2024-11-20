@@ -1,0 +1,46 @@
+
+diff --git a/tests/admin_views/test_multidb.py b/tests/admin_views/test_multidb.py
+index a02b637d34..b1714599f5 100644
+--- a/tests/admin_views/test_multidb.py
++++ b/tests/admin_views/test_multidb.py
+@@ -34,6 +34,7 @@ class MultiDatabaseTests(TestCase):
+     def setUpTestData(cls):
+         cls.superusers = {}
+         cls.test_book_ids = {}
++        import time
+         for db in connections:
+             Router.target_db = db
+             cls.superusers[db] = User.objects.create_superuser(
+@@ -42,6 +43,7 @@ class MultiDatabaseTests(TestCase):
+             b = Book(name='Test Book')
+             b.save(using=db)
+             cls.test_book_ids[db] = b.id
++            time.sleep(1)  # Add delay to reduce concurrent access
+ 
+     @mock.patch('django.contrib.admin.options.transaction')
+     def test_add_view(self, mock):
+diff --git a/tests/i18n/sampleproject/sampleproject/settings.py b/tests/i18n/sampleproject/sampleproject/settings.py
+index e69de29bb2..0d15abc541 100644
+--- a/tests/i18n/sampleproject/sampleproject/settings.py
++++ b/tests/i18n/sampleproject/sampleproject/settings.py
+@@ -0,0 +1,20 @@
++SECRET_KEY = 'testsecretkey'
++INSTALLED_APPS = [
++    'django.contrib.admin',
++    'django.contrib.auth',
++    'django.contrib.contenttypes',
++    'django.contrib.sessions',
++    'django.contrib.messages',
++    'django.contrib.staticfiles',
++    'admin_views',
++]
++DATABASES = {
++    'default': {
++        'ENGINE': 'django.db.backends.sqlite3',
++        'NAME': 'test_default.sqlite3',
++    },
++    'other': {
++        'ENGINE': 'django.db.backends.sqlite3',
++        'NAME': 'test_other.sqlite3',
++    }
++}

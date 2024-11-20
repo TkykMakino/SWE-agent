@@ -1,0 +1,50 @@
+
+diff --git a/pyproject.toml b/pyproject.toml
+new file mode 100644
+index 000000000..cdd835c45
+--- /dev/null
++++ b/pyproject.toml
+@@ -0,0 +1,4 @@
++[tool.pylint.MASTER]
++ignore-paths = [
++  "^src/gen/.*$",
++]
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 000000000..2d3e2c706
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,18 @@
++import os
++
++# Create a sample directory structure and files to mimic the user's setup
++os.makedirs('src/gen', exist_ok=True)
++with open('src/gen/about.py', 'w') as f:
++    f.write("print('This should be ignored by pylint')\n")  # Add a linting error
++
++# Create a sample pyproject.toml file with the ignore-paths configuration
++with open('pyproject.toml', 'w') as f:
++    f.write('''[tool.pylint.MASTER]
++ignore-paths = [
++  "^src/gen/.*$",
++]
++''')
++
++print("Running pylint with --recursive=y option...")
++output = os.popen('pylint --recursive=y src/ 2>&1').read()
++print(output)
+diff --git a/src/gen/about.py b/src/gen/about.py
+new file mode 100644
+index 000000000..710da0835
+--- /dev/null
++++ b/src/gen/about.py
+@@ -0,0 +1 @@
++print('This should be ignored by pylint')
+diff --git a/src/test.py b/src/test.py
+new file mode 100644
+index 000000000..9ab7483f7
+--- /dev/null
++++ b/src/test.py
+@@ -0,0 +1,2 @@
++print('Hello, world!')
++# This is a generated file

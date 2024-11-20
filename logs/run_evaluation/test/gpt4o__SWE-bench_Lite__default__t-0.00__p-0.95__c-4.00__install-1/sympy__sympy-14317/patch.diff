@@ -1,0 +1,33 @@
+
+diff --git a/sympy/printing/latex.py b/sympy/printing/latex.py
+index 737e16cc74..67935636f6 100644
+--- a/sympy/printing/latex.py
++++ b/sympy/printing/latex.py
+@@ -6,7 +6,7 @@
+ 
+ import itertools
+ 
+-from sympy.core import S, Add, Symbol, Mod
++from sympy.core import S, Add, Symbol, Mod, Mul
+ from sympy.core.function import _coeff_isneg
+ from sympy.core.sympify import SympifyError
+ from sympy.core.alphabets import greeks
+@@ -1854,7 +1854,9 @@ def _print_PolynomialRingBase(self, expr):
+ 
+     def _print_Poly(self, poly):
+         cls = poly.__class__.__name__
+-        expr = self._print(poly.as_expr())
++        terms = sorted(poly.terms(), key=lambda term: term[0], reverse=True)
++        expr = self._print(Add(*[term[1] * Mul(*[gen**exp for gen, exp in zip(poly.gens, term[0])]) for term in terms]))
++        expr = self._print(Add(*[term[1] * Mul(*[gen**exp for gen, exp in zip(poly.gens, term[0])]) for term in terms]))
+         gens = list(map(self._print, poly.gens))
+         domain = "domain=%s" % self._print(poly.get_domain())
+ 
+@@ -1865,6 +1867,7 @@ def _print_Poly(self, poly):
+             tex = r"\operatorname{%s}{\left( %s \right)}" % (cls, args)
+ 
+         return tex
++        return tex
+ 
+     def _print_ComplexRootOf(self, root):
+         cls = root.__class__.__name__

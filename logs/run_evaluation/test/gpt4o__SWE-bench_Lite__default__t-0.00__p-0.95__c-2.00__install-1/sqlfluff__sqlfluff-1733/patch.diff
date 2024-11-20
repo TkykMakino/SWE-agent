@@ -1,0 +1,37 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..70f9b182
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,13 @@
++import subprocess
++
++# Run sqlfluff fix on reproduce.sql with automatic input
++result = subprocess.run(
++    ["sqlfluff", "fix", "reproduce.sql"],
++    input="Y\n",  # Simulate pressing 'Y' to confirm fixing violations
++    capture_output=True,
++    text=True
++)
++
++# Print the output
++print(result.stdout)
++print(result.stderr)
+diff --git a/reproduce.sql b/reproduce.sql
+new file mode 100644
+index 00000000..1eba5cc4
+--- /dev/null
++++ b/reproduce.sql
+@@ -0,0 +1,11 @@
++WITH example AS (
++    SELECT
++         my_id,
++        other_thing,
++        one_more
++    FROM
++        my_table
++)
++
++SELECT *
++FROM example

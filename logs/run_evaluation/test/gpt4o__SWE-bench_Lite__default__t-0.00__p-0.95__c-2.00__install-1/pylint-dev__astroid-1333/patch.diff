@@ -1,0 +1,31 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..5b968919
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,14 @@
++import os
++
++# Create the directory structure
++os.makedirs('root_dir/src/project', exist_ok=True)
++
++# Create the necessary files
++with open('root_dir/src/__init__.py', 'w') as f:
++    f.write('')
++
++with open('root_dir/src/project/file.py', 'w') as f:
++    f.write('import os\n')
++
++# Run the reproduction steps
++os.system('cd root_dir && python -m venv venv && . venv/bin/activate && pip install pylint astroid==2.9.1')
+diff --git a/root_dir/src/__init__.py b/root_dir/src/__init__.py
+new file mode 100644
+index 00000000..e69de29b
+diff --git a/root_dir/src/project/file.py b/root_dir/src/project/file.py
+new file mode 100644
+index 00000000..21b405d8
+--- /dev/null
++++ b/root_dir/src/project/file.py
+@@ -0,0 +1 @@
++import os

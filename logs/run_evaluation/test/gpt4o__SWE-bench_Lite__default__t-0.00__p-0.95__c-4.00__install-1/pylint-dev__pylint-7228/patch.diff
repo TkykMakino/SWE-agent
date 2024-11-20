@@ -1,0 +1,31 @@
+
+diff --git a/.pylintrc b/.pylintrc
+new file mode 100644
+index 000000000..fa33dc775
+--- /dev/null
++++ b/.pylintrc
+@@ -0,0 +1,2 @@
++[MASTER]
++function-rgx=[\p{Han}a-z_][\p{Han}a-z0-9_]{2,30}$
+diff --git a/dummy.py b/dummy.py
+new file mode 100644
+index 000000000..042d75af3
+--- /dev/null
++++ b/dummy.py
+@@ -0,0 +1,2 @@
++def dummy_function():
++    pass
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 000000000..468efb4df
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,8 @@
++from pylint.lint import Run
++
++if __name__ == "__main__":
++    with open(".pylintrc", "w") as f:
++        f.write("[MASTER]\n")
++        f.write("function-rgx=[\\p{Han}a-z_][\\p{Han}a-z0-9_]{2,30}$\n")
++    print("Configuration written to .pylintrc")
++    Run(["dummy.py"])

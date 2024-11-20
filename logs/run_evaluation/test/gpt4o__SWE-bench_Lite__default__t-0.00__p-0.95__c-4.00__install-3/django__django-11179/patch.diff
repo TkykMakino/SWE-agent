@@ -1,0 +1,49 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..115fac62be
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,42 @@
++import os
++import django
++from django.conf import settings
++from django.db import models
++from django.db import connection
++
++# Minimal Django settings configuration
++settings.configure(
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    INSTALLED_APPS=[
++        '__main__',
++    ],
++)
++
++# Setup Django
++django.setup()
++
++# Define a simple model with no dependencies
++class SimpleModel(models.Model):
++    name = models.CharField(max_length=100)
++
++# Create the table for the model
++with connection.schema_editor() as schema_editor:
++    schema_editor.create_model(SimpleModel)
++
++# Create an instance of the model
++instance = SimpleModel.objects.create(name="Test Instance")
++
++# Delete the instance
++instance.delete()
++
++# Check if the PK is set to None
++print(instance.pk)  # Should print None if the issue is fixed
++
++# Clean up the database
++with connection.schema_editor() as schema_editor:
++    schema_editor.delete_model(SimpleModel)

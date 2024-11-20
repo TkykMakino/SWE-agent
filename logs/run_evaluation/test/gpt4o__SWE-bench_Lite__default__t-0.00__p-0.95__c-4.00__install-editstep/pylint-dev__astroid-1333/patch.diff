@@ -1,0 +1,14 @@
+
+diff --git a/astroid/interpreter/_import/spec.py b/astroid/interpreter/_import/spec.py
+index 57bab9f4..69253682 100644
+--- a/astroid/interpreter/_import/spec.py
++++ b/astroid/interpreter/_import/spec.py
+@@ -244,6 +244,8 @@ _SPEC_FINDERS = (
+ 
+ 
+ def _is_setuptools_namespace(location):
++    if not os.path.exists(os.path.join(location, "__init__.py")):
++        return None
+     try:
+         with open(os.path.join(location, "__init__.py"), "rb") as stream:
+             data = stream.read(4096)

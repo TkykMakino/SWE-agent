@@ -1,0 +1,82 @@
+
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..c0ea7a68f7
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,28 @@
++from sympy import *
++
++x, y = symbols('x, y', real=True)
++r = sin(x)*sin(y) + cos(x)*cos(y)
++print(r)
++print(r.simplify())
++print()
++
++r = Rational(1, 50) - Rational(1, 25)
++print(r)
++print(r.simplify())
++print()
++
++t1 = Matrix([sin(Rational(1, 50)), cos(Rational(1, 50)), 0])
++t2 = Matrix([sin(Rational(1, 25)), cos(Rational(1, 25)), 0])
++r = t1.dot(t2)
++print(r)
++print(r.simplify())
++print()
++
++r = sin(Rational(1, 50))*sin(Rational(1, 25)) + cos(Rational(1, 50))*cos(Rational(1, 25))
++print(r)
++print(r.simplify())
++print()
++
++print(acos(r))
++print(acos(r).simplify())
++print()
+diff --git a/sympy/simplify/fu.py b/sympy/simplify/fu.py
+index 9d939727c5..9f30d95e7b 100644
+--- a/sympy/simplify/fu.py
++++ b/sympy/simplify/fu.py
+@@ -227,6 +227,34 @@ def TR0(rv):
+     return rv.normal().factor().expand()
+ 
+ 
++def TR_cos_sum_to_cos_diff(rv):
++    """Simplify sin(a)*sin(b) + cos(a)*cos(b) to cos(a - b) when a and b are rational numbers.
++
++    Examples
++    ========
++
++    >>> from sympy.simplify.fu import TR_cos_sum_to_cos_diff
++    >>> from sympy import sin, cos, Rational
++    >>> TR_cos_sum_to_cos_diff(sin(Rational(1, 50))*sin(Rational(1, 25)) + cos(Rational(1, 50))*cos(Rational(1, 25)))
++    cos(-1/50 + 1/25)
++    """
++    if rv.is_Add:
++        terms = rv.args
++        if len(terms) == 2:
++            sin_term, cos_term = terms
++            if sin_term.is_Mul and cos_term.is_Mul:
++                sin_factors = sin_term.args
++                cos_factors = cos_term.args
++                if len(sin_factors) == 2 and len(cos_factors) == 2:
++                    sin_a, sin_b = sin_factors
++                    cos_a, cos_b = cos_factors
++                    if sin_a.func == sin and sin_b.func == sin and cos_a.func == cos and cos_b.func == cos:
++                        a = sin_a.args[0]
++                        b = sin_b.args[0]
++                        if a == cos_a.args[0] and b == cos_b.args[0] and a.is_Rational and b.is_Rational:
++                            return cos(a - b)
++    return rv
++
+ def TR1(rv):
+     """Replace sec, csc with 1/cos, 1/sin
+ 
+@@ -249,6 +277,7 @@ def f(rv):
+         return rv
+ 
+     return bottom_up(rv, f)
++    return bottom_up(rv, f)
+ 
+ 
+ def TR2(rv):

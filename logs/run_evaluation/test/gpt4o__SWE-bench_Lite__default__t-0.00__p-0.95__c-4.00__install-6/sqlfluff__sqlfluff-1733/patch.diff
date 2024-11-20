@@ -1,0 +1,18 @@
+
+diff --git a/reproduce.sql b/reproduce.sql
+new file mode 100644
+index 00000000..68769d83
+--- /dev/null
++++ b/reproduce.sql
+@@ -0,0 +1,11 @@
++WITH example AS (
++    SELECT
++        my_id,
++        other_thing,
++        one_more
++    FROM
++        my_table
++)
++
++SELECT *
++FROM example

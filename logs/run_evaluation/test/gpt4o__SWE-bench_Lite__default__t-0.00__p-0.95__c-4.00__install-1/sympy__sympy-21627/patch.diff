@@ -1,0 +1,27 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..6600a9e397
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,4 @@
++from sympy import sympify
++
++expr = sympify("cosh(acos(-i + acosh(-g + i)))")
++print(expr.is_zero)
+diff --git a/sympy/functions/elementary/hyperbolic.py b/sympy/functions/elementary/hyperbolic.py
+index 892e19cabb..f24553cad2 100644
+--- a/sympy/functions/elementary/hyperbolic.py
++++ b/sympy/functions/elementary/hyperbolic.py
+@@ -717,8 +717,9 @@ def _eval_is_zero(self):
+         arg = self.args[0]
+         if arg.is_zero:
+             return True
+-
+-
++        if arg.func == cosh and arg.args[0] == self:
++            return False  # Prevent infinite recursion
++        return arg._eval_is_zero()
+ class coth(HyperbolicFunction):
+     r"""
+     coth(x) is the hyperbolic cotangent of x.

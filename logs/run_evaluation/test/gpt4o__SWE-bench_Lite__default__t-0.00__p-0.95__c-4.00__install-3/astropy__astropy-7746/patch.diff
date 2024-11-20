@@ -1,0 +1,12 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 000000000..de3e66ca3
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,5 @@
++from astropy.wcs import WCS
++
++wcs = WCS('2MASS_h.fits')
++
++print(wcs.wcs_pix2world([], [], 0))

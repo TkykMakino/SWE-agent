@@ -1,0 +1,42 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..4aaa7f9f1f
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,35 @@
++import os
++os.environ['DJANGO_SETTINGS_MODULE'] = 'tests.auth_tests.settings'
++from django.db import connection, models, migrations
++import unittest
++from django.test import TestCase
++import unittest
++from django.test import TestCase
++
++class OperationTests(TestCase):
++    def test_rename_index(self):
++        app_label = "test_app"
++        project_state = self.set_up_test_model(app_label)
++        operation = migrations.RenameIndex(
++            "Pony", new_name="new_pony_test_idx", old_fields=("weight", "pink")
++        )
++        new_state = project_state.clone()
++        operation.state_forwards(app_label, new_state)
++        # Rename index.
++        with connection.schema_editor() as editor:
++            operation.database_forwards(app_label, editor, project_state, new_state)
++        self.assertIndexNameExists("pony", "new_pony_test_idx")
++        # Reverse is a no-op.
++        with connection.schema_editor() as editor, self.assertNumQueries(0):
++            operation.database_backwards(app_label, editor, new_state, project_state)
++        self.assertIndexNameExists("pony", "new_pony_test_idx")
++        # Re-apply renaming.
++        with connection.schema_editor() as editor:
++            operation.database_forwards(app_label, editor, project_state, new_state)
++        self.assertIndexNameExists("pony", "new_pony_test_idx")
++        # Deconstruction.
++        definition = operation.deconstruct()
++        self.assertEqual(definition[0], "RenameIndex")
++
++if __name__ == "__main__":
++    unittest.main()

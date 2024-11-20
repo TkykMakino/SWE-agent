@@ -1,0 +1,15 @@
+
+diff --git a/astroid/brain/brain_builtin_inference.py b/astroid/brain/brain_builtin_inference.py
+index af1ddf4d..2924e095 100644
+--- a/astroid/brain/brain_builtin_inference.py
++++ b/astroid/brain/brain_builtin_inference.py
+@@ -935,7 +935,8 @@ def _infer_str_format_call(
+         value = node.func.expr
+ 
+     format_template = value.value
+-
++    if format_template is None:
++        return iter([util.Uninferable])
+     # Get the positional arguments passed
+     inferred_positional = [
+         helpers.safe_infer(i, context) for i in call.positional_arguments

@@ -1,0 +1,57 @@
+
+diff --git a/test_serialized_rollback.py b/test_serialized_rollback.py
+new file mode 100644
+index 0000000000..5e40e552d9
+--- /dev/null
++++ b/test_serialized_rollback.py
+@@ -0,0 +1,30 @@
++import os
++import django
++from django.test import TransactionTestCase
++from django.db import models
++
++os.environ['DJANGO_SETTINGS_MODULE'] = 'test_settings'
++django.setup()
++
++class Parent(models.Model):
++    name = models.CharField(max_length=100)
++
++class Child(models.Model):
++    name = models.CharField(max_length=100)
++    parent = models.ForeignKey(Parent, on_delete=models.CASCADE)
++
++class SerializedRollbackTestCase(TransactionTestCase):
++    serialized_rollback = True
++
++    def test_serialized_rollback(self):
++        parent = Parent.objects.create(name="Parent")
++        Child.objects.create(name="Child", parent=parent)
++        # Simulate rollback
++        self._fixture_setup()
++        # Check if objects are restored correctly
++        self.assertEqual(Parent.objects.count(), 1)
++        self.assertEqual(Child.objects.count(), 1)
++
++if __name__ == "__main__":
++    import unittest
++    unittest.main()
+diff --git a/test_settings.py b/test_settings.py
+new file mode 100644
+index 0000000000..1622019cc4
+--- /dev/null
++++ b/test_settings.py
+@@ -0,0 +1,14 @@
++DATABASES = {
++    'default': {
++        'ENGINE': 'django.db.backends.sqlite3',
++        'NAME': ':memory:',
++    }
++}
++
++INSTALLED_APPS = [
++    'django.contrib.contenttypes',
++    'django.contrib.auth',
++    '__main__',  # This will include the models defined in the test script
++]
++
++SECRET_KEY = 'test_secret_key'

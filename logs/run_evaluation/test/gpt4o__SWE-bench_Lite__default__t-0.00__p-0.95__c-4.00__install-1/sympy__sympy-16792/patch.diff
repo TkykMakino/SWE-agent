@@ -1,0 +1,18 @@
+
+diff --git a/sympy/utilities/codegen.py b/sympy/utilities/codegen.py
+index f0befb2bd7..7e31dd25dc 100644
+--- a/sympy/utilities/codegen.py
++++ b/sympy/utilities/codegen.py
+@@ -911,8 +911,10 @@ def get_prototype(self, routine):
+         for arg in routine.arguments:
+             name = self.printer.doprint(arg.name)
+             if arg.dimensions or isinstance(arg, ResultBase):
+-                type_args.append((arg.get_datatype('C'), "*%s" % name))
+-            else:
++                if arg.dimensions or isinstance(arg, ResultBase) or isinstance(arg, MatrixSymbol):
++                    type_args.append((arg.get_datatype('C'), "*%s" % name))
++                else:
++                    type_args.append((arg.get_datatype('C'), name))
+                 type_args.append((arg.get_datatype('C'), name))
+         arguments = ", ".join([ "%s %s" % t for t in type_args])
+         return "%s %s(%s)" % (ctype, routine.name, arguments)

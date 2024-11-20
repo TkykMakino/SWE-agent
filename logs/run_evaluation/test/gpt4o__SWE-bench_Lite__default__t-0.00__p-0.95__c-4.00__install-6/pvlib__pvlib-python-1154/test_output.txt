@@ -1,0 +1,1101 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	reproduce.py
+
+nothing added to commit but untracked files present (use "git add" to track)
++ git show
+commit 0b8f24c265d76320067a5ee908a57d475cd1bb24
+Author: Will Holmgren <william.holmgren@gmail.com>
+Date:   Thu Jan 28 13:36:31 2021 -0700
+
+    refactor ModelChain inverter methods to use PVSystem.get_ac (#1150)
+    
+    * deprecate methods
+    
+    * remove new but unreleased methods
+    
+    * refactor modelchain inverter methods for get_ac
+    
+    * update whats new
+    
+    * update api.rst
+    
+    * remove tests for methods that no longer exist
+    
+    * fix get_ac with sandia tests
+    
+    * fix get_ac with sandia tests
+    
+    * clean up pvsystem imports
+    
+    * add test of infer_ac_model
+    
+    * no v in deprecated args
+    
+    * fix pull number....
+    
+    * remove _infer_ac_model_multi
+
+diff --git a/docs/sphinx/source/api.rst b/docs/sphinx/source/api.rst
+index 5586c4e..7372dad 100644
+--- a/docs/sphinx/source/api.rst
++++ b/docs/sphinx/source/api.rst
+@@ -630,8 +630,8 @@ ModelChain model definitions.
+    modelchain.ModelChain.desoto
+    modelchain.ModelChain.pvsyst
+    modelchain.ModelChain.pvwatts_dc
+-   modelchain.ModelChain.snlinverter
+-   modelchain.ModelChain.adrinverter
++   modelchain.ModelChain.sandia_inverter
++   modelchain.ModelChain.adr_inverter
+    modelchain.ModelChain.pvwatts_inverter
+    modelchain.ModelChain.ashrae_aoi_loss
+    modelchain.ModelChain.physical_aoi_loss
+diff --git a/docs/sphinx/source/whatsnew/v0.9.0.rst b/docs/sphinx/source/whatsnew/v0.9.0.rst
+index 3aaff14..605898c 100644
+--- a/docs/sphinx/source/whatsnew/v0.9.0.rst
++++ b/docs/sphinx/source/whatsnew/v0.9.0.rst
+@@ -36,6 +36,10 @@ Breaking changes
+ * ``irradiance.liujordan`` and ``ForecastModel.cloud_cover_to_irradiance_liujordan``
+   have been removed. (:pull:`1136`)
+ 
++* ``ModelChain.snlinverter`` changed to ``ModelChain.sandia_inverter``.
++  ``ModelChain.adrinverter`` changed to ``ModelChain.adr_inverter``.
++  (:pull:`1150`)
++
+ 
+ Deprecations
+ ~~~~~~~~~~~~
+@@ -76,9 +80,9 @@ Enhancements
+ * Support for :py:func:`~pvlib.inverter.sandia_multi` and
+   :py:func:`~pvlib.inverter.pvwatts_multi` added to
+   :py:class:`~pvlib.pvsystem.PVSystem` and
+-  :py:class:`~pvlib.modelchain.ModelChain` (as ``ac_model='sandia_multi'``
+-  and  ``ac_model='pvwatts_multi'``).
+-  (:pull:`1076`, :issue:`1067`, :pull:`1132`, :issue:`1117`)
++  :py:class:`~pvlib.modelchain.ModelChain` (as ``ac_model='sandia'``
++  and ``ac_model='pvwatts'``).
++  (:pull:`1076`, :issue:`1067`, :pull:`1132`, :issue:`1117`, :pull:`1150`)
+ * :py:class:`~pvlib.modelchain.ModelChain` 'run_model' methods now
+   automatically switch to using ``'effective_irradiance'`` (if available) for
+   cell temperature models, when ``'poa_global'`` is not provided in input
+@@ -88,8 +92,8 @@ Enhancements
+   ``pvsystem.PVSystem.strings_per_inverter``. Note that both attributes still
+   default to 1. (:pull:`1138`)
+ * :py:meth:`~pvlib.pvsystem.PVSystem.get_ac` is added to calculate AC power
+-  from DC power. Use parameter 'model' to specify which inverter model to use.
+-  (:pull:`1147`, :issue:`998`)
++  from DC power. Use parameter ``model`` to specify which inverter model to use.
++  (:pull:`1147`, :issue:`998`, :pull:`1150`)
+ 
+ Bug fixes
+ ~~~~~~~~~
+diff --git a/pvlib/modelchain.py b/pvlib/modelchain.py
+index c9c578b..0685d56 100644
+--- a/pvlib/modelchain.py
++++ b/pvlib/modelchain.py
+@@ -770,15 +770,11 @@ class ModelChain:
+         elif isinstance(model, str):
+             model = model.lower()
+             if model == 'sandia':
+-                self._ac_model = self.snlinverter
+-            elif model == 'sandia_multi':
+-                self._ac_model = self.sandia_multi_inverter
++                self._ac_model = self.sandia_inverter
+             elif model in 'adr':
+-                self._ac_model = self.adrinverter
++                self._ac_model = self.adr_inverter
+             elif model == 'pvwatts':
+                 self._ac_model = self.pvwatts_inverter
+-            elif model == 'pvwatts_multi':
+-                self._ac_model = self.pvwatts_multi_inverter
+             else:
+                 raise ValueError(model + ' is not a valid AC power model')
+         else:
+@@ -787,12 +783,15 @@ class ModelChain:
+     def infer_ac_model(self):
+         """Infer AC power model from system attributes."""
+         inverter_params = set(self.system.inverter_parameters.keys())
+-        if self.system.num_arrays > 1:
+-            return self._infer_ac_model_multi(inverter_params)
+         if _snl_params(inverter_params):
+-            return self.snlinverter
++            return self.sandia_inverter
+         if _adr_params(inverter_params):
+-            return self.adrinverter
++            if self.system.num_arrays > 1:
++                raise ValueError(
++                    'The adr inverter function cannot be used for an inverter',
++                    ' with multiple MPPT inputs')
++            else:
++                return self.adr_inverter
+         if _pvwatts_params(inverter_params):
+             return self.pvwatts_inverter
+         raise ValueError('could not infer AC model from '
+@@ -800,40 +799,25 @@ class ModelChain:
+                          'system.inverter_parameters or explicitly '
+                          'set the model with the ac_model kwarg.')
+ 
+-    def _infer_ac_model_multi(self, inverter_params):
+-        if _snl_params(inverter_params):
+-            return self.sandia_multi_inverter
+-        elif _pvwatts_params(inverter_params):
+-            return self.pvwatts_multi_inverter
+-        raise ValueError('could not infer multi-array AC model from '
+-                         'system.inverter_parameters. Only sandia and pvwatts '
+-                         'inverter models support multiple '
+-                         'Arrays. Check system.inverter_parameters or '
+-                         'explicitly set the model with the ac_model kwarg.')
+-
+-    def sandia_multi_inverter(self):
+-        self.results.ac = self.system.sandia_multi(
+-            _tuple_from_dfs(self.results.dc, 'v_mp'),
+-            _tuple_from_dfs(self.results.dc, 'p_mp')
++    def sandia_inverter(self):
++        self.results.ac = self.system.get_ac(
++            'sandia',
++            _tuple_from_dfs(self.results.dc, 'p_mp'),
++            v_dc=_tuple_from_dfs(self.results.dc, 'v_mp')
+         )
+         return self
+ 
+-    def pvwatts_multi_inverter(self):
+-        self.results.ac = self.system.pvwatts_multi(self.results.dc)
+-        return self
+-
+-    def snlinverter(self):
+-        self.results.ac = self.system.snlinverter(self.results.dc['v_mp'],
+-                                                  self.results.dc['p_mp'])
+-        return self
+-
+-    def adrinverter(self):
+-        self.results.ac = self.system.adrinverter(self.results.dc['v_mp'],
+-                                                  self.results.dc['p_mp'])
++    def adr_inverter(self):
++        self.results.ac = self.system.get_ac(
++            'adr',
++            self.results.dc['p_mp'],
++            v_dc=self.results.dc['v_mp']
++        )
+         return self
+ 
+     def pvwatts_inverter(self):
+-        self.results.ac = self.system.pvwatts_ac(self.results.dc).fillna(0)
++        ac = self.system.get_ac('pvwatts', self.results.dc)
++        self.results.ac = ac.fillna(0)
+         return self
+ 
+     @property
+diff --git a/pvlib/pvsystem.py b/pvlib/pvsystem.py
+index cb003f2..33696bc 100644
+--- a/pvlib/pvsystem.py
++++ b/pvlib/pvsystem.py
+@@ -8,7 +8,6 @@ import functools
+ import io
+ import os
+ from urllib.request import urlopen
+-import warnings
+ import numpy as np
+ import pandas as pd
+ 
+@@ -17,7 +16,6 @@ from pvlib._deprecation import deprecated
+ from pvlib import (atmosphere, iam, inverter, irradiance,
+                    singlediode as _singlediode, temperature)
+ from pvlib.tools import _build_kwargs
+-from pvlib._deprecation import pvlibDeprecationWarning
+ 
+ 
+ # a dict of required parameter names for each DC power model
+@@ -921,6 +919,7 @@ class PVSystem:
+                 model + ' is not a valid AC power model.',
+                 ' model must be one of "sandia", "adr" or "pvwatts"')
+ 
++    @deprecated('0.9', alternative='PVSystem.get_ac', removal='0.10')
+     def snlinverter(self, v_dc, p_dc):
+         """Uses :py:func:`pvlib.inverter.sandia` to calculate AC power based on
+         ``self.inverter_parameters`` and the input voltage and power.
+@@ -929,19 +928,7 @@ class PVSystem:
+         """
+         return inverter.sandia(v_dc, p_dc, self.inverter_parameters)
+ 
+-    def sandia_multi(self, v_dc, p_dc):
+-        """Uses :py:func:`pvlib.inverter.sandia_multi` to calculate AC power
+-        based on ``self.inverter_parameters`` and the input voltage and power.
+-
+-        The parameters `v_dc` and `p_dc` must be tuples with length equal to
+-        ``self.num_arrays`` if the system has more than one array.
+-
+-        See :py:func:`pvlib.inverter.sandia_multi` for details.
+-        """
+-        v_dc = self._validate_per_array(v_dc)
+-        p_dc = self._validate_per_array(p_dc)
+-        return inverter.sandia_multi(v_dc, p_dc, self.inverter_parameters)
+-
++    @deprecated('0.9', alternative='PVSystem.get_ac', removal='0.10')
+     def adrinverter(self, v_dc, p_dc):
+         """Uses :py:func:`pvlib.inverter.adr` to calculate AC power based on
+         ``self.inverter_parameters`` and the input voltage and power.
+@@ -1009,6 +996,7 @@ class PVSystem:
+                                self.losses_parameters)
+         return pvwatts_losses(**kwargs)
+ 
++    @deprecated('0.9', alternative='PVSystem.get_ac', removal='0.10')
+     def pvwatts_ac(self, pdc):
+         """
+         Calculates AC power according to the PVWatts model using
+@@ -1023,20 +1011,6 @@ class PVSystem:
+         return inverter.pvwatts(pdc, self.inverter_parameters['pdc0'],
+                                 **kwargs)
+ 
+-    def pvwatts_multi(self, p_dc):
+-        """Uses :py:func:`pvlib.inverter.pvwatts_multi` to calculate AC power
+-        based on ``self.inverter_parameters`` and the input voltage and power.
+-
+-        The parameter `p_dc` must be a tuple with length equal to
+-        ``self.num_arrays`` if the system has more than one array.
+-
+-        See :py:func:`pvlib.inverter.pvwatts_multi` for details.
+-        """
+-        p_dc = self._validate_per_array(p_dc)
+-        kwargs = _build_kwargs(['eta_inv_nom', 'eta_inv_ref'],
+-                               self.inverter_parameters)
+-        return inverter.pvwatts_multi(p_dc, self.inverter_parameters['pdc0'],
+-                                      **kwargs)
+     @property
+     @_unwrap_single_value
+     def module_parameters(self):
+diff --git a/pvlib/tests/test_modelchain.py b/pvlib/tests/test_modelchain.py
+index 9085b02..63f5c56 100644
+--- a/pvlib/tests/test_modelchain.py
++++ b/pvlib/tests/test_modelchain.py
+@@ -3,7 +3,7 @@ import sys
+ import numpy as np
+ import pandas as pd
+ 
+-from pvlib import iam, modelchain, pvsystem, temperature
++from pvlib import iam, modelchain, pvsystem, temperature, inverter
+ from pvlib.modelchain import ModelChain
+ from pvlib.pvsystem import PVSystem
+ from pvlib.tracking import SingleAxisTracker
+@@ -480,7 +480,7 @@ def test_ModelChain_invalid_inverter_params_arrays(
+     sapm_dc_snl_ac_system_same_arrays.inverter_parameters = \
+         inverter_params[inverter]
+     with pytest.raises(ValueError,
+-                       match=r'Only sandia and pvwatts inverter models'):
++                       match=r'adr inverter function cannot'):
+         ModelChain(sapm_dc_snl_ac_system_same_arrays, location)
+ 
+ 
+@@ -1235,27 +1235,36 @@ def acdc(mc):
+     mc.results.ac = mc.results.dc
+ 
+ 
+-@pytest.mark.parametrize('ac_model', ['sandia', 'adr',
+-                                      'pvwatts', 'sandia_multi',
+-                                      'pvwatts_multi'])
++@pytest.mark.parametrize('inverter_model', ['sandia', 'adr',
++                                            'pvwatts', 'sandia_multi',
++                                            'pvwatts_multi'])
+ def test_ac_models(sapm_dc_snl_ac_system, cec_dc_adr_ac_system,
+-                   pvwatts_dc_pvwatts_ac_system, location, ac_model,
+-                   weather, mocker):
++                   pvwatts_dc_pvwatts_ac_system, cec_dc_snl_ac_arrays,
++                   pvwatts_dc_pvwatts_ac_system_arrays,
++                   location, inverter_model, weather, mocker):
+     ac_systems = {'sandia': sapm_dc_snl_ac_system,
+-                  'sandia_multi': sapm_dc_snl_ac_system,
++                  'sandia_multi': cec_dc_snl_ac_arrays,
+                   'adr': cec_dc_adr_ac_system,
+                   'pvwatts': pvwatts_dc_pvwatts_ac_system,
+-                  'pvwatts_multi': pvwatts_dc_pvwatts_ac_system}
+-    ac_method_name = {'sandia': 'snlinverter',
+-                      'sandia_multi': 'sandia_multi',
+-                      'adr': 'adrinverter',
+-                      'pvwatts': 'pvwatts_ac',
+-                      'pvwatts_multi': 'pvwatts_multi'}
+-    system = ac_systems[ac_model]
+-
++                  'pvwatts_multi': pvwatts_dc_pvwatts_ac_system_arrays}
++    inverter_to_ac_model = {
++        'sandia': 'sandia',
++        'sandia_multi': 'sandia',
++        'adr': 'adr',
++        'pvwatts': 'pvwatts',
++        'pvwatts_multi': 'pvwatts'}
++    ac_model = inverter_to_ac_model[inverter_model]
++    system = ac_systems[inverter_model]
++
++    mc_inferred = ModelChain(system, location,
++                             aoi_model='no_loss', spectral_model='no_loss')
+     mc = ModelChain(system, location, ac_model=ac_model,
+                     aoi_model='no_loss', spectral_model='no_loss')
+-    m = mocker.spy(system, ac_method_name[ac_model])
++
++    # tests ModelChain.infer_ac_model
++    assert mc_inferred.ac_model.__name__ == mc.ac_model.__name__
++
++    m = mocker.spy(inverter, inverter_model)
+     mc.run_model(weather)
+     assert m.call_count == 1
+     assert isinstance(mc.results.ac, pd.Series)
+@@ -1447,7 +1456,7 @@ def test_losses_models_no_loss(pvwatts_dc_pvwatts_ac_system, location, weather,
+ 
+ def test_invalid_dc_model_params(sapm_dc_snl_ac_system, cec_dc_snl_ac_system,
+                                  pvwatts_dc_pvwatts_ac_system, location):
+-    kwargs = {'dc_model': 'sapm', 'ac_model': 'snlinverter',
++    kwargs = {'dc_model': 'sapm', 'ac_model': 'sandia',
+               'aoi_model': 'no_loss', 'spectral_model': 'no_loss',
+               'temperature_model': 'sapm', 'losses_model': 'no_loss'}
+     sapm_dc_snl_ac_system.module_parameters.pop('A0')  # remove a parameter
+@@ -1488,9 +1497,9 @@ def test_bad_get_orientation():
+ def test_with_sapm_pvsystem_arrays(sapm_dc_snl_ac_system_Array, location,
+                                    weather):
+     mc = ModelChain.with_sapm(sapm_dc_snl_ac_system_Array, location,
+-                              ac_model='sandia_multi')
++                              ac_model='sandia')
+     assert mc.dc_model == mc.sapm
+-    assert mc.ac_model == mc.sandia_multi_inverter
++    assert mc.ac_model == mc.sandia_inverter
+     mc.run_model(weather)
+     assert mc.results
+ 
+@@ -1625,7 +1634,7 @@ def test_ModelChain___repr__(sapm_dc_snl_ac_system, location, strategy,
+         '  solar_position_method: nrel_numpy',
+         '  airmass_model: kastenyoung1989',
+         '  dc_model: sapm',
+-        '  ac_model: snlinverter',
++        '  ac_model: sandia_inverter',
+         '  aoi_model: sapm_aoi_loss',
+         '  spectral_model: sapm_spectral_loss',
+         '  temperature_model: sapm_temp',
+@@ -1778,7 +1787,7 @@ def test_inconsistent_array_params(location,
+     )
+     with pytest.raises(ValueError, match=temperature_error):
+         ModelChain(different_temp_system, location,
+-                   ac_model='sandia_multi',
++                   ac_model='sandia',
+                    aoi_model='no_loss', spectral_model='no_loss',
+                    temperature_model='sapm')
+ 
+diff --git a/pvlib/tests/test_pvsystem.py b/pvlib/tests/test_pvsystem.py
+index dd6a51a..c1b2cd7 100644
+--- a/pvlib/tests/test_pvsystem.py
++++ b/pvlib/tests/test_pvsystem.py
+@@ -5,7 +5,8 @@ from numpy import nan, array
+ import pandas as pd
+ 
+ import pytest
+-from conftest import assert_series_equal, assert_frame_equal
++from conftest import (
++    assert_series_equal, assert_frame_equal, fail_on_pvlib_version)
+ from numpy.testing import assert_allclose
+ import unittest.mock as mock
+ 
+@@ -15,6 +16,7 @@ from pvlib import iam as _iam
+ from pvlib import irradiance
+ from pvlib.location import Location
+ from pvlib import temperature
++from pvlib._deprecation import pvlibDeprecationWarning
+ 
+ 
+ @pytest.mark.parametrize('iam_model,model_params', [
+@@ -1383,12 +1385,12 @@ def test_PVSystem_get_ac_sandia(cec_inverter_parameters, mocker):
+     vdcs = pd.Series(np.linspace(0, 50, 3))
+     idcs = pd.Series(np.linspace(0, 11, 3))
+     pdcs = idcs * vdcs
+-    pacs = system.get_ac('sandia', vdcs, pdcs)
+-    assert_series_equal(pacs, pd.Series([-0.020000, 132.004308, 250.000000]))
++    pacs = system.get_ac('sandia', pdcs, v_dc=vdcs)
+     inv_fun.assert_called_once()
++    assert_series_equal(pacs, pd.Series([-0.020000, 132.004308, 250.000000]))
+ 
+ 
+-# remove after deprecation period for PVSystem.snlinverter
++@fail_on_pvlib_version('0.10')
+ def test_PVSystem_snlinverter(cec_inverter_parameters):
+     system = pvsystem.PVSystem(
+         inverter=cec_inverter_parameters['Name'],
+@@ -1397,8 +1399,8 @@ def test_PVSystem_snlinverter(cec_inverter_parameters):
+     vdcs = pd.Series(np.linspace(0,50,3))
+     idcs = pd.Series(np.linspace(0,11,3))
+     pdcs = idcs * vdcs
+-
+-    pacs = system.snlinverter(vdcs, pdcs)
++    with pytest.warns(pvlibDeprecationWarning):
++        pacs = system.snlinverter(vdcs, pdcs)
+     assert_series_equal(pacs, pd.Series([-0.020000, 132.004308, 250.000000]))
+ 
+ 
+@@ -1412,9 +1414,9 @@ def test_PVSystem_get_ac_sandia_multi(cec_inverter_parameters, mocker):
+     vdcs = pd.Series(np.linspace(0, 50, 3))
+     idcs = pd.Series(np.linspace(0, 11, 3)) / 2
+     pdcs = idcs * vdcs
+-    pacs = system.get_ac('sandia', (vdcs, vdcs), (pdcs, pdcs))
+-    assert_series_equal(pacs, pd.Series([-0.020000, 132.004308, 250.000000]))
++    pacs = system.get_ac('sandia', (pdcs, pdcs), v_dc=(vdcs, vdcs))
+     inv_fun.assert_called_once()
++    assert_series_equal(pacs, pd.Series([-0.020000, 132.004308, 250.000000]))
+     with pytest.raises(ValueError,
+                        match="Length mismatch for per-array parameter"):
+         system.get_ac('sandia', vdcs, (pdcs, pdcs))
+@@ -1426,52 +1428,6 @@ def test_PVSystem_get_ac_sandia_multi(cec_inverter_parameters, mocker):
+         system.get_ac('sandia', (vdcs, vdcs), (pdcs, pdcs, pdcs))
+ 
+ 
+-# remove after deprecation period for PVSystem.sandia_multi
+-def test_PVSystem_sandia_multi(cec_inverter_parameters):
+-    system = pvsystem.PVSystem(
+-        arrays=[pvsystem.Array(), pvsystem.Array()],
+-        inverter=cec_inverter_parameters['Name'],
+-        inverter_parameters=cec_inverter_parameters,
+-    )
+-    vdcs = pd.Series(np.linspace(0, 50, 3))
+-    idcs = pd.Series(np.linspace(0, 11, 3)) / 2
+-    pdcs = idcs * vdcs
+-    pacs = system.sandia_multi((vdcs, vdcs), (pdcs, pdcs))
+-    assert_series_equal(pacs, pd.Series([-0.020000, 132.004308, 250.000000]))
+-    with pytest.raises(ValueError,
+-                       match="Length mismatch for per-array parameter"):
+-        system.sandia_multi(vdcs, (pdcs, pdcs))
+-    with pytest.raises(ValueError,
+-                       match="Length mismatch for per-array parameter"):
+-        system.sandia_multi(vdcs, (pdcs,))
+-    with pytest.raises(ValueError,
+-                       match="Length mismatch for per-array parameter"):
+-        system.sandia_multi((vdcs, vdcs), (pdcs, pdcs, pdcs))
+-
+-
+-# remove after deprecation period for PVSystem.sandia_multi
+-def test_PVSystem_sandia_multi_single_array(cec_inverter_parameters):
+-    system = pvsystem.PVSystem(
+-        arrays=[pvsystem.Array()],
+-        inverter=cec_inverter_parameters['Name'],
+-        inverter_parameters=cec_inverter_parameters,
+-    )
+-    vdcs = pd.Series(np.linspace(0, 50, 3))
+-    idcs = pd.Series(np.linspace(0, 11, 3))
+-    pdcs = idcs * vdcs
+-
+-    pacs = system.sandia_multi(vdcs, pdcs)
+-    assert_series_equal(pacs, pd.Series([-0.020000, 132.004308, 250.000000]))
+-    pacs = system.sandia_multi((vdcs,), (pdcs,))
+-    assert_series_equal(pacs, pd.Series([-0.020000, 132.004308, 250.000000]))
+-    with pytest.raises(ValueError,
+-                       match="Length mismatch for per-array parameter"):
+-        system.sandia_multi((vdcs, vdcs), pdcs)
+-    with pytest.raises(ValueError,
+-                       match="Length mismatch for per-array parameter"):
+-        system.sandia_multi((vdcs,), (pdcs, pdcs))
+-
+-
+ def test_PVSystem_get_ac_pvwatts(pvwatts_system_defaults, mocker):
+     mocker.spy(inverter, 'pvwatts')
+     pdc = 50
+@@ -2010,51 +1966,28 @@ def test_PVSystem_pvwatts_losses(pvwatts_system_defaults, mocker):
+     assert out < expected
+ 
+ 
+-# remove after deprecation period for PVSystem.pvwatts_ac
++@fail_on_pvlib_version('0.10')
+ def test_PVSystem_pvwatts_ac(pvwatts_system_defaults, mocker):
+     mocker.spy(inverter, 'pvwatts')
+     pdc = 50
+-    out = pvwatts_system_defaults.pvwatts_ac(pdc)
++    with pytest.warns(pvlibDeprecationWarning):
++        out = pvwatts_system_defaults.pvwatts_ac(pdc)
+     inverter.pvwatts.assert_called_once_with(
+         pdc, **pvwatts_system_defaults.inverter_parameters)
+     assert out < pdc
+ 
+ 
+-# remove after deprecation period for PVSystem.pvwatts_ac
++@fail_on_pvlib_version('0.10')
+ def test_PVSystem_pvwatts_ac_kwargs(pvwatts_system_kwargs, mocker):
+     mocker.spy(inverter, 'pvwatts')
+     pdc = 50
+-    out = pvwatts_system_kwargs.pvwatts_ac(pdc)
++    with pytest.warns(pvlibDeprecationWarning):
++        out = pvwatts_system_kwargs.pvwatts_ac(pdc)
+     inverter.pvwatts.assert_called_once_with(
+         pdc, **pvwatts_system_kwargs.inverter_parameters)
+     assert out < pdc
+ 
+ 
+-# remove after deprecation period for PVSystem.pvwatts_ac
+-def test_PVSystem_pvwatts_multi(pvwatts_system_defaults,
+-                                pvwatts_system_kwargs):
+-    expected = [pd.Series([0.0, 48.123524, 86.400000]),
+-                pd.Series([0.0, 45.893550, 85.500000])]
+-    systems = [pvwatts_system_defaults, pvwatts_system_kwargs]
+-    for base_sys, exp in zip(systems, expected):
+-        system = pvsystem.PVSystem(
+-            arrays=[pvsystem.Array(), pvsystem.Array()],
+-            inverter_parameters=base_sys.inverter_parameters,
+-        )
+-        pdcs = pd.Series([0., 25., 50.])
+-        pacs = system.pvwatts_multi((pdcs, pdcs))
+-        assert_series_equal(pacs, exp)
+-    with pytest.raises(ValueError,
+-                       match="Length mismatch for per-array parameter"):
+-        system.pvwatts_multi((pdcs,))
+-    with pytest.raises(ValueError,
+-                       match="Length mismatch for per-array parameter"):
+-        system.pvwatts_multi(pdcs)
+-    with pytest.raises(ValueError,
+-                       match="Length mismatch for per-array parameter"):
+-        system.pvwatts_multi((pdcs, pdcs, pdcs))
+-
+-
+ def test_PVSystem_num_arrays():
+     system_one = pvsystem.PVSystem()
+     system_two = pvsystem.PVSystem(arrays=[pvsystem.Array(), pvsystem.Array()])
++ git diff 0b8f24c265d76320067a5ee908a57d475cd1bb24
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ python -m pip install -e '.[all]'
+Obtaining file:///testbed
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: numpy>=1.12.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (1.26.4)
+Requirement already satisfied: pandas>=0.22.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (2.2.2)
+Requirement already satisfied: pytz in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (2024.1)
+Requirement already satisfied: requests in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (2.32.3)
+Requirement already satisfied: scipy>=1.2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (1.13.1)
+Requirement already satisfied: cftime>=1.1.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (1.6.4)
+Requirement already satisfied: cython in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (3.0.11)
+Requirement already satisfied: docutils==0.15.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (0.15.2)
+Requirement already satisfied: ephem in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (4.1.5)
+Requirement already satisfied: ipython in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (8.18.1)
+Requirement already satisfied: matplotlib in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (3.9.0)
+Requirement already satisfied: netcdf4 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (1.7.1.post1)
+Requirement already satisfied: nose in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (1.3.7)
+Requirement already satisfied: nrel-pysam in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (5.1.0)
+Requirement already satisfied: numba in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (0.60.0)
+Requirement already satisfied: pillow in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (10.4.0)
+Requirement already satisfied: pvfactors in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (1.4.1)
+Requirement already satisfied: pytest in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (8.3.2)
+Requirement already satisfied: pytest-cov in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (5.0.0)
+Requirement already satisfied: pytest-mock in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (3.14.0)
+Requirement already satisfied: pytest-remotedata in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (0.4.1)
+Requirement already satisfied: pytest-rerunfailures in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (14.0)
+Requirement already satisfied: pytest-timeout in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (2.3.1)
+Requirement already satisfied: siphon in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (0.9)
+Requirement already satisfied: sphinx==3.1.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (3.1.2)
+Requirement already satisfied: sphinx-gallery in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (0.12.2)
+Requirement already satisfied: sphinx-toggleprompt>=0.0.5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (0.2.0)
+Requirement already satisfied: sphinx_rtd_theme==0.5.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (0.5.0)
+Requirement already satisfied: statsmodels in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (0.14.2)
+Requirement already satisfied: tables in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.9.0a2) (3.9.2)
+Requirement already satisfied: sphinxcontrib-applehelp in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==3.1.2->pvlib==0.9.0a2) (2.0.0)
+Requirement already satisfied: sphinxcontrib-devhelp in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==3.1.2->pvlib==0.9.0a2) (2.0.0)
+Requirement already satisfied: sphinxcontrib-jsmath in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==3.1.2->pvlib==0.9.0a2) (1.0.1)
+Requirement already satisfied: sphinxcontrib-htmlhelp in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==3.1.2->pvlib==0.9.0a2) (2.1.0)
+Requirement already satisfied: sphinxcontrib-serializinghtml in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==3.1.2->pvlib==0.9.0a2) (2.0.0)
+Requirement already satisfied: sphinxcontrib-qthelp in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==3.1.2->pvlib==0.9.0a2) (2.0.0)
+Requirement already satisfied: Jinja2>=2.3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==3.1.2->pvlib==0.9.0a2) (3.0.3)
+Requirement already satisfied: Pygments>=2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==3.1.2->pvlib==0.9.0a2) (2.18.0)
+Requirement already satisfied: snowballstemmer>=1.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==3.1.2->pvlib==0.9.0a2) (2.2.0)
+Requirement already satisfied: babel>=1.3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==3.1.2->pvlib==0.9.0a2) (2.15.0)
+Requirement already satisfied: alabaster<0.8,>=0.7 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==3.1.2->pvlib==0.9.0a2) (0.7.16)
+Requirement already satisfied: imagesize in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==3.1.2->pvlib==0.9.0a2) (1.4.1)
+Requirement already satisfied: setuptools in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==3.1.2->pvlib==0.9.0a2) (72.1.0)
+Requirement already satisfied: packaging in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==3.1.2->pvlib==0.9.0a2) (24.1)
+Requirement already satisfied: python-dateutil>=2.8.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pandas>=0.22.0->pvlib==0.9.0a2) (2.9.0.post0)
+Requirement already satisfied: tzdata>=2022.7 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pandas>=0.22.0->pvlib==0.9.0a2) (2023.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from requests->pvlib==0.9.0a2) (3.3.2)
+Requirement already satisfied: idna<4,>=2.5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from requests->pvlib==0.9.0a2) (3.7)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from requests->pvlib==0.9.0a2) (2.2.2)
+Requirement already satisfied: certifi>=2017.4.17 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from requests->pvlib==0.9.0a2) (2024.7.4)
+Requirement already satisfied: decorator in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.9.0a2) (5.1.1)
+Requirement already satisfied: jedi>=0.16 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.9.0a2) (0.19.1)
+Requirement already satisfied: matplotlib-inline in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.9.0a2) (0.1.7)
+Requirement already satisfied: prompt-toolkit<3.1.0,>=3.0.41 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.9.0a2) (3.0.47)
+Requirement already satisfied: stack-data in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.9.0a2) (0.6.3)
+Requirement already satisfied: traitlets>=5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.9.0a2) (5.14.3)
+Requirement already satisfied: typing-extensions in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.9.0a2) (4.12.2)
+Requirement already satisfied: exceptiongroup in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.9.0a2) (1.2.2)
+Requirement already satisfied: pexpect>4.3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.9.0a2) (4.9.0)
+Requirement already satisfied: contourpy>=1.0.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib->pvlib==0.9.0a2) (1.2.1)
+Requirement already satisfied: cycler>=0.10 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib->pvlib==0.9.0a2) (0.12.1)
+Requirement already satisfied: fonttools>=4.22.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib->pvlib==0.9.0a2) (4.53.1)
+Requirement already satisfied: kiwisolver>=1.3.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib->pvlib==0.9.0a2) (1.4.5)
+Requirement already satisfied: pyparsing>=2.3.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib->pvlib==0.9.0a2) (3.1.2)
+Requirement already satisfied: importlib-resources>=3.2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib->pvlib==0.9.0a2) (6.4.0)
+Requirement already satisfied: python-dotenv in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from nrel-pysam->pvlib==0.9.0a2) (1.0.1)
+Requirement already satisfied: llvmlite<0.44,>=0.43.0dev0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from numba->pvlib==0.9.0a2) (0.43.0)
+Requirement already satisfied: shapely>=1.6.4.post2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvfactors->pvlib==0.9.0a2) (2.0.5)
+Requirement already satisfied: future in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvfactors->pvlib==0.9.0a2) (1.0.0)
+Requirement already satisfied: six in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvfactors->pvlib==0.9.0a2) (1.16.0)
+Requirement already satisfied: iniconfig in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest->pvlib==0.9.0a2) (2.0.0)
+Requirement already satisfied: pluggy<2,>=1.5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest->pvlib==0.9.0a2) (1.5.0)
+Requirement already satisfied: tomli>=1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest->pvlib==0.9.0a2) (2.0.1)
+Requirement already satisfied: coverage>=5.2.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from coverage[toml]>=5.2.1->pytest-cov->pvlib==0.9.0a2) (7.6.1)
+Requirement already satisfied: protobuf>=3.0.0a3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from siphon->pvlib==0.9.0a2) (5.28.0rc1)
+Requirement already satisfied: beautifulsoup4>=4.6 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from siphon->pvlib==0.9.0a2) (4.12.3)
+Requirement already satisfied: patsy>=0.5.6 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from statsmodels->pvlib==0.9.0a2) (0.5.6)
+Requirement already satisfied: numexpr>=2.6.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from tables->pvlib==0.9.0a2) (2.8.7)
+Requirement already satisfied: py-cpuinfo in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from tables->pvlib==0.9.0a2) (9.0.0)
+Requirement already satisfied: blosc2>=2.3.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from tables->pvlib==0.9.0a2) (2.5.1)
+Requirement already satisfied: soupsieve>1.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from beautifulsoup4>=4.6->siphon->pvlib==0.9.0a2) (2.5)
+Requirement already satisfied: ndindex>=1.4 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from blosc2>=2.3.0->tables->pvlib==0.9.0a2) (1.8)
+Requirement already satisfied: msgpack in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from blosc2>=2.3.0->tables->pvlib==0.9.0a2) (1.0.8)
+Requirement already satisfied: zipp>=3.1.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from importlib-resources>=3.2.0->matplotlib->pvlib==0.9.0a2) (3.19.2)
+Requirement already satisfied: parso<0.9.0,>=0.8.3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from jedi>=0.16->ipython->pvlib==0.9.0a2) (0.8.4)
+Requirement already satisfied: MarkupSafe>=2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from Jinja2>=2.3->sphinx==3.1.2->pvlib==0.9.0a2) (2.1.5)
+Requirement already satisfied: ptyprocess>=0.5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pexpect>4.3->ipython->pvlib==0.9.0a2) (0.7.0)
+Requirement already satisfied: wcwidth in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from prompt-toolkit<3.1.0,>=3.0.41->ipython->pvlib==0.9.0a2) (0.2.13)
+Requirement already satisfied: executing>=1.2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from stack-data->ipython->pvlib==0.9.0a2) (2.0.1)
+Requirement already satisfied: asttokens>=2.1.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from stack-data->ipython->pvlib==0.9.0a2) (2.4.1)
+Requirement already satisfied: pure-eval in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from stack-data->ipython->pvlib==0.9.0a2) (0.2.3)
+Installing collected packages: pvlib
+  Attempting uninstall: pvlib
+    Found existing installation: pvlib 0.9.0a2
+    Uninstalling pvlib-0.9.0a2:
+      Successfully uninstalled pvlib-0.9.0a2
+  Running setup.py develop for pvlib
+Successfully installed pvlib-0.9.0a2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
++ git checkout 0b8f24c265d76320067a5ee908a57d475cd1bb24 pvlib/tests/test_irradiance.py
+Updated 0 paths from 60f0103
++ git apply -v -
+Checking patch pvlib/tests/test_irradiance.py...
+Applied patch pvlib/tests/test_irradiance.py cleanly.
++ pytest -rA pvlib/tests/test_irradiance.py
+============================= test session starts ==============================
+platform linux -- Python 3.9.19, pytest-8.3.2, pluggy-1.5.0
+rootdir: /testbed
+configfile: setup.cfg
+plugins: anyio-4.4.0, mock-3.14.0, timeout-2.3.1, rerunfailures-14.0, cov-5.0.0, remotedata-0.4.1
+collected 98 items
+
+pvlib/tests/test_irradiance.py ......................................... [ 41%]
+........F................................................                [100%]
+
+=================================== FAILURES ===================================
+_________________________________ test_reindl __________________________________
+
+irrad_data =                                    ghi         dni         dhi
+2014-06-24 00:00:00-07:00     0.000000    0.000000    0...6-24 12:00:00-07:00  1042.480315  939.954699  118.458319
+2014-06-24 18:00:00-07:00   257.207511  646.228860   62.033763
+ephem_data =                            apparent_zenith  ...  equation_of_time
+2014-06-24 00:00:00-07:00       124.039086  ...     ...0.564136  ...         -2.474573
+2014-06-24 18:00:00-07:00        72.416871  ...         -2.528319
+
+[4 rows x 6 columns]
+dni_et = array([1321.16558348, 1321.16558348, 1321.16558348, 1321.16558348])
+
+    def test_reindl(irrad_data, ephem_data, dni_et):
+        result = irradiance.reindl(
+            40, 180, irrad_data['dhi'], irrad_data['dni'], irrad_data['ghi'],
+            dni_et, ephem_data['apparent_zenith'], ephem_data['azimuth'])
+        # values from matlab 1.4 code
+>       assert_allclose(result, [0., 27.9412, 104.1317, 34.1663], atol=1e-4)
+
+pvlib/tests/test_irradiance.py:206: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (<function assert_allclose.<locals>.compare at 0x767dbd97db80>, array([         nan,  27.94116987, 104.13172366,  34.16625815]), array([  0.    ,  27.9412, 104.1317,  34.1663]))
+kwds = {'equal_nan': True, 'err_msg': '', 'header': 'Not equal to tolerance rtol=1e-07, atol=0.0001', 'verbose': True}
+
+    @wraps(func)
+    def inner(*args, **kwds):
+        with self._recreate_cm():
+>           return func(*args, **kwds)
+E           AssertionError: 
+E           Not equal to tolerance rtol=1e-07, atol=0.0001
+E           
+E           x and y nan location mismatch:
+E            x: array([       nan,  27.94117 , 104.131724,  34.166258])
+E            y: array([  0.    ,  27.9412, 104.1317,  34.1663])
+
+/opt/miniconda3/envs/testbed/lib/python3.9/contextlib.py:79: AssertionError
+=============================== warnings summary ===============================
+pvlib/tests/conftest.py:6
+  /testbed/pvlib/tests/conftest.py:6: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+    from pkg_resources import parse_version
+
+../opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pkg_resources/__init__.py:3144
+  /opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pkg_resources/__init__.py:3144: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('sphinxcontrib')`.
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(pkg)
+
+pvlib/tests/test_irradiance.py: 16 warnings
+  /testbed/pvlib/tests/test_irradiance.py:30: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    return pd.date_range(start='20140624', freq='6H', periods=4,
+
+pvlib/tests/test_irradiance.py::test_dirint_nans
+  /testbed/pvlib/tests/test_irradiance.py:476: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    times = pd.date_range(start='2014-06-24T12-0700', periods=5, freq='6H')
+
+pvlib/tests/test_irradiance.py::test_clearsky_index
+  /testbed/pvlib/tests/test_irradiance.py:838: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    times = pd.date_range(start='20180601', periods=2, freq='12H')
+
+pvlib/tests/test_irradiance.py::test_clearness_index
+  /testbed/pvlib/tests/test_irradiance.py:894: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    times = pd.date_range(start='20180601', periods=2, freq='12H')
+
+pvlib/tests/test_irradiance.py::test_clearness_index_zenith_independent
+  /testbed/pvlib/tests/test_irradiance.py:928: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    times = pd.date_range(start='20180601', periods=2, freq='12H')
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[asce-300-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[asce-300.0-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[asce-testval2-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[asce-testval3-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[asce-testval4-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[asce-testval5-expected5]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[asce-testval6-expected6]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[asce-testval7-expected7]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[asce-testval8-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[spencer-300-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[spencer-300.0-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[spencer-testval2-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[spencer-testval3-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[spencer-testval4-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[spencer-testval5-expected5]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[spencer-testval6-expected6]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[spencer-testval7-expected7]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[spencer-testval8-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[nrel-300-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[nrel-300.0-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[nrel-testval2-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[nrel-testval3-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[nrel-testval4-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[nrel-testval5-expected5]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[nrel-testval6-expected6]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[nrel-testval7-expected7]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[nrel-testval8-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[pyephem-300-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[pyephem-300.0-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[pyephem-testval2-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[pyephem-testval3-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[pyephem-testval4-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[pyephem-testval5-expected5]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[pyephem-testval6-expected6]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[pyephem-testval7-expected7]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation[pyephem-testval8-1383.636203]
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation_epoch_year
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation_nrel_numba
+PASSED pvlib/tests/test_irradiance.py::test_get_extra_radiation_invalid
+PASSED pvlib/tests/test_irradiance.py::test_grounddiffuse_simple_float
+PASSED pvlib/tests/test_irradiance.py::test_grounddiffuse_simple_series
+PASSED pvlib/tests/test_irradiance.py::test_grounddiffuse_albedo_0
+PASSED pvlib/tests/test_irradiance.py::test_grounddiffuse_albedo_invalid_surface
+PASSED pvlib/tests/test_irradiance.py::test_grounddiffuse_albedo_surface
+PASSED pvlib/tests/test_irradiance.py::test_isotropic_float
+PASSED pvlib/tests/test_irradiance.py::test_isotropic_series
+PASSED pvlib/tests/test_irradiance.py::test_klucher_series_float
+PASSED pvlib/tests/test_irradiance.py::test_klucher_series
+PASSED pvlib/tests/test_irradiance.py::test_haydavies
+PASSED pvlib/tests/test_irradiance.py::test_king
+PASSED pvlib/tests/test_irradiance.py::test_perez
+PASSED pvlib/tests/test_irradiance.py::test_perez_components
+PASSED pvlib/tests/test_irradiance.py::test_perez_arrays
+PASSED pvlib/tests/test_irradiance.py::test_perez_scalar
+PASSED pvlib/tests/test_irradiance.py::test_sky_diffuse_zenith_close_to_90[isotropic]
+PASSED pvlib/tests/test_irradiance.py::test_sky_diffuse_zenith_close_to_90[klucher]
+PASSED pvlib/tests/test_irradiance.py::test_sky_diffuse_zenith_close_to_90[haydavies]
+PASSED pvlib/tests/test_irradiance.py::test_sky_diffuse_zenith_close_to_90[reindl]
+PASSED pvlib/tests/test_irradiance.py::test_sky_diffuse_zenith_close_to_90[king]
+PASSED pvlib/tests/test_irradiance.py::test_sky_diffuse_zenith_close_to_90[perez]
+PASSED pvlib/tests/test_irradiance.py::test_get_sky_diffuse_invalid
+PASSED pvlib/tests/test_irradiance.py::test_campbell_norman
+PASSED pvlib/tests/test_irradiance.py::test_get_total_irradiance
+PASSED pvlib/tests/test_irradiance.py::test_get_total_irradiance_scalars[isotropic]
+PASSED pvlib/tests/test_irradiance.py::test_get_total_irradiance_scalars[klucher]
+PASSED pvlib/tests/test_irradiance.py::test_get_total_irradiance_scalars[haydavies]
+PASSED pvlib/tests/test_irradiance.py::test_get_total_irradiance_scalars[reindl]
+PASSED pvlib/tests/test_irradiance.py::test_get_total_irradiance_scalars[king]
+PASSED pvlib/tests/test_irradiance.py::test_get_total_irradiance_scalars[perez]
+PASSED pvlib/tests/test_irradiance.py::test_poa_components
+PASSED pvlib/tests/test_irradiance.py::test_disc_value[93193-expected0]
+PASSED pvlib/tests/test_irradiance.py::test_disc_value[None-expected1]
+PASSED pvlib/tests/test_irradiance.py::test_disc_value[101325-expected2]
+PASSED pvlib/tests/test_irradiance.py::test_disc_overirradiance
+PASSED pvlib/tests/test_irradiance.py::test_disc_min_cos_zenith_max_zenith
+PASSED pvlib/tests/test_irradiance.py::test_dirint_value
+PASSED pvlib/tests/test_irradiance.py::test_dirint_nans
+PASSED pvlib/tests/test_irradiance.py::test_dirint_tdew
+PASSED pvlib/tests/test_irradiance.py::test_dirint_no_delta_kt
+PASSED pvlib/tests/test_irradiance.py::test_dirint_coeffs
+PASSED pvlib/tests/test_irradiance.py::test_dirint_min_cos_zenith_max_zenith
+PASSED pvlib/tests/test_irradiance.py::test_gti_dirint
+PASSED pvlib/tests/test_irradiance.py::test_erbs
+PASSED pvlib/tests/test_irradiance.py::test_erbs_min_cos_zenith_max_zenith
+PASSED pvlib/tests/test_irradiance.py::test_erbs_all_scalar
+PASSED pvlib/tests/test_irradiance.py::test_dirindex
+PASSED pvlib/tests/test_irradiance.py::test_dirindex_min_cos_zenith_max_zenith
+PASSED pvlib/tests/test_irradiance.py::test_dni
+PASSED pvlib/tests/test_irradiance.py::test_aoi_and_aoi_projection[0-0-0-0-0-1]
+PASSED pvlib/tests/test_irradiance.py::test_aoi_and_aoi_projection[30-180-30-180-0-1]
+PASSED pvlib/tests/test_irradiance.py::test_aoi_and_aoi_projection[30-180-150-0-180--1]
+PASSED pvlib/tests/test_irradiance.py::test_aoi_and_aoi_projection[90-0-30-60-75.5224878-0.25]
+PASSED pvlib/tests/test_irradiance.py::test_aoi_and_aoi_projection[90-0-30-170-119.4987042--0.4924038]
+PASSED pvlib/tests/test_irradiance.py::test_kt_kt_prime_factor
+PASSED pvlib/tests/test_irradiance.py::test_clearsky_index
+PASSED pvlib/tests/test_irradiance.py::test_clearness_index
+PASSED pvlib/tests/test_irradiance.py::test_clearness_index_zenith_independent
+FAILED pvlib/tests/test_irradiance.py::test_reindl - AssertionError: 
+================== 1 failed, 97 passed, 22 warnings in 4.22s ===================
++ git checkout 0b8f24c265d76320067a5ee908a57d475cd1bb24 pvlib/tests/test_irradiance.py
+Updated 1 path from 60f0103

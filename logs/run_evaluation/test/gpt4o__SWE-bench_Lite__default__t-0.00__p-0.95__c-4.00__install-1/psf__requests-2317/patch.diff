@@ -1,0 +1,22 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..d7047cba
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,15 @@
++import requests
++
++# Simulate the scenario where method is a binary string
++method = b'GET'
++
++# Create a session and prepare a request
++session = requests.Session()
++request = requests.Request(method=method, url='http://httpbin.org/get')
++prepared_request = session.prepare_request(request)
++
++# Send the request
++response = session.send(prepared_request)
++
++# Print the response status code
++print(response.status_code)

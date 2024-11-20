@@ -1,0 +1,20 @@
+
+diff --git a/mydicom b/mydicom
+new file mode 100644
+index 000000000..e69de29bb
+diff --git a/pydicom/dataelem.py b/pydicom/dataelem.py
+index b2709f132..7ee1d65c3 100644
+--- a/pydicom/dataelem.py
++++ b/pydicom/dataelem.py
+@@ -318,7 +318,10 @@ class DataElement:
+         json_element: Dict[str, Any] = {'vr': self.VR}
+         if self.VR in jsonrep.BINARY_VR_VALUES:
+             if not self.is_empty:
+-                binary_value = self.value
++                if self.VR == 'OL' and isinstance(self.value, MultiValue):
++                    binary_value = bytes(self.value)
++                else:
++                    binary_value = self.value
+                 encoded_value = base64.b64encode(binary_value).decode('utf-8')
+                 if (
+                     bulk_data_element_handler is not None

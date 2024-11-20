@@ -1,0 +1,36 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..97f8d44b3b
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,29 @@
++from django.db import models
++from django.conf import settings
++from django.core.management import execute_from_command_line
++import django
++
++settings.configure(
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    INSTALLED_APPS=[
++        '__main__',
++    ],
++)
++
++django.setup()
++
++class Parent(models.Model):
++    class Meta:
++        ordering = ["-pk"]
++
++class Child(Parent):
++    pass
++
++if __name__ == "__main__":
++    execute_from_command_line(['manage.py', 'migrate'])
++    print(Child.objects.all().query)

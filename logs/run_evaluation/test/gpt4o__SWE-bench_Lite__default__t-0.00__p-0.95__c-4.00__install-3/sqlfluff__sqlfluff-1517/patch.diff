@@ -1,0 +1,11 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..d8a8b10c
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,4 @@
++import subprocess
++
++# Reproduce the issue
++subprocess.run('echo "select id from tbl;;" | sqlfluff lint -', shell=True)

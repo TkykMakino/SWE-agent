@@ -1,0 +1,201 @@
+
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..4377ede5cd
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,194 @@
++import django
++from django.conf import settings
++
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.admin',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    MIDDLEWARE=[
++        'django.middleware.security.SecurityMiddleware',
++        'django.contrib.sessions.middleware.SessionMiddleware',
++        'django.middleware.common.CommonMiddleware',
++        'django.middleware.csrf.CsrfViewMiddleware',
++        'django.contrib.auth.middleware.AuthenticationMiddleware',
++        'django.contrib.messages.middleware.MessageMiddleware',
++        'django.middleware.clickjacking.XFrameOptionsMiddleware',
++    ],
++    ROOT_URLCONF=__name__,
++    TEMPLATES=[
++        {
++            'BACKEND': 'django.template.backends.django.DjangoTemplates',
++            'DIRS': [],
++            'APP_DIRS': True,
++            'OPTIONS': {
++                'context_processors': [
++                    'django.template.context_processors.debug',
++                    'django.template.context_processors.request',
++                    'django.contrib.auth.context_processors.auth',
++                    'django.contrib.messages.context_processors.messages',
++                ],
++            },
++        },
++    ],
++    WSGI_APPLICATION='wsgi.application',
++)
++
++django.setup()
++
++from django import forms
++from django.core.exceptions import ValidationError
++from django.contrib import admin
++from django.db import models
++
++class Thing(models.Model):
++    class Meta:
++        app_label = 'myapp'
++
++class RelatedModel(models.Model):
++    thing = models.ForeignKey(Thing, on_delete=models.CASCADE)
++    plop = models.CharField(
++        max_length=42,
++        default=lambda: "default_value",
++    )
++    class Meta:
++        app_label = 'myapp'
++
++class RelatedModelForm(forms.ModelForm):
++    def clean(self):
++        class Meta:
++            model = RelatedModel
++            fields = '__all__'
++            fields = '__all__'
++
++class RelatedModelInline(admin.TabularInline):
++    form = RelatedModelForm
++    model = RelatedModel
++    extra = 1
++
++@admin.register(Thing)
++class ThingAdmin(admin.ModelAdmin):
++    inlines = [
++        RelatedModelInline
++    ]
++
++# Simulate the admin form submission process
++def simulate_admin_submission():
++    form = RelatedModelForm(data={'plop': ['test']})
++    try:
++        form.is_valid()
++    except ValidationError:
++        print("First submission: Validation error as expected")
++    
++    # Simulate the second submission without modification
++    form = RelatedModelForm(data={'plop': ['test']})
++    if form.is_valid():
++        print("Second submission: No validation error, issue reproduced")
++    else:
++        print("Second submission: Validation error")
++
++simulate_admin_submission()
++from django.conf import settings
++from django import forms
++from django.core.exceptions import ValidationError
++from django.contrib import admin
++from django.db import models
++
++class Thing(models.Model):
++    class Meta:
++        app_label = 'myapp'
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.admin',
++        'django.contrib.sessions',
++        'django.contrib.messages',
++        'django.contrib.staticfiles',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    MIDDLEWARE=[
++        'django.middleware.security.SecurityMiddleware',
++        'django.contrib.sessions.middleware.SessionMiddleware',
++        'django.middleware.common.CommonMiddleware',
++        'django.middleware.csrf.CsrfViewMiddleware',
++        'django.contrib.auth.middleware.AuthenticationMiddleware',
++        'django.contrib.messages.middleware.MessageMiddleware',
++        'django.middleware.clickjacking.XFrameOptionsMiddleware',
++    ],
++    ROOT_URLCONF=__name__,
++    TEMPLATES=[
++        {
++            'BACKEND': 'django.template.backends.django.DjangoTemplates',
++            'DIRS': [],
++            'APP_DIRS': True,
++            'OPTIONS': {
++                'context_processors': [
++                    'django.template.context_processors.debug',
++                    'django.template.context_processors.request',
++                    'django.contrib.auth.context_processors.auth',
++                    'django.contrib.messages.context_processors.messages',
++                ],
++            },
++        },
++    ],
++    WSGI_APPLICATION='wsgi.application',
++)
++
++django.setup()
++class Thing(models.Model):
++    pass
++
++class RelatedModel(models.Model):
++    thing = models.ForeignKey(Thing, on_delete=models.CASCADE)
++    plop = models.CharField(
++        max_length=42,
++        default=lambda: "default_value",
++    )
++
++class RelatedModelForm(forms.ModelForm):
++    def clean(self):
++        raise ValidationError("whatever")
++
++class RelatedModelInline(admin.TabularInline):
++    form = RelatedModelForm
++    model = RelatedModel
++    extra = 1
++
++@admin.register(Thing)
++class ThingAdmin(admin.ModelAdmin):
++    inlines = [
++        RelatedModelInline
++    ]
++
++# Simulate the admin form submission process
++def simulate_admin_submission():
++    form = RelatedModelForm(data={'plop': ['test']})
++    try:
++        form.is_valid()
++    except ValidationError:
++        print("First submission: Validation error as expected")
++    
++    # Simulate the second submission without modification
++    form = RelatedModelForm(data={'plop': ['test']})
++    if form.is_valid():
++        print("Second submission: No validation error, issue reproduced")
++    else:
++        print("Second submission: Validation error")
++
++simulate_admin_submission()

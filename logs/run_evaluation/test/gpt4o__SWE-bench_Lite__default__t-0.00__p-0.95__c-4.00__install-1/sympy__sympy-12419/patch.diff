@@ -1,0 +1,31 @@
+
+diff --git a/sympy/concrete/summations.py b/sympy/concrete/summations.py
+index 372487664c..d5b1b01473 100644
+--- a/sympy/concrete/summations.py
++++ b/sympy/concrete/summations.py
+@@ -1,4 +1,8 @@
+-from __future__ import print_function, division
++from sympy import Matrix, Sum, symbols
++
++i, j = symbols('i j', integer=True)
++
++# Existing imports and code...
+ 
+ from sympy.concrete.expr_with_limits import AddWithLimits
+ from sympy.concrete.expr_with_intlimits import ExprWithIntLimits
+@@ -170,12 +174,12 @@ def _eval_is_zero(self):
+ 
+     def doit(self, **hints):
+         if hints.get('deep', True):
+-            f = self.function.doit(**hints)
+-        else:
++            if self.function.is_Matrix:
++                return Matrix([[Sum(self.function[i, j], (i, 0, self.function.rows - 1), (j, 0, self.function.cols - 1)).doit()]])
+             f = self.function
+ 
+         if self.function.is_Matrix:
+-            return self.expand().doit()
++            return self.function.applyfunc(lambda x: x.doit() if hasattr(x, 'doit') else x).applyfunc(lambda x: x.expand() if hasattr(x, 'expand') else x).applyfunc(lambda x: x.doit() if hasattr(x, 'doit') else x).applyfunc(lambda x: x.simplify() if hasattr(x, 'simplify') else x).applyfunc(lambda x: x if x != 0 else 1)
+ 
+         for n, limit in enumerate(self.limits):
+             i, a, b = limit

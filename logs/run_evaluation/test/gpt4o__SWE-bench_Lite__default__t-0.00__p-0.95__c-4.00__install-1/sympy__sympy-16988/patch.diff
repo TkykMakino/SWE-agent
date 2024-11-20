@@ -1,0 +1,113 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..528a516e86
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,31 @@
++from sympy import Intersection, Eq, S
++from sympy.abc import x
++
++print(Intersection({1}, {1}, {x}))
++print(Intersection({1}, {x}))
++def __new__(cls, *args, **kwargs):
++    from sympy.core.compatibility import ordered
++    from sympy.core.sympify import _sympify
++    from sympy.sets.sets import Set, simplify_intersection
++    from sympy.core.singleton import S
++    from sympy.core.basic import Basic
++    from sympy.core.evaluate import global_evaluate
++
++    evaluate = kwargs.get('evaluate', global_evaluate[0])
++
++    # flatten inputs to merge intersections and iterables
++    args = _sympify(args)
++
++    # Remove duplicates
++    args = list(set(args))
++
++    # Reduce sets using known rules
++    if evaluate:
++        args = list(cls._new_args_filter(args))
++        return simplify_intersection(args)
++
++    args = list(ordered(args, Set._infimum_key))
++
++    obj = Basic.__new__(cls, *args)
++    obj._argset = frozenset(args)
++    return obj
+diff --git a/sympy/sets/sets.py b/sympy/sets/sets.py
+index 03cf57a30b..9190d3e628 100644
+--- a/sympy/sets/sets.py
++++ b/sympy/sets/sets.py
+@@ -1256,22 +1256,54 @@ def identity(self):
+     def zero(self):
+         return S.EmptySet
+ 
+-    def __new__(cls, *args, **kwargs):
+-        evaluate = kwargs.get('evaluate', global_evaluate[0])
+-
+-        # flatten inputs to merge intersections and iterables
+-        args = _sympify(args)
+-
+-        # Reduce sets using known rules
+-        if evaluate:
+-            args = list(cls._new_args_filter(args))
+-            return simplify_intersection(args)
+-
+-        args = list(ordered(args, Set._infimum_key))
+-
+-        obj = Basic.__new__(cls, *args)
+-        obj._argset = frozenset(args)
+-        return obj
++def __new__(cls, *args, **kwargs):
++    from sympy.core.compatibility import ordered
++    from sympy.core.sympify import _sympify
++    from sympy.sets.sets import Set, simplify_intersection
++    from sympy.core.singleton import S
++    from sympy.core.basic import Basic
++    from sympy.core.evaluate import global_evaluate
++
++    evaluate = kwargs.get('evaluate', global_evaluate[0])
++
++    # flatten inputs to merge intersections and iterables
++    args = _sympify(args)
++
++    # Remove duplicates while maintaining order
++    seen = set()
++    args = [x for x in args if not (x in seen or seen.add(x))]
++
++    # Reduce sets using known rules
++    if evaluate:
++        args = list(cls._new_args_filter(args))
++        return simplify_intersection(args)
++
++    args = list(ordered(args, Set._infimum_key))
++
++    obj = Basic.__new__(cls, *args)
++    obj._argset = frozenset(args)
++    return obj
++
++    # Reduce sets using known rules
++    if evaluate:
++        args = list(cls._new_args_filter(args))
++        return simplify_intersection(args)
++
++    args = list(ordered(args, Set._infimum_key))
++
++    obj = Basic.__new__(cls, *args)
++    obj._argset = frozenset(args)
++    return obj
++    # Reduce sets using known rules
++    if evaluate:
++        args = list(cls._new_args_filter(args))
++        return simplify_intersection(args)
++
++    args = list(ordered(args, Set._infimum_key))
++
++    obj = Basic.__new__(cls, *args)
++    obj._argset = frozenset(args)
++    return obj
+ 
+     @property
+     @cacheit

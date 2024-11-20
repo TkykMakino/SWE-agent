@@ -1,0 +1,77 @@
+
+diff --git a/django/contrib/admin/utils.py b/django/contrib/admin/utils.py
+index e4ddc8f017..e0e72f864e 100644
+--- a/django/contrib/admin/utils.py
++++ b/django/contrib/admin/utils.py
+@@ -398,8 +398,8 @@ def display_for_field(value, field, empty_value_display):
+         return formats.number_format(value)
+     elif isinstance(field, models.FileField) and value:
+         return format_html('<a href="{}">{}</a>', value.url, value)
+-    else:
+-        return display_for_value(value, empty_value_display)
++    elif isinstance(field, models.JSONField):
++        return field.value_to_string(value)
+ 
+ 
+ def display_for_value(value, empty_value_display, boolean=False):
+diff --git a/run_tests.py b/run_tests.py
+new file mode 100644
+index 0000000000..38bd5eaa69
+--- /dev/null
++++ b/run_tests.py
+@@ -0,0 +1,18 @@
++import os
++import django
++from django.conf import settings
++from django.test.utils import get_runner
++
++os.environ['DJANGO_SETTINGS_MODULE'] = 'tests.test_settings'
++django.setup()
++TestRunner = get_runner(settings)
++test_runner = TestRunner()
++import unittest
++
++loader = unittest.TestLoader()
++suite = loader.loadTestsFromName('tests.admin_utils.tests')
++
++runner = unittest.TextTestRunner()
++result = runner.run(suite)
++if not result.wasSuccessful():
++    exit(1)
+diff --git a/tests/admin_utils/tests.py b/tests/admin_utils/tests.py
+index 463ba9556d..fc73eafe93 100644
+--- a/tests/admin_utils/tests.py
++++ b/tests/admin_utils/tests.py
+@@ -195,7 +195,18 @@ class UtilsTests(SimpleTestCase):
+         self.assertEqual(display_value, '12,345.6789')
+ 
+         display_value = display_for_field(12345, models.IntegerField(), self.empty_value)
+-        self.assertEqual(display_value, '12,345')
++    def test_jsonfield_display_for_field(self):
++        """
++        Test display_for_field with JSONField when readonly in admin.
++        """
++        class MockJSONField(models.JSONField):
++            def value_to_string(self, obj):
++                return super().value_to_string(obj)
++        
++        json_value = {"foo": "bar"}
++        field = MockJSONField()
++        display_value = display_for_field(json_value, field, self.empty_value)
++        self.assertEqual(display_value, '{"foo": "bar"}')
+ 
+     def test_list_display_for_value(self):
+         display_value = display_for_value([1, 2, 3], self.empty_value)
+diff --git a/tests/test_settings.py b/tests/test_settings.py
+new file mode 100644
+index 0000000000..55c7032319
+--- /dev/null
++++ b/tests/test_settings.py
+@@ -0,0 +1,7 @@
++SECRET_KEY = 'test_secret_key'
++INSTALLED_APPS = [
++    'django.contrib.contenttypes',
++    'django.contrib.auth',
++    'django.contrib.admin',
++    'tests.admin_utils',
++]

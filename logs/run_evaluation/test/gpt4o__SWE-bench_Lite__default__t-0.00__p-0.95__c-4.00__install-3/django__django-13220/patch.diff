@@ -1,0 +1,39 @@
+
+diff --git a/django/core/exceptions.py b/django/core/exceptions.py
+index dc084b8692..bb4f9ccebd 100644
+--- a/django/core/exceptions.py
++++ b/django/core/exceptions.py
+@@ -180,7 +180,10 @@ class ValidationError(Exception):
+         return repr(list(self))
+ 
+     def __repr__(self):
+-        return 'ValidationError(%s)' % self
++        def __eq__(self, other):
++            if not isinstance(other, ValidationError):
++                return False
++            return sorted(self.messages) == sorted(other.messages)
+ 
+ 
+ class EmptyResultSet(Exception):
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..f23d392c6f
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,16 @@
++from django.core.exceptions import ValidationError
++
++# Create two identical ValidationError instances
++error1 = ValidationError({"field": ["error1", "error2"]})
++error2 = ValidationError({"field": ["error1", "error2"]})
++
++# Check if they are considered equal
++print(error1 == error2)  # Should print: True
++
++# Create two ValidationError instances with different order of errors
++error3 = ValidationError({"field": ["error2", "error1"]})
++
++# Check if they are considered equal
++print(error1 == error3)  # Should print: True
++
++print("Script completed successfully, no errors.")

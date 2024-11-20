@@ -1,0 +1,184 @@
+
+diff --git a/django/forms/formsets.py b/django/forms/formsets.py
+index 57676428ff..2dd91e5fd4 100644
+--- a/django/forms/formsets.py
++++ b/django/forms/formsets.py
+@@ -262,7 +262,7 @@ class BaseFormSet(RenderableFormMixin):
+             prefix=self.add_prefix("__prefix__"),
+             empty_permitted=True,
+             use_required_attribute=False,
+-            **self.get_form_kwargs(None),
++            **{k: v for k, v in self.get_form_kwargs(None).items() if k != 'empty_permitted'},
+             renderer=self.renderer,
+         )
+         self.add_fields(form, None)
+diff --git a/manage.py b/manage.py
+new file mode 100644
+index 0000000000..74edffda81
+--- /dev/null
++++ b/manage.py
+@@ -0,0 +1,15 @@
++#!/usr/bin/env python
++import os
++import sys
++
++if __name__ == "__main__":
++    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "my_app.settings")
++    try:
++        from django.core.management import execute_from_command_line
++    except ImportError as exc:
++        raise ImportError(
++            "Couldn't import Django. Are you sure it's installed and "
++            "available on your PYTHONPATH environment variable? Did you "
++            "forget to activate a virtual environment?"
++        ) from exc
++    execute_from_command_line(sys.argv)
+diff --git a/my_app/__init__.py b/my_app/__init__.py
+new file mode 100644
+index 0000000000..8b13789179
+--- /dev/null
++++ b/my_app/__init__.py
+@@ -0,0 +1 @@
++
+diff --git a/my_app/apps.py b/my_app/apps.py
+new file mode 100644
+index 0000000000..c7b79febac
+--- /dev/null
++++ b/my_app/apps.py
+@@ -0,0 +1,4 @@
++from django.apps import AppConfig
++
++class MyAppConfig(AppConfig):
++    name = 'my_app'
+diff --git a/my_app/models.py b/my_app/models.py
+new file mode 100644
+index 0000000000..6de5ff9a5e
+--- /dev/null
++++ b/my_app/models.py
+@@ -0,0 +1,4 @@
++from django.db import models
++
++class MyModel(models.Model):
++    a_field = models.CharField(max_length=100)
+diff --git a/my_app/settings.py b/my_app/settings.py
+new file mode 100644
+index 0000000000..76d17769f7
+--- /dev/null
++++ b/my_app/settings.py
+@@ -0,0 +1,33 @@
++INSTALLED_APPS = [
++    'django.contrib.contenttypes',
++    'django.contrib.staticfiles',
++    'django.contrib.auth',
++    'django.contrib.sessions',
++    'my_app.apps.MyAppConfig',
++]
++
++DATABASES = {
++    'default': {
++        'ENGINE': 'django.db.backends.sqlite3',
++        'NAME': ':memory:',
++    }
++}
++
++ROOT_URLCONF = 'urls'
++TEMPLATES = [
++    {
++        'BACKEND': 'django.template.backends.django.DjangoTemplates',
++        'DIRS': [],
++        'APP_DIRS': True,
++        'OPTIONS': {
++            'context_processors': [
++                'django.template.context_processors.debug',
++                'django.template.context_processors.request',
++                'django.contrib.auth.context_processors.auth',
++                'django.contrib.messages.context_processors.messages',
++            ],
++        },
++    },
++]
++ALLOWED_HOSTS = ['*']
++DEBUG = True
+diff --git a/my_app/templates/my_app/base.html b/my_app/templates/my_app/base.html
+new file mode 100644
+index 0000000000..8ac0a59bce
+--- /dev/null
++++ b/my_app/templates/my_app/base.html
+@@ -0,0 +1,10 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title>Base Template</title>
++</head>
++<body>
++    {% block content %}{% endblock %}
++</body>
++</html>
+diff --git a/my_app/templates/my_app/my_model_formset.html b/my_app/templates/my_app/my_model_formset.html
+new file mode 100644
+index 0000000000..0d1e0cf63d
+--- /dev/null
++++ b/my_app/templates/my_app/my_model_formset.html
+@@ -0,0 +1,9 @@
++{% extends "my_app/base.html" %}
++{% block content %}
++<form id="my-form" method="post">
++    {% csrf_token %}
++    {{ formset }}
++    <input type="submit" value="Save">
++</form>
++{{ formset.empty_form }}
++{% endblock %}
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..fa02fe4149
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,34 @@
++import os
++os.environ.setdefault("DJANGO_SETTINGS_MODULE", "my_app.settings")
++
++import django
++django.setup()
++
++from django.shortcuts import render
++from django.forms.models import modelformset_factory
++from my_app.models import MyModel
++
++def test_view(request):
++    context = {}
++    ff = modelformset_factory(MyModel, fields=['a_field'])
++    context['formset'] = ff(
++        queryset=MyModel.objects.none(),
++        form_kwargs={'empty_permitted': True}  # or form_kwargs={'empty_permitted': False}
++    )
++    return render(request, 'my_app/my_model_formset.html', context)
++if __name__ == "__main__":
++    from django.test import RequestFactory
++    from django.core.management import execute_from_command_line
++    import django
++    import os
++    import sys
++
++    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "my_app.settings")
++    django.setup()
++
++    request = RequestFactory().get("/test")
++    try:
++        response = test_view(request)
++        print("No KeyError occurred.")
++    except KeyError as e:
++        print(f"KeyError occurred: {e}")
+diff --git a/urls.py b/urls.py
+new file mode 100644
+index 0000000000..643cbea6e1
+--- /dev/null
++++ b/urls.py
+@@ -0,0 +1,6 @@
++from django.urls import path
++from .views import test_view
++
++urlpatterns = [
++    path('test', test_view),
++]

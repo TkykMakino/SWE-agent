@@ -1,0 +1,14 @@
+
+diff --git a/pvlib/tools.py b/pvlib/tools.py
+index 991568f..68b0127 100644
+--- a/pvlib/tools.py
++++ b/pvlib/tools.py
+@@ -352,6 +352,8 @@ def _golden_sect_DataFrame(params, lower, upper, func, atol=1e-8):
+     iterations = 0
+ 
+     # handle all NaN case gracefully
++    if np.all(df['VH'] == df['VL']):
++        return np.nan, np.nan  # or appropriate values indicating no optimization needed
+     with warnings.catch_warnings():
+         warnings.filterwarnings(action='ignore',
+                                 message='All-NaN slice encountered')

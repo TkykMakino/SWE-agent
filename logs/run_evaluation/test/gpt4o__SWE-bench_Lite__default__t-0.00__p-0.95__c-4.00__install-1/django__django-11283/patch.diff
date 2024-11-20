@@ -1,0 +1,45 @@
+
+diff --git a/django/contrib/auth/migrations/0011_update_proxy_permissions.py b/django/contrib/auth/migrations/0011_update_proxy_permissions.py
+index 0e66649695..892e82d1d9 100644
+--- a/django/contrib/auth/migrations/0011_update_proxy_permissions.py
++++ b/django/contrib/auth/migrations/0011_update_proxy_permissions.py
+@@ -24,6 +24,12 @@ def update_proxy_model_permissions(apps, schema_editor, reverse=False):
+         proxy_content_type = ContentType.objects.get_for_model(Model, for_concrete_model=False)
+         old_content_type = proxy_content_type if reverse else concrete_content_type
+         new_content_type = concrete_content_type if reverse else proxy_content_type
++        existing_permissions = Permission.objects.filter(
++            permissions_query,
++            content_type=new_content_type,
++        )
++        if existing_permissions.exists():
++            continue
+         Permission.objects.filter(
+             permissions_query,
+             content_type=old_content_type,
+diff --git a/tests/auth_tests/db.sqlite3 b/tests/auth_tests/db.sqlite3
+new file mode 100644
+index 0000000000..71663deba8
+Binary files /dev/null and b/tests/auth_tests/db.sqlite3 differ
+diff --git a/tests/auth_tests/settings.py b/tests/auth_tests/settings.py
+index 9fd71dfe87..44d0c75679 100644
+--- a/tests/auth_tests/settings.py
++++ b/tests/auth_tests/settings.py
+@@ -1,5 +1,17 @@
++SECRET_KEY = 'dummy_secret_key'
+ import os
+-
++INSTALLED_APPS = [
++    'django.contrib.auth',
++    'django.contrib.contenttypes',
++    'django.contrib.sessions',
++    'django.contrib.messages',
++]
++DATABASES = {
++    'default': {
++        'ENGINE': 'django.db.backends.sqlite3',
++        'NAME': os.path.join(os.path.dirname(__file__), 'db.sqlite3'),
++    }
++}
+ AUTH_MIDDLEWARE = [
+     'django.contrib.sessions.middleware.SessionMiddleware',
+     'django.contrib.auth.middleware.AuthenticationMiddleware',

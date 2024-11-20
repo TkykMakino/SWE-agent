@@ -1,0 +1,27 @@
+
+diff --git a/pydicom/jsonrep.py b/pydicom/jsonrep.py
+index c6ef519c3..fe683b9dd 100644
+--- a/pydicom/jsonrep.py
++++ b/pydicom/jsonrep.py
+@@ -224,10 +224,17 @@ class JsonDataElementConverter:
+                         VR=vr)
+                 else:
+                     value_key = unique_value_keys[0]
+-                    elem = DataElement.from_json(
+-                        self.dataset_class, key, vr,
+-                        val[value_key], value_key
+-                    )
++                    if value_key == "BulkDataURI":
++                        # Handle BulkDataURI conversion
++                        elem = DataElement.from_json(
++                            self.dataset_class, key, vr,
++                            self.handle_bulk_data_uri(val[value_key]), value_key
++                        )
++                    else:
++                        elem = DataElement.from_json(
++                            self.dataset_class, key, vr,
++                            val[value_key], value_key
++                        )
+                 ds.add(elem)
+         return ds
+ 

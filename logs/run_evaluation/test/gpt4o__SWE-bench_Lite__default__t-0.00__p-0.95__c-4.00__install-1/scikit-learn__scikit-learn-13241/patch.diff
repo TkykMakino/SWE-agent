@@ -1,0 +1,14 @@
+
+diff --git a/sklearn/decomposition/kernel_pca.py b/sklearn/decomposition/kernel_pca.py
+index bb91d0cbb..9bea530ca 100644
+--- a/sklearn/decomposition/kernel_pca.py
++++ b/sklearn/decomposition/kernel_pca.py
+@@ -276,6 +276,8 @@ class KernelPCA(BaseEstimator, TransformerMixin, _UnstableOn32BitMixin):
+         self.fit(X, **params)
+ 
+         X_transformed = self.alphas_ * np.sqrt(self.lambdas_)
++        # Normalize the signs of the components
++        X_transformed *= np.sign(X_transformed[0, :])
+ 
+         if self.fit_inverse_transform:
+             self._fit_inverse_transform(X_transformed, X)

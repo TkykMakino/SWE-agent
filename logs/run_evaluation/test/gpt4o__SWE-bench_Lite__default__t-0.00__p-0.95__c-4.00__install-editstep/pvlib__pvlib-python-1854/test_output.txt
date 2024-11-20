@@ -1,0 +1,1086 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   pvlib/pvsystem.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git show
+commit 27a3a07ebc84b11014d3753e4923902adf9a38c0
+Author: Taos Transue <41020789+reepoi@users.noreply.github.com>
+Date:   Tue Sep 12 16:46:08 2023 -0400
+
+    `pvsystem.singlediode` with `method='newton'` can be passed `pd.Series` of length one. (#1822)
+    
+    * bishop88 works with pandas.Series of length one
+    
+    * fix to many cases when arguments would be converted
+    
+    * converting all newton numeric args if not np.isscalar
+    
+    * remove used imports
+    
+    * add back newline
+    
+    * update whatsnew
+    
+    * _prepare_newton_inputs only changes shape of x0; refactoring to remove singlediode._get_size_and_shape
+    
+    * remove _shape_of_max_size, np.broadcast_shapes handles this
+    
+    * np.broadcast_shapes not available for Python 3.7 conda -min
+    
+    This reverts commit 7b396738bb23e2be3ac6c42e369a9f51fc857ace.
+    
+    ---------
+    
+    Co-authored-by: Kevin Anderson <kevin.anderso@gmail.com>
+
+diff --git a/docs/sphinx/source/whatsnew/v0.10.2.rst b/docs/sphinx/source/whatsnew/v0.10.2.rst
+index f399621..d542c2c 100644
+--- a/docs/sphinx/source/whatsnew/v0.10.2.rst
++++ b/docs/sphinx/source/whatsnew/v0.10.2.rst
+@@ -27,6 +27,9 @@ Bug fixes
+ ~~~~~~~~~
+ * :py:func:`~pvlib.iotools.get_psm3` no longer incorrectly returns clear-sky
+   DHI instead of clear-sky GHI when requesting ``ghi_clear``. (:pull:`1819`)
++* :py:func:`pvlib.singlediode.bishop88` with `method='newton'` no longer
++  crashes when passed `pandas.Series` of length one.
++  (:issue:`1787`, :pull:`1822`)
+ * :py:class:`pvlib.pvsystem.PVSystem` now correctly passes ``n_ar`` module
+    parameter to :py:func:`pvlib.iam.physical` when this IAM model is specified
+    or inferred. (:pull:`1832`)
+diff --git a/pvlib/pvsystem.py b/pvlib/pvsystem.py
+index 60ef40c..c277a77 100644
+--- a/pvlib/pvsystem.py
++++ b/pvlib/pvsystem.py
+@@ -2652,28 +2652,19 @@ def v_from_i(current, photocurrent, saturation_current, resistance_series,
+        parameters of real solar cells using Lambert W-function", Solar
+        Energy Materials and Solar Cells, 81 (2004) 269-277.
+     '''
++    args = (current, photocurrent, saturation_current,
++            resistance_series, resistance_shunt, nNsVth)
+     if method.lower() == 'lambertw':
+-        return _singlediode._lambertw_v_from_i(
+-            current, photocurrent, saturation_current, resistance_series,
+-            resistance_shunt, nNsVth
+-        )
++        return _singlediode._lambertw_v_from_i(*args)
+     else:
+         # Calculate points on the IV curve using either 'newton' or 'brentq'
+         # methods. Voltages are determined by first solving the single diode
+         # equation for the diode voltage V_d then backing out voltage
+-        args = (current, photocurrent, saturation_current,
+-                resistance_series, resistance_shunt, nNsVth)
+         V = _singlediode.bishop88_v_from_i(*args, method=method.lower())
+-        # find the right size and shape for returns
+-        size, shape = _singlediode._get_size_and_shape(args)
+-        if size <= 1:
+-            if shape is not None:
+-                V = np.tile(V, shape)
+-        if np.isnan(V).any() and size <= 1:
+-            V = np.repeat(V, size)
+-            if shape is not None:
+-                V = V.reshape(shape)
+-        return V
++        if all(map(np.isscalar, args)):
++            return V
++        shape = _singlediode._shape_of_max_size(*args)
++        return np.broadcast_to(V, shape)
+ 
+ 
+ def i_from_v(voltage, photocurrent, saturation_current, resistance_series,
+@@ -2743,28 +2734,19 @@ def i_from_v(voltage, photocurrent, saturation_current, resistance_series,
+        parameters of real solar cells using Lambert W-function", Solar
+        Energy Materials and Solar Cells, 81 (2004) 269-277.
+     '''
++    args = (voltage, photocurrent, saturation_current,
++            resistance_series, resistance_shunt, nNsVth)
+     if method.lower() == 'lambertw':
+-        return _singlediode._lambertw_i_from_v(
+-            voltage, photocurrent, saturation_current, resistance_series,
+-            resistance_shunt, nNsVth
+-        )
++        return _singlediode._lambertw_i_from_v(*args)
+     else:
+         # Calculate points on the IV curve using either 'newton' or 'brentq'
+         # methods. Voltages are determined by first solving the single diode
+         # equation for the diode voltage V_d then backing out voltage
+-        args = (voltage, photocurrent, saturation_current, resistance_series,
+-                resistance_shunt, nNsVth)
+         current = _singlediode.bishop88_i_from_v(*args, method=method.lower())
+-        # find the right size and shape for returns
+-        size, shape = _singlediode._get_size_and_shape(args)
+-        if size <= 1:
+-            if shape is not None:
+-                current = np.tile(current, shape)
+-        if np.isnan(current).any() and size <= 1:
+-            current = np.repeat(current, size)
+-            if shape is not None:
+-                current = current.reshape(shape)
+-        return current
++        if all(map(np.isscalar, args)):
++            return current
++        shape = _singlediode._shape_of_max_size(*args)
++        return np.broadcast_to(current, shape)
+ 
+ 
+ def scale_voltage_current_power(data, voltage=1, current=1):
+diff --git a/pvlib/singlediode.py b/pvlib/singlediode.py
+index 768ab75..203b20c 100644
+--- a/pvlib/singlediode.py
++++ b/pvlib/singlediode.py
+@@ -287,8 +287,8 @@ def bishop88_i_from_v(voltage, photocurrent, saturation_current,
+     ...     method_kwargs={'full_output': True})
+     """
+     # collect args
+-    args = (photocurrent, saturation_current, resistance_series,
+-            resistance_shunt, nNsVth, d2mutau, NsVbi,
++    args = (photocurrent, saturation_current,
++            resistance_series, resistance_shunt, nNsVth, d2mutau, NsVbi,
+             breakdown_factor, breakdown_voltage, breakdown_exp)
+     method = method.lower()
+ 
+@@ -319,14 +319,11 @@ def bishop88_i_from_v(voltage, photocurrent, saturation_current,
+         vd_from_brent_vectorized = np.vectorize(vd_from_brent)
+         vd = vd_from_brent_vectorized(voc_est, voltage, *args)
+     elif method == 'newton':
+-        # make sure all args are numpy arrays if max size > 1
+-        # if voltage is an array, then make a copy to use for initial guess, v0
+-        args, v0, method_kwargs = \
+-            _prepare_newton_inputs((voltage,), args, voltage, method_kwargs)
+-        vd = newton(func=lambda x, *a: fv(x, voltage, *a), x0=v0,
++        x0, (voltage, *args), method_kwargs = \
++            _prepare_newton_inputs(voltage, (voltage, *args), method_kwargs)
++        vd = newton(func=lambda x, *a: fv(x, voltage, *a), x0=x0,
+                     fprime=lambda x, *a: bishop88(x, *a, gradients=True)[4],
+-                    args=args,
+-                    **method_kwargs)
++                    args=args, **method_kwargs)
+     else:
+         raise NotImplementedError("Method '%s' isn't implemented" % method)
+ 
+@@ -422,9 +419,9 @@ def bishop88_v_from_i(current, photocurrent, saturation_current,
+     ...     method_kwargs={'full_output': True})
+     """
+     # collect args
+-    args = (photocurrent, saturation_current, resistance_series,
+-            resistance_shunt, nNsVth, d2mutau, NsVbi, breakdown_factor,
+-            breakdown_voltage, breakdown_exp)
++    args = (photocurrent, saturation_current,
++            resistance_series, resistance_shunt, nNsVth, d2mutau, NsVbi,
++            breakdown_factor, breakdown_voltage, breakdown_exp)
+     method = method.lower()
+ 
+     # method_kwargs create dict if not provided
+@@ -454,14 +451,11 @@ def bishop88_v_from_i(current, photocurrent, saturation_current,
+         vd_from_brent_vectorized = np.vectorize(vd_from_brent)
+         vd = vd_from_brent_vectorized(voc_est, current, *args)
+     elif method == 'newton':
+-        # make sure all args are numpy arrays if max size > 1
+-        # if voc_est is an array, then make a copy to use for initial guess, v0
+-        args, v0, method_kwargs = \
+-            _prepare_newton_inputs((current,), args, voc_est, method_kwargs)
+-        vd = newton(func=lambda x, *a: fi(x, current, *a), x0=v0,
++        x0, (current, *args), method_kwargs = \
++            _prepare_newton_inputs(voc_est, (current, *args), method_kwargs)
++        vd = newton(func=lambda x, *a: fi(x, current, *a), x0=x0,
+                     fprime=lambda x, *a: bishop88(x, *a, gradients=True)[3],
+-                    args=args,
+-                    **method_kwargs)
++                    args=args, **method_kwargs)
+     else:
+         raise NotImplementedError("Method '%s' isn't implemented" % method)
+ 
+@@ -555,9 +549,9 @@ def bishop88_mpp(photocurrent, saturation_current, resistance_series,
+     ...     method='newton', method_kwargs={'full_output': True})
+     """
+     # collect args
+-    args = (photocurrent, saturation_current, resistance_series,
+-            resistance_shunt, nNsVth, d2mutau, NsVbi, breakdown_factor,
+-            breakdown_voltage, breakdown_exp)
++    args = (photocurrent, saturation_current,
++            resistance_series, resistance_shunt, nNsVth, d2mutau, NsVbi,
++            breakdown_factor, breakdown_voltage, breakdown_exp)
+     method = method.lower()
+ 
+     # method_kwargs create dict if not provided
+@@ -584,12 +578,11 @@ def bishop88_mpp(photocurrent, saturation_current, resistance_series,
+     elif method == 'newton':
+         # make sure all args are numpy arrays if max size > 1
+         # if voc_est is an array, then make a copy to use for initial guess, v0
+-        args, v0, method_kwargs = \
+-            _prepare_newton_inputs((), args, voc_est, method_kwargs)
+-        vd = newton(
+-            func=fmpp, x0=v0,
+-            fprime=lambda x, *a: bishop88(x, *a, gradients=True)[7], args=args,
+-            **method_kwargs)
++        x0, args, method_kwargs = \
++            _prepare_newton_inputs(voc_est, args, method_kwargs)
++        vd = newton(func=fmpp, x0=x0,
++                    fprime=lambda x, *a: bishop88(x, *a, gradients=True)[7],
++                    args=args, **method_kwargs)
+     else:
+         raise NotImplementedError("Method '%s' isn't implemented" % method)
+ 
+@@ -603,46 +596,42 @@ def bishop88_mpp(photocurrent, saturation_current, resistance_series,
+         return bishop88(vd, *args)
+ 
+ 
+-def _get_size_and_shape(args):
+-    # find the right size and shape for returns
+-    size, shape = 0, None  # 0 or None both mean scalar
+-    for arg in args:
+-        try:
+-            this_shape = arg.shape  # try to get shape
+-        except AttributeError:
+-            this_shape = None
+-            try:
+-                this_size = len(arg)  # try to get the size
+-            except TypeError:
+-                this_size = 0
+-        else:
+-            this_size = arg.size  # if it has shape then it also has size
+-            if shape is None:
+-                shape = this_shape  # set the shape if None
+-        # update size and shape
+-        if this_size > size:
+-            size = this_size
+-            if this_shape is not None:
+-                shape = this_shape
+-    return size, shape
+-
+-
+-def _prepare_newton_inputs(i_or_v_tup, args, v0, method_kwargs):
+-    # broadcast arguments for newton method
+-    # the first argument should be a tuple, eg: (i,), (v,) or ()
+-    size, shape = _get_size_and_shape(i_or_v_tup + args)
+-    if size > 1:
+-        args = [np.asarray(arg) for arg in args]
+-    # newton uses initial guess for the output shape
+-    # copy v0 to a new array and broadcast it to the shape of max size
+-    if shape is not None:
+-        v0 = np.broadcast_to(v0, shape).copy()
++def _shape_of_max_size(*args):
++    return max(((np.size(a), np.shape(a)) for a in args),
++               key=lambda t: t[0])[1]
++
++
++def _prepare_newton_inputs(x0, args, method_kwargs):
++    """
++    Make inputs compatible with Scipy's newton by:
++    - converting all arugments (`x0` and `args`) into numpy.ndarrays if any
++      argument is not a scalar.
++    - broadcasting the initial guess `x0` to the shape of the argument with
++      the greatest size.
++
++    Parameters
++    ----------
++    x0: numeric
++        Initial guess for newton.
++    args: Iterable(numeric)
++        Iterable of additional arguments to use in SciPy's newton.
++    method_kwargs: dict
++        Options to pass to newton.
++
++    Returns
++    -------
++    tuple
++        The updated initial guess, arguments, and options for newton.
++    """
++    if not (np.isscalar(x0) and all(map(np.isscalar, args))):
++        args = tuple(map(np.asarray, args))
++        x0 = np.broadcast_to(x0, _shape_of_max_size(x0, *args))
+ 
+     # set abs tolerance and maxiter from method_kwargs if not provided
+     # apply defaults, but giving priority to user-specified values
+     method_kwargs = {**NEWTON_DEFAULT_PARAMS, **method_kwargs}
+ 
+-    return args, v0, method_kwargs
++    return x0, args, method_kwargs
+ 
+ 
+ def _lambertw_v_from_i(current, photocurrent, saturation_current,
+diff --git a/pvlib/tests/test_singlediode.py b/pvlib/tests/test_singlediode.py
+index 16b93cb..8e0d056 100644
+--- a/pvlib/tests/test_singlediode.py
++++ b/pvlib/tests/test_singlediode.py
+@@ -557,3 +557,14 @@ def test_bishop88_full_output_kwarg(method, bishop88_arguments):
+     assert isinstance(ret_val[1], tuple)  # second is output from optimizer
+     # any root finder returns at least 2 elements with full_output=True
+     assert len(ret_val[1]) >= 2
++
++
++@pytest.mark.parametrize('method', ['newton', 'brentq'])
++def test_bishop88_pdSeries_len_one(method, bishop88_arguments):
++    for k, v in bishop88_arguments.items():
++        bishop88_arguments[k] = pd.Series([v])
++
++    # should not raise error
++    bishop88_i_from_v(pd.Series([0]), **bishop88_arguments, method=method)
++    bishop88_v_from_i(pd.Series([0]), **bishop88_arguments, method=method)
++    bishop88_mpp(**bishop88_arguments, method=method)
++ git diff 27a3a07ebc84b11014d3753e4923902adf9a38c0
+diff --git a/pvlib/pvsystem.py b/pvlib/pvsystem.py
+index c277a77..1a6d32c 100644
+--- a/pvlib/pvsystem.py
++++ b/pvlib/pvsystem.py
+@@ -220,6 +220,8 @@ class PVSystem:
+                 strings_per_inverter,
+                 array_losses_parameters,
+             ),)
++        elif isinstance(arrays, Array):
++            self.arrays = (arrays,)
+         elif len(arrays) == 0:
+             raise ValueError("PVSystem must have at least one Array. "
+                              "If you want to create a PVSystem instance "
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ python -m pip install -e '.[all]'
+Obtaining file:///testbed
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: numpy>=1.16.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (1.26.4)
+Requirement already satisfied: pandas>=0.25.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.2.2)
+Requirement already satisfied: pytz in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (2024.1)
+Requirement already satisfied: requests in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.32.3)
+Requirement already satisfied: scipy>=1.4.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (1.13.1)
+Requirement already satisfied: h5py in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (3.11.0)
+Requirement already satisfied: cython in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (3.0.11)
+Requirement already satisfied: docutils==0.15.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.15.2)
+Requirement already satisfied: ephem in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (4.1.5)
+Requirement already satisfied: ipython in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (8.18.1)
+Requirement already satisfied: matplotlib in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (3.9.0)
+Requirement already satisfied: nrel-pysam in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (5.1.0)
+Requirement already satisfied: numba in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.60.0)
+Requirement already satisfied: pillow in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (10.4.0)
+Requirement already satisfied: pydata-sphinx-theme==0.8.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.8.1)
+Requirement already satisfied: pytest in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (8.3.2)
+Requirement already satisfied: pytest-cov in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (5.0.0)
+Requirement already satisfied: pytest-mock in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (3.14.0)
+Requirement already satisfied: pytest-remotedata in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.4.1)
+Requirement already satisfied: pytest-rerunfailures in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (14.0)
+Requirement already satisfied: pytest-timeout in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.3.1)
+Requirement already satisfied: requests-mock in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (1.12.1)
+Requirement already satisfied: solarfactors in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (1.5.3)
+Requirement already satisfied: sphinx==4.5.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (4.5.0)
+Requirement already satisfied: sphinx-gallery in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.16.0)
+Requirement already satisfied: sphinx-toggleprompt>=0.0.5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.5.2)
+Requirement already satisfied: statsmodels in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.14.2)
+Requirement already satisfied: beautifulsoup4 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pydata-sphinx-theme==0.8.1->pvlib==0.10.2.dev16+g27a3a07.d20241030) (4.12.3)
+Requirement already satisfied: packaging in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pydata-sphinx-theme==0.8.1->pvlib==0.10.2.dev16+g27a3a07.d20241030) (24.1)
+Requirement already satisfied: sphinxcontrib-applehelp in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==4.5.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.0.0)
+Requirement already satisfied: sphinxcontrib-devhelp in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==4.5.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.0.0)
+Requirement already satisfied: sphinxcontrib-jsmath in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==4.5.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (1.0.1)
+Requirement already satisfied: sphinxcontrib-htmlhelp>=2.0.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==4.5.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.1.0)
+Requirement already satisfied: sphinxcontrib-serializinghtml>=1.1.5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==4.5.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.0.0)
+Requirement already satisfied: sphinxcontrib-qthelp in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==4.5.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.0.0)
+Requirement already satisfied: Jinja2>=2.3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==4.5.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (3.1.4)
+Requirement already satisfied: Pygments>=2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==4.5.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.18.0)
+Requirement already satisfied: snowballstemmer>=1.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==4.5.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.2.0)
+Requirement already satisfied: babel>=1.3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==4.5.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.15.0)
+Requirement already satisfied: alabaster<0.8,>=0.7 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==4.5.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.7.16)
+Requirement already satisfied: imagesize in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==4.5.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (1.4.1)
+Requirement already satisfied: importlib-metadata>=4.4 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx==4.5.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (8.2.0)
+Requirement already satisfied: python-dateutil>=2.8.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pandas>=0.25.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.9.0.post0)
+Requirement already satisfied: tzdata>=2022.7 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pandas>=0.25.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2023.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from requests->pvlib==0.10.2.dev16+g27a3a07.d20241030) (3.3.2)
+Requirement already satisfied: idna<4,>=2.5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from requests->pvlib==0.10.2.dev16+g27a3a07.d20241030) (3.7)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from requests->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.2.2)
+Requirement already satisfied: certifi>=2017.4.17 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from requests->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2024.7.4)
+Requirement already satisfied: decorator in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.10.2.dev16+g27a3a07.d20241030) (5.1.1)
+Requirement already satisfied: jedi>=0.16 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.19.1)
+Requirement already satisfied: matplotlib-inline in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.1.7)
+Requirement already satisfied: prompt-toolkit<3.1.0,>=3.0.41 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.10.2.dev16+g27a3a07.d20241030) (3.0.47)
+Requirement already satisfied: stack-data in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.6.3)
+Requirement already satisfied: traitlets>=5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.10.2.dev16+g27a3a07.d20241030) (5.14.3)
+Requirement already satisfied: typing-extensions in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.10.2.dev16+g27a3a07.d20241030) (4.12.2)
+Requirement already satisfied: exceptiongroup in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.10.2.dev16+g27a3a07.d20241030) (1.2.2)
+Requirement already satisfied: pexpect>4.3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from ipython->pvlib==0.10.2.dev16+g27a3a07.d20241030) (4.9.0)
+Requirement already satisfied: contourpy>=1.0.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib->pvlib==0.10.2.dev16+g27a3a07.d20241030) (1.2.1)
+Requirement already satisfied: cycler>=0.10 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib->pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.12.1)
+Requirement already satisfied: fonttools>=4.22.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib->pvlib==0.10.2.dev16+g27a3a07.d20241030) (4.53.1)
+Requirement already satisfied: kiwisolver>=1.3.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib->pvlib==0.10.2.dev16+g27a3a07.d20241030) (1.4.5)
+Requirement already satisfied: pyparsing>=2.3.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib->pvlib==0.10.2.dev16+g27a3a07.d20241030) (3.1.2)
+Requirement already satisfied: importlib-resources>=3.2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib->pvlib==0.10.2.dev16+g27a3a07.d20241030) (6.4.0)
+Requirement already satisfied: python-dotenv in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from nrel-pysam->pvlib==0.10.2.dev16+g27a3a07.d20241030) (1.0.1)
+Requirement already satisfied: llvmlite<0.44,>=0.43.0dev0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from numba->pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.43.0)
+Requirement already satisfied: iniconfig in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.0.0)
+Requirement already satisfied: pluggy<2,>=1.5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest->pvlib==0.10.2.dev16+g27a3a07.d20241030) (1.5.0)
+Requirement already satisfied: tomli>=1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.0.1)
+Requirement already satisfied: coverage>=5.2.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from coverage[toml]>=5.2.1->pytest-cov->pvlib==0.10.2.dev16+g27a3a07.d20241030) (7.6.1)
+Requirement already satisfied: shapely<2,>=1.6.4.post2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from solarfactors->pvlib==0.10.2.dev16+g27a3a07.d20241030) (1.8.5.post1)
+Requirement already satisfied: future in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from solarfactors->pvlib==0.10.2.dev16+g27a3a07.d20241030) (1.0.0)
+Requirement already satisfied: six in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from solarfactors->pvlib==0.10.2.dev16+g27a3a07.d20241030) (1.16.0)
+Requirement already satisfied: patsy>=0.5.6 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from statsmodels->pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.5.6)
+Requirement already satisfied: zipp>=0.5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from importlib-metadata>=4.4->sphinx==4.5.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (3.19.2)
+Requirement already satisfied: parso<0.9.0,>=0.8.3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from jedi>=0.16->ipython->pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.8.4)
+Requirement already satisfied: MarkupSafe>=2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from Jinja2>=2.3->sphinx==4.5.0->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.1.5)
+Requirement already satisfied: ptyprocess>=0.5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pexpect>4.3->ipython->pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.7.0)
+Requirement already satisfied: wcwidth in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from prompt-toolkit<3.1.0,>=3.0.41->ipython->pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.2.13)
+Requirement already satisfied: soupsieve>1.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from beautifulsoup4->pydata-sphinx-theme==0.8.1->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.5)
+Requirement already satisfied: executing>=1.2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from stack-data->ipython->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.0.1)
+Requirement already satisfied: asttokens>=2.1.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from stack-data->ipython->pvlib==0.10.2.dev16+g27a3a07.d20241030) (2.4.1)
+Requirement already satisfied: pure-eval in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from stack-data->ipython->pvlib==0.10.2.dev16+g27a3a07.d20241030) (0.2.3)
+Checking if build backend supports build_editable: started
+Checking if build backend supports build_editable: finished with status 'done'
+Building wheels for collected packages: pvlib
+  Building editable for pvlib (pyproject.toml): started
+  Building editable for pvlib (pyproject.toml): finished with status 'done'
+  Created wheel for pvlib: filename=pvlib-0.10.2.dev16+g27a3a07.d20241030-0.editable-py3-none-any.whl size=6032 sha256=38d01ffeeedb18cd9950324a427f6863636934c6954d3adb5e93e1a8ff04148a
+  Stored in directory: /tmp/pip-ephem-wheel-cache-w6c14f_0/wheels/7d/66/67/70d1ee2124ccf21d601c352e25cdca10f611f7c8b3f9ffb9e4
+Successfully built pvlib
+Installing collected packages: pvlib
+  Attempting uninstall: pvlib
+    Found existing installation: pvlib 0.10.2.dev16+g27a3a07
+    Uninstalling pvlib-0.10.2.dev16+g27a3a07:
+      Successfully uninstalled pvlib-0.10.2.dev16+g27a3a07
+Successfully installed pvlib-0.10.2.dev16+g27a3a07.d20241030
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
++ git checkout 27a3a07ebc84b11014d3753e4923902adf9a38c0 pvlib/tests/test_pvsystem.py
+Updated 0 paths from 93a7b10
++ git apply -v -
+Checking patch pvlib/tests/test_pvsystem.py...
+Applied patch pvlib/tests/test_pvsystem.py cleanly.
++ pytest -rA pvlib/tests/test_pvsystem.py
+============================= test session starts ==============================
+platform linux -- Python 3.9.19, pytest-8.3.2, pluggy-1.5.0
+rootdir: /testbed
+configfile: pyproject.toml
+plugins: anyio-4.4.0, mock-3.14.0, requests-mock-1.12.1, timeout-2.3.1, rerunfailures-14.0, cov-5.0.0, remotedata-0.4.1
+collected 282 items
+
+pvlib/tests/test_pvsystem.py ........................................... [ 15%]
+........................................................................ [ 40%]
+........................................................................ [ 66%]
+........................................................................ [ 91%]
+.......................                                                  [100%]
+
+=============================== warnings summary ===============================
+pvlib/iam.py:843
+  /testbed/pvlib/iam.py:843: DeprecationWarning: invalid escape sequence \c
+    """
+
+pvlib/tests/conftest.py:7
+  /testbed/pvlib/tests/conftest.py:7: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+    from pkg_resources import parse_version
+
+../opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pkg_resources/__init__.py:3144
+  /opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pkg_resources/__init__.py:3144: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('sphinxcontrib')`.
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(pkg)
+
+pvlib/tests/test_pvsystem.py::test_sapm
+  /testbed/pvlib/tests/test_pvsystem.py:187: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    times = pd.date_range(start='2015-01-01', periods=5, freq='12H')
+
+pvlib/tests/test_pvsystem.py::test_PVSystem_noct_celltemp
+  /testbed/pvlib/tests/test_pvsystem.py:538: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    dr = pd.date_range(start='2020-01-01 12:00:00', end='2020-01-01 13:00:00',
+
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_functions[faiman]
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_functions[pvsyst]
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_functions[sapm]
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_functions[fuentes]
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_functions[noct_sam]
+  /testbed/pvlib/tests/test_pvsystem.py:569: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    times = pd.date_range(start='2020-08-25 11:00', freq='H', periods=3)
+
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_temp[faiman]
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_temp[pvsyst]
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_temp[sapm]
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_temp[fuentes]
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_temp[noct_sam]
+  /testbed/pvlib/tests/test_pvsystem.py:583: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    times = pd.date_range(start='2020-08-25 11:00', freq='H', periods=3)
+
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_wind[faiman]
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_wind[pvsyst]
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_wind[sapm]
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_wind[fuentes]
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_wind[noct_sam]
+  /testbed/pvlib/tests/test_pvsystem.py:608: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    times = pd.date_range(start='2020-08-25 11:00', freq='H', periods=3)
+
+pvlib/tests/test_pvsystem.py::test_calcparams_desoto
+  /testbed/pvlib/tests/test_pvsystem.py:936: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    times = pd.date_range(start='2015-01-01', periods=3, freq='12H')
+
+pvlib/tests/test_pvsystem.py::test_calcparams_cec
+  /testbed/pvlib/tests/test_pvsystem.py:968: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    times = pd.date_range(start='2015-01-01', periods=3, freq='12H')
+
+pvlib/tests/test_pvsystem.py::test_calcparams_cec_extra_params_propagation
+  /testbed/pvlib/tests/test_pvsystem.py:1011: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    times = pd.date_range(start='2015-01-01', periods=3, freq='12H')
+
+pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst
+  /testbed/pvlib/tests/test_pvsystem.py:1038: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    times = pd.date_range(start='2015-01-01', periods=2, freq='12H')
+
+pvlib/tests/test_pvsystem.py::test_singlediode_series
+  /testbed/pvlib/tests/test_pvsystem.py:1530: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    times = pd.date_range(start='2015-01-01', periods=2, freq='12H')
+
+pvlib/tests/test_pvsystem.py::test_singlediode_series_ivcurve
+  /testbed/pvlib/tests/test_pvsystem.py:1620: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    times = pd.date_range(start='2015-06-01', periods=3, freq='6H')
+
+pvlib/tests/test_pvsystem.py::test_PVSystem_get_irradiance
+pvlib/tests/test_pvsystem.py::test_PVSystem_get_irradiance_albedo
+pvlib/tests/test_pvsystem.py::test_PVSystem_get_irradiance_model
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_get_irradiance
+pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_get_irradiance_multi_irrad
+pvlib/tests/test_pvsystem.py::test_Array_get_irradiance
+  /testbed/pvlib/tests/test_pvsystem.py:1913: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+    times = pd.date_range(start='20160101 1200-0700',
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_iam[ashrae-model_params0]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_iam[physical-model_params1]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_iam[martin_ruiz-model_params2]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_get_iam
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_iam_sapm
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_iam_interp
+PASSED pvlib/tests/test_pvsystem.py::test__normalize_sam_product_names
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_iam_invalid
+PASSED pvlib/tests/test_pvsystem.py::test_retrieve_sam_raise_no_parameters
+PASSED pvlib/tests/test_pvsystem.py::test_retrieve_sam_cecmod
+PASSED pvlib/tests/test_pvsystem.py::test_retrieve_sam_cecinverter
+PASSED pvlib/tests/test_pvsystem.py::test_sapm
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_sapm
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_sapm
+PASSED pvlib/tests/test_pvsystem.py::test_sapm_spectral_loss_deprecated
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_sapm_spectral_loss
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_sapm_spectral_loss
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_first_solar_spectral_loss[module_parameters0-multisi-None]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_first_solar_spectral_loss[module_parameters1-multisi-None]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_first_solar_spectral_loss[module_parameters2-None-coefficients2]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_first_solar_spectral_loss
+PASSED pvlib/tests/test_pvsystem.py::test_sapm_effective_irradiance[test_input0-1140.0510967821876]
+PASSED pvlib/tests/test_pvsystem.py::test_sapm_effective_irradiance[test_input1-expected1]
+PASSED pvlib/tests/test_pvsystem.py::test_sapm_effective_irradiance[test_input2-expected2]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_sapm_effective_irradiance
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_sapm_effective_irradiance
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_sapm_effective_irradiance_value_error[20-poa_diffuse0-aoi0]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_sapm_effective_irradiance_value_error[poa_direct1-poa_diffuse1-aoi1]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_sapm_effective_irradiance_value_error[poa_direct2-poa_diffuse2-20]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_sapm_celltemp
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_sapm_celltemp_kwargs
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_sapm_celltemp_different_arrays
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_pvsyst_celltemp
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_faiman_celltemp
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_noct_celltemp
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_noct_celltemp_error
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_functions[faiman]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_functions[pvsyst]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_functions[sapm]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_functions[fuentes]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_functions[noct_sam]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_temp[faiman]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_temp[pvsyst]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_temp[sapm]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_temp[fuentes]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_temp[noct_sam]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_wind[faiman]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_wind[pvsyst]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_wind[sapm]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_wind[fuentes]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_multi_wind[noct_sam]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_cell_temperature_invalid
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_temp_too_short[faiman]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_temp_too_short[pvsyst]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_temp_too_short[sapm]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_temp_too_short[fuentes]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_temp_too_short[noct_sam]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_temp_too_long[faiman]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_temp_too_long[pvsyst]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_temp_too_long[sapm]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_temp_too_long[fuentes]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_temp_too_long[noct_sam]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_wind_too_short[faiman]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_wind_too_short[pvsyst]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_wind_too_short[sapm]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_wind_too_short[fuentes]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_wind_too_short[noct_sam]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_wind_too_long[faiman]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_wind_too_long[pvsyst]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_wind_too_long[sapm]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_wind_too_long[fuentes]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_wind_too_long[noct_sam]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_poa_length_mismatch[faiman]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_poa_length_mismatch[pvsyst]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_poa_length_mismatch[sapm]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_poa_length_mismatch[fuentes]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_celltemp_poa_length_mismatch[noct_sam]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_fuentes_celltemp
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_fuentes_module_height
+PASSED pvlib/tests/test_pvsystem.py::test_Array__infer_temperature_model_params
+PASSED pvlib/tests/test_pvsystem.py::test_Array__infer_cell_type
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_returns_correct_Python_type[numeric_type_funcs0]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_returns_correct_Python_type[numeric_type_funcs1]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_returns_correct_Python_type[numeric_type_funcs2]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_returns_correct_Python_type[numeric_type_funcs3]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_returns_correct_Python_type[numeric_type_funcs4]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_returns_correct_Python_type[numeric_type_funcs5]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_returns_correct_Python_type[numeric_type_funcs6]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_returns_correct_Python_type[numeric_type_funcs7]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_returns_correct_Python_type[numeric_type_funcs8]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_returns_correct_Python_type[numeric_type_funcs9]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_returns_correct_Python_type[numeric_type_funcs10]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_returns_correct_Python_type[numeric_type_funcs11]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_returns_correct_Python_type[numeric_type_funcs12]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_returns_correct_Python_type[numeric_type_funcs13]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_returns_correct_Python_type[numeric_type_funcs14]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_returns_correct_Python_type[numeric_type_funcs15]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_returns_correct_Python_type[numeric_type_funcs0]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_returns_correct_Python_type[numeric_type_funcs1]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_returns_correct_Python_type[numeric_type_funcs2]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_returns_correct_Python_type[numeric_type_funcs3]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_returns_correct_Python_type[numeric_type_funcs4]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_returns_correct_Python_type[numeric_type_funcs5]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_returns_correct_Python_type[numeric_type_funcs6]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_returns_correct_Python_type[numeric_type_funcs7]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_returns_correct_Python_type[numeric_type_funcs8]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_returns_correct_Python_type[numeric_type_funcs9]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_returns_correct_Python_type[numeric_type_funcs10]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_returns_correct_Python_type[numeric_type_funcs11]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_returns_correct_Python_type[numeric_type_funcs12]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_returns_correct_Python_type[numeric_type_funcs13]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_returns_correct_Python_type[numeric_type_funcs14]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_returns_correct_Python_type[numeric_type_funcs15]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_returns_correct_Python_type[numeric_type_funcs0]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_returns_correct_Python_type[numeric_type_funcs1]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_returns_correct_Python_type[numeric_type_funcs2]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_returns_correct_Python_type[numeric_type_funcs3]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_returns_correct_Python_type[numeric_type_funcs4]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_returns_correct_Python_type[numeric_type_funcs5]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_returns_correct_Python_type[numeric_type_funcs6]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_returns_correct_Python_type[numeric_type_funcs7]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_returns_correct_Python_type[numeric_type_funcs8]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_returns_correct_Python_type[numeric_type_funcs9]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_returns_correct_Python_type[numeric_type_funcs10]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_returns_correct_Python_type[numeric_type_funcs11]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_returns_correct_Python_type[numeric_type_funcs12]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_returns_correct_Python_type[numeric_type_funcs13]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_returns_correct_Python_type[numeric_type_funcs14]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_returns_correct_Python_type[numeric_type_funcs15]
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto_all_scalars
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_all_scalars
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst_all_scalars
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_desoto
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_cec_extra_params_propagation
+PASSED pvlib/tests/test_pvsystem.py::test_calcparams_pvsyst
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_calcparams_desoto
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_calcparams_pvsyst
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_calcparams[calcparams_pvsyst]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_calcparams[calcparams_desoto]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_calcparams[calcparams_cec]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_calcparams_value_error[calcparams_desoto-1-celltemp0]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_calcparams_value_error[calcparams_desoto-irrad1-1]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_calcparams_value_error[calcparams_cec-1-celltemp2]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_calcparams_value_error[calcparams_cec-irrad3-1]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_calcparams_value_error[calcparams_pvsyst-1-celltemp4]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_calcparams_value_error[calcparams_pvsyst-irrad5-1]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i0-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i0-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i0-newton-1e-08]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i1-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i1-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i1-newton-1e-08]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i2-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i2-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i2-newton-1e-08]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i3-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i3-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i3-newton-1e-08]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i4-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i4-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i4-newton-1e-08]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i5-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i5-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i5-newton-1e-08]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i6-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i6-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i6-newton-1e-08]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i7-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i7-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i7-newton-1e-08]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i8-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i8-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i8-newton-1e-08]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i9-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i9-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i9-newton-1e-08]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i10-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i10-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i[fixture_v_from_i10-newton-1e-08]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v_from_i[fixture_v_from_i0]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v_from_i[fixture_v_from_i1]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v_from_i[fixture_v_from_i2]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v_from_i[fixture_v_from_i3]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v_from_i[fixture_v_from_i4]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v_from_i[fixture_v_from_i5]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v_from_i[fixture_v_from_i6]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v_from_i[fixture_v_from_i7]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v_from_i[fixture_v_from_i8]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v_from_i[fixture_v_from_i9]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v_from_i[fixture_v_from_i10]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v0-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v0-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v0-newton-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v1-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v1-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v1-newton-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v2-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v2-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v2-newton-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v3-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v3-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v3-newton-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v4-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v4-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v4-newton-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v5-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v5-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v5-newton-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v6-lambertw-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v6-brentq-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v[fixture_i_from_v6-newton-1e-11]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_i_from_v
+PASSED pvlib/tests/test_pvsystem.py::test_i_from_v_size
+PASSED pvlib/tests/test_pvsystem.py::test_v_from_i_size
+PASSED pvlib/tests/test_pvsystem.py::test_mpp_floats
+PASSED pvlib/tests/test_pvsystem.py::test_mpp_recombination
+PASSED pvlib/tests/test_pvsystem.py::test_mpp_array
+PASSED pvlib/tests/test_pvsystem.py::test_mpp_series
+PASSED pvlib/tests/test_pvsystem.py::test_singlediode_series
+PASSED pvlib/tests/test_pvsystem.py::test_singlediode_array
+PASSED pvlib/tests/test_pvsystem.py::test_singlediode_floats
+PASSED pvlib/tests/test_pvsystem.py::test_singlediode_floats_ivcurve
+PASSED pvlib/tests/test_pvsystem.py::test_singlediode_series_ivcurve
+PASSED pvlib/tests/test_pvsystem.py::test_singlediode_ivcurvepnts_deprecation_warning[lambertw]
+PASSED pvlib/tests/test_pvsystem.py::test_singlediode_ivcurvepnts_deprecation_warning[brentq]
+PASSED pvlib/tests/test_pvsystem.py::test_singlediode_ivcurvepnts_deprecation_warning[newton]
+PASSED pvlib/tests/test_pvsystem.py::test_scale_voltage_current_power
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_scale_voltage_current_power
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_scale_voltage_current_power
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_ac_sandia
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_ac_sandia_multi
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_ac_pvwatts
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_ac_pvwatts_kwargs
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_ac_pvwatts_multi
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_ac_single_array_tuple_input[sandia]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_ac_single_array_tuple_input[adr]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_ac_single_array_tuple_input[pvwatts]
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_ac_adr
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_ac_adr_multi
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_ac_invalid
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_creation
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multiple_array_creation
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_aoi
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multiple_array_get_aoi
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_irradiance
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_irradiance_albedo
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_get_irradiance_model
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_get_irradiance
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array_get_irradiance_multi_irrad
+PASSED pvlib/tests/test_pvsystem.py::test_Array_get_irradiance
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem___repr__
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multi_array___repr__
+PASSED pvlib/tests/test_pvsystem.py::test_Array___repr__
+PASSED pvlib/tests/test_pvsystem.py::test_pvwatts_dc_scalars
+PASSED pvlib/tests/test_pvsystem.py::test_pvwatts_dc_arrays
+PASSED pvlib/tests/test_pvsystem.py::test_pvwatts_dc_series
+PASSED pvlib/tests/test_pvsystem.py::test_pvwatts_losses_default
+PASSED pvlib/tests/test_pvsystem.py::test_pvwatts_losses_arrays
+PASSED pvlib/tests/test_pvsystem.py::test_pvwatts_losses_series
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_pvwatts_dc
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_pvwatts_dc_kwargs
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multiple_array_pvwatts_dc
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_multiple_array_pvwatts_dc_value_error
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_pvwatts_losses
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_num_arrays
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_at_least_one_array
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_single_array
+PASSED pvlib/tests/test_pvsystem.py::test_combine_loss_factors
+PASSED pvlib/tests/test_pvsystem.py::test_no_extra_kwargs
+PASSED pvlib/tests/test_pvsystem.py::test_AbstractMount_constructor
+PASSED pvlib/tests/test_pvsystem.py::test_FixedMount_constructor
+PASSED pvlib/tests/test_pvsystem.py::test_FixedMount_get_orientation
+PASSED pvlib/tests/test_pvsystem.py::test_SingleAxisTrackerMount_constructor
+PASSED pvlib/tests/test_pvsystem.py::test_SingleAxisTrackerMount_get_orientation
+PASSED pvlib/tests/test_pvsystem.py::test_dc_ohms_from_percent
+PASSED pvlib/tests/test_pvsystem.py::test_PVSystem_dc_ohms_from_percent
+PASSED pvlib/tests/test_pvsystem.py::test_dc_ohmic_losses
+PASSED pvlib/tests/test_pvsystem.py::test_Array_dc_ohms_from_percent
+PASSED pvlib/tests/test_pvsystem.py::test_Array_temperature_missing_parameters[sapm-keys0]
+PASSED pvlib/tests/test_pvsystem.py::test_Array_temperature_missing_parameters[fuentes-keys1]
+PASSED pvlib/tests/test_pvsystem.py::test_Array_temperature_missing_parameters[noct_sam-keys2]
+======================= 282 passed, 32 warnings in 1.19s =======================
++ git checkout 27a3a07ebc84b11014d3753e4923902adf9a38c0 pvlib/tests/test_pvsystem.py
+Updated 1 path from 93a7b10

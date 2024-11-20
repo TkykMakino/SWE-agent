@@ -1,0 +1,53 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 000000000..5b1d09c2a
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,4 @@
++def test_b():
++    assert b"" == b"42"
++
++test_b()
+diff --git a/src/_pytest/_io/saferepr.py b/src/_pytest/_io/saferepr.py
+index 74f75124f..8bc1f1875 100644
+--- a/src/_pytest/_io/saferepr.py
++++ b/src/_pytest/_io/saferepr.py
+@@ -22,7 +22,9 @@ class SafeRepr(reprlib.Repr):
+     and includes information on exceptions raised during the call.
+     """
+ 
+-    def repr(self, x):
++    def repr1(self, x, level):
++        if isinstance(x, bytes):
++            return self.repr_bytes(x, level)
+         return self._callhelper(reprlib.Repr.repr, self, x)
+ 
+     def repr_unicode(self, x, level):
+@@ -43,6 +45,18 @@ class SafeRepr(reprlib.Repr):
+             s = s[:i] + "..." + s[len(s) - j :]
+         return s
+ 
++    def repr_bytes(self, x, level):
++        def repr(b):
++            return "b'%s' (ASCII: %s)" % (b.decode('ascii', 'replace'), [ord(c) for c in b])
++
++        s = repr(x[: self.maxstring])
++        if len(s) > self.maxstring:
++            i = max(0, (self.maxstring - 3) // 2)
++            j = max(0, self.maxstring - 3 - i)
++            s = repr(x[:i] + x[len(x) - j :])
++            s = s[:i] + "..." + s[len(s) - j :]
++        return s
++
+     def repr_instance(self, x, level):
+         return self._callhelper(repr, x)
+ 
+@@ -75,4 +89,6 @@ def saferepr(obj, maxsize=240):
+     srepr.maxstring = maxsize
+     srepr.maxsize = maxsize
+     srepr.maxother = 160
+-    return srepr.repr(obj)
++    if isinstance(obj, bytes):
++        return srepr.repr_bytes(obj, 0)
++    return srepr.repr1(obj, 0)

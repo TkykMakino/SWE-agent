@@ -1,0 +1,68 @@
+
+diff --git a/django/conf/global_settings.py b/django/conf/global_settings.py
+index acee9887d2..b5d0cdfe7a 100644
+--- a/django/conf/global_settings.py
++++ b/django/conf/global_settings.py
+@@ -2,8 +2,11 @@
+ Default Django settings. Override these with settings in the module pointed to
+ by the DJANGO_SETTINGS_MODULE environment variable.
+ """
+-
+-
++SECRET_KEY = 'test_secret_key'
++INSTALLED_APPS = [
++    'django.contrib.contenttypes',
++    'django.contrib.auth',
++]
+ # This is defined here as a do-nothing function because we can't import
+ # django.utils.translation -- that module depends on the settings.
+ def gettext_noop(s):
+diff --git a/test_settings.py b/test_settings.py
+new file mode 100644
+index 0000000000..daa1b1e339
+--- /dev/null
++++ b/test_settings.py
+@@ -0,0 +1,5 @@
++SECRET_KEY = 'test_secret_key'
++INSTALLED_APPS = [
++    'django.contrib.contenttypes',
++    'django.contrib.auth',
++]
+diff --git a/tests/file_storage/tests.py b/tests/file_storage/tests.py
+index 434869554c..a49eaee8f9 100644
+--- a/tests/file_storage/tests.py
++++ b/tests/file_storage/tests.py
+@@ -540,6 +540,15 @@ class FileStorageTests(SimpleTestCase):
+             )
+ 
+ 
++class FileUploadPermissionTests(SimpleTestCase):
++    def test_default_file_upload_permissions(self):
++        storage = FileSystemStorage()
++        file = storage.save('test.txt', ContentFile('content'))
++        file_path = storage.path(file)
++        file_permissions = oct(os.stat(file_path).st_mode & 0o777)
++        self.assertEqual(file_permissions, '0o644')
++        os.remove(file_path)
++
+ class CustomStorage(FileSystemStorage):
+     def get_available_name(self, name, max_length=None):
+         """
+@@ -552,6 +561,17 @@ class CustomStorage(FileSystemStorage):
+             number += 1
+ 
+         return name
++    def get_available_name(self, name, max_length=None):
++        """
++        Append numbers to duplicate files rather than underscores, like Trac.
++        """
++        basename, *ext = name.split('.')
++        number = 2
++        while self.exists(name):
++            name = '.'.join([basename, str(number)] + ext)
++            number += 1
++
++        return name
+ 
+ 
+ class CustomStorageTests(FileStorageTests):

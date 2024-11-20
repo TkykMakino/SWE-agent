@@ -1,0 +1,42 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..5032282895
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,11 @@
++from sympy.matrices import Matrix
++
++A = Matrix([[1, 2], [3, 4]])
++B = Matrix([[2, 3], [1, 2]])
++
++print(A @ B)
++
++try:
++    print(2 @ B)
++except ValueError as e:
++    print(e)
+diff --git a/sympy/matrices/common.py b/sympy/matrices/common.py
+index 379a2917aa..a2cbd203c3 100644
+--- a/sympy/matrices/common.py
++++ b/sympy/matrices/common.py
+@@ -4,7 +4,7 @@
+ etc.).
+ """
+ 
+-from __future__ import print_function, division
++from sympy.matrices.matrices import MatrixBase
+ 
+ import collections
+ from sympy.core.add import Add
+@@ -1973,7 +1973,9 @@ def __div__(self, other):
+ 
+     @call_highest_priority('__rmatmul__')
+     def __matmul__(self, other):
+-        return self.__mul__(other)
++        if not hasattr(other, 'shape') or not hasattr(other, '__matmul__'):
++            raise ValueError("Scalar operands are not allowed, use '*' instead")
++        return self._eval_matrix_mul(other)
+ 
+     @call_highest_priority('__rmul__')
+     def __mul__(self, other):

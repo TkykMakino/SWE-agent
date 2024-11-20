@@ -1,0 +1,11 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..5a3db5a2b7
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,4 @@
++from sympy import S
++
++result = 0**S.NegativeInfinity
++print(result)

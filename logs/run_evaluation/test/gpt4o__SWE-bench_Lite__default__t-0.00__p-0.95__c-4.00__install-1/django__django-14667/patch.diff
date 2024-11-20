@@ -1,0 +1,155 @@
+
+diff --git a/django/db/models/query.py b/django/db/models/query.py
+index 71a52fb754..f5e9964a93 100644
+--- a/django/db/models/query.py
++++ b/django/db/models/query.py
+@@ -1222,6 +1222,10 @@ class QuerySet:
+             clone.query.clear_deferred_loading()
+         else:
+             clone.query.add_deferred_loading(fields)
++            # Clear deferred fields if only() is called
++            if clone.query.deferred_loading[0]:
++                clone.query.clear_deferred_loading()
++                clone.query.add_deferred_loading(fields)
+         return clone
+ 
+     def only(self, *fields):
+@@ -1242,6 +1246,7 @@ class QuerySet:
+             if field in self.query._filtered_relations:
+                 raise ValueError('only() is not supported with FilteredRelation.')
+         clone = self._chain()
++        clone.query.clear_deferred_loading()  # Clear deferred fields
+         clone.query.add_immediate_loading(fields)
+         return clone
+ 
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..24fd0ed6c0
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,125 @@
++import os
++import django
++from django.conf import settings
++
++# Configure Django settings
++os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'test_settings')
++if not settings.configured:
++    settings.configure(
++        INSTALLED_APPS=[
++            'django.contrib.contenttypes',
++            'django.contrib.auth',
++            '__main__',  # This allows the current script to be recognized as an app
++        ],
++        DATABASES={
++            'default': {
++                'ENGINE': 'django.db.backends.sqlite3',
++                'NAME': ':memory:',
++            }
++        }
++    )
++
++django.setup()
++
++from django.db import models
++from django.test import TestCase
++
++class Company(models.Model):
++    name = models.CharField(max_length=100)
++    trade_number = models.CharField(max_length=100)
++    country = models.CharField(max_length=100)
++
++class QuerySetDeferOnlyTest(TestCase):
++    def setUp(self):
++        Company.objects.create(name="Test Company", trade_number="12345", country="Test Country")
++
++    def test_defer_only(self):
++        qs = Company.objects.only("name").defer("name")
++        sql = str(qs.query)
++        print(sql)
++
++        qs = Company.objects.only("name").defer("name").defer("country")
++        sql = str(qs.query)
++        print(sql)
++
++        qs = Company.objects.only("name", "country").defer("name")
++        sql = str(qs.query)
++        print(sql)
++
++if __name__ == "__main__":
++    QuerySetDeferOnlyTest().test_defer_only()
++import django
++from django.conf import settings
++from django.db import models
++from django.test import TestCase
++
++# Configure Django settings
++os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'test_settings')
++if not settings.configured:
++    settings.configure(
++        INSTALLED_APPS=[
++            'django.contrib.contenttypes',
++            'django.contrib.auth',
++            '__main__',  # This allows the current script to be recognized as an app
++        ],
++        DATABASES={
++            'default': {
++                'ENGINE': 'django.db.backends.sqlite3',
++                'NAME': ':memory:',
++            }
++        }
++    )
++
++class Company(models.Model):
++    name = models.CharField(max_length=100)
++    trade_number = models.CharField(max_length=100)
++    country = models.CharField(max_length=100)
++
++class QuerySetDeferOnlyTest(TestCase):
++    def setUp(self):
++        Company.objects.create(name="Test Company", trade_number="12345", country="Test Country")
++
++    def test_defer_only(self):
++        qs = Company.objects.only("name").defer("name")
++        sql = str(qs.query)
++        print(sql)
++
++        qs = Company.objects.only("name").defer("name").defer("country")
++        sql = str(qs.query)
++        print(sql)
++
++        qs = Company.objects.only("name", "country").defer("name")
++        sql = str(qs.query)
++        print(sql)
++
++if __name__ == "__main__":
++    django.setup()
++    QuerySetDeferOnlyTest().test_defer_only()
++from django.test import TestCase
++
++class Company(models.Model):
++    name = models.CharField(max_length=100)
++    trade_number = models.CharField(max_length=100)
++    country = models.CharField(max_length=100)
++
++class QuerySetDeferOnlyTest(TestCase):
++    def setUp(self):
++        Company.objects.create(name="Test Company", trade_number="12345", country="Test Country")
++
++    def test_defer_only(self):
++        qs = Company.objects.only("name").defer("name")
++        sql = str(qs.query)
++        print(sql)
++
++        qs = Company.objects.only("name").defer("name").defer("country")
++        sql = str(qs.query)
++        print(sql)
++
++        qs = Company.objects.only("name", "country").defer("name")
++        sql = str(qs.query)
++        print(sql)
++
++if __name__ == "__main__":
++    import django
++    django.setup()
++    QuerySetDeferOnlyTest().test_defer_only()

@@ -1,0 +1,32 @@
+
+diff --git a/astroid/raw_building.py b/astroid/raw_building.py
+index cc3aa015..ff3935de 100644
+--- a/astroid/raw_building.py
++++ b/astroid/raw_building.py
+@@ -471,7 +471,8 @@ class InspectBuilder:
+             # check if it sounds valid and then add an import node, else use a
+             # dummy node
+             try:
+-                getattr(sys.modules[modname], name)
++                if hasattr(sys.modules[modname], name) and not name.startswith("np."):
++                    getattr(sys.modules[modname], name)
+             except (KeyError, AttributeError):
+                 attach_dummy_node(node, name, member)
+             else:
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..de95f101
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,4 @@
++"""Test case"""
++
++import numpy as np
++value = np.random.seed(1234)
+diff --git a/test_pylint.py b/test_pylint.py
+new file mode 100644
+index 00000000..8b137891
+--- /dev/null
++++ b/test_pylint.py
+@@ -0,0 +1 @@
++

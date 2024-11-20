@@ -1,0 +1,35 @@
+
+diff --git a/sympy/printing/pretty/pretty.py b/sympy/printing/pretty/pretty.py
+index 66461181d0..ca817b68b5 100644
+--- a/sympy/printing/pretty/pretty.py
++++ b/sympy/printing/pretty/pretty.py
+@@ -1092,7 +1092,6 @@ def _print_TransferFunctionMatrix(self, expr):
+         mat = prettyForm(*mat.right(subscript))
+         return mat
+ 
+-    def _print_BasisDependent(self, expr):
+         from sympy.vector import Vector
+ 
+         if not self._use_unicode:
+@@ -1113,18 +1112,15 @@ def _print_BasisDependent(self, expr):
+                 #if the coef of the basis vector is 1
+                 #we skip the 1
+                 if v == 1:
+-                    o1.append("" +
+-                              k._pretty_form)
++                    o1.append("" + k._pretty_form)
+                 #Same for -1
+                 elif v == -1:
+-                    o1.append("(-1) " +
+-                              k._pretty_form)
++                    o1.append("(-1) " + k._pretty_form)
+                 #For a general expr
+                 else:
+                     #We always wrap the measure numbers in
+                     #parentheses
+-                    arg_str = self._print(
+-                        v).parens()[0]
++                    arg_str = self._print(v).parens()[0]
+ 
+                     o1.append(arg_str + ' ' + k._pretty_form)
+                 vectstrs.append(k._pretty_form)

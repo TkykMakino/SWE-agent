@@ -1,0 +1,32 @@
+
+diff --git a/sympy/vector/vector.py b/sympy/vector/vector.py
+index c62b1dbf0d..68e69a6039 100755
+--- a/sympy/vector/vector.py
++++ b/sympy/vector/vector.py
+@@ -397,7 +397,7 @@ def __str__(self, printer=None):
+             for x in base_vects:
+                 if x in vect.components:
+                     temp_vect = self.components[x] * x
+-                    ret_str += temp_vect.__str__(printer) + " + "
++                    ret_str += temp_vect._pretty_form + " + "
+         return ret_str[:-3]
+ 
+     __repr__ = __str__
+@@ -413,6 +413,9 @@ def __new__(cls, *args, **options):
+         obj = BasisDependentMul.__new__(cls, *args, **options)
+         return obj
+ 
++    def __str__(self, printer=None):
++        return f"({self.measure_number})*{self.base_vector._pretty_form}"
++
+     @property
+     def base_vector(self):
+         """ The BaseVector involved in the product. """
+@@ -425,7 +428,6 @@ def measure_number(self):
+         """
+         return self._measure_number
+ 
+-
+ class VectorZero(BasisDependentZero, Vector):
+     """
+     Class to denote a zero vector

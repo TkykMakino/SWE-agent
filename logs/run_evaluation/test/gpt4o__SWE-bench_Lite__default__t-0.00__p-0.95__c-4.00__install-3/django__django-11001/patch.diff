@@ -1,0 +1,112 @@
+
+diff --git a/myapp/__init__.py b/myapp/__init__.py
+new file mode 100644
+index 0000000000..8b13789179
+--- /dev/null
++++ b/myapp/__init__.py
+@@ -0,0 +1 @@
++
+diff --git a/myapp/models.py b/myapp/models.py
+new file mode 100644
+index 0000000000..efc8706c44
+--- /dev/null
++++ b/myapp/models.py
+@@ -0,0 +1,10 @@
++from django.db import models
++
++class MyModel(models.Model):
++    status = models.CharField(max_length=50)
++    accepted_datetime = models.DateTimeField()
++    preferred_datetime = models.DateTimeField()
++    created_at = models.DateTimeField()
++
++    class Meta:
++        app_label = 'myapp'
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..5755305c50
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,18 @@
++from django.db.models.expressions import RawSQL
++from myapp.models import MyModel
++
++queryset = MyModel.objects.all().order_by(
++    RawSQL('''
++        case when status in ('accepted', 'verification')
++             then 2 else 1 end''', []).desc(),
++    RawSQL('''
++        case when status in ('accepted', 'verification')
++             then (accepted_datetime, preferred_datetime)
++             else null end''', []).asc(),
++    RawSQL('''
++        case when status not in ('accepted', 'verification')
++             then (accepted_datetime, preferred_datetime, created_at)
++             else null end''', []).desc()
++)
++
++print(queryset.query)
+diff --git a/tests/staticfiles_tests/settings.py b/tests/staticfiles_tests/settings.py
+index 1320da7a0d..8ba12361f6 100644
+--- a/tests/staticfiles_tests/settings.py
++++ b/tests/staticfiles_tests/settings.py
+@@ -1,8 +1,49 @@
+-import os.path
++import os
++import django
++from django.conf import settings
++from django.db.models.expressions import RawSQL
++from myapp.models import MyModel
+ 
+-TEST_ROOT = os.path.dirname(__file__)
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'myapp',
++        'django.contrib.staticfiles',
++        'staticfiles_tests',
++        'staticfiles_tests.apps.test',
++        'staticfiles_tests.apps.no_label',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
+ 
++django.setup()
++
++queryset = MyModel.objects.all().order_by(
++    RawSQL('''
++        case when status in ('accepted', 'verification')
++             then 2 else 1 end''', []).desc(),
++    RawSQL('''
++        case when status in ('accepted', 'verification')
++             then (accepted_datetime, preferred_datetime)
++             else null end''', []).asc(),
++    RawSQL('''
++        case when status not in ('accepted', 'verification')
++             then (accepted_datetime, preferred_datetime, created_at)
++             else null end''', []).desc()
++)
++
++print(queryset.query)
++
++TEST_ROOT = os.path.dirname(__file__)
++SECRET_KEY = 'dummy_secret_key'
+ TEST_SETTINGS = {
++    'SECRET_KEY': 'dummy_secret_key',
++    'MEDIA_URL': '/media/',
+     'MEDIA_URL': '/media/',
+     'STATIC_URL': '/static/',
+     'MEDIA_ROOT': os.path.join(TEST_ROOT, 'project', 'site_media', 'media'),
+@@ -21,6 +62,7 @@ TEST_SETTINGS = {
+         'staticfiles_tests',
+         'staticfiles_tests.apps.test',
+         'staticfiles_tests.apps.no_label',
++        'myapp',
+     ],
+     # In particular, AuthenticationMiddleware can't be used because
+     # contrib.auth isn't in INSTALLED_APPS.

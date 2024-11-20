@@ -1,0 +1,14 @@
+
+diff --git a/seaborn/axisgrid.py b/seaborn/axisgrid.py
+index 75349099..3b84d2a3 100644
+--- a/seaborn/axisgrid.py
++++ b/seaborn/axisgrid.py
+@@ -2010,6 +2010,8 @@ def pairplot(
+     height=2.5, aspect=1, corner=False, dropna=False,
+     plot_kws=None, diag_kws=None, grid_kws=None, size=None,
+ ):
++    if isinstance(data.columns, pd.MultiIndex):
++        data.columns = ['_'.join(map(str, col)) for col in data.columns]
+     """Plot pairwise relationships in a dataset.
+ 
+     By default, this function will create a grid of Axes such that each numeric

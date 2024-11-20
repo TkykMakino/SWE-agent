@@ -1,0 +1,25 @@
+
+diff --git a/sympy/printing/mathml.py b/sympy/printing/mathml.py
+index 1aa0ee01a2..37492b57b1 100644
+--- a/sympy/printing/mathml.py
++++ b/sympy/printing/mathml.py
+@@ -123,6 +123,19 @@ class MathMLContentPrinter(MathMLPrinterBase):
+     """
+     printmethod = "_mathml_content"
+ 
++    def _print_Indexed(self, expr):
++        x = self.dom.createElement('apply')
++        x.appendChild(self.dom.createElement('indexed'))
++        x.appendChild(self._print(expr.base))
++        for index in expr.indices:
++            x.appendChild(self._print(index))
++        return x
++    """Prints an expression to the Content MathML markup language.
++
++    References: https://www.w3.org/TR/MathML2/chapter4.html
++    """
++    printmethod = "_mathml_content"
++
+     def mathml_tag(self, e):
+         """Returns the MathML tag for an expression."""
+         translate = {

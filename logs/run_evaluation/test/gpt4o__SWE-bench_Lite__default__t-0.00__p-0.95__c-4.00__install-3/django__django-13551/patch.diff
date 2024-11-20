@@ -1,0 +1,49 @@
+
+diff --git a/django/contrib/auth/tokens.py b/django/contrib/auth/tokens.py
+index 93e2d71af2..2223f46075 100644
+--- a/django/contrib/auth/tokens.py
++++ b/django/contrib/auth/tokens.py
+@@ -85,6 +85,7 @@ class PasswordResetTokenGenerator:
+            same password is chosen, due to password salting).
+         2. The last_login field will usually be updated very shortly after
+            a password reset.
++        3. The email field will change if the user updates their email address.
+         Failing those things, settings.PASSWORD_RESET_TIMEOUT eventually
+         invalidates the token.
+ 
+@@ -94,7 +95,7 @@ class PasswordResetTokenGenerator:
+         # Truncate microseconds so that tokens are consistent even if the
+         # database doesn't support microseconds.
+         login_timestamp = '' if user.last_login is None else user.last_login.replace(microsecond=0, tzinfo=None)
+-        return str(user.pk) + user.password + str(login_timestamp) + str(timestamp)
++        return str(user.pk) + user.password + str(login_timestamp) + str(timestamp) + user.email
+ 
+     def _num_seconds(self, dt):
+         return int((dt - datetime(2001, 1, 1)).total_seconds())
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..bbc3a22ff8
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,21 @@
++from django.contrib.auth.tokens import PasswordResetTokenGenerator
++from django.contrib.auth.models import User
++from django.utils import timezone
++
++# Create a user
++user = User.objects.create_user(username='testuser', email='foo@example.com', password='password')
++
++# Generate a password reset token
++token_generator = PasswordResetTokenGenerator()
++token = token_generator.make_token(user)
++
++# Change the user's email
++user.email = 'bar@example.com'
++user.save()
++
++# Check if the token is still valid (it should not be)
++is_valid = token_generator.check_token(user, token)
++print(f"Is the token valid after email change? {is_valid}")
++
++# Clean up
++user.delete()

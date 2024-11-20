@@ -1,0 +1,47 @@
+
+diff --git a/test_default.sqlite3 b/test_default.sqlite3
+new file mode 100644
+index 0000000000..c9339ff2c9
+Binary files /dev/null and b/test_default.sqlite3 differ
+diff --git a/test_other.sqlite3 b/test_other.sqlite3
+new file mode 100644
+index 0000000000..8febad3187
+Binary files /dev/null and b/test_other.sqlite3 differ
+diff --git a/tests/admin_views/test_multidb.py b/tests/admin_views/test_multidb.py
+index a02b637d34..8b26086948 100644
+--- a/tests/admin_views/test_multidb.py
++++ b/tests/admin_views/test_multidb.py
+@@ -41,8 +41,11 @@ class MultiDatabaseTests(TestCase):
+             )
+             b = Book(name='Test Book')
+             b.save(using=db)
+-            cls.test_book_ids[db] = b.id
+-
++        @classmethod
++        def tearDownClass(cls):
++            for db in connections:
++                connections[db].close()
++            super().tearDownClass()
+     @mock.patch('django.contrib.admin.options.transaction')
+     def test_add_view(self, mock):
+         for db in connections:
+diff --git a/tests/test_sqlite.py b/tests/test_sqlite.py
+index f1b65f7d01..9ce4e32e14 100644
+--- a/tests/test_sqlite.py
++++ b/tests/test_sqlite.py
+@@ -15,9 +15,15 @@
+ DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
++        'TEST': {
++            'NAME': 'test_default.sqlite3'
++        },
+     },
+     'other': {
+         'ENGINE': 'django.db.backends.sqlite3',
++        'TEST': {
++            'NAME': 'test_other.sqlite3'
++        },
+     }
+ }
+ 

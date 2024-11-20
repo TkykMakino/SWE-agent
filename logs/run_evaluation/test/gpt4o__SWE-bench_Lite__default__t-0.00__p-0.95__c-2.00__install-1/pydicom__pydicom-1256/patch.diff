@@ -1,0 +1,52 @@
+
+diff --git a/pydicom/jsonrep.py b/pydicom/jsonrep.py
+index c6ef519c3..a723687f0 100644
+--- a/pydicom/jsonrep.py
++++ b/pydicom/jsonrep.py
+@@ -2,6 +2,20 @@
+ """Methods for converting Datasets and DataElements to/from json"""
+ 
+ import base64
++from pydicom.dataelem import DataElement
++from pydicom.jsonrep import convert_data_element, JsonDataElementConverter, to_json, from_json
++from pydicom.dataset import Dataset
++from pydicom.tag import BaseTag
++import warnings
++from typing import Callable, Optional, Union
++from inspect import signature
++from pydicom.dataelem import DataElement
++from pydicom.jsonrep import convert_data_element, JsonDataElementConverter
++from pydicom.dataset import Dataset
++from pydicom.tag import BaseTag
++import warnings
++from pydicom.dataelem import DataElement
++from pydicom.jsonrep import convert_data_element
+ from inspect import signature
+ import inspect
+ from typing import Callable, Optional, Union
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 000000000..e8140393f
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,20 @@
++import pydicom
++from pydicom.data import get_testdata_file
++from pydicom.filewriter import write_file_meta_info
++from pydicom.jsonrep import from_json, to_json
++
++# Load the DICOM file
++dcm_path = get_testdata_file("waveform_ecg.dcm")
++dataset = pydicom.dcmread(dcm_path)
++
++# Convert DICOM to JSON
++json_representation = to_json(dataset)
++
++# Convert JSON back to DICOM
++dataset_from_json = from_json(json_representation)
++
++# Save the converted dataset to a new DICOM file
++output_path = "converted_waveform_ecg.dcm"
++dataset_from_json.save_as(output_path)
++
++print("Conversion completed successfully.")

@@ -1,0 +1,54 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 000000000..9b4e4f3b4
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,7 @@
++from sklearn.neighbors import NearestNeighbors
++from sklearn.datasets import make_blobs
++
++X, y = make_blobs()
++neighbors = NearestNeighbors(n_neighbors=3.)
++neighbors.fit(X)
++neighbors.kneighbors(X)
+diff --git a/sklearn/neighbors/base.py b/sklearn/neighbors/base.py
+index 3e5e729c2..aa32f828c 100644
+--- a/sklearn/neighbors/base.py
++++ b/sklearn/neighbors/base.py
+@@ -327,8 +327,11 @@ class KNeighborsMixin(object):
+ 
+         if n_neighbors is None:
+             n_neighbors = self.n_neighbors
+-
+-        if X is not None:
++        if not isinstance(n_neighbors, int):
++            if isinstance(n_neighbors, float) and n_neighbors.is_integer():
++                n_neighbors = int(n_neighbors)
++            else:
++                raise ValueError("n_neighbors must be an integer")
+             query_is_train = False
+             X = check_array(X, accept_sparse='csr')
+         else:
+diff --git a/sklearn/neighbors/unsupervised.py b/sklearn/neighbors/unsupervised.py
+index db19e8df6..1c1c2e7d7 100644
+--- a/sklearn/neighbors/unsupervised.py
++++ b/sklearn/neighbors/unsupervised.py
+@@ -115,6 +115,17 @@ class NearestNeighbors(NeighborsBase, KNeighborsMixin,
+     def __init__(self, n_neighbors=5, radius=1.0,
+                  algorithm='auto', leaf_size=30, metric='minkowski',
+                  p=2, metric_params=None, n_jobs=1, **kwargs):
++        if not isinstance(n_neighbors, int):
++            if isinstance(n_neighbors, float) and n_neighbors.is_integer():
++                n_neighbors = int(n_neighbors)
++            else:
++                raise ValueError("n_neighbors must be an integer")
++        super(NearestNeighbors, self).__init__(
++              n_neighbors=n_neighbors,
++              radius=radius,
++              algorithm=algorithm,
++              leaf_size=leaf_size, metric=metric, p=p,
++              metric_params=metric_params, n_jobs=n_jobs, **kwargs)
+         super(NearestNeighbors, self).__init__(
+               n_neighbors=n_neighbors,
+               radius=radius,

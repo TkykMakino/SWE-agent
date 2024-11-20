@@ -1,0 +1,15 @@
+
+diff --git a/sympy/matrices/common.py b/sympy/matrices/common.py
+index 7ef51bc847..908892e4a3 100644
+--- a/sympy/matrices/common.py
++++ b/sympy/matrices/common.py
+@@ -479,6 +479,9 @@ def row_join(self, other):
+         if self.cols == 0 and self.rows != other.rows:
+             return self._new(other.rows, 0, []).row_join(other)
+ 
++        if self.rows == 0:
++            return self._new(0, self.cols + other.cols, [])
++
+         if self.rows != other.rows:
+             raise ShapeError(
+                 "`self` and `rhs` must have the same number of rows.")

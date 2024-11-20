@@ -316,6 +316,7 @@ class SWEEnv(gym.Env):
                 self._init_container(cached_image=cached_image)
                 self.communicate("export $(xargs </.env)")
                 envs = self.communicate("env")
+                self.communicate(f"cd {self._repo_name}")
                 self.logger.debug(f"Environment variables restored from the image:\n{envs}\n")
                 if apply_test_patch:
                     self._apply_test_patch()

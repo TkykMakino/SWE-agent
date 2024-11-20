@@ -1,0 +1,14 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..87fb7885
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,7 @@
++import seaborn.objects as so
++
++try:
++    so.Plot(["a", "b"], [1, 2], color=[True, False]).add(so.Bar())
++    print("Script completed successfully, no errors.")
++except Exception as e:
++    print(f"Error: {e}")

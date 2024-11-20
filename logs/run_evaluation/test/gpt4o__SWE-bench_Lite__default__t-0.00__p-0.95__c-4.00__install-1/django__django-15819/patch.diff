@@ -1,0 +1,85 @@
+
+diff --git a/models.py b/models.py
+new file mode 100644
+index 0000000000..fd5e23e27d
+--- /dev/null
++++ b/models.py
+@@ -0,0 +1,8 @@
++# This is an auto-generated Django model module.
++# You'll have to do the following manually to clean this up:
++#   * Rearrange models' order
++#   * Make sure each model has one field with primary_key=True
++#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
++#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
++# Feel free to rename the models, but don't rename db_table values or field names.
++from django.db import models
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..91100891b4
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,23 @@
++import os
++from django.conf import settings
++from django.core.management import call_command
++import django
++
++# Minimal settings configuration
++settings.configure(
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    },
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++    ],
++)
++
++# Setup Django
++django.setup()
++
++# Run the inspectdb command to generate models
++call_command('inspectdb', database='default', stdout=open('models.py', 'w'))
+diff --git a/setup_db.py b/setup_db.py
+new file mode 100644
+index 0000000000..68ac4438f3
+--- /dev/null
++++ b/setup_db.py
+@@ -0,0 +1,31 @@
++import os
++from django.conf import settings
++from django.db import connections, models
++import django
++
++# Minimal settings configuration
++settings.configure(
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': 'test_db.sqlite3',
++        }
++    },
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++    ],
++)
++
++# Setup Django
++django.setup()
++
++# Create a mock database schema with relations to the same entities
++with connections['default'].schema_editor() as schema_editor:
++    class Model(models.Model):
++        field1 = models.ForeignKey('self', on_delete=models.CASCADE, related_name='field1_set')
++        field2 = models.ForeignKey('self', on_delete=models.CASCADE, related_name='field2_set')
++
++        class Meta:
++            app_label = 'myapp'
++
++    schema_editor.create_model(Model)
+diff --git a/test_db.sqlite3 b/test_db.sqlite3
+new file mode 100644
+index 0000000000..bc600f5c7e
+Binary files /dev/null and b/test_db.sqlite3 differ

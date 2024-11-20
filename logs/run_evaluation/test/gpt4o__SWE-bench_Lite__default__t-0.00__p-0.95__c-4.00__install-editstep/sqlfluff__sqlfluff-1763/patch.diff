@@ -1,0 +1,25 @@
+
+diff --git a/src/sqlfluff/core/linter/linted_file.py b/src/sqlfluff/core/linter/linted_file.py
+index 3a8593ed..fd555381 100644
+--- a/src/sqlfluff/core/linter/linted_file.py
++++ b/src/sqlfluff/core/linter/linted_file.py
+@@ -489,11 +489,15 @@ class LintedFile(NamedTuple):
+ 
+         if success:
+             fname = self.path
+-            # If there is a suffix specified, then use it.s
++            # If there is a suffix specified, then use it.
+             if suffix:
+                 root, ext = os.path.splitext(fname)
+                 fname = root + suffix + ext
+-            # Actually write the file.
+-            with open(fname, "w", encoding=self.encoding) as f:
+-                f.write(write_buff)
++            try:
++                # Actually write the file.
++                with open(fname, "w", encoding=self.encoding) as f:
++                    f.write(write_buff)
++            except UnicodeEncodeError as e:
++                linter_logger.error(f"Failed to write to {fname} due to encoding error: {e}")
++                return False
+         return success

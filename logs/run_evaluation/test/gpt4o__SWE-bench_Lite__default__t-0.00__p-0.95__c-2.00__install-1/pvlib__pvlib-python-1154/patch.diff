@@ -1,0 +1,14 @@
+
+diff --git a/pvlib/irradiance.py b/pvlib/irradiance.py
+index 6580030..04abbb4 100644
+--- a/pvlib/irradiance.py
++++ b/pvlib/irradiance.py
+@@ -792,6 +792,8 @@ def haydavies(surface_tilt, surface_azimuth, dhi, dni, dni_extra,
+ 
+ def reindl(surface_tilt, surface_azimuth, dhi, dni, ghi, dni_extra,
+            solar_zenith, solar_azimuth):
++    if ghi == 0:
++        return 0
+     r'''
+     Determine diffuse irradiance from the sky on a tilted surface using
+     Reindl's 1990 model

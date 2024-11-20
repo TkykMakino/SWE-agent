@@ -1,0 +1,44 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..e18d64bb0b
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,11 @@
++from sympy import geometry as ge
++import sympy
++
++point1 = ge.Point(0,0)
++point2 = ge.Point(1,1)
++
++# This line works fine
++print(point1 + point2 * sympy.sympify(2.0))
++
++# This line raises an exception
++print(point1 + sympy.sympify(2.0) * point2)
+diff --git a/sympy/geometry/point.py b/sympy/geometry/point.py
+index 7c978c47be..ec691c321b 100644
+--- a/sympy/geometry/point.py
++++ b/sympy/geometry/point.py
+@@ -16,9 +16,10 @@
+ False
+ 
+ """
+-
+ from __future__ import division, print_function
+ 
++from sympy.core import Mul
++
+ import warnings
+ 
+ from sympy.core import S, sympify, Expr
+@@ -214,6 +215,9 @@ def __add__(self, other):
+ 
+         """
+         try:
++            if isinstance(other, Mul) and any(isinstance(arg, Point) for arg in other.args):
++                scalar, point = (arg for arg in other.args if not isinstance(arg, Point)), (arg for arg in other.args if isinstance(arg, Point))
++                other = scalar[0] * point[0]
+             s, o = Point._normalize_dimension(self, Point(other, evaluate=False))
+         except TypeError:
+             raise GeometryError("Don't know how to add {} and a Point object".format(other))

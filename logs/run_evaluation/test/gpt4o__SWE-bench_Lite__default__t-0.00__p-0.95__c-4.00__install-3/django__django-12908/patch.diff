@@ -1,0 +1,65 @@
+
+diff --git a/reproduce_union_distinct_issue.py b/reproduce_union_distinct_issue.py
+new file mode 100644
+index 0000000000..ba14909b76
+--- /dev/null
++++ b/reproduce_union_distinct_issue.py
+@@ -0,0 +1,26 @@
++from django.db.models import Value, IntegerField
++from django.test import TestCase
++from .models import Sample
++
++class UnionDistinctTestCase(TestCase):
++    def setUp(self):
++        user = self.get_or_create_admin_user()
++        Sample.objects.create(user=user, name="Sam1")
++        Sample.objects.create(user=user, name="Sam2 acid")
++        Sample.objects.create(user=user, name="Sam3")
++        Sample.objects.create(user=user, name="Sam4 acid")
++        Sample.objects.create(user=user, name="Dub")
++        Sample.objects.create(user=user, name="Dub")
++        Sample.objects.create(user=user, name="Dub")
++        self.user = user
++
++    def test_union_annotated_diff_distinct(self):
++        qs = Sample.objects.filter(user=self.user)
++        qs1 = qs.filter(name='Dub').annotate(rank=Value(0, IntegerField()))
++        qs2 = qs.filter(name='Sam1').annotate(rank=Value(1, IntegerField()))
++        qs = qs1.union(qs2)
++        qs = qs.order_by('name').distinct('name')  # THIS DISTINCT DOESN'T WORK
++        print(qs.count())  # Expected to print 2
++
++if __name__ == "__main__":
++    UnionDistinctTestCase().test_union_annotated_diff_distinct()
+diff --git a/tests/queries/test_union_distinct.py b/tests/queries/test_union_distinct.py
+new file mode 100644
+index 0000000000..378fb2adee
+--- /dev/null
++++ b/tests/queries/test_union_distinct.py
+@@ -0,0 +1,26 @@
++from django.db.models import Value, IntegerField
++from django.test import TestCase
++from tests.queries.models import Sample
++
++class UnionDistinctTestCase(TestCase):
++    def setUp(self):
++        user = self.get_or_create_admin_user()
++        Sample.objects.create(user=user, name="Sam1")
++        Sample.objects.create(user=user, name="Sam2 acid")
++        Sample.objects.create(user=user, name="Sam3")
++        Sample.objects.create(user=user, name="Sam4 acid")
++        Sample.objects.create(user=user, name="Dub")
++        Sample.objects.create(user=user, name="Dub")
++        Sample.objects.create(user=user, name="Dub")
++        self.user = user
++
++    def test_union_annotated_diff_distinct(self):
++        qs = Sample.objects.filter(user=self.user)
++        qs1 = qs.filter(name='Dub').annotate(rank=Value(0, IntegerField()))
++        qs2 = qs.filter(name='Sam1').annotate(rank=Value(1, IntegerField()))
++        qs = qs1.union(qs2)
++        qs = qs.order_by('name').distinct('name')  # THIS DISTINCT DOESN'T WORK
++        self.assertEqual(qs.count(), 2)
++
++if __name__ == "__main__":
++    UnionDistinctTestCase().test_union_annotated_diff_distinct()

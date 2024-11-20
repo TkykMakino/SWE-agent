@@ -1,0 +1,49 @@
+
+diff --git a/config.toml b/config.toml
+new file mode 100644
+index 00000000..f4f39cb9
+--- /dev/null
++++ b/config.toml
+@@ -0,0 +1,5 @@
++[settings]
++debug = true
++def from_file(self, filename, load, mode="r", silent=False):
++    filename = os.path.join(self.root_path, filename)
++    with open(filename, mode) as f:
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..effd4dd3
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,9 @@
++import flask
++import tomllib
++
++app = flask.Flask(__name__)
++
++try:
++    app.config.from_file("config.toml", tomllib.load)
++except TypeError as e:
++    print(e)
+diff --git a/src/flask/config.py b/src/flask/config.py
+index d4fc310f..5bfa4236 100644
+--- a/src/flask/config.py
++++ b/src/flask/config.py
+@@ -233,6 +233,7 @@ class Config(dict):
+         self,
+         filename: str,
+         load: t.Callable[[t.IO[t.Any]], t.Mapping],
++        mode: str = "r",
+         silent: bool = False,
+     ) -> bool:
+         """Update the values in the config from a file that is loaded
+@@ -261,7 +262,8 @@ class Config(dict):
+         filename = os.path.join(self.root_path, filename)
+ 
+         try:
+-            with open(filename) as f:
++            # print(f"Opening file with mode: {mode}")
++            with open(filename, mode) as f:
+                 obj = load(f)
+         except OSError as e:
+             if silent and e.errno in (errno.ENOENT, errno.EISDIR):

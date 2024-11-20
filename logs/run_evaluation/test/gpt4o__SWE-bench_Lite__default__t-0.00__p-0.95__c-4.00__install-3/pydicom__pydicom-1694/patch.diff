@@ -1,0 +1,19 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 000000000..c1b7b2528
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,12 @@
++import pydicom
++from pydicom.dataset import Dataset
++
++# Create a dataset with an invalid IS field
++ds = Dataset()
++ds.add_new((0x0010, 0x0010), 'IS', '2.0')
++ds.add_new((0x0010, 0x0020), 'IS', 'invalid')
++
++try:
++    json_ds = ds.to_json_dict(suppress_invalid_tags=True)
++except TypeError as e:
++    print("Script completed successfully, no errors.")

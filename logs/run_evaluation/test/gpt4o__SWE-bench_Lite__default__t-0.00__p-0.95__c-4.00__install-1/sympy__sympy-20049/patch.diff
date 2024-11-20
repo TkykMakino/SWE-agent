@@ -1,0 +1,40 @@
+
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..306c79abbb
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,18 @@
++import sympy as sm
++import sympy.physics.mechanics as me
++
++A = me.ReferenceFrame('A')
++q = me.dynamicsymbols('q')
++B = A.orientnew('B', 'Axis', (q, A.x))
++
++print(B.ang_vel_in(A))
++
++P = me.Point('P')
++Q = me.Point('Q')
++r = q*A.x + 2*q*A.y
++Q.set_pos(P, r)
++
++try:
++    print(Q.vel(A))
++except ValueError as e:
++    print(e)
+diff --git a/sympy/physics/vector/point.py b/sympy/physics/vector/point.py
+index d4e3cfcc90..cfea98e5e3 100644
+--- a/sympy/physics/vector/point.py
++++ b/sympy/physics/vector/point.py
+@@ -519,8 +519,8 @@ def vel(self, frame):
+ 
+         _check_frame(frame)
+         if not (frame in self._vel_dict):
+-            raise ValueError('Velocity of point ' + self.name + ' has not been'
+-                             ' defined in ReferenceFrame ' + frame.name)
++            self._vel_dict[frame] = self.pos_from(self).dt(frame)
++        return self._vel_dict[frame]
+         return self._vel_dict[frame]
+ 
+     def partial_velocity(self, frame, *gen_speeds):

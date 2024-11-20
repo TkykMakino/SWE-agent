@@ -1,0 +1,27 @@
+
+diff --git a/src/marshmallow/schema.py b/src/marshmallow/schema.py
+index 085c509..7fcaf2c 100644
+--- a/src/marshmallow/schema.py
++++ b/src/marshmallow/schema.py
+@@ -644,7 +644,8 @@ class BaseSchema(base.SchemaABC):
+         :param bool postprocess: Whether to run post_load methods..
+         :return: A tuple of the form (`data`, `errors`)
+         """
+-        # Callable unmarshalling object
++        if data is None:
++            return None, {'_schema': ['Invalid input type.']}
+         unmarshal = marshalling.Unmarshaller()
+         errors = {}
+         many = self.many if many is None else bool(many)
+@@ -891,7 +892,10 @@ class BaseSchema(base.SchemaABC):
+                             data[idx].pop(field_name, None)
+             else:
+                 try:
+-                    value = data[field_obj.attribute or field_name]
++                    if data is not None:
++                        value = data.get(field_obj.attribute or field_name, None)
++                    else:
++                        value = None
+                 except KeyError:
+                     pass
+                 else:

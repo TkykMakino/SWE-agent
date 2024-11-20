@@ -1,0 +1,26 @@
+
+diff --git a/mydicom.dcm b/mydicom.dcm
+new file mode 100644
+index 000000000..13afaa284
+Binary files /dev/null and b/mydicom.dcm differ
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 000000000..3b4ce405e
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,15 @@
++import pydicom
++import array
++
++data = list(range(1, 10))
++data = array.array('H', data).tobytes()  # to convert to unsigned short
++lineSeq = pydicom.Dataset()
++lineSeq.is_little_endian = True
++print(lineSeq)
++lineSeq.add_new(0x00660040, 'OL', data)
++ds = pydicom.Dataset()
++ds.add_new(0x300A00B0, 'SQ', [lineSeq])
++ds.is_little_endian = True
++ds.is_implicit_VR = True
++print(ds)
++ds.save_as("mydicom.dcm")

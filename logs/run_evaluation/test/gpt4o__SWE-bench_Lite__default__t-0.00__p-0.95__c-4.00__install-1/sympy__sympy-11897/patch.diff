@@ -1,0 +1,20 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..f12748ae0e
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,13 @@
++from sympy import var, exp, log
++from sympy.printing.latex import latex
++from sympy.printing.pretty import pprint
++
++x = var('x', positive=True)
++print("Latex output:", latex(exp(-x)*log(x)))
++print("Pretty print output:")
++pprint(exp(-x)*log(x))
++
++x, y = var('x y')
++print("Latex output:", latex(1/(x + y)/2))
++print("Pretty print output:")
++pprint(1/(x + y)/2)

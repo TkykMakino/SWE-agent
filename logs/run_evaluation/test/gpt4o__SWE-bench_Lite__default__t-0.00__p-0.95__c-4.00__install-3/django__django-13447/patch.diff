@@ -1,0 +1,40 @@
+
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..01647811e1
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,33 @@
++import os
++from django.conf import settings
++
++# Configure Django settings
++os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django.conf.global_settings')
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++        'django.contrib.admin',
++    ],
++)
++import django
++django.setup()
++
++from django.contrib.admin.sites import site
++from django.http import HttpRequest
++from django.contrib.auth.models import AnonymousUser
++
++# Create a mock request object
++request = HttpRequest()
++request.user = AnonymousUser()
++
++# Get the app list
++app_list = site.get_app_list(request)
++
++# Print the app list to verify its contents
++for app in app_list:
++    print(f"App: {app['name']}")
++    for model in app['models']:
++        print(f"  Model: {model['name']}, Object Name: {model['object_name']}")
++
++print("Script completed successfully, no errors.")

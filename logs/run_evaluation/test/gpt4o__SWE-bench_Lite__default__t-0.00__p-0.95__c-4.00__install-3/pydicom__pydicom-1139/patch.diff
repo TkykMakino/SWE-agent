@@ -1,0 +1,16 @@
+
+diff --git a/pydicom/valuerep.py b/pydicom/valuerep.py
+index e992f7872..807d70479 100644
+--- a/pydicom/valuerep.py
++++ b/pydicom/valuerep.py
+@@ -638,8 +638,8 @@ class PersonName:
+             # if the encoding is not given, leave it as undefined (None)
+         self.encodings = _verify_encodings(encodings)
+         self._dict = {}
+-
+-    def _create_dict(self):
++    def __iter__(self):
++        return iter(str(self))
+         """Creates a dictionary of person name group and component names.
+ 
+         Used exclusively for `formatted` for backwards compatibility.

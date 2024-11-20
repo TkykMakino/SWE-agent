@@ -1,0 +1,190 @@
+
+diff --git a/django/contrib/sessions/backends/base.py b/django/contrib/sessions/backends/base.py
+index 187e14b1b7..9f1b72d9c7 100644
+--- a/django/contrib/sessions/backends/base.py
++++ b/django/contrib/sessions/backends/base.py
+@@ -1,4 +1,88 @@
+ import base64
++import binascii
++import logging
++import string
++import warnings
++from datetime import datetime, timedelta
++
++from django.conf import settings
++from django.contrib.sessions.exceptions import SuspiciousSession
++from django.core import signing
++from django.core.exceptions import SuspiciousOperation
++from django.core.signing import BadSignature
++
++# Existing code...
++
++def decode(self, session_data):
++    try:
++        return signing.loads(session_data, salt=self.key_salt, serializer=self.serializer)
++    except (BadSignature, binascii.Error, ValueError):
++        return {}
++    except Exception:
++        return self._legacy_decode(session_data)
++import binascii
++import logging
++import string
++import warnings
++from datetime import datetime, timedelta
++
++from django.conf import settings
++from django.contrib.sessions.exceptions import SuspiciousSession
++from django.core import signing
++from django.core.exceptions import SuspiciousOperation
++from django.core.signing import BadSignature
++
++# Existing code...
++
++def decode(self, session_data):
++    try:
++        return signing.loads(session_data, salt=self.key_salt, serializer=self.serializer)
++    except (BadSignature, binascii.Error, ValueError):
++        return {}
++    except Exception:
++        return self._legacy_decode(session_data)
++import binascii
++import logging
++import string
++import warnings
++from datetime import datetime, timedelta
++
++from django.conf import settings
++from django.contrib.sessions.exceptions import SuspiciousSession
++from django.core import signing
++from django.core.exceptions import SuspiciousOperation
++from django.core.signing import BadSignature
++
++# Existing code...
++
++def decode(self, session_data):
++    try:
++        return signing.loads(session_data, salt=self.key_salt, serializer=self.serializer)
++    except (BadSignature, binascii.Error, ValueError):
++        return {}
++    except Exception:
++        return self._legacy_decode(session_data)
++import binascii
++import logging
++import string
++import warnings
++from datetime import datetime, timedelta
++
++from django.conf import settings
++from django.contrib.sessions.exceptions import SuspiciousSession
++from django.core import signing
++from django.core.exceptions import SuspiciousOperation
++from django.core.signing import BadSignature
++
++# Existing code...
++
++def decode(self, session_data):
++    try:
++        return signing.loads(session_data, salt=self.key_salt, serializer=self.serializer)
++    except (BadSignature, binascii.Error, ValueError):
++        return {}
++    except Exception:
++        return self._legacy_decode(session_data)
+ import logging
+ import string
+ import warnings
+@@ -117,10 +201,14 @@ class SessionBase:
+         )
+ 
+     def decode(self, session_data):
++        import binascii
++        from django.core import signing
++        from django.core.signing import BadSignature
++
+         try:
+             return signing.loads(session_data, salt=self.key_salt, serializer=self.serializer)
+-        # RemovedInDjango40Warning: when the deprecation ends, handle here
+-        # exceptions similar to what _legacy_decode() does now.
++        except (BadSignature, binascii.Error, ValueError):
++            return {}
+         except Exception:
+             return self._legacy_decode(session_data)
+ 
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..61e05e85d9
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,73 @@
++import binascii
++from django.core import signing
++from django.core.signing import BadSignature
++import os
++from django.conf import settings
++from django.contrib.sessions.backends.base import SessionBase
++
++# Configure settings
++os.environ['DJANGO_SETTINGS_MODULE'] = 'django.conf.global_settings'
++settings.configure(SESSION_SERIALIZER='django.contrib.sessions.serializers.JSONSerializer')
++
++# Simulate invalid session data
++invalid_session_data = "invalid_session_data"
++
++session = SessionBase()
++
++try:
++    session.decode(invalid_session_data)
++except BadSignature as e:
++    print(f"Caught BadSignature: {e}")
++except Exception as e:
++    print(f"Caught Exception: {e}")
++
++def decode(self, session_data):
++    try:
++        return signing.loads(session_data, salt=self.key_salt, serializer=self.serializer)
++    except (BadSignature, binascii.Error, ValueError):
++        return {}
++    except Exception:
++        return self._legacy_decode(session_data)
++from django.conf import settings
++from django.core.signing import BadSignature
++from django.contrib.sessions.backends.base import SessionBase
++
++# Configure settings
++os.environ['DJANGO_SETTINGS_MODULE'] = 'django.conf.global_settings'
++settings.configure(SESSION_SERIALIZER='django.contrib.sessions.serializers.JSONSerializer')
++
++# Simulate invalid session data
++invalid_session_data = "invalid_session_data"
++
++session = SessionBase()
++
++try:
++    session.decode(invalid_session_data)
++except BadSignature as e:
++    print(f"Caught BadSignature: {e}")
++except Exception as e:
++    print(f"Caught Exception: {e}")
++from django.core.signing import BadSignature
++
++# Simulate invalid session data
++invalid_session_data = "invalid_session_data"
++
++session = SessionBase()
++
++try:
++    session.decode(invalid_session_data)
++except BadSignature as e:
++    print(f"Caught BadSignature: {e}")
++except Exception as e:
++    print(f"Caught Exception: {e}")
++    def decode(self, session_data):
++        import binascii
++        from django.core import signing
++        from django.core.signing import BadSignature
++
++        try:
++            return signing.loads(session_data, salt=self.key_salt, serializer=self.serializer)
++        except (BadSignature, binascii.Error, ValueError):
++            return {}
++        except Exception:
++            return self._legacy_decode(session_data)

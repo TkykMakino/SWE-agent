@@ -1,0 +1,71 @@
+
+diff --git a/django/contrib/staticfiles/handlers.py b/django/contrib/staticfiles/handlers.py
+index 711d8864ad..e69e52cb12 100644
+--- a/django/contrib/staticfiles/handlers.py
++++ b/django/contrib/staticfiles/handlers.py
+@@ -77,6 +77,11 @@ class ASGIStaticFilesHandler(StaticFilesHandlerMixin, ASGIHandler):
+     def __init__(self, application):
+         self.application = application
+         self.base_url = urlparse(self.get_base_url())
++    async def get_response_async(self, request):
++        try:
++            return await self.serve(request)
++        except Http404 as e:
++            return response_for_exception(request, e)
+ 
+     async def __call__(self, scope, receive, send):
+         # Only even look at HTTP requests
+diff --git a/mysite/settings.py b/mysite/settings.py
+new file mode 100644
+index 0000000000..15d8b3e4ff
+--- /dev/null
++++ b/mysite/settings.py
+@@ -0,0 +1,6 @@
++SECRET_KEY = 'dummy'
++INSTALLED_APPS = [
++    'django.contrib.staticfiles',
++]
++STATIC_URL = '/static/'
++ROOT_URLCONF = 'mysite.urls'
+diff --git a/mysite/urls.py b/mysite/urls.py
+new file mode 100644
+index 0000000000..e39cb2c054
+--- /dev/null
++++ b/mysite/urls.py
+@@ -0,0 +1,3 @@
++from django.urls import path
++
++urlpatterns = []
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..5f98c4fa15
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,27 @@
++from django.contrib.staticfiles.handlers import ASGIStaticFilesHandler
++from django.core.handlers.asgi import ASGIHandler
++from django.core.asgi import get_asgi_application
++import django
++import os
++
++os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
++django.setup()
++
++application = ASGIStaticFilesHandler(get_asgi_application())
++
++async def test_asgi_static_files_handler():
++    scope = {
++        'type': 'http',
++        'method': 'GET',
++        'path': '/static/test.txt',
++        'headers': [],
++    }
++    async def receive():
++        return {'type': 'http.request', 'body': b''}
++    async def send(message):
++        pass
++
++    await application(scope, receive, send)
++
++import asyncio
++asyncio.get_event_loop().run_until_complete(test_asgi_static_files_handler())

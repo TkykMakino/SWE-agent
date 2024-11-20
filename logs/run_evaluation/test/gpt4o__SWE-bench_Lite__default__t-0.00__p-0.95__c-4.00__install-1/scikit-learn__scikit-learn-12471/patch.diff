@@ -1,0 +1,14 @@
+
+diff --git a/sklearn/preprocessing/_encoders.py b/sklearn/preprocessing/_encoders.py
+index 1e05aba59..8f2b07254 100644
+--- a/sklearn/preprocessing/_encoders.py
++++ b/sklearn/preprocessing/_encoders.py
+@@ -557,6 +557,8 @@ class OneHotEncoder(_BaseEncoder):
+         X_temp = check_array(X, dtype=None)
+         if not hasattr(X, 'dtype') and np.issubdtype(X_temp.dtype, np.str_):
+             X = check_array(X, dtype=np.object)
++        elif hasattr(X, 'dtype') and X.dtype.kind in {'U', 'S'}:
++            X = check_array(X, dtype=np.object)
+         else:
+             X = X_temp
+ 

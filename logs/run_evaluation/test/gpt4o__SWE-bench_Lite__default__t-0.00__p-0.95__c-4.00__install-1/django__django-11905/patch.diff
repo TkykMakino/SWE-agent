@@ -1,0 +1,38 @@
+
+diff --git a/reproduce_isnull_issue.py b/reproduce_isnull_issue.py
+new file mode 100644
+index 0000000000..3293fb7118
+--- /dev/null
++++ b/reproduce_isnull_issue.py
+@@ -0,0 +1,31 @@
++import django
++from django.conf import settings
++from django.db import models
++
++# Minimal settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++# Define a simple model for testing
++class TestModel(models.Model):
++    name = models.CharField(max_length=100)
++
++    class Meta:
++        app_label = 'test_app'
++# Create a query using __isnull with a non-boolean value
++try:
++    TestModel.objects.filter(name__isnull="non-boolean")
++    print("No error raised for non-boolean value in __isnull lookup.")
++except ValueError as e:
++    print(f"Error raised as expected: {e}")

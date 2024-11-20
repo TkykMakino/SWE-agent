@@ -1,0 +1,58 @@
+
+diff --git a/django/db/models/fields/__init__.py b/django/db/models/fields/__init__.py
+index ee45bb941e..3522745e55 100644
+--- a/django/db/models/fields/__init__.py
++++ b/django/db/models/fields/__init__.py
+@@ -763,8 +763,9 @@ class Field(RegisterLookupMixin):
+             if not getattr(cls, self.attname, None):
+                 setattr(cls, self.attname, self.descriptor_class(self))
+         if self.choices is not None:
+-            setattr(cls, 'get_%s_display' % self.name,
+-                    partialmethod(cls._get_FIELD_display, field=self))
++            if self.choices is not None and not hasattr(cls, 'get_%s_display' % self.name):
++                setattr(cls, 'get_%s_display' % self.name,
++                        partialmethod(cls._get_FIELD_display, field=self))
+ 
+     def get_filter_kwargs_for_object(self, obj):
+         """
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..60c7b00f85
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,35 @@
++import django
++from django.conf import settings
++from django.db import models
++
++# Minimal Django settings configuration
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++class FooBar(models.Model):
++    foo_bar = models.CharField("foo", choices=[(1, 'foo'), (2, 'bar')])
++
++    def __str__(self):
++        return self.get_foo_bar_display()  # This should return 'something'
++
++    def get_foo_bar_display(self):
++        return "something"
++
++    class Meta:
++        app_label = 'myapp'
++
++# Create an instance and print the display value
++foobar = FooBar(foo_bar=1)
++print(foobar.get_foo_bar_display())  # Expected: "something"
++print(foobar.__str__())  # Expected: "something"

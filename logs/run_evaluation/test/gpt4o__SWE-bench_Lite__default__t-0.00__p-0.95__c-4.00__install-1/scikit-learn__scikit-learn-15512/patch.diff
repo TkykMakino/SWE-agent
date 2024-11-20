@@ -1,0 +1,31 @@
+
+diff --git a/sklearn/cluster/_affinity_propagation.py b/sklearn/cluster/_affinity_propagation.py
+index 4806afee9..5c6e19cfb 100644
+--- a/sklearn/cluster/_affinity_propagation.py
++++ b/sklearn/cluster/_affinity_propagation.py
+@@ -197,11 +197,9 @@ def affinity_propagation(S, preference=None, convergence_iter=15, max_iter=200,
+                 if verbose:
+                     print("Converged after %d iterations." % it)
+                 break
+-    else:
+         if verbose:
+             print("Did not converge")
+-
+-    I = np.flatnonzero(E)
++        return (np.array([]), np.array([-1] * n_samples), it) if return_n_iter else (np.array([]), np.array([-1] * n_samples))
+     K = I.size  # Identify exemplars
+ 
+     if K > 0:
+@@ -388,9 +386,10 @@ class AffinityPropagation(ClusterMixin, BaseEstimator):
+                 convergence_iter=self.convergence_iter, damping=self.damping,
+                 copy=self.copy, verbose=self.verbose, return_n_iter=True)
+ 
+-        if self.affinity != "precomputed":
++        if len(self.cluster_centers_indices_) > 0:
+             self.cluster_centers_ = X[self.cluster_centers_indices_].copy()
+-
++        else:
++            self.cluster_centers_ = np.array([])
+         return self
+ 
+     def predict(self, X):

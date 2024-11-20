@@ -1,0 +1,68 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..41bd9c6f84
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,61 @@
++import django
++from django.conf import settings
++from django.db import models
++from django.db.models import Q, Count, Subquery, OuterRef
++
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++    ],
++    DATABASES={
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++            'NAME': ':memory:',
++        }
++    }
++)
++
++django.setup()
++
++class A(models.Model):
++    bs = models.ManyToManyField('B', related_name="a", through="AB")
++
++    class Meta:
++        app_label = 'test_app'
++
++class B(models.Model):
++    class Meta:
++        app_label = 'test_app'
++
++class AB(models.Model):
++    a = models.ForeignKey(A, on_delete=models.CASCADE, related_name="ab_a")
++    b = models.ForeignKey(B, on_delete=models.CASCADE, related_name="ab_b")
++    status = models.IntegerField()
++
++    class Meta:
++        app_label = 'test_app'
++
++class C(models.Model):
++    a = models.ForeignKey(
++        A,
++        null=True,
++        blank=True,
++        on_delete=models.SET_NULL,
++        related_name="c",
++        verbose_name="a"
++    )
++    status = models.IntegerField()
++
++    class Meta:
++        app_label = 'test_app'
++
++ab_query = AB.objects.filter(a=OuterRef("pk"), b=1)
++filter_conditions = Q(pk=1) | Q(ab_a__a=1)
++query = A.objects.filter(filter_conditions).annotate(
++    status=Subquery(ab_query.values("status")),
++    c_count=Count("c"),
++)
++answer = query.values("status").annotate(total_count=Count("status"))
++print(answer.query)
++print(answer)

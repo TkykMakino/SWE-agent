@@ -1,0 +1,18 @@
+
+diff --git a/mydicom b/mydicom
+new file mode 100644
+index 000000000..e69de29bb
+diff --git a/pydicom/dataelem.py b/pydicom/dataelem.py
+index b2709f132..a58596d4c 100644
+--- a/pydicom/dataelem.py
++++ b/pydicom/dataelem.py
+@@ -543,7 +543,8 @@ class DataElement:
+         #    but needs more thought
+         # elif self.VR == "PN":
+         #    return PersonName(val)
+-        else:  # is either a string or a type 2 optionally blank string
++        elif self.VR == "OL":
++            return bytes(val)
+             return val  # this means a "numeric" value could be empty string ""
+         # except TypeError:
+             # print "Could not convert value '%s' to VR '%s' in tag %s" \

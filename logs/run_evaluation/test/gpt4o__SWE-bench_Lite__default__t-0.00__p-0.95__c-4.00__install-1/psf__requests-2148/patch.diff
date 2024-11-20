@@ -1,0 +1,26 @@
+
+diff --git a/reproduce_socket_error.py b/reproduce_socket_error.py
+new file mode 100644
+index 00000000..111b2b3c
+--- /dev/null
++++ b/reproduce_socket_error.py
+@@ -0,0 +1,19 @@
++import requests
++import socket
++from requests.adapters import HTTPAdapter
++from requests.exceptions import ConnectionError
++from requests.packages.urllib3.util.retry import Retry
++
++class MockHTTPAdapter(HTTPAdapter):
++    def send(self, *args, **kwargs):
++        raise socket.error("Simulated socket error")
++
++session = requests.Session()
++session.mount("http://", MockHTTPAdapter())
++
++try:
++    session.get("http://example.com")
++except ConnectionError as e:
++    print(f"Caught ConnectionError: {e}")
++except socket.error as e:
++    print(f"Caught socket.error: {e}")

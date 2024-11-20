@@ -1,0 +1,17 @@
+
+diff --git a/sympy/parsing/sympy_parser.py b/sympy/parsing/sympy_parser.py
+index 2ab43d9b31..38197e5e92 100644
+--- a/sympy/parsing/sympy_parser.py
++++ b/sympy/parsing/sympy_parser.py
+@@ -899,9 +899,8 @@ def eval_expr(code, local_dict, global_dict):
+ 
+     Generally, ``parse_expr`` should be used.
+     """
+-    expr = eval(
+-        code, global_dict, local_dict)  # take local objects in preference
+-
++    from ast import literal_eval
++    expr = literal_eval(code)
+     return expr
+ 
+ 

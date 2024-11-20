@@ -1,0 +1,112 @@
+
+diff --git a/django/db/models/sql/query.py b/django/db/models/sql/query.py
+index 8e55bd092d..7c9cc6c7d7 100644
+--- a/django/db/models/sql/query.py
++++ b/django/db/models/sql/query.py
+@@ -1348,33 +1348,38 @@ class Query(BaseExpression):
+     def build_where(self, q_object):
+         return self._add_q(q_object, used_aliases=set(), allow_joins=False, simple_col=True)[0]
+ 
+-    def _add_q(self, q_object, used_aliases, branch_negated=False,
+-               current_negated=False, allow_joins=True, split_subq=True,
+-               simple_col=False):
+-        """Add a Q-object to the current filter."""
+-        connector = q_object.connector
+-        current_negated = current_negated ^ q_object.negated
+-        branch_negated = branch_negated or q_object.negated
+-        target_clause = self.where_class(connector=connector,
+-                                         negated=q_object.negated)
+-        joinpromoter = JoinPromoter(q_object.connector, len(q_object.children), current_negated)
+-        for child in q_object.children:
+-            if isinstance(child, Node):
+-                child_clause, needed_inner = self._add_q(
+-                    child, used_aliases, branch_negated,
+-                    current_negated, allow_joins, split_subq, simple_col)
+-                joinpromoter.add_votes(needed_inner)
+-            else:
+-                child_clause, needed_inner = self.build_filter(
+-                    child, can_reuse=used_aliases, branch_negated=branch_negated,
+-                    current_negated=current_negated, allow_joins=allow_joins,
+-                    split_subq=split_subq, simple_col=simple_col,
+-                )
+-                joinpromoter.add_votes(needed_inner)
+-            if child_clause:
+-                target_clause.add(child_clause, connector)
+-        needed_inner = joinpromoter.update_join_types(self)
+-        return target_clause, needed_inner
++def _add_q(self, q_object, used_aliases, branch_negated=False,
++           current_negated=False, allow_joins=True, split_subq=True,
++           simple_col=False):
++    """Add a Q-object to the current filter."""
++    connector = q_object.connector
++    current_negated = current_negated ^ q_object.negated
++    branch_negated = branch_negated or q_object.negated
++    target_clause = self.where_class(connector=connector,
++                                     negated=q_object.negated)
++    joinpromoter = JoinPromoter(q_object.connector, len(q_object.children), current_negated)
++    for child in q_object.children:
++        if isinstance(child, Node):
++            child_clause, needed_inner = self._add_q(
++                child, used_aliases, branch_negated,
++                current_negated, allow_joins, split_subq, simple_col)
++            joinpromoter.add_votes(needed_inner)
++        else:
++            child_clause, needed_inner = self.build_filter(
++                child, can_reuse=used_aliases, branch_negated=branch_negated,
++                current_negated=current_negated, allow_joins=allow_joins,
++                split_subq=split_subq, simple_col=simple_col,
++            )
++            joinpromoter.add_votes(needed_inner)
++        if child_clause:
++            target_clause.add(child_clause, connector)
++    needed_inner = joinpromoter.update_join_types(self)
++    
++    # Preserve existing GROUP BY clauses
++    if self.group_by:
++        target_clause.add(self.group_by, connector)
++    
++    return target_clause, needed_inner
+ 
+     def build_filtered_relation_q(self, q_object, reuse, branch_negated=False, current_negated=False):
+         """Add a FilteredRelation object to the current filter."""
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..8a2eb30dba
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,16 @@
++import os
++import django
++os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
++django.setup()
++
++from django.contrib.auth import models
++from django.db.models import Max
++
++a = models.User.objects.filter(email__isnull=True).values('email').annotate(m=Max('id')).values('m')
++print(a.query)  # good
++# SELECT MAX("auth_user"."id") AS "m" FROM "auth_user" WHERE "auth_user"."email" IS NULL GROUP BY "auth_user"."email"
++print(a[:1].query)  # good
++# SELECT MAX("auth_user"."id") AS "m" FROM "auth_user" WHERE "auth_user"."email" IS NULL GROUP BY "auth_user"."email" LIMIT 1
++b = models.User.objects.filter(id=a[:1])
++print(b.query)  # GROUP BY U0."id" should be GROUP BY U0."email"
++# SELECT ... FROM "auth_user" WHERE "auth_user"."id" = (SELECT U0."id" FROM "auth_user" U0 WHERE U0."email" IS NULL GROUP BY U0."id" LIMIT 1)
+diff --git a/settings.py b/settings.py
+new file mode 100644
+index 0000000000..ab63825a56
+--- /dev/null
++++ b/settings.py
+@@ -0,0 +1,13 @@
++INSTALLED_APPS = [
++    'django.contrib.auth',
++    'django.contrib.contenttypes',
++]
++
++DATABASES = {
++    'default': {
++        'ENGINE': 'django.db.backends.sqlite3',
++        'NAME': ':memory:',
++    }
++}
++
++SECRET_KEY = 'dummy'

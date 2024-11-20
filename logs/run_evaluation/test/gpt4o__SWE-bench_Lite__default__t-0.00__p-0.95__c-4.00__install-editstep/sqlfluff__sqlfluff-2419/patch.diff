@@ -1,0 +1,24 @@
+
+diff --git a/src/sqlfluff/rules/L060.py b/src/sqlfluff/rules/L060.py
+index 836941ed..72597c9d 100644
+--- a/src/sqlfluff/rules/L060.py
++++ b/src/sqlfluff/rules/L060.py
+@@ -47,6 +47,9 @@ class Rule_L060(BaseRule):
+         if context.segment.raw_upper not in {"IFNULL", "NVL"}:
+             return None
+ 
++        # Determine the specific function name.
++        function_name = context.segment.raw_upper
++
+         # Create fix to replace ``IFNULL`` or ``NVL`` with ``COALESCE``.
+         fix = LintFix.replace(
+             context.segment,
+@@ -59,4 +62,7 @@ class Rule_L060(BaseRule):
+             ],
+         )
+ 
+-        return LintResult(context.segment, [fix])
++        # Create a specific error message.
++        message = f"Use 'COALESCE' instead of '{function_name}'."
++
++        return LintResult(anchor=context.segment, fixes=[fix], description=message)

@@ -1,0 +1,18 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 000000000..5dc635086
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,11 @@
++import numpy as np
++from astropy.io.fits.fitsrec import encode_ascii
++
++# Create a sample chararray
++output_field = np.chararray((3,), itemsize=10)
++output_field[:] = '1.23D+03'
++
++# Replace exponent separator in floating point numbers
++output_field = output_field.replace(encode_ascii('D'), encode_ascii('E'))
++
++print(output_field)

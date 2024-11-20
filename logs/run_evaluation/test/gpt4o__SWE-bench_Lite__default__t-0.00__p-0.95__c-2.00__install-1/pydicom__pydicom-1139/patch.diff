@@ -1,0 +1,31 @@
+
+diff --git a/pydicom/tests/test_valuerep.py b/pydicom/tests/test_valuerep.py
+index ad5a62d99..09d11630a 100644
+--- a/pydicom/tests/test_valuerep.py
++++ b/pydicom/tests/test_valuerep.py
+@@ -280,6 +280,12 @@ class TestDecimalString:
+ 
+ 
+ class TestPersonName:
++    def test_contains(self):
++        """PN: Test if PersonName is iterable..."""
++        pn = PersonName("Family^Given")
++        assert 'F' in pn
++        assert 'G' in pn
++        assert 'X' not in pn
+     def test_last_first(self):
+         """PN: Simple Family-name^Given-name works..."""
+         pn = PersonName("Family^Given")
+diff --git a/pydicom/valuerep.py b/pydicom/valuerep.py
+index e992f7872..96ce701bb 100644
+--- a/pydicom/valuerep.py
++++ b/pydicom/valuerep.py
+@@ -607,6 +607,8 @@ def _encode_personname(components, encodings):
+ 
+ 
+ class PersonName:
++    def __contains__(self, item):
++        return item in str(self)
+     def __new__(cls, *args, **kwargs):
+         # Handle None value by returning None instead of a PersonName object
+         if len(args) and args[0] is None:

@@ -1,0 +1,179 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..9a52f207
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,14 @@
++from sqlfluff.core import Linter
++
++queries = [
++    "SELECT [hello] FROM mytable",
++    "SELECT a.[hello] FROM mytable AS a"
++]
++
++linter = Linter(dialect='tsql')
++
++for query in queries:
++    lint_result = linter.lint_string(query)
++    print(f"Query: {query}")
++    for violation in lint_result.violations:
++        print(f"Violation: {violation}")
+diff --git a/src/sqlfluff/rules/L031.py b/src/sqlfluff/rules/L031.py
+index 838c6ce5..e0c9f21a 100644
+--- a/src/sqlfluff/rules/L031.py
++++ b/src/sqlfluff/rules/L031.py
+@@ -52,6 +52,8 @@ class Rule_L031(BaseRule):
+         Find base table, table expressions in join, and other expressions in select clause
+         and decide if it's needed to report them.
+         """
++        print("Debug: Entered _eval method")
++        print(f"Debug: segment.is_type('select_statement') = {segment.is_type('select_statement')}")
+         if segment.is_type("select_statement"):
+             # A buffer for all table expressions in join conditions
+             from_expression_elements = []
+@@ -91,17 +93,17 @@ class Rule_L031(BaseRule):
+                 for column_reference in clause.recursive_crawl("column_reference"):
+                     column_reference_segments.append(column_reference)
+ 
+-            return (
+-                self._lint_aliases_in_join(
++            # Check if there are any join conditions
++            if len(from_expression_elements) > 1:
++                return self._lint_aliases_in_join(
+                     base_table,
+                     from_expression_elements,
+                     column_reference_segments,
+                     segment,
+                 )
+-                or None
+-            )
+-        return None
+-
++            # If no join conditions, do not trigger the rule
++            return None
++            return None
+     class TableAliasInfo(NamedTuple):
+         """Structure yielded by_filter_table_expressions()."""
+ 
+diff --git a/test/fixtures/rules/std_rule_cases/L031.yml b/test/fixtures/rules/std_rule_cases/L031.yml
+index 40b41639..f975f93c 100644
+--- a/test/fixtures/rules/std_rule_cases/L031.yml
++++ b/test/fixtures/rules/std_rule_cases/L031.yml
+@@ -1,5 +1,116 @@
+ rule: L031
+ 
++test_pass_allow_self_join_alias:
++  # L031 Allow self-joins
++  pass_str: |
++    select
++      x.a,
++      x_2.b
++    from x
++    left join x as x_2 on x.foreign_key = x.foreign_key
++
++test_fail_avoid_aliases_1:
++  fail_str: |
++    SELECT
++      u.id,
++      c.first_name,
++      c.last_name,
++      COUNT(o.user_id)
++    FROM users as u
++    JOIN customers as c on u.id = c.user_id
++    JOIN orders as o on u.id = o.user_id;
++
++  fix_str: |
++    SELECT
++      users.id,
++      customers.first_name,
++      customers.last_name,
++      COUNT(orders.user_id)
++    FROM users
++    JOIN customers on users.id = customers.user_id
++    JOIN orders on users.id = orders.user_id;
++
++test_fail_avoid_aliases_2:
++  # L031 order by
++  fail_str: |
++    SELECT
++      u.id,
++      c.first_name,
++      c.last_name,
++      COUNT(o.user_id)
++    FROM users as u
++    JOIN customers as c on u.id = c.user_id
++    JOIN orders as o on u.id = o.user_id
++    order by o.user_id desc
++
++  fix_str: |
++    SELECT
++      users.id,
++      customers.first_name,
++      customers.last_name,
++      COUNT(orders.user_id)
++    FROM users
++    JOIN customers on users.id = customers.user_id
++    JOIN orders on users.id = orders.user_id
++    order by orders.user_id desc
++
++test_fail_avoid_aliases_3:
++  # L031 order by identifier which is the same raw as an alias but refers to a column
++  fail_str: |
++    SELECT
++      u.id,
++      c.first_name,
++      c.last_name,
++      COUNT(o.user_id)
++    FROM users as u
++    JOIN customers as c on u.id = c.user_id
++    JOIN orders as o on u.id = o.user_id
++    order by o desc
++
++  fix_str: |
++    SELECT
++      users.id,
++      customers.first_name,
++      customers.last_name,
++      COUNT(orders.user_id)
++    FROM users
++    JOIN customers on users.id = customers.user_id
++    JOIN orders on users.id = orders.user_id
++    order by o desc
++
++alias_single_char_identifiers:
++  fail_str: "select b from tbl as a"
++  fix_str: "select b from tbl"
++
++alias_with_wildcard_identifier:
++  fail_str: "select * from tbl as a"
++  fix_str: "select * from tbl"
++
++select_from_values:
++  pass_str: |
++    select *
++    from values(1, 2, 3)
++
++select_from_table_generator:
++  pass_str: |
++    select *
++    from table(
++        generator(
++            rowcount=>10000
++        )
++    )
++
++# New test cases
++test_pass_no_alias:
++  pass_str: |
++    SELECT [hello]
++    FROM mytable
++
++test_pass_with_alias:
++  pass_str: |
++    SELECT a.[hello]
++    FROM mytable AS a
++
+ test_pass_allow_self_join_alias:
+   # L031 Allow self-joins
+   pass_str: |

@@ -1,0 +1,49 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..a406099c31
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,9 @@
++from sympy import *
++n, i = symbols('n, i', integer=True)
++A = MatrixSymbol('A', 1, 1)
++B = MatrixSymbol('B', n, 1)
++C = BlockMatrix([[A], [B]])
++print('C is')
++pprint(C)
++print('C[i, 0] is')
++pprint(C[i, 0])
+diff --git a/sympy/matrices/expressions/matexpr.py b/sympy/matrices/expressions/matexpr.py
+index 2a1789fc9f..b1f2778f13 100644
+--- a/sympy/matrices/expressions/matexpr.py
++++ b/sympy/matrices/expressions/matexpr.py
+@@ -241,10 +241,24 @@ def _check_dim(cls, dim):
+                 "a nonnegative integer.".format(dim))
+ 
+ 
+-    def _entry(self, i, j, **kwargs):
+-        raise NotImplementedError(
+-            "Indexing not implemented for %s" % self.__class__.__name__)
+-
++        def _entry(self, i, j, **kwargs):
++            from sympy import Piecewise
++            from sympy.core.relational import Ge
++            from sympy.matrices.expressions.matexpr import MatrixElement
++
++            # Calculate the row offset for each block
++            row_offsets = [0]
++            for block in self.blocks:
++                row_offsets.append(row_offsets[-1] + block.shape[0])
++
++            # Determine which block the element belongs to
++            conditions = []
++            values = []
++            for k, block in enumerate(self.blocks):
++                conditions.append(Ge(i, row_offsets[k]) & (i < row_offsets[k + 1]))
++                values.append(MatrixElement(block, i - row_offsets[k], j))
++
++            return Piecewise(*zip(values, conditions))
+     def adjoint(self):
+         return adjoint(self)
+ 

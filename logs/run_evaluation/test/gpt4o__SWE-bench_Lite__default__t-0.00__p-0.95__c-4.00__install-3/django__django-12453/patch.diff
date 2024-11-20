@@ -1,0 +1,52 @@
+
+diff --git a/test_rollback_issue.py b/test_rollback_issue.py
+new file mode 100644
+index 0000000000..ca288ce873
+--- /dev/null
++++ b/test_rollback_issue.py
+@@ -0,0 +1,25 @@
++from django.test import TransactionTestCase
++from django.db import models
++
++class ForeignKeyModel(models.Model):
++    name = models.CharField(max_length=100)
++
++class MainModel(models.Model):
++    name = models.CharField(max_length=100)
++    foreign_key = models.ForeignKey(ForeignKeyModel, on_delete=models.CASCADE)
++
++class RollbackTestCase(TransactionTestCase):
++    serialized_rollback = True
++
++    def test_rollback(self):
++        fk_instance = ForeignKeyModel.objects.create(name="FK Instance")
++        MainModel.objects.create(name="Main Instance", foreign_key=fk_instance)
++        self.assertEqual(ForeignKeyModel.objects.count(), 1)
++        self.assertEqual(MainModel.objects.count(), 1)
++
++        # Trigger rollback emulation
++        self._fixture_setup()
++        self.assertEqual(ForeignKeyModel.objects.count(), 1)
++        self.assertEqual(MainModel.objects.count(), 1)
++
++print("Script completed successfully, no errors.")
+diff --git a/test_settings.py b/test_settings.py
+new file mode 100644
+index 0000000000..4d29a75376
+--- /dev/null
++++ b/test_settings.py
+@@ -0,0 +1,14 @@
++INSTALLED_APPS = [
++    'django.contrib.contenttypes',
++    'django.contrib.auth',
++    '__main__',  # This will include the models defined in the test script
++]
++
++DATABASES = {
++    'default': {
++        'ENGINE': 'django.db.backends.sqlite3',
++        'NAME': ':memory:',
++    }
++}
++
++SECRET_KEY = 'test_secret_key'

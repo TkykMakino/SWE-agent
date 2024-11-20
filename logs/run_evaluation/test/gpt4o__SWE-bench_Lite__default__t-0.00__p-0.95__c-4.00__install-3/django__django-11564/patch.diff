@@ -1,0 +1,84 @@
+
+diff --git a/django/contrib/staticfiles/storage.py b/django/contrib/staticfiles/storage.py
+index ba3b62620d..8ecfae899d 100644
+--- a/django/contrib/staticfiles/storage.py
++++ b/django/contrib/staticfiles/storage.py
+@@ -3,7 +3,7 @@ import json
+ import os
+ import posixpath
+ import re
+-from urllib.parse import unquote, urldefrag, urlsplit, urlunsplit
++from urllib.parse import unquote, urldefrag, urlsplit, urlunsplit, urljoin
+ 
+ from django.conf import settings
+ from django.contrib.staticfiles.utils import check_settings, matches_patterns
+@@ -145,7 +145,18 @@ class HashedFilesMixin:
+         """
+         Return the non-hashed URL in DEBUG mode.
+         """
+-        return self._url(self.stored_name, name, force)
++        url = self._url(self.stored_name, name, force)
++        script_name = os.environ.get('SCRIPT_NAME', '')
++        print(f"StaticFilesStorage: script_name={script_name}, url={url}")
++        if script_name:
++            url = urljoin(script_name, url)
++        return url
++        script_name = os.environ.get('SCRIPT_NAME', '')
++        if script_name:
++            url = urljoin(script_name, url)
++        return url
++        script_name = os.environ.get('SCRIPT_NAME', '')
++        return urljoin(script_name, url)
+ 
+     def url_converter(self, name, hashed_files, template=None):
+         """
+diff --git a/django/templatetags/static.py b/django/templatetags/static.py
+index 39712aaba0..945c933ffe 100644
+--- a/django/templatetags/static.py
++++ b/django/templatetags/static.py
+@@ -104,12 +104,18 @@ class StaticNode(template.Node):
+ 
+     def render(self, context):
+         url = self.url(context)
++        request = context.get('request')
++        if request:
++            script_name = request.META.get('SCRIPT_NAME', '')
++            url = urljoin(script_name, url)
+         if context.autoescape:
+             url = conditional_escape(url)
+         if self.varname is None:
+             return url
+         context[self.varname] = url
+         return ''
++        context[self.varname] = url
++        return ''
+ 
+     @classmethod
+     def handle_simple(cls, path):
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..c8495671a6
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,21 @@
++import os
++from django.conf import settings
++from django.templatetags.static import static
++import django
++# Configure settings
++settings.configure(
++    DEBUG=True,
++    STATIC_URL='/static/',
++    STATIC_ROOT=os.path.join(os.path.dirname(__file__), 'static'),
++    INSTALLED_APPS=[
++        'django.contrib.staticfiles',
++    ]
++)
++django.setup()
++# Simulate SCRIPT_NAME in WSGI environment
++os.environ['SCRIPT_NAME'] = '/myapp'
++
++# Generate static URL
++static_url = static('myapp/css/base.css')
++
++print(static_url)

@@ -1,0 +1,43 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..98aebbf66c
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,36 @@
++from django import forms
++from django.conf import settings
++
++# Configure Django settings
++settings.configure(
++    USE_I18N=True,
++    USE_L10N=True,
++    USE_TZ=True,
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++        'django.contrib.auth',
++    ]
++)
++import django
++django.setup()
++class ColorPicker(forms.Widget):
++    class Media:
++        js = ['color-picker.js']
++
++class SimpleTextWidget(forms.Widget):
++    class Media:
++        js = ['text-editor.js']
++
++class FancyTextWidget(forms.Widget):
++    class Media:
++        js = ['text-editor.js', 'text-editor-extras.js', 'color-picker.js']
++
++class MyForm(forms.Form):
++    background_color = forms.CharField(widget=ColorPicker())
++    intro = forms.CharField(widget=SimpleTextWidget())
++    body = forms.CharField(widget=FancyTextWidget())
++
++# Accessing MyForm().media to trigger the warning
++form = MyForm()
++print(form.media)
++

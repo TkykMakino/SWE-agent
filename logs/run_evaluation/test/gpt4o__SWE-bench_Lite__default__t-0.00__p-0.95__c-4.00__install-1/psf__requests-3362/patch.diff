@@ -1,0 +1,14 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..205e045e
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,7 @@
++import requests
++
++url = 'https://jsonplaceholder.typicode.com/todos/1'
++response = requests.get(url)
++
++print(next(response.iter_content(16*1024, decode_unicode=True)))
++print(response.text)

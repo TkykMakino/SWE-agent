@@ -1,0 +1,38 @@
+
+diff --git a/src/marshmallow/schema.py b/src/marshmallow/schema.py
+index 085c509..140854e 100644
+--- a/src/marshmallow/schema.py
++++ b/src/marshmallow/schema.py
+@@ -890,17 +890,21 @@ class BaseSchema(base.SchemaABC):
+                         if validated_value is missing:
+                             data[idx].pop(field_name, None)
+             else:
+-                try:
+-                    value = data[field_obj.attribute or field_name]
+-                except KeyError:
+-                    pass
+-                else:
+-                    validated_value = unmarshal.call_and_store(
+-                        getter_func=validator,
+-                        data=value,
+-                        field_name=field_obj.load_from or field_name,
+-                        field_obj=field_obj
+-                    )
++                if data is not None:
++                    try:
++                        value = data[field_obj.attribute or field_name]
++                    except KeyError:
++                        pass
++                    else:
++                        validated_value = unmarshal.call_and_store(
++                            getter_func=validator,
++                            data=value,
++                            field_name=field_obj.load_from or field_name,
++                            field_obj=field_obj
++                        )
++                        if validated_value is missing:
++                            data.pop(field_name, None)
++                        data.pop(field_name, None)
+                     if validated_value is missing:
+                         data.pop(field_name, None)
+ 

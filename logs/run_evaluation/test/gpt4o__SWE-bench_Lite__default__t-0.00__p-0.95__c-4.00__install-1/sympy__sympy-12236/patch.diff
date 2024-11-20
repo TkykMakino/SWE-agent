@@ -1,0 +1,38 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..d0eedbc9c8
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,14 @@
++from sympy import symbols
++
++a = symbols('a', real=True)
++t = symbols('t', real=True, negative=False)
++
++bug = a * (-t + (-t + 1) * (2 * t - 1)) / (2 * t - 1)
++
++print(bug.subs(a, 1))
++print(bug.subs(a, 1).apart())
++print(bug.subs(a, 1).apart(t))
++print(bug.apart(t))
++
++import sympy
++print(sympy.__version__)
+diff --git a/sympy/polys/partfrac.py b/sympy/polys/partfrac.py
+index 612b8f4607..5c005734ba 100644
+--- a/sympy/polys/partfrac.py
++++ b/sympy/polys/partfrac.py
+@@ -185,7 +185,11 @@ def apart_undetermined_coeffs(P, Q):
+         h = h.as_expr().subs(solution)
+         result += h/f.as_expr()**k
+ 
+-    return result
++    # Ensure the result is correctly simplified
++    return result.cancel()
++    return result.cancel()
++    return result.cancel().apart()
++    return result.cancel()
+ 
+ 
+ def apart_full_decomposition(P, Q):

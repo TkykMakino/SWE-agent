@@ -1,0 +1,16 @@
+
+diff --git a/pvlib/iam.py b/pvlib/iam.py
+index 3eaa6b4..e2dadb9 100644
+--- a/pvlib/iam.py
++++ b/pvlib/iam.py
+@@ -156,7 +156,9 @@ def physical(aoi, n=1.526, K=4.0, L=0.002, *, n_ar=None):
+     pvlib.iam.sapm
+     """
+     n1, n3 = 1, n
+-    if n_ar is None or np.allclose(n_ar, n1):
++    n1, n3 = 1, n
++    if aoi > 90:
++        return 0
+         # no AR coating
+         n2 = n
+     else:

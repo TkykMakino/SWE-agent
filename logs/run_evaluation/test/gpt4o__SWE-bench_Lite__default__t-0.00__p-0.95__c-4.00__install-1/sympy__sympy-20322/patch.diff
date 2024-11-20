@@ -1,0 +1,26 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..24113b5fd0
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,19 @@
++import sympy
++
++x = sympy.Symbol('x')
++
++# SymPy v1.5.1 behavior
++expr1 = sympy.sympify('4*ceiling(x/4 - 3/4)', evaluate=False).simplify()
++print(f"SymPy v1.5.1 (evaluate=False): {expr1}")
++
++expr2 = sympy.sympify('4*ceiling(x/4 - 3/4)', evaluate=True).simplify()
++print(f"SymPy v1.5.1 (evaluate=True): {expr2}")
++
++# SymPy v1.6.2 behavior
++expr3 = sympy.sympify('4*ceiling(x/4 - 3/4)', evaluate=False).simplify()
++print(f"SymPy v1.6.2 (evaluate=False): {expr3}")
++
++expr4 = sympy.sympify('4*ceiling(x/4 - 3/4)', evaluate=True).simplify()
++print(f"SymPy v1.6.2 (evaluate=True): {expr4}")
++
++print("Script completed successfully, no errors.")

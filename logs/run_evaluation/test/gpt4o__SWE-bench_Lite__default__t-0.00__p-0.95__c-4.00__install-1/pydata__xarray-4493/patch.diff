@@ -1,0 +1,89 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 00000000..c14eae9b
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,12 @@
++import numpy as np
++import xarray as xr
++
++foo = xr.DataArray(np.random.randn(3, 3), dims=("x", "y")).chunk()  # foo is chunked
++ds = xr.Dataset({"foo": foo, "bar": ("x", [1, 2, 3])})  # foo is still chunked here
++print(ds)  # you can verify that foo is chunked
++
++update_dict = {"foo": (("x", "y"), ds.foo[1:, :]), "bar": ("x", ds.bar[1:])}
++print(update_dict["foo"][1])  # foo is still chunked
++
++ds.update(update_dict)
++print(ds)  # now foo is no longer chunked
+diff --git a/xarray/core/alignment.py b/xarray/core/alignment.py
+index debf3aad..f6cdb8ed 100644
+--- a/xarray/core/alignment.py
++++ b/xarray/core/alignment.py
+@@ -425,10 +425,10 @@ def deep_align(
+     aligned = align(
+         *targets,
+         join=join,
+-        copy=copy,
++        copy=False,  # Ensure that data is not copied to preserve chunking
+         indexes=indexes,
+         exclude=exclude,
+-        fill_value=fill_value,
++        fill_value=fill_value
+     )
+ 
+     for position, key, aligned_obj in zip(positions, keys, aligned):
+diff --git a/xarray/core/dataset.py b/xarray/core/dataset.py
+index 8376b487..eb70e1cd 100644
+--- a/xarray/core/dataset.py
++++ b/xarray/core/dataset.py
+@@ -1,4 +1,5 @@
+ import copy
++import dask.array
+ import datetime
+ import functools
+ import sys
+@@ -3879,7 +3880,6 @@ class Dataset(Mapping, ImplementsDatasetReduce, DataWithCoords):
+             else:
+                 result = result._unstack_once(dim, fill_value)
+         return result
+-
+     def update(self, other: "CoercibleMapping") -> "Dataset":
+         """Update this dataset's variables with those from another dataset.
+ 
+@@ -3894,7 +3894,6 @@ class Dataset(Mapping, ImplementsDatasetReduce, DataWithCoords):
+             - mapping {var name: (dimension name, array-like)}
+             - mapping {var name: (tuple of dimension names, array-like)}
+ 
+-
+         Returns
+         -------
+         updated : Dataset
+@@ -3907,6 +3906,26 @@ class Dataset(Mapping, ImplementsDatasetReduce, DataWithCoords):
+             dataset.
+         """
+         merge_result = dataset_update_method(self, other)
++        updated = self._replace(inplace=True, **merge_result._asdict())
++        
++        # Ensure that chunking is preserved
++        for var_name, var in updated.variables.items():
++            if isinstance(var.data, dask.array.Array):
++                updated[var_name] = var.chunk(var.chunks)
++        
++        return updated
++        # Ensure that chunking is preserved
++        for var_name, var in updated.variables.items():
++            if isinstance(var.data, dask.array.Array):
++                updated[var_name] = var.chunk(var.chunks)
++        
++        return updated
++        # Ensure that chunking is preserved
++        for var_name, var in updated.variables.items():
++            if isinstance(var.data, dask.array.Array):
++                updated[var_name] = var.chunk(var.chunks)
++        
++        return updated
+         return self._replace(inplace=True, **merge_result._asdict())
+ 
+     def merge(

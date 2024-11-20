@@ -1,0 +1,142 @@
+
+diff --git a/django/urls/converters.py b/django/urls/converters.py
+index bb8478e32f..c61fd55e9d 100644
+--- a/django/urls/converters.py
++++ b/django/urls/converters.py
+@@ -1,4 +1,58 @@
++from django.http import Http404
++from django.urls import path
++from django.urls.converters import StringConverter
++from django.conf import settings
++from django.core.management import execute_from_command_line
++from django.http import HttpResponse
++from django.shortcuts import get_object_or_404
++from django.conf.urls import url
++import sys
+ import uuid
++
++# Custom converter that raises Http404
++class CustomConverter(StringConverter):
++    regex = '[^/]+'
++    def to_python(self, value):
++        raise Http404("Custom 404 error message")
++
++# Register the custom converter
++# Register the custom converter
++from django.urls.converters import get_converters
++get_converters.cache_clear()
++get_converters()['custom'] = CustomConverter()
++
++# View function
++def test_view(request, param):
++    return HttpResponse(f"Param: {param}")
++
++# URL patterns
++urlpatterns = [
++    path('test/<custom:param>/', test_view),
++]
++
++# Django settings
++settings.configure(
++    DEBUG=True,
++    ROOT_URLCONF=__name__,
++    SECRET_KEY='a_random_secret_key',
++    ALLOWED_HOSTS=['*'],
++    MIDDLEWARE=[
++        'django.middleware.common.CommonMiddleware',
++        'django.middleware.csrf.CsrfViewMiddleware',
++        'django.middleware.clickjacking.XFrameOptionsMiddleware',
++    ],
++)
++
++if __name__ == "__main__":
++    from django.test import Client
++    client = Client()
++    try:
++        response = client.get('/test/somevalue/')
++        print(response.content.decode())
++    except Http404 as e:
++        print(f"Caught Http404: {e}")
++from functools import lru_cache
++from django.http import Http404
+ from functools import lru_cache
+ 
+ 
+@@ -7,15 +61,18 @@ class IntConverter:
+ 
+     def to_python(self, value):
+         return int(value)
+-
+-    def to_url(self, value):
+-        return str(value)
++class CustomConverter:
++    regex = '[^/]+'
++    def to_python(self, value):
++        raise Http404("Custom 404 error message")
+ 
+ 
+ class StringConverter:
+-    regex = '[^/]+'
+-
+     def to_python(self, value):
++        from django.conf import settings
++        if settings.DEBUG:
++            raise Http404(f"Custom 404 error message: {value}")
++        return value
+         return value
+ 
+     def to_url(self, value):
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..97dede00eb
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,48 @@
++from django.http import Http404
++from django.urls import register_converter, path, re_path, include
++from django.urls.converters import StringConverter
++from django.conf import settings
++from django.core.management import execute_from_command_line
++from django.http import HttpResponse
++from django.shortcuts import get_object_or_404
++from django.conf.urls import url
++import sys
++
++# Custom converter that raises Http404
++class CustomConverter(StringConverter):
++    def to_python(self, value):
++        raise Http404("Custom 404 error message")
++
++# Register the custom converter
++register_converter(CustomConverter, 'custom')
++
++# View function
++def test_view(request, param):
++    return HttpResponse(f"Param: {param}")
++
++# URL patterns
++urlpatterns = [
++    path('test/<custom:param>/', test_view),
++]
++
++# Django settings
++settings.configure(
++    DEBUG=True,
++    ROOT_URLCONF=__name__,
++    SECRET_KEY='a_random_secret_key',
++    ALLOWED_HOSTS=['*'],
++    MIDDLEWARE=[
++        'django.middleware.common.CommonMiddleware',
++        'django.middleware.csrf.CsrfViewMiddleware',
++        'django.middleware.clickjacking.XFrameOptionsMiddleware',
++    ],
++)
++
++if __name__ == "__main__":
++    from django.test import Client
++    client = Client()
++    try:
++        response = client.get('/test/somevalue/')
++        print(response.content.decode())
++    except Http404 as e:
++        print(f"Caught Http404: {e}")

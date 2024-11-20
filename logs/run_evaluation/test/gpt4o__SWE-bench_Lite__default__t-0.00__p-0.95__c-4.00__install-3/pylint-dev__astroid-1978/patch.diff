@@ -1,0 +1,22 @@
+
+diff --git a/astroid/brain/brain_numpy_utils.py b/astroid/brain/brain_numpy_utils.py
+index a3dbb116..3375f3b0 100644
+--- a/astroid/brain/brain_numpy_utils.py
++++ b/astroid/brain/brain_numpy_utils.py
+@@ -26,12 +26,11 @@ def _get_numpy_version() -> tuple[str, str, str]:
+ 
+     Otherwise returns ('0', '0', '0')
+     """
+-    try:
+-        import numpy  # pylint: disable=import-outside-toplevel
++    import warnings
++    warnings.filterwarnings("ignore", category=FutureWarning)
++    import numpy  # pylint: disable=import-outside-toplevel
+ 
+-        return tuple(numpy.version.version.split("."))
+-    except (ImportError, AttributeError):
+-        return ("0", "0", "0")
++    return tuple(numpy.version.version.split("."))
+ 
+ 
+ def infer_numpy_member(src, node, context: InferenceContext | None = None):

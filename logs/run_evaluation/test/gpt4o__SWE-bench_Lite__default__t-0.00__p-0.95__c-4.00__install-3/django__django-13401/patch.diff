@@ -1,0 +1,40 @@
+
+diff --git a/reproduce.py b/reproduce.py
+new file mode 100644
+index 0000000000..99fa29cd33
+--- /dev/null
++++ b/reproduce.py
+@@ -0,0 +1,33 @@
++import django
++from django.conf import settings
++from django.db import models
++
++settings.configure(
++    INSTALLED_APPS=[
++        'django.contrib.contenttypes',
++    ],
++)
++
++django.setup()
++
++class A(models.Model):
++    class Meta:
++        app_label = 'myapp'
++    myfield = models.IntegerField()
++
++class B(A):
++    pass
++
++class C(A):
++    pass
++
++print(len({B._meta.get_field('myfield'), C._meta.get_field('myfield')}))
++print(B._meta.get_field('myfield') == C._meta.get_field('myfield'))
++
++class A(models.Model):
++    class Meta:
++        app_label = 'myapp'
++    pass
++
++print(len({B._meta.get_field('myfield'), C._meta.get_field('myfield')}))
++print(B._meta.get_field('myfield') == C._meta.get_field('myfield'))
