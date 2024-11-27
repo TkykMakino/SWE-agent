@@ -91,7 +91,7 @@ plan() {
     echo "   "
     echo "   "
 
-    echo "3. While solving this issue, you *MUST NOT* attempt to reproduce the issue or test. It is difficult to do so. It is forbidden to create test scripts until you do a SUBMIT. *NEVER* do this."
+    echo "3. While solving this issue, you *MUST NOT* create test scripts until you do a SUBMIT. It is difficult to do so."
     echo "   "
     echo "   "
 #    echo "1. Before you begin to solve the issue, make a rough plan to SUBMIT the patch. Decide first what the overall steps will be to resolve the issue, and then follow that plan to execute the commands and resolve the issue. This plan should encompass the entire flow of issue resolution."

@@ -282,44 +282,44 @@ class Agent:
         self.history: list[dict[str, Any]] = []
         self._append_history({"role": "system", "content": system_msg, "agent": self.name})
 
-        if "history_to_messages" in dir(self.model):
-            for demonstration_path in self.config.demonstrations:
-                if self.config.demonstration_template is None and not self.config.put_demos_in_history:
-                    msg = "Cannot use demonstrations without a demonstration template or put_demos_in_history=True"
-                    raise ValueError(msg)
-
-                # Load history
-                self.logger.info(f"DEMONSTRATION: {demonstration_path}")
-                demo_history = json.loads(Path(demonstration_path).read_text())["history"]
-                demo_history = [
-                    entry
-                    for entry in demo_history
-                    if ("agent" not in entry) or ("agent" in entry and entry["agent"] == self.name)
-                ]
-
-                if self.config.put_demos_in_history:
-                    if self.config.demonstration_template is not None:
-                        self.logger.warning("Demonstration template is ignored for put_demos_in_history=True")
-                    # Add demonstration to history directly as separate messages
-                    for entry in demo_history:
-                        if entry["role"] != "system":
-                            entry["is_demo"] = True
-                            self._append_history(entry)
-                else:
-                    # Add demonstration as single message to history
-                    demo_message = self.model.history_to_messages(
-                        demo_history,
-                        is_demonstration=True,
-                    )
-                    demonstration = self.config.demonstration_template.format(demonstration=demo_message)
-                    self._append_history(
-                        {
-                            "agent": self.name,
-                            "content": demonstration,
-                            "is_demo": True,
-                            "role": "user",
-                        },
-                    )
+#        if "history_to_messages" in dir(self.model):
+#            for demonstration_path in self.config.demonstrations:
+#                if self.config.demonstration_template is None and not self.config.put_demos_in_history:
+#                    msg = "Cannot use demonstrations without a demonstration template or put_demos_in_history=True"
+#                    raise ValueError(msg)
+#
+#                # Load history
+#                self.logger.info(f"DEMONSTRATION: {demonstration_path}")
+#                demo_history = json.loads(Path(demonstration_path).read_text())["history"]
+#                demo_history = [
+#                    entry
+#                    for entry in demo_history
+#                    if ("agent" not in entry) or ("agent" in entry and entry["agent"] == self.name)
+#                ]
+#
+#                if self.config.put_demos_in_history:
+#                    if self.config.demonstration_template is not None:
+#                        self.logger.warning("Demonstration template is ignored for put_demos_in_history=True")
+#                    # Add demonstration to history directly as separate messages
+#                    for entry in demo_history:
+#                        if entry["role"] != "system":
+#                            entry["is_demo"] = True
+#                            self._append_history(entry)
+#                else:
+#                    # Add demonstration as single message to history
+#                    demo_message = self.model.history_to_messages(
+#                        demo_history,
+#                        is_demonstration=True,
+#                    )
+#                    demonstration = self.config.demonstration_template.format(demonstration=demo_message)
+#                    self._append_history(
+#                        {
+#                            "agent": self.name,
+#                            "content": demonstration,
+#                            "is_demo": True,
+#                            "role": "user",
+#                        },
+#                    )
 
     @property
     def state_command(self) -> str:

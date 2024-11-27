@@ -40,7 +40,7 @@ instance_template: |-
   NOTE ABOUT THE EDIT COMMAND: Indentation really matters! When editing a file, make sure to insert appropriate indentation before each line!
 
   IMPORTANT TIPS:
-  1. Always start by using the "plan" command as action to plan the entire project. The plan command gives appropriate direction to planning and helps determine policy. However, never use the plan command more than once in a row! Once you have a plan, the next action should be to progress that plan.
+  1. Always start by using the 'plan' command as action to plan the entire project. The plan command gives appropriate direction to planning and helps determine policy. However, never use the plan command more than once in a row! Once you have a plan, the next action should be to progress that plan.
   
   2. If you run a command and it doesn't work, try running a different command. A command that did not work once will not work the second time unless you modify it!
 
