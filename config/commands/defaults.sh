@@ -33,50 +33,50 @@ plan() {
     echo "1. **Search for Relevant Code [SEARCH]**
         (This is where you need to fill in.)
            "
-#    echo "2. **Create Reproduction Script [REPRODUCE]**
-#        - Create a new file called “reproduce.py” and reproduce the bug discussed in the issue.
-#        - Run the script and verify that the bug has been properly reproduced.
-#           "
-    echo "2. **Edit Code to Fix Bug [EDIT]**
-        (This is where you need to fill in.)
+    echo "2. **Create Reproduction Script [REPRODUCE]**
+        - Create a new file called 'reproduce.py' and reproduce the bug discussed in the issue.
+        - Run the script and verify that the bug has been properly reproduced.
            "
-#    echo "3. **Edit Code to Fix Bug [EDIT]**
+#    echo "2. **Edit Code to Fix Bug [EDIT]**
 #        (This is where you need to fill in.)
 #           "
-    echo "3. **Submit the Patch [SUBMIT]**
-        - Submit the changes to the code base.
+    echo "3. **Edit Code to Fix Bug [EDIT]**
+        (This is where you need to fill in.)
            "
-#    echo "4. **Test the Fix [TEST]**
-#        - Re-run the “reproduce.py” script to ensure the bug is fixed.
-#        - Ensure that the script runs without errors and produces the expected output.
-#           "
-#    echo "5. **Clean Up and Submit the Patch [SUBMIT]**
-#        - Remove the “reproduce.py” file as it is no longer needed.
+#    echo "3. **Submit the Patch [SUBMIT]**
 #        - Submit the changes to the code base.
 #           "
+    echo "4. **Test the Fix [TEST]**
+        - Re-run the 'reproduce.py' script to ensure the bug is fixed.
+        - Ensure that the script runs without errors and produces the expected output.
+           "
+    echo "5. **Clean Up and Submit the Patch [SUBMIT]**
+        - Remove the 'reproduce.py' file as it is no longer needed.
+        - Submit the changes to the code base.
+           "
     echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
        "
     
     echo "Now, please start solving the problems according to the following important tips."
 
     echo "Important Tips:"
-#    echo "1. You must go through the plan shown above in order from step 1. Skipping or retrogressing steps is generally not allowed, but only if the desired results are not obtained in TEST can the steps be retrogressed and re-edited."
-    echo "1. You must go through the plan shown above in order from step 1. Skipping or retrogressing steps is not allowed."
+    echo "1. You must go through the plan shown above in order from step 1. Skipping or retrogressing steps is generally not allowed, but only if the desired results are not obtained in TEST can the steps be retrogressed and re-edited."
+#    echo "1. You must go through the plan shown above in order from step 1. Skipping or retrogressing steps is not allowed."
     echo "**Search for Relevant Code [SEARCH]** is the step to search for codes related to the issue. There will be no opportunity to search after this step, so please use this step to gather all the information needed to resolve the issue."
-#    echo "**Create Reproduction Script [REPRODUCE]** is the step of trying to replicate the bug that the issues discusses. If the issue includes code for reproducing the bug, we recommend that you re-implement that in your environment, and run it to make sure you can reproduce the bug."
+    echo "**Create Reproduction Script [REPRODUCE]** is the step of trying to replicate the bug that the issues discusses. If the issue includes code for reproducing the bug, we recommend that you re-implement that in your environment, and run it to make sure you can reproduce the bug."
     echo "**Edit Code to Fix Bug [EDIT]** is the step where you edit the code to fix the bug. Be careful not to repeat the same action, as there is no point in repeating edits once an error has occurred."
-#    echo "**Test the Fix [TEST]** is the step to re-run the bug reproduction script to make sure that the bug has indeed been fixed. If the bug reproduction script does not print anything when it successfully runs, we recommend adding a print(“Script completed successfully, no errors.”) command at the end of the file, so that you can be sure that the script indeed ran fine all the way through."
-#    echo "**Clean Up and Submit the Patch [SUBMIT]** is the step to remove the reproduced test program and submit the results of the edit."
-    echo "**Submit the Patch [SUBMIT]** is the step to submit the results of the edit."
+    echo "**Test the Fix [TEST]** is the step to re-run the bug reproduction script to make sure that the bug has indeed been fixed. If the bug reproduction script does not print anything when it successfully runs, we recommend adding a print('Script completed successfully, no errors.') command at the end of the file, so that you can be sure that the script indeed ran fine all the way through."
+    echo "**Clean Up and Submit the Patch [SUBMIT]** is the step to remove the reproduced test program and submit the results of the edit."
+#    echo "**Submit the Patch [SUBMIT]** is the step to submit the results of the edit."
     echo "In solving the issue according to this plan, please be sure to include the name of the step and the step genre at that point in the following format before of all DISCUSSION. However, the step name and step genre in this response should be **Create Plan [PLAN]**." 
     echo "**STEP NAME [STEP GENRE]**"
     echo "DISCUSSION"
     echo "   "
     echo "   "
 
-    echo "2. In the plan shown above, SUBTASKs are basically written under the STEP NAME and STEP GENRE surrounded by “**”. However, SUBTASKs for “**Search for Relevant Code [SEARCH]**” and “**Edit Code to Fix Bug [EDIT]**” have not yet been determined. Based on the content of the issue, you will need to describe the specific tasks to be completed in these steps. At the beginning of the following discussion, please include SUBTASKs according to the following format:"
+    echo "2. In the plan shown above, SUBTASKs are basically written under the STEP NAME and STEP GENRE surrounded by '**'. However, SUBTASKs for '**Search for Relevant Code [SEARCH]**' and '**Edit Code to Fix Bug [EDIT]**' have not yet been determined. Based on the content of the issue, you will need to describe the specific tasks to be completed in these steps. At the beginning of the following discussion, please include SUBTASKs according to the following format:"
     echo "   "
-    echo "**Search for Relevant Code [SEARCH]
+    echo "**Search for Relevant Code [SEARCH]**
         - (Fill in your thought SUBTASK here)
         - (Fill in your thought SUBTASK here)
            "
@@ -91,7 +91,7 @@ plan() {
     echo "   "
     echo "   "
 
-    echo "3. While solving this issue, you *MUST NOT* attempt to reproduce the issue or test. It is difficult to do so. It is forbidden to create test scripts until you do a SUBMIT. *NEVER* do this."
+#    echo "3. While solving this issue, you *MUST NOT* attempt to reproduce the issue or test. It is difficult to do so. It is forbidden to create test scripts until you do a SUBMIT. *NEVER* do this."
     echo "   "
     echo "   "
 #    echo "1. Before you begin to solve the issue, make a rough plan to SUBMIT the patch. Decide first what the overall steps will be to resolve the issue, and then follow that plan to execute the commands and resolve the issue. This plan should encompass the entire flow of issue resolution."
@@ -118,13 +118,13 @@ plan() {
 #     so that you can be sure that the script indeed ran fine all the way through."
 #    echo "   "
 #
-#    echo "3. Please classify each step into one of the following genres: “REPRODUCE”, “SEARCH”, “EDIT”, “TEST” or “SUBMIT” and list it after the step name in the format **STEP NAME [STEP GENRE]**.
-#     The “REPRODUCE” genre includes the steps of creating a test file that reproduces the bug addressed in the issue and the steps of running the test file to locate the problem.
-#     The “SEARCH” genre includes steps to gather the information needed to solve a issue by searching files and other resources.
-#     The “EDIT” genre includes steps to edit the files needed to resolve the issue.
-#     The “TEST” genre includes the steps of executing the reproduced test file and performing a final check to see if the issue has been resolved.
-#     The “SUBMIT” genre includes steps for deleting test files that are no longer needed and steps for submitting completed patches."
-#    echo "3. Please classify each step into one of the following genres: “SEARCH”, “EDIT” or “SUBMIT” and list it after the step name in the format **STEP NAME [STEP GENRE]**."
+#    echo "3. Please classify each step into one of the following genres: 'REPRODUCE', 'SEARCH', 'EDIT', 'TEST' or 'SUBMIT' and list it after the step name in the format **STEP NAME [STEP GENRE]**.
+#     The 'REPRODUCE' genre includes the steps of creating a test file that reproduces the bug addressed in the issue and the steps of running the test file to locate the problem.
+#     The 'SEARCH' genre includes steps to gather the information needed to solve a issue by searching files and other resources.
+#     The 'EDIT' genre includes steps to edit the files needed to resolve the issue.
+#     The 'TEST' genre includes the steps of executing the reproduced test file and performing a final check to see if the issue has been resolved.
+#     The 'SUBMIT' genre includes steps for deleting test files that are no longer needed and steps for submitting completed patches."
+#    echo "3. Please classify each step into one of the following genres: 'SEARCH', 'EDIT' or 'SUBMIT' and list it after the step name in the format **STEP NAME [STEP GENRE]**."
 #    echo"   "
 #
 #    echo "4. In solving the issue according to this plan, please be sure to include the name of the step and the step genre at that point in the following format before of all DISCUSSION. However, the step name and step genre in this response should be **Create Plan [PLAN]**." 
