@@ -101,4 +101,4 @@ command_files:
 parse_command: ParseCommandDetailed
 history_processor: Last5Observations
 demonstrations:
-- trajectories/demonstrations/editcasedemo/marshmallow-code__marshmallow-1343.traj
+- trajectories/demonstrations/editcasedemo/1.traj

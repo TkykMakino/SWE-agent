@@ -832,13 +832,18 @@ class Agent:
                 observation = "Your plan is\n"
                 for i, item in enumerate(plan, start=1):
                     observation += f"{i}. **{item}**\n"
-
-                if phasenum <= 0 or backcount <= 0:
-                    observation += f"and current step is **{plan[phasenum]}**.\nCorrect your STEP NAME and STEP GENRE to **{plan[phasenum]}** or **{plan[phasenum + 1]}** and solve the issue according to the plan."
-                elif phasenum >= len(plan) - 1:
-                    observation += f"and current step is **{plan[phasenum]}**.\nCorrect your STEP NAME and STEP GENRE to **{plan[phasenum - 1]}** or **{plan[phasenum]}** and solve the issue according to the plan."
+                observation += f"and current step is **{plan[phasenum]}**.\n"
+                if (phasenum <= 0 or backcount <= 0 or nowgenre != "TEST") and phasenum >= len(plan) - 1:
+                    observation += f"indicate “**{plan[phasenum - 1]}**” "
                 else:
-                    observation += f"and current step is **{plan[phasenum]}**.\nCorrect your STEP NAME and STEP GENRE to **{plan[phasenum-1]}**, **{plan[phasenum]}** or **{plan[phasenum + 1]}** and solve the issue according to the plan."
+                    observation += "Choose the STEP NAME and STEP GENRE from "
+                    if phasenum > 0 and backcount > 0 and nowgenre == "TEST":
+                        observation += f"**{plan[phasenum - 1]}** or "
+                    observation += f"**{plan[phasenum]}** "
+                    if phasenum < len(plan) - 1:
+                        observation += f"or **{plan[phasenum + 1]}** "
+                    observation += f"and indicate them "
+                observation += "at the beginning of the DISSCUSSION and follow the plan to solve the problem."
                 check = False
                 return observation, 0, False, info, check, phasenum, backcount
 
@@ -900,7 +905,7 @@ class Agent:
                 if phasenum < len(plan) - 1:
                     observation += f"If you think you have fully completed all of these tasks, please indicate “**{plan[phasenum + 1]}**” at the beginning of the DISCUSSION and progress your plan to {plan[phasenum + 1]}.\n"
                 if phasenum > 0 and backcount > 0 and nowgenre == "TEST":
-                    observation += f"If there are problems in executing the plan and you decide that you need to work through the {plan[phasenum - 1]} step again, go backwards through the steps."
+                    observation += f"If there are problems in executing the plan and you decide that you need to work through the {plan[phasenum - 1]} step again, please indicate “**{plan[phasenum - 1]}**” at the beginning of the DISCUSSION and return your plan to {plan[phasenum - 1]}.\n"
             observation += "The group of commands you can use in this step are: "
             for i, item in enumerate(coms[genre], start=1):
                 observation += f"{item}, "
