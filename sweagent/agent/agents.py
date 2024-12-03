@@ -800,25 +800,26 @@ class Agent:
             nowgenre = "NONE"
 
         if plan[phasenum] != phase:
-            if plan[phasenum + 1] == phase:
+            if phasenum + 1 < len(plan) and plan[phasenum + 1] == phase:
                 phasenum += 1
                 getnowgenre = re.findall(r'\[(.*?)\]', plan[phasenum])
                 if getnowgenre:
                     nowgenre = getnowgenre[0]
                 if not nowgenre in genres:
                     nowgenre = "NONE"
-            elif plan[phasenum - 1] == phase:
-                if nowgenre != "TEST":
-                    observation = f"Since this is not currently a TEST step, the step cannot be reversed. Please proceed with the current step: **{plan[phasenum]}**"
+            if phasenum > 0 and plan[phasenum - 1] == phase:
+                if nowgenre != "TEST" or backcount <= 0:
+                    if nowgenre != "TEST":
+                        observation = f"Since this is not currently a TEST step, the step cannot be reversed."
+                    elif backcount <= 0:
+                        observation = f"You cannot reverse the plan any further."
+                    observation += f" Please proceed with the current step: **{plan[phasenum]}** "
                     if phasenum < len(plan) - 1:
                         observation += f"or give up and force the next step: **{plan[phasenum + 1]}**"
                     observation += "."
                     check = False
                     return observation, 0, False, info, check, phasenum, backcount
-                if backcount <= 0:
-                    observation = f"You cannot reverse the plan any further. Please give up and force the next step: **{plan[phasenum + 1]}**."
-                    check = False
-                    return observation, 0, False, info, check, phasenum, backcount
+                
                 else:
                     phasenum -= 1
                     backcount -= 1
@@ -901,7 +902,7 @@ class Agent:
         if genre in genres:
             observation = f"Currently it is a [{genre}] step.\n"
             if phasenum <= len(subplan):
-                observation += f"The work to be done in this step is{tasks}\n"
+                observation += f"The work to be done in this step is{tasks}\nUntil all of these subtasks are completed, you should stay with this step: **{plan[phasenum]}**.\n"
                 if phasenum < len(plan) - 1:
                     observation += f"If you think you have fully completed all of these tasks, please indicate “**{plan[phasenum + 1]}**” at the beginning of the DISCUSSION and progress your plan to {plan[phasenum + 1]}.\n"
                 if phasenum > 0 and backcount > 0 and nowgenre == "TEST":
