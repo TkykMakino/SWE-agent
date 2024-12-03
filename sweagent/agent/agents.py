@@ -282,44 +282,44 @@ class Agent:
         self.history: list[dict[str, Any]] = []
         self._append_history({"role": "system", "content": system_msg, "agent": self.name})
 
-        if "history_to_messages" in dir(self.model):
-            for demonstration_path in self.config.demonstrations:
-                if self.config.demonstration_template is None and not self.config.put_demos_in_history:
-                    msg = "Cannot use demonstrations without a demonstration template or put_demos_in_history=True"
-                    raise ValueError(msg)
-
-                # Load history
-                self.logger.info(f"DEMONSTRATION: {demonstration_path}")
-                demo_history = json.loads(Path(demonstration_path).read_text())["history"]
-                demo_history = [
-                    entry
-                    for entry in demo_history
-                    if ("agent" not in entry) or ("agent" in entry and entry["agent"] == self.name)
-                ]
-
-                if self.config.put_demos_in_history:
-                    if self.config.demonstration_template is not None:
-                        self.logger.warning("Demonstration template is ignored for put_demos_in_history=True")
-                    # Add demonstration to history directly as separate messages
-                    for entry in demo_history:
-                        if entry["role"] != "system":
-                            entry["is_demo"] = True
-                            self._append_history(entry)
-                else:
-                    # Add demonstration as single message to history
-                    demo_message = self.model.history_to_messages(
-                        demo_history,
-                        is_demonstration=True,
-                    )
-                    demonstration = self.config.demonstration_template.format(demonstration=demo_message)
-                    self._append_history(
-                        {
-                            "agent": self.name,
-                            "content": demonstration,
-                            "is_demo": True,
-                            "role": "user",
-                        },
-                    )
+#        if "history_to_messages" in dir(self.model):
+#            for demonstration_path in self.config.demonstrations:
+#                if self.config.demonstration_template is None and not self.config.put_demos_in_history:
+#                    msg = "Cannot use demonstrations without a demonstration template or put_demos_in_history=True"
+#                    raise ValueError(msg)
+#
+#                # Load history
+#                self.logger.info(f"DEMONSTRATION: {demonstration_path}")
+#                demo_history = json.loads(Path(demonstration_path).read_text())["history"]
+#                demo_history = [
+#                    entry
+#                    for entry in demo_history
+#                    if ("agent" not in entry) or ("agent" in entry and entry["agent"] == self.name)
+#                ]
+#
+#                if self.config.put_demos_in_history:
+#                    if self.config.demonstration_template is not None:
+#                        self.logger.warning("Demonstration template is ignored for put_demos_in_history=True")
+#                    # Add demonstration to history directly as separate messages
+#                    for entry in demo_history:
+#                        if entry["role"] != "system":
+#                            entry["is_demo"] = True
+#                            self._append_history(entry)
+#                else:
+#                    # Add demonstration as single message to history
+#                    demo_message = self.model.history_to_messages(
+#                        demo_history,
+#                        is_demonstration=True,
+#                    )
+#                    demonstration = self.config.demonstration_template.format(demonstration=demo_message)
+#                    self._append_history(
+#                        {
+#                            "agent": self.name,
+#                            "content": demonstration,
+#                            "is_demo": True,
+#                            "role": "user",
+#                        },
+#                    )
 
     @property
     def state_command(self) -> str:
@@ -807,10 +807,10 @@ class Agent:
                     nowgenre = getnowgenre[0]
                 if not nowgenre in genres:
                     nowgenre = "NONE"
-            if phasenum > 0 and plan[phasenum - 1] == phase:
+            elif phasenum > 0 and plan[phasenum - 1] == phase:
                 if nowgenre != "TEST" or backcount <= 0:
                     if nowgenre != "TEST":
-                        observation = f"Since this is not currently a TEST step, the step cannot be reversed."
+                        observation = f"The current step genre does not allow for retrogression of the plan, and therefore the step cannot be reversed."
                     elif backcount <= 0:
                         observation = f"You cannot reverse the plan any further."
                     observation += f" Please proceed with the current step: **{plan[phasenum]}** "
@@ -903,6 +903,8 @@ class Agent:
             observation = f"Currently it is a [{genre}] step.\n"
             if phasenum <= len(subplan):
                 observation += f"The work to be done in this step is{tasks}\nUntil all of these subtasks are completed, you should stay with this step: **{plan[phasenum]}**.\n"
+                if nowgenre == "EDIT":
+                    observation += "However, this is the step for resolving the issue, so DO-NOT create a test case.\n"
                 if phasenum < len(plan) - 1:
                     observation += f"If you think you have fully completed all of these tasks, please indicate “**{plan[phasenum + 1]}**” at the beginning of the DISCUSSION and progress your plan to {plan[phasenum + 1]}.\n"
                 if phasenum > 0 and backcount > 0 and nowgenre == "TEST":
