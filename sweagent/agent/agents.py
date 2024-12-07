@@ -1018,19 +1018,19 @@ class Agent:
             thought, action, output, phase = self.forward(observation, env.get_available_actions(), state, phase)
             if before_action.strip() == "plan":
                 #repcase
-                plan = ["Search for Relevant Code [SEARCH]", "Create Reproduction Script [REPRODUCE]", "Edit Code to Fix Bug [EDIT]", "Test the Fix [TEST]", "Clean Up and Submit the Patch [SUBMIT]"]
-                subplan = ["   ", "\n        - Create a new file called 'reproduce.py' and reproduce the bug discussed in the issue.\n        - Run the script and verify that the bug has been properly reproduced.\n  ","   " ,"\n        - Re-run the 'reproduce.py' script to ensure the bug is fixed.\n        - Ensure that the script runs without errors and produces the correct output.\n  ", "\n        - Remove the 'reproduce.py' file as it is no longer needed.\n        - Submit the changes to the code base.\n "]
+#                plan = ["Search for Relevant Code [SEARCH]", "Create Reproduction Script [REPRODUCE]", "Edit Code to Fix Bug [EDIT]", "Test the Fix [TEST]", "Clean Up and Submit the Patch [SUBMIT]"]
+#                subplan = ["   ", "\n        - Create a new file called 'reproduce.py' and reproduce the bug discussed in the issue.\n        - Run the script and verify that the bug has been properly reproduced.\n  ","   " ,"\n        - Re-run the 'reproduce.py' script to ensure the bug is fixed.\n        - Ensure that the script runs without errors and produces the correct output.\n  ", "\n        - Remove the 'reproduce.py' file as it is no longer needed.\n        - Submit the changes to the code base.\n "]
                 #edicase
-#                plan = ["Search for Relevant Code [SEARCH]", "Edit Code to Fix Bug [EDIT]", "Submit the Patch [SUBMIT]"]
-#                subplan = ["   ", "   ", "\n        - Remove the 'reproduce.py' file as it is no longer needed.\n        - Submit the changes to the code base.\n "]
+                plan = ["Search for Relevant Code [SEARCH]", "Edit Code to Fix Bug [EDIT]", "Submit the Patch [SUBMIT]"]
+                subplan = ["   ", "   ", "\n        - Remove the 'reproduce.py' file as it is no longer needed.\n        - Submit the changes to the code base.\n "]
                 getsubplan = []
                 getsubplan = re.split(r'\*\*.*?\*\*', thought)[2: -1]
                 if getsubplan:
                     subplan[0] = getsubplan[0]
                     # repcase
-                    subplan[2] = getsubplan[1]
+#                    subplan[2] = getsubplan[1]
                     # edicase
-#                    subplan[1] = getsubplan[1]
+                    subplan[1] = getsubplan[1]
                 phasenum = 0
                 before_action = "NONE"
             for hook in self.hooks:
